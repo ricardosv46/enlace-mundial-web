@@ -1,7 +1,5 @@
 import React from "react";
 
-// import './_tours_populares.scss';
-
 // Componentes
 import CardTour from "../../cards/card-tour";
 

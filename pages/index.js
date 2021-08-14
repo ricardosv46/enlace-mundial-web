@@ -10,6 +10,7 @@ import ToursPopulares from "../components/home/tours-populares/index";
 import DestinosDestacados from "../components/home/destinos-destacados/index";
 import Carousel3Columnas from "../components/home/carousel-3-columnas/index";
 import CarouselBlog from "../components/home/carousel-blog/index";
+import Estadisticas from "../components/home/estadisticas/index";
 
 export default function Home() {
   return (
@@ -41,23 +42,12 @@ export default function Home() {
 
         <CarouselBlog />
 
+        <Estadisticas />
+
         <Link href="/about">
           <a>About</a>
         </Link>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
 
       <Script
         src="https://kit.fontawesome.com/3bd84f9f96.js"

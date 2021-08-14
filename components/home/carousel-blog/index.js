@@ -29,7 +29,7 @@ export default function CarouselBlog(props) {
   ];
 
   return (
-    <section className="carousel-3-columnas mt-5">
+    <section className="carousel-3-columnas mt-5 d-none d-md-block">
       <h2 className="subtitulo-general text-black">Blog</h2>
 
       <div className="container mt-5">

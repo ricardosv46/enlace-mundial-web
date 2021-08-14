@@ -26,7 +26,7 @@ export default function Carousel3Columnas(props) {
   ];
 
   return (
-    <section className="carousel-3-columnas mt-5">
+    <section className="carousel-3-columnas mt-5 d-none d-md-block">
       <h2 className="subtitulo-general text-black">{props.titulo}</h2>
 
       <div className="container mt-5">
