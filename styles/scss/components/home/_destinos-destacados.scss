@@ -1,0 +1,17 @@
+.destinos-destacados {
+  &__fila-1,
+  &__fila-3 {
+    display: grid;
+    grid-gap: 0.5rem;
+  }
+
+  &__fila-1 {
+    grid-template-columns: 1fr 1fr;
+
+    margin-bottom: 0.5rem;
+  }
+
+  &__fila-3 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

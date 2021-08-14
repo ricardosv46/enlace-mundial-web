@@ -1,0 +1,24 @@
+.card-destino {
+  height: 200px;
+
+  background-size: cover;
+
+  &__titulo {
+    font-size: 1em;
+    font-weight: 700;
+
+    text-align: center;
+
+    display: inline-block;
+
+    margin: auto;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    @media (min-width: 768px) {
+      font-size: 1.3em;
+    }
+  }
+}

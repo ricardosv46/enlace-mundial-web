@@ -1,0 +1,17 @@
+.card-blog {
+  &__imagen {
+    height: 250px;
+
+    background-size: cover;
+
+    border-radius: 0.1rem;
+  }
+
+  &__titulo {
+    font-size: 0.9em;
+
+    @media (min-width: 768px) {
+      font-size: 1em;
+    }
+  }
+}

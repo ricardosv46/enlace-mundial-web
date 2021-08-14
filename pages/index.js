@@ -7,6 +7,9 @@ import Script from "next/script";
 import Header from "../components/header/index";
 import Banner from "../components/home/banner/index";
 import ToursPopulares from "../components/home/tours-populares/index";
+import DestinosDestacados from "../components/home/destinos-destacados/index";
+import Carousel3Columnas from "../components/home/carousel-3-columnas/index";
+import CarouselBlog from "../components/home/carousel-blog/index";
 
 export default function Home() {
   return (
@@ -27,6 +30,16 @@ export default function Home() {
         <Banner />
 
         <ToursPopulares />
+
+        <DestinosDestacados />
+
+        <Carousel3Columnas titulo="Luna de miel" />
+
+        <Carousel3Columnas titulo="Cruceros" />
+
+        <Carousel3Columnas titulo="Blog" />
+
+        <CarouselBlog />
 
         <Link href="/about">
           <a>About</a>
