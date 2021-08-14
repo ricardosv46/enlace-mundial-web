@@ -1,0 +1,26 @@
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.text-blue {
+  color: $azul;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.subtitulo-general {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: $black;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 2em;
+  }
+}

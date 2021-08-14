@@ -1,9 +1,13 @@
 @import "./variables";
 @import "~bootstrap/scss/bootstrap.scss";
 
+@import "./utilities";
+
 @import "./components/header";
 @import "./components/home/banner";
 @import "./components/home/buscador-principal";
+@import "./components/cards/card-tour";
+@import "./components/cards/components/like";
 
 .btn {
   box-shadow: none !important;
