@@ -1,0 +1,56 @@
+.buscador-p {
+  --border-radius: 1.5rem;
+  --height-box: 45px;
+
+  .h-100 {
+    height: var(--height-box) !important;
+  }
+
+  background-color: white;
+
+  width: 80vw;
+  height: var(--height-box);
+
+  display: grid;
+  grid-template-rows: repeat(4, 40px);
+
+  margin-top: -3rem;
+  border-radius: var(--border-radius);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr) 140px;
+  }
+
+  &__field {
+    border: none;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+
+    outline: none;
+
+    &::placeholder {
+      color: $secondary;
+
+      display: block;
+      text-align: center;
+    }
+  }
+
+  .css-yk16xz-control {
+    width: 100% !important;
+    height: var(--height-box) !important;
+
+    border: none !important;
+  }
+
+  &__button-c {
+    height: var(--height-box);
+  }
+
+  .btn {
+    width: 85%;
+    height: 35px;
+
+    padding: 0.2rem;
+  }
+}
