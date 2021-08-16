@@ -1,0 +1,57 @@
+.footer {
+  margin-top: 4rem;
+
+  @media (min-width: 768px) {
+    margin-top: 6rem;
+  }
+
+  &__logo {
+    max-width: 200px;
+  }
+
+  &__redes {
+    img {
+      width: 25px;
+      height: 25px;
+
+      margin-right: 1rem;
+    }
+  }
+
+  &__info {
+    li {
+      line-height: 1rem;
+
+      margin-bottom: 0.9rem;
+    }
+
+    a {
+      font-size: 1em;
+      color: rgba($black, 0.9);
+
+      &:hover {
+        color: $black;
+
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__sub {
+    font-size: 1em;
+
+    @media (min-width: 768px) {
+      font-size: 1.1em;
+    }
+  }
+}
+
+.copyright {
+  margin-top: 5rem;
+
+  a {
+    color: white !important;
+
+    margin-right: 1rem;
+  }
+}

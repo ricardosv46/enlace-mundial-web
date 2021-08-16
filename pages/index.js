@@ -11,6 +11,8 @@ import DestinosDestacados from "../components/home/destinos-destacados/index";
 import Carousel3Columnas from "../components/home/carousel-3-columnas/index";
 import CarouselBlog from "../components/home/carousel-blog/index";
 import Estadisticas from "../components/home/estadisticas/index";
+import CarouselTestimonios from "../components/home/carousel-testimonios/index";
+import Footer from "../components/footer/index";
 
 export default function Home() {
   return (
@@ -44,9 +46,9 @@ export default function Home() {
 
         <Estadisticas />
 
-        <Link href="/about">
-          <a>About</a>
-        </Link>
+        <CarouselTestimonios />
+
+        <Footer />
       </main>
 
       <Script
