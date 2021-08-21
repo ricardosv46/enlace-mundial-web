@@ -59,9 +59,9 @@ export default function DestinosDestacados() {
             {/* Carousel */}
 
             <div className="destinos-destacados__fila-3">
-              {destinosTerceraFila.map((item) => {
+              {destinosTerceraFila.map((item, index) => {
                 return (
-                  <div>
+                  <div key={index}>
                     <CardDestino item={item} />
                   </div>
                 );

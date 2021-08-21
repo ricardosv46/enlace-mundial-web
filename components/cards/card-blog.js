@@ -13,7 +13,7 @@ export default function CardBlog(props) {
           {props.item.titulo}
         </h3>
 
-        <p className="mt-3">{props.item.descripcion}</p>
+        <p className="card-blog__descripcion mt-3">{props.item.descripcion}</p>
       </div>
     </article>
   );

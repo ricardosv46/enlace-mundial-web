@@ -8,7 +8,8 @@ import Header from "../components/header/index";
 import Banner from "../components/home/banner/index";
 import ToursPopulares from "../components/home/tours-populares/index";
 import DestinosDestacados from "../components/home/destinos-destacados/index";
-import Carousel3Columnas from "../components/home/carousel-3-columnas/index";
+import LunaDeMiel from "../components/home/luna-de-miel/index";
+import Cruceros from "../components/home/cruceros/index";
 import CarouselBlog from "../components/home/carousel-blog/index";
 import Estadisticas from "../components/home/estadisticas/index";
 import CarouselTestimonios from "../components/home/carousel-testimonios/index";
@@ -36,11 +37,9 @@ export default function Home() {
 
         <DestinosDestacados />
 
-        <Carousel3Columnas titulo="Luna de miel" />
+        <LunaDeMiel />
 
-        <Carousel3Columnas titulo="Cruceros" />
-
-        <Carousel3Columnas titulo="Blog" />
+        <Cruceros />
 
         <CarouselBlog />
 

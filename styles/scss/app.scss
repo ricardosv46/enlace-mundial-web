@@ -7,7 +7,7 @@
 @import "./components/home/banner";
 @import "./components/home/buscador-principal";
 @import "./components/home/destinos-destacados";
-@import "./components/home/carousel-3-columnas";
+@import "./components/carousel";
 @import "./components/cards/card-tour";
 @import "./components/cards/card-destino";
 @import "./components/cards/card-general";
@@ -18,5 +18,9 @@
 @import "./components/footer";
 
 .btn {
+  font-size: 0.9em;
+
+  border-radius: 1rem;
+
   box-shadow: none !important;
 }

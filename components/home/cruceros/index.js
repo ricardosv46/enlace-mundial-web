@@ -1,12 +1,58 @@
 import React, { useRef } from "react";
 
-// Componentes
+// swiper component
 import Swiper from "react-id-swiper";
-import CardTestimonio from "../../cards/card-testimonio";
 
-export default function CarouselBlog(props) {
+// Componentes
+import CardGeneral from "../../cards/card-general";
+
+const LunaDeMiel = (props) => {
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
+
+  const goNext = () => {
+    /* if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideNext();
+    } */
+
+    swiperRefMobile.current.swiper.slideNext();
+    swiperRefDesktop.current.swiper.slideNext();
+  };
+  const goPrev = () => {
+    /* if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slidePrev();
+    } */
+
+    swiperRefMobile.current.swiper.slidePrev();
+    swiperRefDesktop.current.swiper.slidePrev();
+  };
+
+  const items = [
+    {
+      titulo: "Crucero",
+      idx: 1,
+    },
+    {
+      titulo: "Crucero 2",
+      idx: 2,
+    },
+    {
+      titulo: "Crucero 3",
+      idx: 3,
+    },
+    {
+      titulo: "Crucero 4",
+      idx: 4,
+    },
+    {
+      titulo: "Crucero 5",
+      idx: 5,
+    },
+    {
+      titulo: "Crucero 6",
+      idx: 6,
+    },
+  ];
 
   const carouselParamsMobile = {
     slidesPerView: 1,
@@ -19,43 +65,11 @@ export default function CarouselBlog(props) {
     loop: true,
   };
 
-  const goNext = () => {
-    swiperRefMobile.current.swiper.slideNext();
-    swiperRefDesktop.current.swiper.slideNext();
-  };
-  const goPrev = () => {
-    swiperRefMobile.current.swiper.slidePrev();
-    swiperRefDesktop.current.swiper.slidePrev();
-  };
-
-  const items = [
-    {
-      imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
-      nombre: "Esmeralda Kathleen",
-      comentario:
-        "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
-    },
-    {
-      imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
-      nombre: "Esmeralda Kathleen",
-      comentario:
-        "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
-    },
-    {
-      imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
-      nombre: "Esmeralda Kathleen",
-      comentario:
-        "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
-    },
-  ];
-
   return (
-    <section className="container carousel-app carousel-app--testimonios">
+    <section className="container carousel-app">
       <div className="row justify-content-center">
         <div>
-          <h2 className="subtitulo-general">
-            Nuestra gente hablando de nosotros
-          </h2>
+          <h2 className="subtitulo-general">Cruceros</h2>
         </div>
 
         <div className="col-md-11 mt-5 position-relative">
@@ -65,7 +79,7 @@ export default function CarouselBlog(props) {
               {items.map((item) => {
                 return (
                   <div>
-                    <CardTestimonio item={item} />
+                    <CardGeneral item={item} />
                   </div>
                 );
               })}
@@ -78,7 +92,7 @@ export default function CarouselBlog(props) {
               {items.map((item) => {
                 return (
                   <div>
-                    <CardTestimonio item={item} />
+                    <CardGeneral item={item} />
                   </div>
                 );
               })}
@@ -103,4 +117,6 @@ export default function CarouselBlog(props) {
       </div>
     </section>
   );
-}
+};
+
+export default LunaDeMiel;

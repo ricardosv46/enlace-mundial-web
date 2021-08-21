@@ -10,7 +10,7 @@ export default function Banner() {
           <div className="row justify-content-center">
             <div className="col-md-11">
               <div className="row">
-                <div className="col-md-6 d-flex flex-column justify-content-between">
+                <div className="col-md-6 d-flex flex-column justify-content-center justify-content-md-between align-items-center">
                   <img src="/logo.png" className="footer__logo" />
 
                   <div className="footer__redes">
@@ -22,7 +22,7 @@ export default function Banner() {
                   </div>
                 </div>
 
-                <div className="col-md-6 footer__info text-center">
+                <div className="col-md-6 footer__info text-center mt-5 mt-md-0">
                   <div className="row">
                     <div className="col-md-4">
                       <h3 className="footer__sub font-weight-bold">Inicio</h3>
@@ -55,7 +55,7 @@ export default function Banner() {
                       </ul>
                     </div>
 
-                    <div className="col-md-4 text-left pl-md-5 pr-md-0">
+                    <div className="col-md-4 text-md-left pl-md-5 pr-md-0">
                       <h3 className="footer__sub font-weight-bold">Cruceros</h3>
 
                       <ul className="list-unstyled mt-4">
@@ -81,15 +81,15 @@ export default function Banner() {
         </section>
       </footer>
 
-      <div className="copyright bg-primary">
+      <div className="copyright bg-primary py-2">
         <div className="container py-0 my-0">
           <div className="row justify-content-center">
-            <div className="col-md-11 d-flex justify-content-between align-items-center py-3">
+            <div className="col-md-11 d-flex flex-column flex-lg-row justify-content-between align-items-center py-3">
               <p className="text-white my-0">
                 © 2021 Enlace Mundial Perú. Derechos Reservados.
               </p>
 
-              <div>
+              <div className="mb-2 mb-md-0 copyright__links">
                 <Link href="" className="copyright__link">
                   Política de privacidad
                 </Link>

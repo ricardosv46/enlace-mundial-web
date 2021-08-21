@@ -1,4 +1,7 @@
 .card-general {
+  max-width: 100%;
+
+  border: 1px solid rgba($secondary, 0.4);
   border-radius: 1rem;
 
   &__image {
@@ -22,9 +25,13 @@
     text-align: center;
 
     @media (min-width: 768px) {
-      font-size: 1.2em;
+      font-size: 1.1em;
 
       text-transform: uppercase;
     }
+  }
+
+  &__icono-maps {
+    font-size: 1em;
   }
 }

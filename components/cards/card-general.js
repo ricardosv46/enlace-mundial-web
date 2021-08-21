@@ -1,19 +1,19 @@
 import React from "react";
 
-export default function CardGeneral(props) {
+export default function CardGeneral({ item }) {
   return (
     <article className="card-general">
       <section className="card-general__image"></section>
 
       <section className="card-general__body">
-        <h3 className="card-general__titulo">Paquetes turísticos</h3>
+        <h3 className="card-general__titulo">{item.titulo}</h3>
 
-        <p className="text-muted my-0">
+        <p className="text-muted mt-4">
           Encuentra experiencias insólitas siempre, tenemos las mejores ofertas.
         </p>
 
-        <h4 className="card-tour__sub text-secondary mt-3">
-          <span className="card-tour__icono-maps text-muted d-inline-block mr-5">
+        <h4 className="card-tour__sub text-secondary text-left mt-3">
+          <span className="card-general__icono-maps text-muted d-inline-block mr-2">
             <i class="fas fa-map-marker-alt"></i>
           </span>
 

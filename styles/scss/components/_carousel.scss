@@ -1,0 +1,65 @@
+.carousel-app {
+  margin-top: 3rem;
+
+  &-btn {
+    background-color: rgba($light, 0.7);
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 40%;
+    z-index: 100;
+
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: $light;
+    }
+  }
+
+  &-btn--prev {
+    left: 2rem;
+
+    @media (min-width: 768px) {
+      left: 3rem;
+    }
+  }
+
+  &-btn--next {
+    right: 2rem;
+
+    @media (min-width: 768px) {
+      right: 3rem;
+    }
+  }
+
+  .swiper-container,
+  .swiper-wrapper {
+    min-height: 550px;
+  }
+
+  &--testimonios {
+    @media (min-width: 768px) {
+      margin-top: 5rem;
+    }
+
+    .swiper-container,
+    .swiper-wrapper {
+      min-height: auto;
+    }
+
+    .carousel-app-btn {
+      background-color: rgba($secondary, 0.5);
+
+      color: white;
+
+      &:hover {
+        background-color: rgba($secondary, 0.8);
+      }
+    }
+  }
+}
