@@ -1,0 +1,47 @@
+.modal-contacto {
+  min-width: 250px;
+  width: 30vw;
+  height: 300px;
+
+  background-color: $light;
+
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+
+  position: fixed;
+  top: 35%;
+  right: 0;
+  z-index: 100;
+
+  @media (min-width: 768px) {
+    width: 35vw;
+  }
+
+  @media (min-width: 992px) {
+    height: 220px;
+  }
+
+  &__titulo {
+    font-size: 1.3em;
+
+    @media (min-width: 992px) {
+      font-size: 1.5em;
+    }
+  }
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+  }
+
+  &__icono {
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: 20%;
+    left: -0.6rem;
+  }
+}

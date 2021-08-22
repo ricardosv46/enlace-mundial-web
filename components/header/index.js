@@ -1,5 +1,7 @@
 import React from "react";
 
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header className="header">
@@ -19,21 +21,15 @@ export default function Header() {
           {/* Menu items */}
           <ul className="list-unstyled d-flex align-items-center mb-0">
             <li>
-              <a href="" className="header__link">
-                Inicio
-              </a>
+              <Link href="/">Inicio</Link>
             </li>
 
             <li>
-              <a href="" className="header__link">
-                Luna de miel
-              </a>
+              <Link href="luna-de-miel">Luna de miel</Link>
             </li>
 
             <li>
-              <a href="" className="header__link">
-                Crucero
-              </a>
+              <Link href="">Crucero</Link>
             </li>
           </ul>
 

@@ -1,0 +1,43 @@
+.card-l-miel {
+  border: 1px solid rgba($secondary, 0.5);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+  &__imagen {
+    height: 250px;
+
+    @media (min-width: 768px) {
+      height: 280px;
+    }
+
+    background-size: cover;
+
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  &__titulo {
+    font-size: 0.9em;
+    font-weight: 700;
+
+    @media (min-width: 768px) {
+      font-size: 1em;
+    }
+  }
+
+  &__categoria {
+    color: $secondary;
+
+    font-weight: 700;
+
+    text-decoration: underline;
+  }
+
+  &__descripcion {
+    color: $secondary;
+  }
+
+  .btn {
+    font-weight: 700;
+  }
+}

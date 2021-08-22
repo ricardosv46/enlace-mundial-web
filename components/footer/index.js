@@ -10,7 +10,7 @@ export default function Banner() {
           <div className="row justify-content-center">
             <div className="col-md-11">
               <div className="row">
-                <div className="col-md-6 d-flex flex-column justify-content-center justify-content-md-between align-items-center">
+                <div className="col-md-6 d-flex flex-column justify-content-center justify-content-md-between align-items-center align-items-lg-start">
                   <img src="/logo.png" className="footer__logo" />
 
                   <div className="footer__redes">

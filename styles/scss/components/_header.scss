@@ -60,10 +60,12 @@
     }
   }
 
-  &__link {
+  ul li a {
     color: $dark;
 
     display: inline-block;
+
+    text-decoration: none;
 
     @media (min-width: 768px) {
       margin: 0 1rem;
@@ -71,6 +73,10 @@
 
     @media (min-width: 992px) {
       margin: 0 1.5rem;
+    }
+
+    &:hover {
+      color: $primary;
     }
   }
 
