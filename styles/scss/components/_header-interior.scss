@@ -1,5 +1,7 @@
 .header-interior {
   &__link {
-    margin-right: 3rem;
+    @media (min-width: 768px) {
+      margin-right: 3rem;
+    }
   }
 }

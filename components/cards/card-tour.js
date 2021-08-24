@@ -32,8 +32,8 @@ export default function CardTour() {
           <a href="">Antioquía + Cochahuayco Full Day</a>
         </h3>
 
-        <h4 className="card-tour__sub text-secondary">
-          <span className="card-tour__icono-maps text-muted d-inline-block mr-5">
+        <h4 className="card-tour__sub text-secondary text-left">
+          <span className="card-tour__icono-maps text-muted d-inline-block mr-2">
             <i className="fas fa-map-marker-alt"></i>
           </span>
 

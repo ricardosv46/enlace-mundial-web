@@ -6,7 +6,7 @@ import Link from "next/link";
 import Header from "components/header/index";
 import Footer from "components/footer/index";
 import Gallery from "components/gallery/index";
-import CardTour from "components/cards/card-tour";
+import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
 import ModalContacto from "components/general/modal-contacto";
 
 export default function Home() {
@@ -92,7 +92,7 @@ export default function Home() {
           <section>
             <div className="container-fluid bg-light mt-4 py-2">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <h2 className="subtitulo-general text-uppercase my-0">
                     Detalles
                   </h2>
@@ -102,7 +102,7 @@ export default function Home() {
 
             <div className="container mt-4">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title font-weight-bold">{slug}</h5>
@@ -139,7 +139,7 @@ export default function Home() {
           <section>
             <div className="container-fluid bg-light mt-4 py-2">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <h2 className="subtitulo-general text-uppercase my-0">
                     Itinerario
                   </h2>
@@ -149,7 +149,7 @@ export default function Home() {
 
             <div className="container mt-4">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title text-secondary font-weight-bold">
@@ -210,7 +210,7 @@ export default function Home() {
           <section>
             <div className="container-fluid bg-light mt-4 py-2">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <h2 className="subtitulo-general text-uppercase my-0">
                     Itinerario
                   </h2>
@@ -220,7 +220,7 @@ export default function Home() {
 
             <div className="container mt-4">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title text-secondary font-weight-bold">
@@ -324,7 +324,7 @@ export default function Home() {
           <section>
             <div className="container-fluid bg-light mt-4 py-2">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <h2 className="subtitulo-general text-uppercase my-0">
                     Notas
                   </h2>
@@ -334,7 +334,7 @@ export default function Home() {
 
             <div className="container mt-4">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title text-secondary font-weight-bold">
@@ -417,7 +417,7 @@ export default function Home() {
             <div className="bg-light mt-4 py-2">
               <div className="container">
                 <div className="row">
-                  <div className="col-8">
+                  <div className="col-md-8">
                     <h2 className="subtitulo-general text-uppercase text-left my-0">
                       Te puede interesar
                     </h2>
@@ -426,18 +426,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="container mt-5">
+            <div className="container">
               <div className="row">
-                <div className="col-8">
-                  <div className="row">
-                    <div className="col-6">
-                      <CardTour />
-                    </div>
-
-                    <div className="col-6">
-                      <CardTour />
-                    </div>
-                  </div>
+                <div className="col-md-8">
+                  <ToursRelacionados />
                 </div>
               </div>
             </div>

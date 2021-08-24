@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ModalContacto() {
   return (
-    <section className="modal-contacto d-flex flex-column justify-content-center align-items-center">
+    <section className="modal-contacto d-md-flex flex-column justify-content-center align-items-center">
       <div className="text-center">
         <h3 className="modal-contacto__titulo">¿Necesitas ayuda?</h3>
 
