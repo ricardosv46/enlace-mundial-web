@@ -26,6 +26,12 @@
 @import "./components/cards/card-luna-de-miel";
 @import "./components/modal-contacto";
 
+// Cruceros
+@import "./components/cruceros/banner";
+
+// Auth
+@import "./components/auth/auth-form";
+
 body {
   font-family: "Urbanist", sans-serif;
 
@@ -38,4 +44,8 @@ body {
   border-radius: 1rem;
 
   box-shadow: none !important;
+}
+
+.bg-transparent {
+  background: transparent !important;
 }

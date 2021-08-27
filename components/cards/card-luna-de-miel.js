@@ -1,7 +1,12 @@
 import React from "react";
 import Link from "next/link";
 
-export default function CardLunaDeMiel({ item }) {
+export default function CardLunaDeMiel({ tipo, item }) {
+  let urlARedirigir =
+    tipo === "luna-de-miel"
+      ? `/luna-de-miel/${item.slug}`
+      : `/cruceros/${item.slug}`;
+
   return (
     <article className="card-l-miel">
       <div
@@ -22,7 +27,7 @@ export default function CardLunaDeMiel({ item }) {
           {item.descripcion}
         </p>
 
-        <Link href={`/luna-de-miel/${item.slug}`} passHref>
+        <Link href={urlARedirigir} passHref>
           <a className="btn btn-outline-primary py-2 px-4">Informes</a>
         </Link>
       </div>

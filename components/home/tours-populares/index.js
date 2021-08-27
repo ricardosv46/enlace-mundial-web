@@ -72,14 +72,14 @@ export default function ToursPopulares() {
               className="carousel-app-btn carousel-app-btn--prev"
               onClick={goPrev}
             >
-              <i class="fas fa-chevron-left"></i>
+              <i className="fas fa-chevron-left"></i>
             </button>
             <button
               type="button"
               className="carousel-app-btn carousel-app-btn--next"
               onClick={goNext}
             >
-              <i class="fas fa-chevron-right"></i>
+              <i className="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>

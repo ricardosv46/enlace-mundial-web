@@ -1,0 +1,24 @@
+.banner-cruceros {
+  height: 350px;
+
+  background-image: url("https://d500.epimg.net/cincodias/imagenes/2020/02/22/companias/1582376051_402246_1582376167_noticia_normal.jpg");
+  background-size: cover;
+  background-position: center;
+
+  @media (min-width: 768px) {
+    height: 60vh;
+  }
+
+  @media (min-width: 1200px) {
+    height: 90vh;
+  }
+
+  &__titulo,
+  &__subtitulo {
+    font-size: 1.5em;
+
+    @media (min-width: 768px) {
+      font-size: 2.5em;
+    }
+  }
+}

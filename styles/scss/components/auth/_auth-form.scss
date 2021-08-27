@@ -1,0 +1,95 @@
+.modal-auth {
+  &__close {
+    font-size: 1.5em;
+
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Padding de componente modal por defecto */
+.rsm-fixed {
+  z-index: 1000 !important;
+}
+
+.rsm-flex-1.rsm-p-8 {
+  padding: 0;
+}
+
+.auth-form {
+  &__header {
+    height: 150px;
+  }
+
+  &__logo {
+    max-width: 250px;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    box-shadow: 0px 19px 22px -25px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 19px 22px -25px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 19px 22px -25px rgba(0, 0, 0, 0.75);
+
+    @media (min-width: 768px) {
+      grid-template-columns: 45% 1fr;
+    }
+  }
+
+  &__body-bg {
+    min-height: 350px;
+
+    background-image: url("https://cdn2.salud180.com/sites/default/files/styles/medium/public/field/image/2018/05/vacaciones-ninos.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__titulo {
+    font-size: 1.3em;
+
+    @media (min-width: 768px) {
+      font-size: 1.5em;
+    }
+  }
+
+  .btn--google,
+  .btn--facebook {
+    border-radius: 0.3rem;
+
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
+
+    @media (min-width: 768px) {
+      width: 45%;
+    }
+
+    img {
+      width: 20px;
+    }
+  }
+
+  .btn--google {
+    background-color: white;
+  }
+
+  .btn--facebook {
+    background-color: #3b5998;
+  }
+
+  .separador {
+    height: 2px;
+    background-color: rgba(#3b5998, 0.5);
+  }
+
+  .form-control {
+    border-radius: 0.1rem;
+  }
+
+  .btn-link.text-blue {
+    &:hover {
+      color: #3b5998;
+    }
+  }
+}
