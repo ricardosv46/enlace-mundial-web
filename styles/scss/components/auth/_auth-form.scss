@@ -8,9 +8,13 @@
   }
 }
 
-/* Padding de componente modal por defecto */
+.rsm-bg-white {
+  overflow: hidden !important;
+}
+
+/* Modal */
 .rsm-fixed {
-  z-index: 1000 !important;
+  z-index: 10000 !important;
 }
 
 .rsm-flex-1.rsm-p-8 {
@@ -19,7 +23,7 @@
 
 .auth-form {
   &__header {
-    height: 150px;
+    height: 120px;
   }
 
   &__logo {
@@ -27,6 +31,8 @@
   }
 
   &__body {
+    min-height: 420px;
+
     display: grid;
     grid-template-columns: 1fr;
 

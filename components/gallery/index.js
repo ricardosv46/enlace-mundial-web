@@ -9,9 +9,13 @@ export default function Gallery() {
     "https://i.pinimg.com/736x/ee/96/29/ee9629083c055b90ac4b3a51533671d8.jpg",
   ];
 
-  const [mainImage, setMainImage] = useState(images[0]);
+  const [mainImage, setStateMainImage] = useState(images[0]);
 
   // asignarImagenPrincipal(images[0]);
+
+  function asignarImagen(imagen) {
+    setStateMainImage(imagen);
+  }
 
   return (
     <div className="gallery">
@@ -22,7 +26,13 @@ export default function Gallery() {
       <section className="gallery__carousel py-5 px-1">
         <div>
           {images.map((item) => {
-            return <img src={item} className="gallery__main-image w-100" />;
+            return (
+              <img
+                src={item}
+                className="gallery__main-image w-100"
+                onClick={() => asignarImagen(item)}
+              />
+            );
           })}
         </div>
       </section>

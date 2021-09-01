@@ -32,10 +32,23 @@
 // Auth
 @import "./components/auth/auth-form";
 
+// Búsqueda
+@import "./components/cards/card-busqueda";
+
+// Páginas
+@import "./paginas/actividades-turismo";
+
 body {
   font-family: "Urbanist", sans-serif;
 
   padding-top: 60px; // Tamaño del header
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
 
 .btn {
@@ -44,8 +57,4 @@ body {
   border-radius: 1rem;
 
   box-shadow: none !important;
-}
-
-.bg-transparent {
-  background: transparent !important;
 }

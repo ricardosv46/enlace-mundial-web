@@ -31,6 +31,30 @@
   color: $black;
 
   @media (min-width: 768px) {
-    font-size: 1.8em;
+    font-size: 1.5em;
   }
+}
+
+.card-title {
+  font-size: 0.8em;
+
+  @media (min-width: 768px) {
+    font-size: 1em;
+  }
+}
+
+.card-subtitle {
+  font-size: 0.65em;
+
+  @media (min-width: 768px) {
+    font-size: 0.85em;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bg-transparent {
+  background: transparent !important;
 }

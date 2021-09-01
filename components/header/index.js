@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Link from "next/link";
 
@@ -14,6 +14,12 @@ import AuthForm from "@/components/auth/auth-form.js";
 
 export default function Header() {
   const { isModalOpen, openModal, closeModal } = useModal("modal-auth");
+
+  const [navStatus, setNavStatus] = useState(false);
+
+  function cambiarEstadoNav() {
+    setNavStatus(!navStatus);
+  }
 
   return (
     <section>
@@ -39,20 +45,29 @@ export default function Header() {
 
       <header className="header">
         <div className="header__container h-100">
-          <img src="/logo.png" className="header__logo" />
+          <Link href="/" className="pointer">
+            <img src="/logo.png" className="header__logo pointer" />
+          </Link>
 
           <button
-            className="hamburger hamburger--collapse hamburger--header"
+            className={`hamburger hamburger--collapse hamburger--header ${
+              navStatus ? "is-active" : ""
+            }`}
             type="button"
+            onClick={cambiarEstadoNav}
           >
             <span className="hamburger-box">
               <span className="hamburger-inner"></span>
             </span>
           </button>
 
-          <nav className="header__nav d-flex justify-content-between align-items-center">
+          <nav
+            className={`header__nav d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 pb-5 py-md-0 ${
+              navStatus ? "header__nav--active" : ""
+            }`}
+          >
             {/* Menu items */}
-            <ul className="list-unstyled d-flex align-items-center mb-0">
+            <ul className="list-unstyled d-flex flex-column flex-md-row align-items-center mt-0 mb-0 py-3 py-lg-0">
               <li>
                 <Link href="/">Inicio</Link>
               </li>
@@ -64,24 +79,32 @@ export default function Header() {
               <li>
                 <Link href="/cruceros">Crucero</Link>
               </li>
+
+              <li>
+                <Link href="/actividades-y-turismo">Actividades y turismo</Link>
+              </li>
             </ul>
 
             {/* Botones */}
             <section className="d-flex flex-column flex-md-row">
-              <button
-                type="button"
-                className="btn btn-primary header__button"
-                onClick={openModal}
-              >
-                Iniciar sesión
-              </button>
+              <div className="header__button-c d-flex justify-content-center align-items-center">
+                <button
+                  type="button"
+                  className="btn btn-primary header__button d-flex justify-content-center align-items-center"
+                  onClick={openModal}
+                >
+                  Iniciar sesión
+                </button>
+              </div>
 
-              <button
-                type="button"
-                className="btn btn-outline-primary header__button"
-              >
-                Regístrate
-              </button>
+              <div className="header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0">
+                <button
+                  type="button"
+                  className="btn btn-outline-primary header__button d-flex justify-content-center align-items-center"
+                >
+                  Regístrate
+                </button>
+              </div>
             </section>
           </nav>
         </div>
