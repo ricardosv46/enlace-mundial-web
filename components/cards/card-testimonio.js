@@ -1,11 +1,10 @@
 import React from "react";
-import Image from "next/image";
 
 export default function CardBlog(props) {
   return (
     <article className="card-testimonio">
       <div className="card-testimonio__imagen-c d-flex justify-content-center align-items-center">
-        <Image
+        <img
           src={props.item.imagen}
           alt="Picture of the author"
           className="card-testimonio__imagen"

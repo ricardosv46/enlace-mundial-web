@@ -1,7 +1,6 @@
 import React from "react";
 
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Banner() {
   return (
@@ -12,26 +11,29 @@ export default function Banner() {
             <div className="col-md-11">
               <div className="row">
                 <div className="col-md-6 d-flex flex-column justify-content-center justify-content-md-between align-items-center align-items-lg-start">
-                  <Image src="/logo.png" className="footer__logo" />
+                  <img src="/logo.png" className="footer__logo" />
 
                   <div className="footer__redes">
-                    <Image
+                    <img
                       src="/imagenes/redes-sociales/facebook.png"
                       alt="Facebook"
                     />
-                    <Image
+                    <img
                       src="/imagenes/redes-sociales/twitter.png"
                       alt="Twitter"
                     />
-                    <Image
+
+                    <img
                       src="/imagenes/redes-sociales/youtube.png"
                       alt="Youtube"
                     />
-                    <Image
+
+                    <img
                       src="/imagenes/redes-sociales/instagram.png"
                       alt="Instagram"
                     />
-                    <Image
+
+                    <img
                       src="/imagenes/redes-sociales/whatsapp.png"
                       alt="Whatsapp"
                     />

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import Image from "next/image";
-
 export default function Gallery() {
   const images = [
     "https://i.pinimg.com/736x/ee/96/29/ee9629083c055b90ac4b3a51533671d8.jpg",
@@ -22,7 +20,7 @@ export default function Gallery() {
   return (
     <div className="gallery">
       <div>
-        <Image
+        <img
           src={mainImage}
           alt="Picture of the author"
           className="gallery__main-image w-100"
@@ -33,7 +31,7 @@ export default function Gallery() {
         <div>
           {images.map((item) => {
             return (
-              <Image
+              <img
                 key={item}
                 src={item}
                 alt="Picture of the author"

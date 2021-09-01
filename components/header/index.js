@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Link from "next/link";
-import Image from "next/image";
 
 // https://reactjsexample.com/a-simple-react-modal-with-hook-based-api
 import {
@@ -47,7 +46,7 @@ export default function Header() {
       <header className="header">
         <div className="header__container h-100">
           <Link href="/" className="pointer" passHref>
-            <Image
+            <img
               src="/logo.png"
               alt="Picture of the author"
               className="header__logo pointer"
