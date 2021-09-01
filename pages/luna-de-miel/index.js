@@ -123,7 +123,7 @@ export default function Home() {
             <div className="row">
               {items.map((item) => {
                 return (
-                  <div className="col-md-4 mb-5">
+                  <div className="col-md-4 mb-5" key={item.id}>
                     <CardLunaDeMiel tipo="luna-de-miel" item={item} />
                   </div>
                 );

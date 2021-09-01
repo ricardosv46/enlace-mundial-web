@@ -129,7 +129,7 @@ export default function Home() {
           <div className="row mt-4">
             {items.map((item) => {
               return (
-                <div className="col-md-4 mb-5">
+                <div className="col-md-4 mb-5" key={item}>
                   <CardLunaDeMiel tipo="cruceros" item={item} />
                 </div>
               );

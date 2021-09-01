@@ -14,7 +14,7 @@ export default function CardGeneral({ item }) {
 
         <h4 className="card-tour__sub text-secondary text-left mt-3">
           <span className="card-general__icono-maps text-muted d-inline-block mr-2">
-            <i class="fas fa-map-marker-alt"></i>
+            <i className="fas fa-map-marker-alt"></i>
           </span>
 
           <span>Huarochirí - Lima, Perú</span>

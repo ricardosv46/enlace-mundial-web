@@ -30,18 +30,21 @@ export default function CarouselBlog(props) {
 
   const items = [
     {
+      id: 1,
       imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
       nombre: "Esmeralda Kathleen",
       comentario:
         "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
     },
     {
+      id: 2,
       imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
       nombre: "Esmeralda Kathleen",
       comentario:
         "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
     },
     {
+      id: 3,
       imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
       nombre: "Esmeralda Kathleen",
       comentario:
@@ -64,8 +67,8 @@ export default function CarouselBlog(props) {
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
               {items.map((item) => {
                 return (
-                  <div>
-                    <CardTestimonio item={item} />
+                  <div key={item.id}>
+                    <CardTestimonio item={item.id} />
                   </div>
                 );
               })}
@@ -77,7 +80,7 @@ export default function CarouselBlog(props) {
             <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
               {items.map((item) => {
                 return (
-                  <div>
+                  <div key={item.id}>
                     <CardTestimonio item={item} />
                   </div>
                 );
@@ -90,14 +93,14 @@ export default function CarouselBlog(props) {
             className="carousel-app-btn carousel-app-btn--prev"
             onClick={goPrev}
           >
-            <i class="fas fa-chevron-left"></i>
+            <i className="fas fa-chevron-left"></i>
           </button>
           <button
             type="button"
             className="carousel-app-btn carousel-app-btn--next"
             onClick={goNext}
           >
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>

@@ -8,6 +8,34 @@ import Footer from "@/components/footer/index";
 import CardBusqueda from "@/components/cards/card-busqueda";
 
 export default function Busqueda() {
+  const items = [
+    {
+      id: 1,
+      titulo: "Valle sagrado con Maras Moray - Cusco",
+      slug: "valle-sagrado-con-maras-moray-cusco",
+    },
+    {
+      id: 2,
+      titulo: "Activiadad 2 - Cusco",
+      slug: "actividad-2-cusco",
+    },
+    {
+      id: 3,
+      titulo: "Activiadad 3 - Cusco",
+      slug: "actividad-3-cusco",
+    },
+    {
+      id: 4,
+      titulo: "Activiadad 4 - Cusco",
+      slug: "actividad-4-cusco",
+    },
+    {
+      id: 5,
+      titulo: "Activiadad 5 - Cusco",
+      slug: "actividad-5-cusco",
+    },
+  ];
+
   return (
     <div className="busqueda-page">
       <Head>
@@ -59,14 +87,14 @@ export default function Busqueda() {
                     </h3>
 
                     <div className="form-group">
-                      <label for="fechaInicial" className="text-secondary">
+                      <label htmlFor="fechaInicial" className="text-secondary">
                         Desde
                       </label>
                       <input type="date" className="form-control rounded-0" />
                     </div>
 
                     <div className="form-group">
-                      <label for="fechaInicial" className="text-secondary">
+                      <label htmlFor="fechaInicial" className="text-secondary">
                         Hasta
                       </label>
                       <input type="date" className="form-control rounded-0" />
@@ -81,9 +109,9 @@ export default function Busqueda() {
                   </h4>
 
                   <div className="mt-3">
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="disponibles"
                         id="disponible-1"
@@ -91,24 +119,24 @@ export default function Busqueda() {
                         checked
                       />
                       <label
-                        class="form-check-label text-muted"
-                        for="disponible-1"
+                        className="form-check-label text-muted"
+                        htmlFor="disponible-1"
                       >
                         Disponibles hoy o mañana
                       </label>
                     </div>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="disponibles"
                         id="disponible-2"
                         value="option1"
                       />
                       <label
-                        class="form-check-label text-muted"
-                        for="disponible-2"
+                        className="form-check-label text-muted"
+                        htmlFor="disponible-2"
                       >
                         Disponibles hoy o mañana o pasado
                       </label>
@@ -124,27 +152,33 @@ export default function Busqueda() {
                       Perú
                     </h3>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="destino-padre"
                       />
-                      <label class="form-check-label" for="destino-padre">
+                      <label
+                        className="form-check-label"
+                        htmlFor="destino-padre"
+                      >
                         Cusco
                       </label>
                     </div>
 
                     <div className="mt-1 px-3">
-                      <div class="form-check">
+                      <div className="form-check">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="destino-hijo"
                         />
-                        <label class="form-check-label" for="destino-hijo">
+                        <label
+                          className="form-check-label"
+                          htmlFor="destino-hijo"
+                        >
                           Tours a Cusco
                         </label>
                       </div>
@@ -155,50 +189,59 @@ export default function Busqueda() {
                       Incluye
                     </h3>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="incluye"
                       />
-                      <label class="form-check-label" for="incluye">
+                      <label className="form-check-label" htmlFor="incluye">
                         Solo tours
                       </label>
                     </div>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="defaultCheck2"
                       />
-                      <label class="form-check-label" for="defaultCheck2">
+                      <label
+                        className="form-check-label"
+                        htmlFor="defaultCheck2"
+                      >
                         Tour + Hotel 1
                       </label>
                     </div>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="defaultCheck2"
                       />
-                      <label class="form-check-label" for="defaultCheck2">
+                      <label
+                        className="form-check-label"
+                        htmlFor="defaultCheck2"
+                      >
                         Tour + Hotel 2
                       </label>
                     </div>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="defaultCheck2"
                       />
-                      <label class="form-check-label" for="defaultCheck2">
+                      <label
+                        className="form-check-label"
+                        htmlFor="defaultCheck2"
+                      >
                         Tour + Hotel 3
                       </label>
                     </div>
@@ -208,62 +251,62 @@ export default function Busqueda() {
                       Actividades
                     </h3>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="actividad-1"
                       />
-                      <label class="form-check-label" for="actividad-1">
+                      <label className="form-check-label" htmlFor="actividad-1">
                         Actividades 1
                       </label>
                     </div>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="actividad-2"
                       />
-                      <label class="form-check-label" for="actividad-2">
+                      <label className="form-check-label" htmlFor="actividad-2">
                         Actividades 2
                       </label>
                     </div>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="actividad-3"
                       />
-                      <label class="form-check-label" for="actividad-3">
+                      <label className="form-check-label" htmlFor="actividad-3">
                         Actividades 3
                       </label>
                     </div>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="actividad-4"
                       />
-                      <label class="form-check-label" for="actividad-4">
+                      <label className="form-check-label" htmlFor="actividad-4">
                         Actividades 4
                       </label>
                     </div>
 
-                    <div class="form-check">
+                    <div className="form-check">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         value=""
                         id="actividad-5"
                       />
-                      <label class="form-check-label" for="actividad-5">
+                      <label className="form-check-label" htmlFor="actividad-5">
                         Actividades 5
                       </label>
                     </div>
@@ -273,15 +316,9 @@ export default function Busqueda() {
             </div>
 
             <div className="col-md-9 mt-4 mt-md-0">
-              <CardBusqueda />
-
-              <CardBusqueda />
-
-              <CardBusqueda />
-
-              <CardBusqueda />
-
-              <CardBusqueda />
+              {items.map((item) => {
+                return <CardBusqueda item={item} key="item.id" />;
+              })}
             </div>
           </div>
         </section>

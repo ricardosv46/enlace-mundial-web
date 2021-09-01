@@ -88,14 +88,14 @@ const CarouselApp = (props) => {
             className="carousel-app__btn carousel-app__btn--prev"
             onClick={goPrev}
           >
-            <i class="fas fa-chevron-left"></i>
+            <i className="fas fa-chevron-left"></i>
           </button>
           <button
             type="button"
             className="carousel-app__btn carousel-app__btn--next"
             onClick={goNext}
           >
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>

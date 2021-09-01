@@ -1,5 +1,7 @@
 import React from "react";
 
+import Image from "next/image";
+
 export default function ModalContacto() {
   return (
     <section className="modal-contacto d-md-flex flex-column justify-content-center align-items-center">
@@ -12,8 +14,9 @@ export default function ModalContacto() {
       <div className="container mt-3">
         <div className="row justify-content-lg-between">
           <div className="col-lg-5 d-flex justify-content-around justify-content-lg-between">
-            <img
+            <Image
               src="https://www.concur.com.mx/sites/default/files/mx/support-customer-service-call_0.jpg"
+              alt="Picture of the author"
               className="modal-contacto__avatar img-fluid"
             />
 
@@ -23,8 +26,9 @@ export default function ModalContacto() {
                 type="button"
                 className="btn btn-primary py-1 position-relative"
               >
-                <img
+                <Image
                   src="/imagenes/redes-sociales/whatsapp.png"
+                  alt="Picture of the author"
                   className="modal-contacto__icono"
                 />
                 Contactar
@@ -33,7 +37,7 @@ export default function ModalContacto() {
           </div>
 
           <div className="col-lg-5 d-flex justify-content-around justify-content-lg-between mt-4 mt-lg-0">
-            <img
+            <Image
               src="https://www.concur.com.mx/sites/default/files/mx/support-customer-service-call_0.jpg"
               className="modal-contacto__avatar img-fluid"
             />
@@ -44,7 +48,7 @@ export default function ModalContacto() {
                 type="button"
                 className="btn btn-primary py-1 position-relative"
               >
-                <img
+                <Image
                   src="/imagenes/redes-sociales/whatsapp.png"
                   className="modal-contacto__icono"
                 />

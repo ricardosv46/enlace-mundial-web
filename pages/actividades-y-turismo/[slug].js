@@ -159,7 +159,7 @@ export default function Home() {
                         <ul className="list-unstyled">
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Cuzco es una ciudad de los Andes peruanos que fue la
                             capital del Imperio Inca y es conocida por sus
@@ -169,7 +169,7 @@ export default function Home() {
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Cuzco es una ciudad de los Andes peruanos que fue la
                             capital del Imperio Inca y es conocida por sus
@@ -179,7 +179,7 @@ export default function Home() {
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Cuzco es una ciudad de los Andes peruanos que fue la
                             capital del Imperio Inca y es conocida por sus
@@ -189,7 +189,7 @@ export default function Home() {
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Cuzco es una ciudad de los Andes peruanos que fue la
                             capital del Imperio Inca y es conocida por sus
@@ -230,21 +230,21 @@ export default function Home() {
                         <ul className="list-unstyled">
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="far fa-check-circle"></i>
+                              <i className="far fa-check-circle"></i>
                             </span>
                             Transporte turístico
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="far fa-check-circle"></i>
+                              <i className="far fa-check-circle"></i>
                             </span>
                             Guiado profesional
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="far fa-check-circle"></i>
+                              <i className="far fa-check-circle"></i>
                             </span>
                             Almuerzo buffet
                           </li>
@@ -259,21 +259,21 @@ export default function Home() {
                         <ul className="list-unstyled">
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-danger d-inline-block mr-2">
-                              <i class="far fa-check-circle"></i>
+                              <i className="far fa-check-circle"></i>
                             </span>
                             Entradas a los atractivos
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-danger d-inline-block mr-2">
-                              <i class="far fa-check-circle"></i>
+                              <i className="far fa-check-circle"></i>
                             </span>
                             Guiado profesional
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-danger d-inline-block mr-2">
-                              <i class="far fa-check-circle"></i>
+                              <i className="far fa-check-circle"></i>
                             </span>
                             Almuerzo buffet
                           </li>
@@ -292,21 +292,21 @@ export default function Home() {
                         <ul className="list-unstyled">
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="far fa-check-circle"></i>
+                              <i className="far fa-check-circle"></i>
                             </span>
                             Visitas culturales (Incluida)
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="far fa-check-circle"></i>
+                              <i className="far fa-check-circle"></i>
                             </span>
                             Visitas culturales (Incluida)
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="far fa-check-circle"></i>
+                              <i className="far fa-check-circle"></i>
                             </span>
                             Visitas culturales (Incluida)
                           </li>
@@ -344,49 +344,49 @@ export default function Home() {
                         <ul className="list-unstyled">
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Transporte turístico
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Guiado profesional
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Almuerzo buffet
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Almuerzo buffet
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Almuerzo buffet
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Almuerzo buffet
                           </li>
 
                           <li className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
-                              <i class="fas fa-check"></i>
+                              <i className="fas fa-check"></i>
                             </span>
                             Almuerzo buffet
                           </li>
@@ -411,7 +411,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Notas */}
+          {/* Te puede interesar */}
           <section>
             <div className="bg-light mt-4 py-2">
               <div className="container">

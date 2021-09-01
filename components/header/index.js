@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 // https://reactjsexample.com/a-simple-react-modal-with-hook-based-api
 import {
@@ -34,7 +35,7 @@ export default function Header() {
             className="modal-auth__close bg-transparent"
             onClick={closeModal}
           >
-            <i class="fas fa-times"></i>
+            <i className="fas fa-times"></i>
           </button>
 
           <section>
@@ -45,8 +46,12 @@ export default function Header() {
 
       <header className="header">
         <div className="header__container h-100">
-          <Link href="/" className="pointer">
-            <img src="/logo.png" className="header__logo pointer" />
+          <Link href="/" className="pointer" passHref>
+            <Image
+              src="/logo.png"
+              alt="Picture of the author"
+              className="header__logo pointer"
+            />
           </Link>
 
           <button

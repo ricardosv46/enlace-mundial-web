@@ -37,7 +37,7 @@ export default function ToursRelacionadoss() {
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
               {items.map((item) => {
                 return (
-                  <div>
+                  <div key={item.id}>
                     <CardTour />
                   </div>
                 );
@@ -62,9 +62,9 @@ export default function ToursRelacionadoss() {
         </div>
 
         <div className="row d-none d-md-flex">
-          {items.map((item, index) => {
+          {items.map((item) => {
             return (
-              <div className="col-md-6" key={index}>
+              <div className="col-md-6" key={item.id}>
                 <CardTour />
               </div>
             );

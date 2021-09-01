@@ -21,6 +21,7 @@ export default function CarouselBlog(props) {
 
   const items = [
     {
+      id: 1,
       imagen:
         "https://i1.wp.com/instyle.mx/wp-content/uploads/2019/07/parejas-felices.jpg",
       titulo: "Y tú qué planes? Turismo, ofertas de viaje y tours por el Perú",
@@ -28,6 +29,7 @@ export default function CarouselBlog(props) {
         "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
     },
     {
+      id: 1,
       imagen:
         "https://i1.wp.com/instyle.mx/wp-content/uploads/2019/07/parejas-felices.jpg",
       titulo: "Y tú qué planes? Turismo, ofertas de viaje y tours por el Perú",
@@ -35,6 +37,7 @@ export default function CarouselBlog(props) {
         "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
     },
     {
+      id: 3,
       imagen:
         "https://i1.wp.com/instyle.mx/wp-content/uploads/2019/07/parejas-felices.jpg",
       titulo: "Y tú qué planes? Turismo, ofertas de viaje y tours por el Perú",
@@ -64,8 +67,8 @@ export default function CarouselBlog(props) {
               <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
                 {items.map((item) => {
                   return (
-                    <div>
-                      <CardBlog item={item} />
+                    <div key={item.id}>
+                      <CardBlog item={item.id} />
                     </div>
                   );
                 })}
@@ -77,8 +80,8 @@ export default function CarouselBlog(props) {
               <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
                 {items.map((item) => {
                   return (
-                    <div>
-                      <CardBlog item={item} />
+                    <div key={item.id}>
+                      <CardBlog item={item} key={item.id} />
                     </div>
                   );
                 })}
@@ -90,14 +93,14 @@ export default function CarouselBlog(props) {
               className="carousel-app-btn carousel-app-btn--prev"
               onClick={goPrev}
             >
-              <i class="fas fa-chevron-left"></i>
+              <i className="fas fa-chevron-left"></i>
             </button>
             <button
               type="button"
               className="carousel-app-btn carousel-app-btn--next"
               onClick={goNext}
             >
-              <i class="fas fa-chevron-right"></i>
+              <i className="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>

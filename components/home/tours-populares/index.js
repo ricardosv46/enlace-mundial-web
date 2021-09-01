@@ -60,7 +60,7 @@ export default function ToursPopulares() {
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
               {items.map((item) => {
                 return (
-                  <div>
+                  <div key={item.id}>
                     <CardTour />
                   </div>
                 );
@@ -85,9 +85,9 @@ export default function ToursPopulares() {
         </div>
 
         <div className="row d-none d-md-flex">
-          {items.map((item, index) => {
+          {items.map((item) => {
             return (
-              <div className="col-md-4 contenedor-card-tour" key={index}>
+              <div className="col-md-4 contenedor-card-tour" key={item.id}>
                 <CardTour />
               </div>
             );
