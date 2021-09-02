@@ -1,7 +1,7 @@
 // @import '@/styles/variables.scss';
 
 .banner {
-  height: 350px;
+  height: 450px;
 
   background-image: url("https://besthqwallpapers.com/Uploads/3-5-2020/131388/thumb2-flying-boeing-777-300er-airplane-blue-sky-boeing-777-300er-airliner.jpg");
   background-size: cover;
@@ -15,7 +15,7 @@
   }
 
   &__title {
-    font-size: 5vw;
+    font-size: 7vw;
 
     @media (min-width: 992px) {
       font-size: 3.5vw;
@@ -23,7 +23,7 @@
   }
 
   &__subtitle {
-    font-size: 4vw;
+    font-size: 5vw;
 
     @media (min-width: 992px) {
       font-size: 2.8vw;

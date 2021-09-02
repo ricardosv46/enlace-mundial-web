@@ -9,10 +9,16 @@
   border: 1px solid rgba($dark, 0.1);
   border-radius: 1rem;
 
+  display: none;
+
   position: fixed;
   top: 20vh;
   right: 2rem;
   z-index: 100;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 
   &__titulo {
     font-size: 1em;

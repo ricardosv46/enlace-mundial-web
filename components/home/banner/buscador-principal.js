@@ -25,7 +25,7 @@ export default function BuscadorPrincipal() {
   };
 
   return (
-    <form className="buscador-p">
+    <form className="buscador-p py-4 py-md-0 px-3">
       <div className="h-100">
         <input
           type="search"

@@ -1,8 +1,16 @@
 .destinos-destacados {
-  &__fila-1,
-  &__fila-3 {
+  &__fila-1 {
     display: grid;
     grid-gap: 0.5rem;
+  }
+
+  &__fila-3 {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-gap: 0.5rem;
+    }
   }
 
   &__fila-1 {
@@ -13,5 +21,13 @@
 
   &__fila-3 {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .carousel-app-btn--prev {
+    left: 1rem;
+  }
+
+  .carousel-app-btn--next {
+    right: 1rem;
   }
 }

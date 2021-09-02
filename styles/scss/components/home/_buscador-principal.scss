@@ -1,6 +1,11 @@
 .buscador-p {
-  --border-radius: 1.5rem;
-  --height-box: 45px;
+  --border-radius: 1rem;
+  --height-box: auto;
+
+  @media (min-width: 768px) {
+    --border-radius: 1.5rem;
+    --height-box: 45px;
+  }
 
   .h-100 {
     height: var(--height-box) !important;

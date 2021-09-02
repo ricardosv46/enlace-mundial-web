@@ -68,7 +68,7 @@ export default function CarouselBlog(props) {
               {items.map((item) => {
                 return (
                   <div key={item.id}>
-                    <CardTestimonio item={item.id} />
+                    <CardTestimonio item={item} />
                   </div>
                 );
               })}
