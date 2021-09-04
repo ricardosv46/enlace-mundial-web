@@ -2,11 +2,13 @@ import React from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
+import Script from "next/script";
 
 import Header from "components/header/index";
 import Footer from "components/footer/index";
 import Gallery from "components/gallery/index";
 import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
+// import FullCalendar from "@/components/general/fullcalendar.js";
 
 export default function Home() {
   const router = useRouter();
@@ -440,27 +442,93 @@ export default function Home() {
                 Descubre grandes lugares
               </h3>
 
-              <div className="calendario bg-light my-3"></div>
+              <div className="calendario bg-light my-2"></div>
+
+              {/* <FullCalendar /> */}
 
               <span>14 cupos disponibles</span>
-            </section>
 
-            <section>
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-6">
-                    <span>Adultos</span>
+              <section>
+                <div className="container">
+                  <div className="row justify-content-center mt-3">
+                    <div className="col-md-5 text-left">
+                      <span>Adultos</span>
+                    </div>
+
+                    <div className="col-md-5 d-flex justify-content-between align-items-center">
+                      <button
+                        className="sidebar-reservar__btn-reservar"
+                        type="button"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+
+                      <span className="font-weight-bold">1</span>
+
+                      <button
+                        className="sidebar-reservar__btn-reservar"
+                        type="button"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="col-md-6"></div>
+                  <div className="row justify-content-center mt-3">
+                    <div className="col-md-5 text-left">
+                      <span>Niños</span>
+                      <p className="small text-muted">(Hasta 10 años)</p>
+                    </div>
+
+                    <div className="col-md-5 d-flex justify-content-between align-items-center">
+                      <button
+                        className="sidebar-reservar__btn-reservar"
+                        type="button"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+
+                      <span className="font-weight-bold">1</span>
+
+                      <button
+                        className="sidebar-reservar__btn-reservar"
+                        type="button"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="row justify-content-center mt-2">
+                    <div className="col-md-10">
+                      <section className="text-left">
+                        <span className="small text-muted">Duración</span>
+                        <div className="sidebar-reservar__duracion-info py-1 px-3">
+                          <span>06:30 a.m. a 07:00 p.m.</span>
+                        </div>
+                      </section>
+
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-block text-uppercase mt-2"
+                      >
+                        Reservar ahora
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </section>
             </section>
           </aside>
         </section>
 
         <Footer />
       </main>
+
+      <Script
+        src="https://kit.fontawesome.com/3bd84f9f96.js"
+        crossorigin="anonymous"
+      />
     </div>
   );
 }
