@@ -1,11 +1,13 @@
 .modal-auth {
-  &__close {
-    font-size: 1.5em;
+}
 
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
+.modal-close {
+  font-size: 1.5em;
+
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 100;
 }
 
 .rsm-bg-white {

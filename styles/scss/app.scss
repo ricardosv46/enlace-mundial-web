@@ -20,6 +20,7 @@
 @import "./components/footer";
 @import "./components/header-interior";
 @import "./components/gallery";
+@import "./components/calendar";
 
 // Luna de miel
 @import "./components/luna-de-miel/banner";
@@ -37,10 +38,6 @@
 
 // Páginas
 @import "./paginas/actividades-turismo";
-
-/* @import "~@fullcalendar/core/main.css";
-@import "~@fullcalendar/daygrid/main.css";
-@import "~@fullcalendar/timegrid/main.css"; */
 
 body {
   font-family: "Urbanist", sans-serif;
@@ -61,4 +58,8 @@ p {
   border-radius: 1rem;
 
   box-shadow: none !important;
+}
+
+.modal-auth {
+  max-width: 650px !important;
 }

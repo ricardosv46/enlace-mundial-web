@@ -2,20 +2,17 @@ import React, { useState } from "react";
 
 import Link from "next/link";
 
-// https://reactjsexample.com/a-simple-react-modal-with-hook-based-api
-import {
-  ModalProvider,
-  Modal,
-  useModal,
-  ModalTransition,
-} from "react-simple-hook-modal";
+import Modal from "react-bootstrap/Modal";
 
 import AuthForm from "@/components/auth/auth-form.js";
 
 export default function Header() {
-  const { isModalOpen, openModal, closeModal } = useModal("modal-auth");
-
   const [navStatus, setNavStatus] = useState(false);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   function cambiarEstadoNav() {
     setNavStatus(!navStatus);
@@ -23,25 +20,11 @@ export default function Header() {
 
   return (
     <section>
-      <ModalProvider>
-        <Modal
-          id="modal-auth"
-          className="modal-auth"
-          isOpen={isModalOpen}
-          transition={ModalTransition.TOP_DOWN}
-        >
-          <button
-            className="modal-auth__close bg-transparent"
-            onClick={closeModal}
-          >
-            <i className="fas fa-times"></i>
-          </button>
-
-          <section>
-            <AuthForm />
-          </section>
-        </Modal>
-      </ModalProvider>
+      <Modal dialogClassName="modal-auth" show={show} onHide={handleClose}>
+        <section>
+          <AuthForm />
+        </section>
+      </Modal>
 
       <header className="header">
         <div className="header__container h-100">
@@ -95,7 +78,7 @@ export default function Header() {
                 <button
                   type="button"
                   className="btn btn-primary header__button d-flex justify-content-center align-items-center"
-                  onClick={openModal}
+                  onClick={handleShow}
                 >
                   Iniciar sesión
                 </button>

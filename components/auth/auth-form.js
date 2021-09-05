@@ -32,10 +32,10 @@ export default function AuthForm() {
 
     if (tipoForm === "login") {
       textos[0] = "Si no tienes una cuenta";
-      textos[1] = "Regístrate aquí";
+      textos[1] = "regístrate aquí";
     } else if (tipoForm === "register") {
       textos[0] = "Si ya tienes una cuenta";
-      textos[1] = "Ingrese por aquí";
+      textos[1] = "ingrese por aquí";
     }
 
     return textos;

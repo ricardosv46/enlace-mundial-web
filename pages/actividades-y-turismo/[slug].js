@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
 
+import Modal from "react-bootstrap/Modal";
+
 import Header from "components/header/index";
 import Footer from "components/footer/index";
 import Gallery from "components/gallery/index";
 import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
-// import FullCalendar from "@/components/general/fullcalendar.js";
+import Reservar from "@/components/general/reservar";
 
 export default function Home() {
   const router = useRouter();
+
+  const [mostrarModal, setMostrarModal] = useState(false);
+
+  const cerrarModalReserva = () => setMostrarModal(false);
+  const mostrarModalReserva = () => setMostrarModal(true);
 
   let slug = router.query.slug;
 
@@ -26,6 +33,16 @@ export default function Home() {
           href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css"
         />
       </Head>
+
+      <Modal
+        dialogClassName="modal-auth"
+        show={mostrarModal}
+        onHide={cerrarModalReserva}
+      >
+        <section>
+          <Reservar />
+        </section>
+      </Modal>
 
       <main className="actividades-turismo">
         <Header />
@@ -45,7 +62,7 @@ export default function Home() {
           <header className="header-interior bg-light mt-3 py-3">
             <nav className="container">
               <div className="row">
-                <div className="col-12">
+                <div className="col-12 d-flex flex-column flex-md-row">
                   <Link href="/" passHref>
                     <a className="header-interior__link text-dark text-uppercase font-weight-bold">
                       Detalles
@@ -413,8 +430,23 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Reservar mobile */}
+          <section className="container mt-3 d-md-none">
+            <div className="row">
+              <div className="col-md-12">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block"
+                  onClick={mostrarModalReserva}
+                >
+                  Reservar
+                </button>
+              </div>
+            </div>
+          </section>
+
           {/* Te puede interesar */}
-          <section>
+          <section className="mt-5 mt-md-0">
             <div className="bg-light mt-4 py-2">
               <div className="container">
                 <div className="row">
@@ -438,86 +470,11 @@ export default function Home() {
 
           <aside>
             <section className="sidebar-reservar text-center py-3 px-3">
-              <h3 className="sidebar-reservar__titulo text-uppercase text-secondary">
+              <h3 className="sidebar-reservar__titulo font-weight-bold text-uppercase text-secondary my-0">
                 Descubre grandes lugares
               </h3>
 
-              <div className="calendario bg-light my-2"></div>
-
-              {/* <FullCalendar /> */}
-
-              <span>14 cupos disponibles</span>
-
-              <section>
-                <div className="container">
-                  <div className="row justify-content-center mt-3">
-                    <div className="col-md-5 text-left">
-                      <span>Adultos</span>
-                    </div>
-
-                    <div className="col-md-5 d-flex justify-content-between align-items-center">
-                      <button
-                        className="sidebar-reservar__btn-reservar"
-                        type="button"
-                      >
-                        <i class="fas fa-minus"></i>
-                      </button>
-
-                      <span className="font-weight-bold">1</span>
-
-                      <button
-                        className="sidebar-reservar__btn-reservar"
-                        type="button"
-                      >
-                        <i class="fas fa-plus"></i>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="row justify-content-center mt-3">
-                    <div className="col-md-5 text-left">
-                      <span>Niños</span>
-                      <p className="small text-muted">(Hasta 10 años)</p>
-                    </div>
-
-                    <div className="col-md-5 d-flex justify-content-between align-items-center">
-                      <button
-                        className="sidebar-reservar__btn-reservar"
-                        type="button"
-                      >
-                        <i class="fas fa-minus"></i>
-                      </button>
-
-                      <span className="font-weight-bold">1</span>
-
-                      <button
-                        className="sidebar-reservar__btn-reservar"
-                        type="button"
-                      >
-                        <i class="fas fa-plus"></i>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="row justify-content-center mt-2">
-                    <div className="col-md-10">
-                      <section className="text-left">
-                        <span className="small text-muted">Duración</span>
-                        <div className="sidebar-reservar__duracion-info py-1 px-3">
-                          <span>06:30 a.m. a 07:00 p.m.</span>
-                        </div>
-                      </section>
-
-                      <button
-                        type="button"
-                        className="btn btn-primary btn-block text-uppercase mt-2"
-                      >
-                        Reservar ahora
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </section>
+              <Reservar />
             </section>
           </aside>
         </section>
