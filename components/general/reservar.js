@@ -26,13 +26,13 @@ export default function Reservar() {
 
             <div className="col-md-5 d-flex justify-content-between align-items-center">
               <button className="sidebar-reservar__btn-reservar" type="button">
-                <i class="fas fa-minus"></i>
+                <i className="fas fa-minus"></i>
               </button>
 
               <span className="font-weight-bold">1</span>
 
               <button className="sidebar-reservar__btn-reservar" type="button">
-                <i class="fas fa-plus"></i>
+                <i className="fas fa-plus"></i>
               </button>
             </div>
           </div>
@@ -45,13 +45,13 @@ export default function Reservar() {
 
             <div className="col-md-5 d-flex justify-content-between align-items-center">
               <button className="sidebar-reservar__btn-reservar" type="button">
-                <i class="fas fa-minus"></i>
+                <i className="fas fa-minus"></i>
               </button>
 
               <span className="font-weight-bold">1</span>
 
               <button className="sidebar-reservar__btn-reservar" type="button">
-                <i class="fas fa-plus"></i>
+                <i className="fas fa-plus"></i>
               </button>
             </div>
           </div>
