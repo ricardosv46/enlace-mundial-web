@@ -62,61 +62,6 @@ export default function DestinosDestacados() {
   return (
     <section className="destinos-destacados mt-5">
       <h2 className="subtitulo-general">Destinos destacados</h2>
-
-      <div className="container mt-5">
-        <div className="row justify-content-center">
-          <div className="col-md-11">
-            <div className="destinos-destacados__fila-1">
-              <div>
-                <CardDestino item={destinosDestacados[0]} />
-              </div>
-
-              <div>
-                <CardDestino item={destinosDestacados[1]} />
-              </div>
-            </div>
-
-            {/* Carousel mobile */}
-            <section className="d-md-none position-relative">
-              <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
-                {destinosTerceraFila.map((item) => {
-                  return (
-                    <div key={item.id}>
-                      <CardDestino item={item} />
-                    </div>
-                  );
-                })}
-              </Swiper>
-
-              <button
-                type="button"
-                className="carousel-app-btn carousel-app-btn--prev"
-                onClick={goPrev}
-              >
-                <i className="fas fa-chevron-left"></i>
-              </button>
-              <button
-                type="button"
-                className="carousel-app-btn carousel-app-btn--next"
-                onClick={goNext}
-              >
-                <i className="fas fa-chevron-right"></i>
-              </button>
-            </section>
-
-            {/* Carousel desktop */}
-            <div className="destinos-destacados__fila-3">
-              {destinosTerceraFila.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <CardDestino item={item} />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
