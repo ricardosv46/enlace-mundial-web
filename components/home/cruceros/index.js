@@ -31,26 +31,32 @@ const LunaDeMiel = (props) => {
     {
       titulo: "Crucero",
       idx: 1,
+      slug: "crucero",
     },
     {
       titulo: "Crucero 2",
       idx: 2,
+      slug: "crucero-2",
     },
     {
       titulo: "Crucero 3",
       idx: 3,
+      slug: "crucero-3",
     },
     {
       titulo: "Crucero 4",
       idx: 4,
+      slug: "crucero-4",
     },
     {
       titulo: "Crucero 5",
       idx: 5,
+      slug: "crucero-5",
     },
     {
       titulo: "Crucero 6",
       idx: 6,
+      slug: "crucero-6",
     },
   ];
 
@@ -79,7 +85,7 @@ const LunaDeMiel = (props) => {
               {items.map((item) => {
                 return (
                   <div key={item.titulo}>
-                    <CardGeneral item={item} />
+                    <CardGeneral item={item} tipo="cruceros" />
                   </div>
                 );
               })}
@@ -92,7 +98,7 @@ const LunaDeMiel = (props) => {
               {items.map((item) => {
                 return (
                   <div key={item.titulo}>
-                    <CardGeneral item={item} />
+                    <CardGeneral item={item} tipo="cruceros" />
                   </div>
                 );
               })}

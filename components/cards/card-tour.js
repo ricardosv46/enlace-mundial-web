@@ -1,9 +1,10 @@
 import React from "react";
+import Link from "next/link";
 
 // Componentes
 import Like from "./components/like";
 
-export default function CardTour() {
+export default function CardTour({ item }) {
   return (
     <article className="card-tour">
       <section className="card-tour__header position-relative">
@@ -29,7 +30,11 @@ export default function CardTour() {
 
       <div className="card-tour__body p-3 p-md-4">
         <h3 className="card-tour__titulo text-center">
-          <a href="">Antioquía + Cochahuayco Full Day</a>
+          <Link href={`/actividades-y-turismo/${item.slug}`}>
+            <h3 className="card-title font-weight-bold my-0 pointer">
+              {item.titulo}
+            </h3>
+          </Link>
         </h3>
 
         <h4 className="card-tour__sub text-secondary text-left">

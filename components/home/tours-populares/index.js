@@ -15,30 +15,48 @@ export default function ToursPopulares() {
   const items = [
     {
       id: 1,
+      titulo: "Antioquía + Cochahuayco Full Day",
+      slug: "antioquía-+-Cochahuayco-Full-Day",
     },
     {
       id: 2,
+      titulo: "Antioquía + Cochahuayco Full Day",
+      slug: "antioquía-+-Cochahuayco-Full-Day",
     },
     {
       id: 3,
+      titulo: "Antioquía + Cochahuayco Full Day",
+      slug: "antioquía-+-Cochahuayco-Full-Day",
     },
     {
       id: 4,
+      titulo: "Antioquía + Cochahuayco Full Day",
+      slug: "antioquía-+-Cochahuayco-Full-Day",
     },
     {
       id: 5,
+      titulo: "Antioquía + Cochahuayco Full Day",
+      slug: "antioquía-+-Cochahuayco-Full-Day",
     },
     {
       id: 6,
+      titulo: "Antioquía + Cochahuayco Full Day",
+      slug: "antioquía-+-Cochahuayco-Full-Day",
     },
     {
       id: 7,
+      titulo: "Antioquía + Cochahuayco Full Day",
+      slug: "antioquía-+-Cochahuayco-Full-Day",
     },
     {
       id: 8,
+      titulo: "Antioquía + Cochahuayco Full Day",
+      slug: "antioquía-+-Cochahuayco-Full-Day",
     },
     {
       id: 9,
+      titulo: "Antioquía + Cochahuayco Full Day",
+      slug: "antioquía-+-Cochahuayco-Full-Day",
     },
   ];
 
@@ -61,7 +79,7 @@ export default function ToursPopulares() {
               {items.map((item) => {
                 return (
                   <div key={item.id}>
-                    <CardTour />
+                    <CardTour item={item} />
                   </div>
                 );
               })}
@@ -88,7 +106,7 @@ export default function ToursPopulares() {
           {items.map((item) => {
             return (
               <div className="col-md-4 contenedor-card-tour" key={item.id}>
-                <CardTour />
+                <CardTour item={item} />
               </div>
             );
           })}

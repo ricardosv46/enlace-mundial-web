@@ -15,9 +15,28 @@ export default function ToursRelacionadoss() {
   const items = [
     {
       id: 1,
+      titulo: "Valle sagrado con Maras Moray - Cusco",
+      slug: "valle-sagrado-con-maras-moray-cusco",
     },
     {
       id: 2,
+      titulo: "Activiadad 2 - Cusco",
+      slug: "actividad-2-cusco",
+    },
+    {
+      id: 3,
+      titulo: "Activiadad 3 - Cusco",
+      slug: "actividad-3-cusco",
+    },
+    {
+      id: 4,
+      titulo: "Activiadad 4 - Cusco",
+      slug: "actividad-4-cusco",
+    },
+    {
+      id: 5,
+      titulo: "Activiadad 5 - Cusco",
+      slug: "actividad-5-cusco",
     },
   ];
 
@@ -38,7 +57,7 @@ export default function ToursRelacionadoss() {
               {items.map((item) => {
                 return (
                   <div key={item.id}>
-                    <CardTour />
+                    <CardTour item={item} />
                   </div>
                 );
               })}
@@ -65,7 +84,7 @@ export default function ToursRelacionadoss() {
           {items.map((item) => {
             return (
               <div className="col-md-6" key={item.id}>
-                <CardTour />
+                <CardTour item={item} />
               </div>
             );
           })}

@@ -1,12 +1,22 @@
 import React from "react";
 
-export default function CardGeneral({ item }) {
+import Link from "next/link";
+
+export default function CardGeneral({ item, tipo }) {
+  let ruta = "/luna-de-miel";
+
+  if (tipo === "cruceros") {
+    ruta = "cruceros";
+  }
+
   return (
     <article className="card-general">
       <section className="card-general__image"></section>
 
       <section className="card-general__body">
-        <h3 className="card-general__titulo">{item.titulo}</h3>
+        <Link href={`${ruta}/${item.slug}`}>
+          <h3 className="card-general__titulo pointer">{item.titulo}</h3>
+        </Link>
 
         <p className="text-muted mt-4">
           Encuentra experiencias insólitas siempre, tenemos las mejores ofertas.

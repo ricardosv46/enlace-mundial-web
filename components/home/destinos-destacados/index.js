@@ -61,7 +61,7 @@ export default function DestinosDestacados() {
 
   return (
     <section className="destinos-destacados mt-5">
-      <h2 className="subtitulo-general">Destinos destacados</h2>
+      {/* <h2 className="subtitulo-general">Destinos destacados</h2> */}
     </section>
   );
 }
