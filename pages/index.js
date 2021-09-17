@@ -3,7 +3,6 @@ import React from "react";
 import Head from "next/head";
 import Script from "next/script";
 
-import Header from "../components/header/index";
 import Banner from "../components/home/banner/index";
 import ToursPopulares from "../components/home/tours-populares/index";
 import DestinosDestacados from "../components/home/destinos-destacados/index";
@@ -12,7 +11,6 @@ import Cruceros from "../components/home/cruceros/index";
 import CarouselBlog from "../components/home/carousel-blog/index";
 import Estadisticas from "../components/home/estadisticas/index";
 import CarouselTestimonios from "../components/home/carousel-testimonios/index";
-import Footer from "../components/footer/index";
 
 export default function Home() {
   return (
@@ -28,8 +26,6 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header />
-
         <Banner />
 
         <ToursPopulares />
@@ -45,8 +41,6 @@ export default function Home() {
         <Estadisticas />
 
         <CarouselTestimonios />
-
-        <Footer />
       </main>
 
       <Script

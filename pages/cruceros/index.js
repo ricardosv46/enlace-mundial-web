@@ -3,9 +3,7 @@ import React from "react";
 import Head from "next/head";
 import Script from "next/script";
 
-import Header from "@/components/header/index";
 import Banner from "@/components/cruceros/banner";
-import Footer from "@/components/footer/index";
 import CardLunaDeMiel from "components/cards/card-luna-de-miel";
 
 export default function Home() {
@@ -115,8 +113,6 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header />
-
         <Banner />
 
         <section className="container carousel-app">
@@ -136,8 +132,6 @@ export default function Home() {
             })}
           </div>
         </section>
-
-        <Footer />
       </main>
 
       <Script

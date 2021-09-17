@@ -6,8 +6,6 @@ import Script from "next/script";
 
 import Modal from "react-bootstrap/Modal";
 
-import Header from "components/header/index";
-import Footer from "components/footer/index";
 import Gallery from "components/gallery/index";
 import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
 import Reservar from "@/components/general/reservar";
@@ -45,8 +43,6 @@ export default function Home() {
       </Modal>
 
       <main className="actividades-turismo">
-        <Header />
-
         <section className="l-miel__items mt-3">
           <div className="container">
             <div className="row">
@@ -478,8 +474,6 @@ export default function Home() {
             </section>
           </aside>
         </section>
-
-        <Footer />
       </main>
 
       <Script

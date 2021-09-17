@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 
-import Header from "components/header/index";
-import Footer from "components/footer/index";
 import Gallery from "components/gallery/index";
 import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
 import ModalContacto from "components/general/modal-contacto";
@@ -27,8 +25,6 @@ export default function Home() {
       </Head>
 
       <main className="l-miel">
-        <Header />
-
         <section className="l-miel__items mt-3">
           <div className="container">
             <div className="row">
@@ -437,8 +433,6 @@ export default function Home() {
 
           <ModalContacto />
         </section>
-
-        <Footer />
       </main>
     </div>
   );

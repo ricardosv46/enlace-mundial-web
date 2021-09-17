@@ -3,8 +3,6 @@ import React from "react";
 import Head from "next/head";
 import Script from "next/script";
 
-import Header from "@/components/header/index";
-import Footer from "@/components/footer/index";
 import CardBusqueda from "@/components/cards/card-busqueda";
 
 export default function Busqueda() {
@@ -49,8 +47,6 @@ export default function Busqueda() {
       </Head>
 
       <main>
-        <Header />
-
         <section className="container mt-5 px-4 px-md-0">
           <div className="row">
             <div className="col-12">
@@ -322,8 +318,6 @@ export default function Busqueda() {
             </div>
           </div>
         </section>
-
-        <Footer />
       </main>
 
       <Script

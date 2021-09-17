@@ -1,9 +1,7 @@
 import Head from "next/head";
 
-import Header from "components/header/index";
 import Banner from "components/luna-de-miel/Banner";
 import CardLunaDeMiel from "components/cards/card-luna-de-miel";
-import Footer from "components/footer/index";
 
 export default function Home() {
   const items = [
@@ -112,8 +110,6 @@ export default function Home() {
       </Head>
 
       <main className="l-miel">
-        <Header />
-
         <Banner />
 
         <section className="l-miel__items mt-5">
@@ -131,8 +127,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <Footer />
       </main>
     </div>
   );
