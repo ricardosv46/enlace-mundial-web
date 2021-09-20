@@ -24,7 +24,7 @@ export default function Banner() {
                   </p>
 
                   <div className="mt-4">
-                    <Link href="/" passHref>
+                    <Link href="/contacto" passHref>
                       <a className="btn btn-primary rounded-0 px-5">Contacto</a>
                     </Link>
                   </div>

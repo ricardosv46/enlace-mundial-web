@@ -88,13 +88,13 @@ export default function AuthForm() {
           <section className="mt-3">
             {asignarFormulario()}
 
-            <div className="text-right">
+            {/* <div className="text-right">
               <input
                 type="submit"
                 className="btn btn-primary px-5"
                 value="Ingresar"
               />
-            </div>
+            </div> */}
 
             <div className="mt-2">
               <p className="text-muted">

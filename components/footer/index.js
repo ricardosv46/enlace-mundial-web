@@ -2,6 +2,8 @@ import React from "react";
 
 import Link from "next/link";
 
+import RedesSociales from "@/components/general/redes-sociales";
+
 export default function Banner() {
   return (
     <section>
@@ -13,31 +15,7 @@ export default function Banner() {
                 <div className="col-md-6 d-flex flex-column justify-content-center justify-content-md-between align-items-center align-items-lg-start">
                   <img src="/logo.png" className="footer__logo" />
 
-                  <div className="footer__redes">
-                    <img
-                      src="/imagenes/redes-sociales/facebook.png"
-                      alt="Facebook"
-                    />
-                    <img
-                      src="/imagenes/redes-sociales/twitter.png"
-                      alt="Twitter"
-                    />
-
-                    <img
-                      src="/imagenes/redes-sociales/youtube.png"
-                      alt="Youtube"
-                    />
-
-                    <img
-                      src="/imagenes/redes-sociales/instagram.png"
-                      alt="Instagram"
-                    />
-
-                    <img
-                      src="/imagenes/redes-sociales/whatsapp.png"
-                      alt="Whatsapp"
-                    />
-                  </div>
+                  <RedesSociales />
                 </div>
 
                 <div className="col-md-6 footer__info text-center mt-5 mt-md-0">
@@ -51,6 +29,12 @@ export default function Banner() {
                         </li>
                         <li>
                           <Link href="">Tours más pupulares</Link>
+                        </li>
+                        <li>
+                          <Link href="/sobre-nosotros">Sobre nosotros</Link>
+                        </li>
+                        <li>
+                          <Link href="/contacto">Contáctanos</Link>
                         </li>
                       </ul>
                     </div>

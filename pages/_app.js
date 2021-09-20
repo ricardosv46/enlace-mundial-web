@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 import "../styles/globals.css";
 
 import "../styles/scss/app.scss";
@@ -17,6 +19,11 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
 
       <Footer />
+
+      <Script
+        src="https://kit.fontawesome.com/3bd84f9f96.js"
+        crossorigin="anonymous"
+      />
     </div>
   );
 }

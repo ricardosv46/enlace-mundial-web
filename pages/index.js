@@ -12,6 +12,9 @@ import CarouselBlog from "../components/home/carousel-blog/index";
 import Estadisticas from "../components/home/estadisticas/index";
 import CarouselTestimonios from "../components/home/carousel-testimonios/index";
 
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
+
 export default function Home() {
   return (
     <div>

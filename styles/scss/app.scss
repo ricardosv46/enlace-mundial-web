@@ -38,6 +38,7 @@
 
 // Páginas
 @import "./paginas/actividades-turismo";
+@import "./paginas/sobre-nosotros";
 
 body {
   font-family: "Urbanist", sans-serif;
@@ -62,4 +63,13 @@ p {
 
 .modal-auth {
   max-width: 650px !important;
+}
+
+.redes-sociales {
+  img {
+    width: 25px;
+    height: 25px;
+
+    margin-right: 1rem;
+  }
 }
