@@ -23,36 +23,31 @@ const LOGIN = gql`
 `;
 
 export default function FormLogin() {
-  /* const [login, { data, loading, error }] = useMutation(LOGIN, {
+  const email = "ehldev@gmail.com";
+  const password = "secret";
+
+  const [loginAction] = useMutation(LOGIN, {
     variables: {
-      loginInput: {
-        email: "ehldev@gmail.com",
-        password: "secret",
+      input: {
+        email,
+        password,
         tipoInicio: 1,
       },
     },
-  }); */
+    onCompleted: (data) => {
+      console.log(data);
+      // data.login && router.push("/");
+    },
+  });
 
-  const [login, { data, loading, error }] = useMutation(LOGIN);
+  const login = (e) => {
+    e.preventDefault();
 
-  const loginAction = () => {
-    login({
-      variables: {
-        loginInput: {
-          email: "ehldev@gmail.com",
-          password: "secret",
-          tipoInicio: 1,
-        },
-      },
-
-      optimisticResponse: true,
-    });
+    loginAction();
   };
 
-  console.log(data);
-
   return (
-    <form onSubmit={loginAction}>
+    <form onSubmit={login}>
       <div className="form-group">
         <input type="email" placeholder="Correo" className="form-control" />
       </div>

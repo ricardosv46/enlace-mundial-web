@@ -11,14 +11,19 @@ import "swiper/swiper.scss";
 import Header from "../components/header/index";
 import Footer from "../components/footer/index";
 
+import { ApolloProvider } from "@apollo/client";
+import client from "../apollo-client";
+
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-      <Header />
+      <ApolloProvider client={client}>
+        <Header />
 
-      <Component {...pageProps} />
+        <Component {...pageProps} />
 
-      <Footer />
+        <Footer />
+      </ApolloProvider>
 
       <Script
         src="https://kit.fontawesome.com/3bd84f9f96.js"
