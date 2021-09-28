@@ -17,6 +17,11 @@ import client from "../apollo-client";
 function MyApp({ Component, pageProps }) {
   return (
     <div>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css"
+      />
+
       <ApolloProvider client={client}>
         <Header />
 

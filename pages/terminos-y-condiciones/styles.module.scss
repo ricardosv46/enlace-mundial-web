@@ -1,0 +1,22 @@
+@import "../../styles/scss/variables";
+
+.terminos {
+  article {
+    border-bottom: 3px solid rgba($dark, 0.9);
+    padding-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.1em;
+
+    @media (min-width: 768px) {
+      font-size: 1.3em;
+    }
+  }
+
+  p {
+    @media (min-width: 768px) {
+      font-size: 1.1em;
+    }
+  }
+}

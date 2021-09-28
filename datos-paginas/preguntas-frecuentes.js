@@ -17,5 +17,20 @@ export const preguntasFrecuentes = {
       descripcion:
         "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
     },
+    {
+      titulo: "Pregunta 4",
+      descripcion:
+        "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
+    },
+    {
+      titulo: "Pregunta 5",
+      descripcion:
+        "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
+    },
+    {
+      titulo: "Pregunta 6",
+      descripcion:
+        "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
+    },
   ],
 };

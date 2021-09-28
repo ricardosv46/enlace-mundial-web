@@ -23,16 +23,16 @@
   padding: 0;
 }
 
-.auth-form {
-  &__header {
+.authForm {
+  .formHeader {
     height: 120px;
   }
 
-  &__logo {
+  .formLogo {
     max-width: 250px;
   }
 
-  &__body {
+  .formBody {
     min-height: 420px;
 
     display: grid;
@@ -47,7 +47,7 @@
     }
   }
 
-  &__body-bg {
+  .formBodyBg {
     min-height: 350px;
 
     background-image: url("https://cdn2.salud180.com/sites/default/files/styles/medium/public/field/image/2018/05/vacaciones-ninos.jpg");
@@ -55,7 +55,7 @@
     background-position: center;
   }
 
-  &__titulo {
+  .formTitulo {
     font-size: 1.3em;
 
     @media (min-width: 768px) {
@@ -63,8 +63,8 @@
     }
   }
 
-  .btn--google,
-  .btn--facebook {
+  .btnGoogle,
+  .btnFacebook {
     border-radius: 0.3rem;
 
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;

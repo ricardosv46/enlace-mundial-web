@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import Modal from "react-bootstrap/Modal";
 
-import AuthForm from "@/components/auth/auth-form.js";
+import AuthForm from "@/components/auth/auth-form";
 
 export default function Header() {
   const [navStatus, setNavStatus] = useState(false);

@@ -102,11 +102,17 @@ export default function Banner() {
               </p>
 
               <div className="mb-2 mb-md-0 copyright__links">
-                <Link href="" className="copyright__link">
+                <Link
+                  href="/terminos-y-condiciones"
+                  className="copyright__link"
+                >
                   Política de privacidad
                 </Link>
 
-                <Link href="" className="copyright__link">
+                <Link
+                  href="/terminos-y-condiciones"
+                  className="copyright__link"
+                >
                   Términos de servicio
                 </Link>
               </div>
