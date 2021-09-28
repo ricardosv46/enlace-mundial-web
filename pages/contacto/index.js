@@ -3,7 +3,7 @@ import Head from "next/head";
 import Form from "react-bootstrap/Form";
 import { Formik } from "formik";
 
-import { validations } from "./validations";
+import { validations } from "../../validaciones/form-contact";
 
 import RedesSociales from "@/components/general/redes-sociales";
 import ErrorMessage from "@/components/general/ErrorMessage";
@@ -138,13 +138,13 @@ export default function Contacto() {
               <span className="text-muted">O si prefires</span>
               <div className="mt-2">
                 <span className="text-primary">
-                  <i class="fas fa-mobile-alt"></i>
+                  <i className="fas fa-mobile-alt"></i>
                 </span>
                 <span className="d-inline-block ml-2">999 123 456</span>
               </div>
               <div className="mt-3">
                 <span className="text-primary">
-                  <i class="far fa-envelope-open"></i>
+                  <i className="far fa-envelope-open"></i>
                 </span>
                 <span className="d-inline-block ml-2">
                   contacto@enlacemundial.com

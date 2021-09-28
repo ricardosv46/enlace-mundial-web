@@ -8,15 +8,10 @@ import { preguntasFrecuentes } from "../../datos-paginas/preguntas-frecuentes";
 import { Accordion } from "react-bootstrap";
 
 export default function PreguntasFrecuentes() {
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState(preguntasFrecuentes);
   const [itemSeleccionado, setItemSeleccionado] = useState(null);
 
   const methods = {
-    mounted() {
-      useEffect(() => {
-        setInfo(preguntasFrecuentes);
-      }, []);
-    },
     seleccionar(index) {
       // Si no existe itemSeleccionado se asigna index
       if (!itemSeleccionado) {
@@ -29,9 +24,6 @@ export default function PreguntasFrecuentes() {
         : setItemSeleccionado(null);
     },
   };
-
-  // Inicializar
-  methods.mounted();
 
   return (
     <>
@@ -52,7 +44,7 @@ export default function PreguntasFrecuentes() {
                   {info.preguntas
                     ? info.preguntas.map((item, index) => {
                         return (
-                          <article className="col-md-6 mb-3">
+                          <article className="col-md-6 mb-3" key={index}>
                             <Accordion.Item eventKey={index}>
                               <Accordion.Header
                                 onClick={() => methods.seleccionar(index)}
@@ -61,9 +53,9 @@ export default function PreguntasFrecuentes() {
                                   {item.titulo}
 
                                   {itemSeleccionado === index + 1 ? (
-                                    <i class="fas fa-minus"></i>
+                                    <i className="fas fa-minus"></i>
                                   ) : (
-                                    <i class="fas fa-plus"></i>
+                                    <i className="fas fa-plus"></i>
                                   )}
                                 </div>
                               </Accordion.Header>
