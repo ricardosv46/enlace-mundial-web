@@ -466,7 +466,7 @@ export default function Home() {
           </section>
 
           {/* Solo desktop */}
-          <aside class="d-none d-md-block">
+          <aside className="d-none d-md-block">
             <section className="sidebar-reservar text-center py-3 px-3">
               <h3 className="sidebar-reservar__titulo font-weight-bold text-uppercase text-secondary my-0">
                 Descubre grandes lugares
