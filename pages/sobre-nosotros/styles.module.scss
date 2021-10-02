@@ -1,0 +1,78 @@
+@import "../../styles/scss/variables";
+@import "../../styles/scss/mixins";
+
+.nosotros {
+  &_banner {
+    @include fondo-banner(0.3);
+
+    background-image: url("/imagenes/home/banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 250px;
+
+    @media (min-width: 768px) {
+      height: 50vh;
+
+      max-height: 300px;
+    }
+
+    @media (min-width: 992px) {
+      background-size: initial;
+
+      max-height: 350px;
+    }
+  }
+
+  h1 {
+    font-size: 2em;
+
+    @media (min-width: 992px) {
+      font-size: 3vw;
+    }
+
+    @media (min-width: 1500px) {
+      font-size: 2.5vw;
+    }
+  }
+
+  &_sub1 {
+    font-size: 1em;
+
+    @media (min-width: 992px) {
+      font-size: 1.1rem;
+    }
+  }
+
+  &_sub2 {
+    font-size: 7vw;
+
+    @media (min-width: 768px) {
+      font-size: 2.3em;
+    }
+  }
+
+  .separador {
+    width: 100px;
+    height: 3px;
+
+    background-color: $primary;
+  }
+
+  &_banner2 {
+    height: 300px;
+
+    background-image: url("/imagenes/sobre-nosotros/banner-2.png");
+    background-position: right;
+    background-repeat: no-repeat;
+
+    @media (min-width: 768px) {
+      background-size: cover;
+    }
+  }
+
+  &_mision {
+    margin-top: 6rem;
+  }
+}

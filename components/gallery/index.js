@@ -23,7 +23,7 @@ export default function Gallery() {
         <img
           src={mainImage}
           alt="Picture of the author"
-          className="gallery__main-image w-100"
+          className="gallery__main-image"
         />
       </div>
 

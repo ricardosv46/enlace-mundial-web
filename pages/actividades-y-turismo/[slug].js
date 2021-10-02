@@ -36,6 +36,7 @@ export default function Home() {
         dialogClassName="modal-auth"
         show={mostrarModal}
         onHide={cerrarModalReserva}
+        centered
       >
         <section>
           <Reservar />
@@ -432,7 +433,7 @@ export default function Home() {
               <div className="col-md-12">
                 <button
                   type="button"
-                  className="btn btn-primary btn-block"
+                  className="btn btn-primary btn-block btn-reservar-mobile"
                   onClick={mostrarModalReserva}
                 >
                   Reservar
@@ -464,7 +465,8 @@ export default function Home() {
             </div>
           </section>
 
-          <aside>
+          {/* Solo desktop */}
+          <aside class="d-none d-md-block">
             <section className="sidebar-reservar text-center py-3 px-3">
               <h3 className="sidebar-reservar__titulo font-weight-bold text-uppercase text-secondary my-0">
                 Descubre grandes lugares
