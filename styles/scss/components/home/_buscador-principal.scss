@@ -7,6 +7,9 @@
     --height-box: 45px;
   }
 
+  position: relative;
+  z-index: 100;
+
   .h-100 {
     height: var(--height-box) !important;
   }

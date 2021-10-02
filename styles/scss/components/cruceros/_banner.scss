@@ -1,8 +1,7 @@
 .banner-cruceros {
   height: 350px;
 
-  background-image: url("https://d500.epimg.net/cincodias/imagenes/2020/02/22/companias/1582376051_402246_1582376167_noticia_normal.jpg");
-  background-size: cover;
+  background-image: url("/imagenes/cruceros/banner.jpg");
   background-position: center;
 
   @media (min-width: 768px) {
@@ -10,7 +9,22 @@
   }
 
   @media (min-width: 1200px) {
-    height: 90vh;
+    height: 95vh;
+  }
+
+  &::before {
+    content: "";
+
+    background-color: rgba($dark, 0.1);
+
+    width: 100%;
+    height: 100vh;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 
   &__titulo,

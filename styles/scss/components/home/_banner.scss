@@ -3,15 +3,30 @@
 .banner {
   height: 450px;
 
-  background-image: url("https://besthqwallpapers.com/Uploads/3-5-2020/131388/thumb2-flying-boeing-777-300er-airplane-blue-sky-boeing-777-300er-airliner.jpg");
-  background-size: cover;
+  background-image: url("/imagenes/home/banner.jpg"); // 1280×853
+  background-position: center;
 
   @media (min-width: 768px) {
     height: 60vh;
   }
 
   @media (min-width: 1200px) {
-    height: 90vh;
+    height: 95vh;
+  }
+
+  &::before {
+    content: "";
+
+    background-color: rgba($dark, 0.1);
+
+    width: 100%;
+    height: 100vh;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 
   &__title {

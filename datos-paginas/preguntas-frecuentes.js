@@ -3,34 +3,34 @@ export const preguntasFrecuentes = {
 
   preguntas: [
     {
-      titulo: "Pregunta",
+      titulo: "¿Qué es Enlace Mundial?",
       descripcion:
-        "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
+        "Somos una agencia de viajes con 12 años en el servicio turístico y contamos con un excelente staff de profesionales del área. Convertimos tu viaje en una experiencia mundial. ¡𝐉𝐔𝐍𝐓𝐎𝐒 𝐑𝐄𝐀𝐂𝐓𝐈𝐕𝐀𝐌𝐎𝐒 𝐄𝐋 𝐓𝐔𝐑𝐈𝐒𝐌𝐎! Ahora tenemos 4 súper destinos para ti: #IcaParacas, #CordilleraLaViuda #Marcapomacocha, #Antioquía y disfruta de los bellos paisajes que nos regala nuestro querido Perú.",
     },
     {
-      titulo: "Pregunta 2",
+      titulo: "¿Qué es un Full Day?",
       descripcion:
-        "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
+        "Somos una agencia de viajes con 12 años en el servicio turístico y contamos con un excelente staff de profesionales del área. Convertimos tu viaje en una experiencia mundial.",
     },
     {
-      titulo: "Pregunta 3",
+      titulo: "¿Dónde se ubican?",
       descripcion:
-        "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
+        "Somos una agencia de viajes con 12 años en el servicio turístico y contamos con un excelente staff de profesionales del área. Convertimos tu viaje en una experiencia mundial. When you share information with us, we can make our services even better for you.",
     },
     {
       titulo: "Pregunta 4",
       descripcion:
-        "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
+        "Somos una agencia de viajes con 12 años en el servicio turístico y contamos con un excelente staff de profesionales del área. Convertimos tu viaje en una experiencia mundial.",
     },
     {
       titulo: "Pregunta 5",
       descripcion:
-        "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
+        "Somos una agencia de viajes con 12 años en el servicio turístico y contamos con un excelente staff de profesionales del área. Convertimos tu viaje en una experiencia mundial. When you share information with us, we can make our services even better for you.",
     },
     {
       titulo: "Pregunta 6",
       descripcion:
-        "Welcome to our Privacy Policy page! When you use our web site services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. When you share information with us, we can make our services even better for you.",
+        "Somos una agencia de viajes con 12 años en el servicio turístico y contamos con un excelente staff de profesionales del área. Convertimos tu viaje en una experiencia mundial.",
     },
   ],
 };

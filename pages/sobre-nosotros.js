@@ -132,24 +132,20 @@ export default function About() {
             </h2>
 
             <p className="nosotros__descripcio mt-3">
-              Tour (galicismo) es una palabra utilizada internacionalmente para
-              referirse a los viajes ofrecidos por empresas, a las giras de
-              cantantes, grupos musicales, etc., o a los viajes ofrecidos por
-              agencias turísticas, cuando incluyen recorridos por una región, un
-              país o varios, etc.
+              Somos una agencia de viajes con 12 años en el servicio turístico y
+              contamos con un excelente staff de profesionales del área.
+              Convertimos tu viaje en una experiencia mundial.
             </p>
 
             <p className="nosotros__descripcio mt-3">
-              Tour (galicismo) es una palabra utilizada internacionalmente para
-              referirse a los viajes ofrecidos por empresas.
+              ¡𝐉𝐔𝐍𝐓𝐎𝐒 𝐑𝐄𝐀𝐂𝐓𝐈𝐕𝐀𝐌𝐎𝐒 𝐄𝐋 𝐓𝐔𝐑𝐈𝐒𝐌𝐎! Ahora tenemos 4 súper destinos
+              para ti: #IcaParacas, #CordilleraLaViuda #Marcapomacocha,
+              #Antioquía y disfruta de los bellos paisajes que nos regala
+              nuestro querido Perú.
             </p>
 
             <p className="nosotros__descripcio mt-3">
-              Tour (galicismo) es una palabra utilizada internacionalmente para
-              referirse a los viajes ofrecidos por empresas, a las giras de
-              cantantes, grupos musicales, etc., o a los viajes ofrecidos por
-              agencias turísticas, cuando incluyen recorridos por una región, un
-              país o varios, etc.
+              Con todos los PROTOCOLOS de BIOSEGURIDAD 👍🕵️‍♀️ desde tu embarque.
             </p>
           </div>
         </div>

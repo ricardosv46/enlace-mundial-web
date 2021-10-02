@@ -5,7 +5,8 @@ import styles from "./styles.module.scss";
 
 import { preguntasFrecuentes } from "../../datos-paginas/preguntas-frecuentes";
 
-import { Accordion } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
+import Tab from "react-bootstrap/Tab";
 
 export default function PreguntasFrecuentes() {
   const [info, setInfo] = useState(preguntasFrecuentes);
@@ -33,43 +34,56 @@ export default function PreguntasFrecuentes() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className={`${styles.preguntasFrecuentes} container mt-5`}>
+      <div className="bg-primary text-white py-5">
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h1 className="font-weight-bold">{info.titulo}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section className={`${styles.preguntasFrecuentes} container mt-3`}>
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center font-weight-bold">{info.titulo}</h1>
-
             <section className="mt-5">
-              <Accordion>
+              <Tab.Container id="left-tabs-example" defaultActiveKey={1}>
                 <div className="row mb-3">
-                  {info.preguntas
-                    ? info.preguntas.map((item, index) => {
-                        return (
-                          <article className="col-md-6 mb-3" key={index}>
-                            <Accordion.Item eventKey={index}>
-                              <Accordion.Header
-                                onClick={() => methods.seleccionar(index)}
-                              >
-                                <div className="d-flex justify-content-between">
+                  <div className="col-md-3">
+                    <Nav variant="pills" className="flex-column">
+                      {info.preguntas
+                        ? info.preguntas.map((item, index) => {
+                            return (
+                              <Nav.Item key={index}>
+                                <Nav.Link
+                                  eventKey={index + 1}
+                                  className="nav-link-tab"
+                                >
                                   {item.titulo}
+                                </Nav.Link>
+                              </Nav.Item>
+                            );
+                          })
+                        : ""}
+                    </Nav>
+                  </div>
 
-                                  {itemSeleccionado === index + 1 ? (
-                                    <i className="fas fa-minus"></i>
-                                  ) : (
-                                    <i className="fas fa-plus"></i>
-                                  )}
-                                </div>
-                              </Accordion.Header>
-
-                              <Accordion.Body>
-                                <div className="p-3">{item.descripcion}</div>
-                              </Accordion.Body>
-                            </Accordion.Item>
-                          </article>
-                        );
-                      })
-                    : ""}
+                  <div className="col-md-9">
+                    <Tab.Content>
+                      {info.preguntas
+                        ? info.preguntas.map((item, index) => {
+                            return (
+                              <Tab.Pane key={index} eventKey={index + 1}>
+                                {item.descripcion}
+                              </Tab.Pane>
+                            );
+                          })
+                        : ""}
+                    </Tab.Content>
+                  </div>
                 </div>
-              </Accordion>
+              </Tab.Container>
             </section>
           </div>
         </div>

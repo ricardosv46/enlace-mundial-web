@@ -73,3 +73,20 @@ p {
     margin-right: 1rem;
   }
 }
+
+a.nav-link-tab {
+  color: rgba($dark, 0.4) !important;
+
+  transition: color 0.3s;
+
+  &:hover {
+    color: $dark !important;
+    cursor: pointer;
+  }
+}
+
+a.nav-link-tab.active {
+  background-color: transparent !important;
+  color: $primary !important;
+  font-weight: bold;
+}
