@@ -11,7 +11,9 @@ export default function CardGeneral({ item, tipo }) {
 
   return (
     <article className="card-general">
-      <section className="card-general__image"></section>
+      <Link href={`${ruta}/${item.slug}`}>
+        <section className="card-general__image pointer"></section>
+      </Link>
 
       <section className="card-general__body">
         <Link href={`${ruta}/${item.slug}`}>

@@ -7,26 +7,28 @@ import Like from "./components/like";
 export default function CardTour({ item }) {
   return (
     <article className="card-tour">
-      <section className="card-tour__header position-relative">
-        {/* Imagen con información */}
-        <div className="card-tour__imagen-info h-100 d-flex flex-column justify-content-between">
-          {/* Compartir y like */}
-          <div className="d-flex justify-content-between align-items-center py-2 px-3">
-            <span>Compartir</span>
+      <Link href={`/actividades-y-turismo/${item.slug}`}>
+        <section className="card-tour__header position-relative pointer">
+          {/* Imagen con información */}
+          <div className="card-tour__imagen-info h-100 d-flex flex-column justify-content-between">
+            {/* Compartir y like */}
+            <div className="d-flex justify-content-between align-items-center py-2 px-3">
+              <span>Compartir</span>
 
-            <Like />
+              <Like />
+            </div>
+
+            {/* Precio y vista */}
+            <div className="card-tour__precio-vista d-flex justify-content-between align-items-center py-2 px-3">
+              <span className="card-tour__precio bg-light px-2">
+                Desde S/. 50
+              </span>
+
+              <span>Vista</span>
+            </div>
           </div>
-
-          {/* Precio y vista */}
-          <div className="card-tour__precio-vista d-flex justify-content-between align-items-center py-2 px-3">
-            <span className="card-tour__precio bg-light px-2">
-              Desde S/. 50
-            </span>
-
-            <span>Vista</span>
-          </div>
-        </div>
-      </section>
+        </section>
+      </Link>
 
       <div className="card-tour__body p-3 p-md-4">
         <h3 className="card-tour__titulo text-center">

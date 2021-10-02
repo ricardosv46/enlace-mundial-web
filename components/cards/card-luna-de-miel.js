@@ -9,10 +9,12 @@ export default function CardLunaDeMiel({ tipo, item }) {
 
   return (
     <article className="card-l-miel">
-      <div
-        className="card-l-miel__imagen"
-        style={{ backgroundImage: `url("${item.imagen}")` }}
-      ></div>
+      <Link href={`/luna-de-miel/${item.slug}`} passHref>
+        <div
+          className="card-l-miel__imagen pointer"
+          style={{ backgroundImage: `url("${item.imagen}")` }}
+        ></div>
+      </Link>
 
       <div className="text-center pt-2 pb-4 px-4">
         <h3 className="card-l-miel__titulo font-weight-bold mt-1">
