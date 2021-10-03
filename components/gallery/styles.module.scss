@@ -1,0 +1,50 @@
+@import "../../styles/scss/variables";
+
+.gallery {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 300px 70px;
+
+  @media (min-width: 768px) {
+    height: 450px;
+
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: 100%;
+  }
+
+  &_principal {
+    width: 100%;
+    height: 100%;
+
+    background-repeat: round;
+  }
+
+  &_carousel {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    background-color: rgba($dark, 0.8);
+
+    @media (min-width: 768px) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+  }
+
+  &_carousel_item {
+    background-repeat: round;
+
+    width: 60px;
+    height: 30px;
+
+    @media (min-width: 768px) {
+      width: 80px;
+      height: 70px;
+    }
+  }
+
+  .active {
+    border: 2px solid $danger;
+  }
+}
