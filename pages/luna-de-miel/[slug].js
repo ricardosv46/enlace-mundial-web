@@ -8,6 +8,7 @@ import Footer from "components/footer/index";
 import Gallery from "components/gallery/index";
 import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
 import ModalContacto from "components/general/modal-contacto";
+import MenuInterior from "@/components/servicios/submenu";
 
 export default function Home() {
   const router = useRouter();
@@ -35,8 +36,6 @@ export default function Home() {
       </Head>
 
       <main className="l-miel">
-        <Header />
-
         <section className="l-miel__items mt-3">
           <div className="container">
             <div className="row">
@@ -45,52 +44,14 @@ export default function Home() {
                 <h2 className="subtitulo-slug text-primary">{slug}</h2>
               </div>
             </div>
-            <div className="row"></div>
           </div>
 
-          {/* Header */}
-          <header className="header-interior bg-light mt-3 py-3">
-            <nav className="container">
-              <div className="row">
-                <div className="col-12">
-                  <Link href="/" passHref>
-                    <a className="header-interior__link text-dark text-uppercase font-weight-bold">
-                      Detalles
-                    </a>
-                  </Link>
-
-                  <Link href="/" passHref>
-                    <a className="header-interior__link text-dark text-uppercase font-weight-bold">
-                      Itinerario
-                    </a>
-                  </Link>
-
-                  <Link href="/" passHref>
-                    <a className="header-interior__link text-dark text-uppercase font-weight-bold">
-                      Incluye
-                    </a>
-                  </Link>
-
-                  <Link href="/" passHref>
-                    <a className="header-interior__link text-dark text-uppercase font-weight-bold">
-                      Notas
-                    </a>
-                  </Link>
-
-                  <Link href="/" passHref>
-                    <a className="l-miel__header-link text-dark text-uppercase font-weight-bold">
-                      Tours similares
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </nav>
-          </header>
+          <MenuInterior />
 
           {/* Info */}
           <section className="container mt-5">
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-md-8 mt-3 mt-md-0">
                 <Gallery imagenes={galeria} />
               </div>
             </div>
@@ -445,8 +406,6 @@ export default function Home() {
 
           <ModalContacto />
         </section>
-
-        <Footer />
       </main>
     </div>
   );

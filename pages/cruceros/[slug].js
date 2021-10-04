@@ -6,11 +6,20 @@ import Link from "next/link";
 import Gallery from "components/gallery/index";
 import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
 import ModalContacto from "components/general/modal-contacto";
+import MenuInterior from "@/components/servicios/submenu";
 
 export default function Home() {
   const router = useRouter();
 
   let slug = router.query.slug;
+
+  const galeria = [
+    "https://i.pinimg.com/736x/ee/96/29/ee9629083c055b90ac4b3a51533671d8.jpg",
+    "https://www.boletomachupicchu.com/gutblt/wp-content/images/cusco-compania-plaza-armas.jpg",
+    "https://cdn0.matrimonio.com.pe/img_g/articulos-a-fotos/luna-de-miel/mexico/t10_2x_isla-de-holbox-lazaro-cardenas-quintana-roo-caribe.jpg",
+    "https://i.pinimg.com/originals/75/80/78/75807881c354def7dcaf6f66c0d006d3.jpg",
+    "https://mejorconsalud.as.com/wp-content/uploads/2019/02/elegir-lugar-luna-de-miel.jpg",
+  ];
 
   return (
     <div>
@@ -36,50 +45,13 @@ export default function Home() {
             <div className="row"></div>
           </div>
 
-          {/* Header */}
-          <header className="header-interior bg-light mt-3 py-3">
-            <nav className="container">
-              <div className="row">
-                <div className="col-12">
-                  <Link href="/" passHref>
-                    <a className="header-interior__link text-dark text-uppercase font-weight-bold">
-                      Detalles
-                    </a>
-                  </Link>
-
-                  <Link href="/" passHref>
-                    <a className="header-interior__link text-dark text-uppercase font-weight-bold">
-                      Itinerario
-                    </a>
-                  </Link>
-
-                  <Link href="/" passHref>
-                    <a className="header-interior__link text-dark text-uppercase font-weight-bold">
-                      Incluye
-                    </a>
-                  </Link>
-
-                  <Link href="/" passHref>
-                    <a className="header-interior__link text-dark text-uppercase font-weight-bold">
-                      Notas
-                    </a>
-                  </Link>
-
-                  <Link href="/" passHref>
-                    <a className="l-miel__header-link text-dark text-uppercase font-weight-bold">
-                      Tours similares
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </nav>
-          </header>
+          <MenuInterior />
 
           {/* Info */}
           <section className="container mt-5">
             <div className="row">
               <div className="col-md-8">
-                <Gallery />
+                <Gallery imagenes={galeria} />
               </div>
             </div>
           </section>
