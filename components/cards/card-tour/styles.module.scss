@@ -1,14 +1,6 @@
-// @import '../../styles/variables';
+@import "../../../styles/scss/variables";
 
-/* .contenedor-card-tour {
-  margin-bottom: 3rem;
-
-  @media (min-width: 768px) {
-    margin-bottom: 3.5rem;
-  }
-} */
-
-.card-tour {
+.cardTour {
   min-height: 400px;
 
   margin-bottom: 5rem;
@@ -16,17 +8,16 @@
   border-top-left-radius: 0.7rem;
   border-top-right-radius: 0.7rem;
 
-  &__header {
+  &_header {
     height: 300px;
 
-    background-image: url("https://i.ytimg.com/vi/J7MRfZK-A9Q/maxresdefault.jpg");
     background-size: cover;
 
     border-top-left-radius: 0.7rem;
     border-top-right-radius: 0.7rem;
 
     &:hover {
-      .card-tour__imagen-info {
+      .cardTour_imagenInfo {
         opacity: 1;
       }
 
@@ -36,9 +27,10 @@
     }
   }
 
-  &__imagen-info {
-    background-image: url("https://2.blogs.elcomercio.pe/checklistviajero/wp-content/uploads/sites/292/2019/05/Antioquia-5.jpg");
+  &_imagenInfo {
     background-size: cover;
+
+    height: 500px;
 
     border-radius: 0.7rem;
 
@@ -53,7 +45,7 @@
     transition: opacity 0.7s;
   }
 
-  &__titulo {
+  &_titulo {
     font-size: 1.3em;
 
     @media (min-width: 768px) {
@@ -72,7 +64,7 @@
     }
   }
 
-  &__sub {
+  &_sub {
     font-size: 0.9em;
 
     @media (min-width: 768px) {
@@ -87,7 +79,7 @@
     margin-right: 0.5rem;
   }
 
-  &__precio-vista {
+  &_precioVista {
     padding-right: 1rem;
 
     @media (min-width: 768px) {
@@ -95,14 +87,14 @@
     }
   }
 
-  &__precio {
+  &_precio {
     font-size: 1em;
     font-weight: 700;
 
     color: $primary;
   }
 
-  &__precio-2 {
+  &_precio2 {
     font-size: 1.3em;
   }
 

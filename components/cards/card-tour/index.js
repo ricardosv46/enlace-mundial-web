@@ -1,16 +1,24 @@
 import React from "react";
 import Link from "next/link";
 
+import styles from "./styles.module.scss";
+
 // Componentes
-import Like from "./components/like";
+import Like from "../components/like";
 
 export default function CardTour({ item }) {
   return (
-    <article className="card-tour">
+    <article className={styles.cardTour}>
       <Link href={`/actividades-y-turismo/${item.slug}`}>
-        <section className="card-tour__header position-relative pointer">
+        <section
+          style={{ backgroundImage: `url(${item.imagenPrincipal})` }}
+          className={`${styles.cardTour_header} position-relative pointer`}
+        >
           {/* Imagen con información */}
-          <div className="card-tour__imagen-info h-100 d-flex flex-column justify-content-between">
+          <div
+            style={{ backgroundImage: `url(${item.imagenSecundaria})` }}
+            className={`${styles.cardTour_imagenInfo} h-100 d-flex flex-column justify-content-between`}
+          >
             {/* Compartir y like */}
             <div className="d-flex justify-content-between align-items-center py-2 px-3">
               <span>Compartir</span>
@@ -19,9 +27,11 @@ export default function CardTour({ item }) {
             </div>
 
             {/* Precio y vista */}
-            <div className="card-tour__precio-vista d-flex justify-content-between align-items-center py-2 px-3">
-              <span className="card-tour__precio bg-light px-2">
-                Desde S/. 50
+            <div
+              className={`${styles.cardTour_precioVista} d-flex justify-content-between align-items-center py-2 px-3`}
+            >
+              <span className={`${styles.cardTour_precio} bg-light px-2`}>
+                Desde S/. {item.precio}
               </span>
 
               <span>Vista</span>
@@ -31,15 +41,15 @@ export default function CardTour({ item }) {
       </Link>
 
       <div className="card-tour__body p-3 p-md-4">
-        <h3 className="card-tour__titulo text-center">
-          <Link href={`/actividades-y-turismo/${item.slug}`}>
-            <h3 className="card-title font-weight-bold my-0 pointer">
-              {item.titulo}
-            </h3>
-          </Link>
-        </h3>
+        <Link href={`/actividades-y-turismo/${item.slug}`}>
+          <h3
+            className={`${styles.cardTour_titulo} font-weight-bold my-0 pointer text-center`}
+          >
+            {item.titulo}
+          </h3>
+        </Link>
 
-        <h4 className="card-tour__sub text-secondary text-left">
+        <h4 className={`${styles.cardTour_sub} text-secondary text-left mt-2`}>
           <span className="card-tour__icono-maps text-muted d-inline-block mr-2">
             <i className="fas fa-map-marker-alt"></i>
           </span>
@@ -64,8 +74,10 @@ export default function CardTour({ item }) {
           <p className="d-flex flex-column justify-content-end text-right">
             <span>Desde</span>
 
-            <span className="card-tour__precio-2 text-blue font-weight-bold">
-              S/. 50
+            <span
+              className={`${styles.cardTour_precio2} text-blue font-weight-bold`}
+            >
+              S/. {item.precio}
             </span>
           </p>
         </section>

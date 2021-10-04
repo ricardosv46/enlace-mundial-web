@@ -4,7 +4,7 @@ import Head from "next/head";
 import Script from "next/script";
 
 import Banner from "../components/home/banner/index";
-import ToursPopulares from "../components/home/tours-populares/index";
+import ToursPopulares from "@/components/servicios/tours/populares";
 import DestinosDestacados from "../components/home/destinos-destacados/index";
 import LunaDeMiel from "../components/home/luna-de-miel/index";
 import Cruceros from "../components/home/cruceros/index";
