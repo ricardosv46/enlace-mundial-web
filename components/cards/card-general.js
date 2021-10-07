@@ -29,7 +29,7 @@ export default function CardGeneral({ item, tipo }) {
             <i className="fas fa-map-marker-alt"></i>
           </span>
 
-          <span>Huarochirí - Lima, Perú</span>
+          <span className="small">Huarochirí - Lima, Perú</span>
         </h4>
 
         <div className="card-tour__stars">

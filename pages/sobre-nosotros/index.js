@@ -10,7 +10,7 @@ import SwiperCore, { Autoplay } from "swiper";
 SwiperCore.use([Autoplay]);
 
 // Componentes internos
-import ToursPopulares from "../../components/home/tours-populares/index";
+import ToursPopulares from "@/components/servicios/tours/populares";
 
 export default function About() {
   const swiperRef = useRef(null);
