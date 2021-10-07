@@ -65,7 +65,10 @@ export default function MiCuenta() {
                             </div>
 
                             <div className="d-flex justify-content-end">
-                              <Link href="/mi-cuenta/editar" passHref>
+                              <Link
+                                href={`/mi-cuenta/reservas/${item.id}`}
+                                passHref
+                              >
                                 <a className="btn btn-outline-primary d-flex align-items-center mt-2 px-3">
                                   Detalles
                                   <i class="fas fa-chevron-right ml-2"></i>

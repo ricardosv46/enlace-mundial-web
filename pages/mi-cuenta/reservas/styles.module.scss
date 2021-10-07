@@ -1,8 +1,24 @@
+@import "../../../styles/scss/variables";
+
 .reservas {
   &_imagen {
     width: 70px;
     height: 70px;
 
     border-radius: 0.3rem;
+  }
+
+  &_imagenDetalle {
+    width: 100%;
+    height: 120px;
+
+    @media (min-width: 768px) {
+      width: 100px;
+      height: 90px;
+    }
+  }
+
+  &_borderItem {
+    border-bottom: 2px dashed $primary;
   }
 }

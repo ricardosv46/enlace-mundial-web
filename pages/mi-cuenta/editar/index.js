@@ -10,6 +10,7 @@ export default function MiCuenta() {
   return (
     <>
       <section className={`${styles.miCuenta} container mt-4 mt-md-5`}>
+        {/* Navegación */}
         <div className="row">
           <div className="col-12 px-md-4 d-flex align-items-center">
             <Link href="/mi-cuenta" passHref>
