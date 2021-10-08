@@ -11,10 +11,12 @@
   transition: transform 0.5s;
 
   &_contenido {
-    display: none;
+    background-color: rgba($light, 0.8);
+
+    border-radius: 0.7rem;
   }
 
-  &:hover .compartir_contenido {
-    display: block;
+  &_logo {
+    width: 15px;
   }
 }
