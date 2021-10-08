@@ -1,0 +1,16 @@
+.finalizarReserva {
+  &_col2 {
+    order: -1;
+
+    @media (min-width: 768px) {
+      order: 2;
+    }
+  }
+
+  &_imagenTour {
+    height: 220px;
+
+    background-repeat: round;
+    background-position: center;
+  }
+}

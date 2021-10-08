@@ -1,7 +1,7 @@
 import react from "react";
 import Link from "next/link";
 
-import styles from "./styles.module.scss";
+import styles from "../styles.module.scss";
 
 // Components
 import SidebarCuenta from "@/components/mi-cuenta/sidebar";
@@ -38,7 +38,7 @@ export default function MiCuenta() {
               </h3>
 
               <section className="mt-3">
-                <div className="border-bottom pb-2">
+                <div className={`${styles.miCuenta_borderItem} pb-2`}>
                   <h4 className="small font-weight-bold">
                     Nombres y apellidos
                   </h4>
@@ -48,7 +48,7 @@ export default function MiCuenta() {
                   </div>
                 </div>
 
-                <div className="border-bottom mt-4 pb-4">
+                <div className={`${styles.miCuenta_borderItem} mt-4 pb-4`}>
                   <h4 className="small font-weight-bold">
                     Tipo y N° de documento
                   </h4>
@@ -61,7 +61,7 @@ export default function MiCuenta() {
                   />
                 </div>
 
-                <div className="border-bottom mt-4 pb-4">
+                <div className={`${styles.miCuenta_borderItem} mt-4 pb-4`}>
                   <h4 className="small font-weight-bold">
                     Dirección de correo electrónico
                   </h4>
@@ -69,7 +69,7 @@ export default function MiCuenta() {
                   <input type="text" className="form-control" />
                 </div>
 
-                <div className="border-bottom mt-4 pb-4">
+                <div className={`${styles.miCuenta_borderItem} mt-4 pb-4`}>
                   <h4 className="small font-weight-bold">Número de contacto</h4>
 
                   <input

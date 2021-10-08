@@ -5,6 +5,7 @@ import styles from "./styles.module.scss";
 
 // Componentes
 import Like from "../components/like";
+import Compartir from "../components/compartir";
 
 export default function CardTour({ item }) {
   return (
@@ -21,7 +22,7 @@ export default function CardTour({ item }) {
           >
             {/* Compartir y like */}
             <div className="d-flex justify-content-between align-items-center py-2 px-3">
-              <span>Compartir</span>
+              <Compartir />
 
               <Like />
             </div>
