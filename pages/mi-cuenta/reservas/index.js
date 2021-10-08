@@ -27,9 +27,12 @@ export default function MiCuenta() {
 
               <section className="mt-3">
                 {items
-                  ? items.map((item) => {
+                  ? items.map((item, index) => {
                       return (
-                        <div className="card bg-light border-0 mt-3">
+                        <div
+                          key={index}
+                          className="card bg-light border-0 mt-3"
+                        >
                           <div className="card-body">
                             <h4 className="card-title">{item.titulo}</h4>
 
@@ -66,12 +69,12 @@ export default function MiCuenta() {
 
                             <div className="d-flex justify-content-end">
                               <Link
-                                href={`/mi-cuenta/reservas/${item.id}`}
+                                href={`/mi-cuenta/reservas/ejemplo`}
                                 passHref
                               >
                                 <a className="btn btn-outline-primary d-flex align-items-center mt-2 px-3">
                                   Detalles
-                                  <i class="fas fa-chevron-right ml-2"></i>
+                                  <i className="fas fa-chevron-right ml-2"></i>
                                 </a>
                               </Link>
                             </div>

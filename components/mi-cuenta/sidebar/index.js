@@ -41,7 +41,7 @@ export default function SidebarCuenta() {
 
           <button type="button" className="btn btn-danger btn-block mt-4">
             Salir
-            <i class="fas fa-sign-out-alt ml-1"></i>
+            <i className="fas fa-sign-out-alt ml-1"></i>
           </button>
         </section>
       </div>

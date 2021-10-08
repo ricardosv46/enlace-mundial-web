@@ -19,9 +19,10 @@ export default function Gallery({ imagenes }) {
       <section
         className={`${styles.gallery_carousel} d-flex flex-md-column justify-content-center align-items-center py-4 px-1`}
       >
-        {imagenes.map((item) => {
+        {imagenes.map((item, index) => {
           return (
             <div
+              key={index}
               style={{ backgroundImage: "url(" + item + ")" }}
               className={`${
                 styles.gallery_carousel_item

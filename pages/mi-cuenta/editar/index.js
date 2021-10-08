@@ -17,7 +17,7 @@ export default function MiCuenta() {
               <a className="btn btn-link text-dark">
                 Editar cuenta
                 <span className="d-inline-block ml-2">
-                  <i class="fas fa-angle-right"></i>
+                  <i className="fas fa-angle-right"></i>
                 </span>
               </a>
             </Link>

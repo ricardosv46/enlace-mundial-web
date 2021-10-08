@@ -9,14 +9,19 @@ import styles from "./styles.module.scss";
 // Components
 import SidebarCuenta from "@/components/mi-cuenta/sidebar";
 
-export default function MiCuenta() {
+export default function MiCuentaDetalle() {
   const router = useRouter(),
     idPublicacion = parseInt(router.query.id);
 
   const [publicacions, setpublicacions] = useState(tours);
-  const [publicacion, setPublicacion] = useState(
-    publicacions.find((publicacion) => publicacion.id === idPublicacion)
-  );
+  const [publicacion, setPublicacion] = useState({
+    titulo: "Ica y paracas",
+    descripcion:
+      "Disfruta de 3 días recorriendo la laguna de Huacachina, Nazca y las islas Ballestas desde Ica. Con este tour conocerás algunos de los paisajes más bonitos del oeste de Perú.",
+    imagenPrincipal: "/imagenes/tours/ica.jpg",
+    imagenSecundaria: "/imagenes/tours/secundaria.jpg",
+    precio: 99,
+  });
 
   /* useEffect(() => {
     setpublicacions(tours);
@@ -36,7 +41,7 @@ export default function MiCuenta() {
               <a className="btn btn-link text-dark">
                 Mis reservas
                 <span className="d-inline-block ml-2">
-                  <i class="fas fa-angle-right"></i>
+                  <i className="fas fa-angle-right"></i>
                 </span>
               </a>
             </Link>

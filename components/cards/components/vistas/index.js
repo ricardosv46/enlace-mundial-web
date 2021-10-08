@@ -23,7 +23,7 @@ export default function Vistas() {
           className={`${styles.vistas_boton} text-dark d-flex justify-content-center align-items-center border-0`}
         >
           <span className="d-inline-block w-100 h-100">
-            <i class="far fa-eye"></i>
+            <i className="far fa-eye"></i>
           </span>
         </button>
 

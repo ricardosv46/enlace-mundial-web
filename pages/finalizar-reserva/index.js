@@ -109,7 +109,7 @@ export default function Home() {
                             >
                               Siguiente
                               <span className="d-inline-block ml-2">
-                                <i class="fas fa-chevron-right"></i>
+                                <i className="fas fa-chevron-right"></i>
                               </span>
                             </button>
                           </div>
@@ -141,7 +141,7 @@ export default function Home() {
                     <div className="row mt-2">
                       <div className="col-md-6">
                         <p>
-                          <i class="far fa-calendar-alt"></i>
+                          <i className="far fa-calendar-alt"></i>
                           <span className="d-inline-block ml-2">
                             10/09/2021
                           </span>
@@ -150,7 +150,7 @@ export default function Home() {
 
                       <div className="col-md-6">
                         <p>
-                          <i class="far fa-clock"></i>
+                          <i className="far fa-clock"></i>
                           <span className="d-inline-block ml-2">
                             10/09/2021
                           </span>
@@ -165,7 +165,7 @@ export default function Home() {
                     <div className="row mt-2">
                       <div className="col-md-6">
                         <p>
-                          <i class="fas fa-restroom"></i>
+                          <i className="fas fa-restroom"></i>
                           <span className="d-inline-block ml-2">
                             10/09/2021
                           </span>
@@ -175,7 +175,7 @@ export default function Home() {
 
                       <div className="col-md-6">
                         <p>
-                          <i class="fas fa-child"></i>
+                          <i className="fas fa-child"></i>
                           <span className="d-inline-block ml-2">
                             10/09/2021
                           </span>

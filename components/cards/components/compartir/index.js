@@ -24,7 +24,7 @@ export default function Compartir() {
           className={`${styles.compartir} text-dark d-flex justify-content-center align-items-center border-0`}
         >
           <span className="d-inline-block w-100 h-100">
-            <i class="fas fa-share-alt"></i>
+            <i className="fas fa-share-alt"></i>
           </span>
         </button>
 

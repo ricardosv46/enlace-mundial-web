@@ -38,9 +38,9 @@ export default function MenuInterior() {
         title="INFORMACIÓN"
         className={`${styles.headerInterior_mobile} d-md-none`}
       >
-        {items.map((item) => {
+        {items.map((item, index) => {
           return (
-            <Dropdown.Item>
+            <Dropdown.Item key={index}>
               <Link href="/" passHref>
                 <a
                   className={`${styles.headerInterior_link} text-dark text-uppercase font-weight-bold`}
@@ -60,9 +60,9 @@ export default function MenuInterior() {
         <nav className="container">
           <div className="row">
             <div className="col-12">
-              {items.map((item) => {
+              {items.map((item, index) => {
                 return (
-                  <Link href="/" passHref>
+                  <Link href="/" key={index} passHref>
                     <a
                       className={`${styles.headerInterior_link} text-dark text-uppercase font-weight-bold`}
                     >
