@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 
 // Componentes
 import Swiper from "react-id-swiper";
 import CardTour from "@/components/cards/card-tour";
+
+import tours from "../../datos-paginas/api/tours";
 
 export default function ToursRelacionadoss() {
   const swiperRefMobile = useRef(null);
@@ -12,33 +14,7 @@ export default function ToursRelacionadoss() {
     loop: true,
   };
 
-  const items = [
-    {
-      id: 1,
-      titulo: "Valle sagrado con Maras Moray - Cusco",
-      slug: "valle-sagrado-con-maras-moray-cusco",
-    },
-    {
-      id: 2,
-      titulo: "Activiadad 2 - Cusco",
-      slug: "actividad-2-cusco",
-    },
-    {
-      id: 3,
-      titulo: "Activiadad 3 - Cusco",
-      slug: "actividad-3-cusco",
-    },
-    {
-      id: 4,
-      titulo: "Activiadad 4 - Cusco",
-      slug: "actividad-4-cusco",
-    },
-    {
-      id: 5,
-      titulo: "Activiadad 5 - Cusco",
-      slug: "actividad-5-cusco",
-    },
-  ];
+  const [items, setItems] = useState(tours);
 
   const goNext = () => {
     swiperRefMobile.current.swiper.slideNext();

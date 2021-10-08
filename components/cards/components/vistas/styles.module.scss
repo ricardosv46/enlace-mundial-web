@@ -1,0 +1,26 @@
+@import "../../../../styles/scss/variables";
+
+.vistas {
+  width: 30px;
+  height: 25px;
+
+  margin-right: 2rem;
+
+  &_boton {
+    background-color: rgba($light, 0.8);
+
+    border-radius: 0.7rem;
+
+    transition: transform 0.5s;
+  }
+
+  &_contenido {
+    background-color: rgba($light, 0.8);
+
+    border-radius: 0.7rem;
+  }
+
+  &_logo {
+    width: 15px;
+  }
+}

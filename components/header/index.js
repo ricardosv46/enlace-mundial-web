@@ -84,13 +84,21 @@ export default function Header() {
                 </button>
               </div>
 
-              <div className="header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0">
+              {/* <div className="header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0">
                 <button
                   type="button"
                   className="btn btn-outline-primary header__button d-flex justify-content-center align-items-center"
                 >
                   Regístrate
                 </button>
+              </div> */}
+
+              <div className="header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0">
+                <Link href="/mi-cuenta" passHref>
+                  <a className="btn btn-outline-primary header__button d-flex justify-content-center align-items-center">
+                    Mi cuenta
+                  </a>
+                </Link>
               </div>
             </section>
           </nav>

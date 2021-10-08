@@ -6,6 +6,7 @@ import styles from "./styles.module.scss";
 // Componentes
 import Like from "../components/like";
 import Compartir from "../components/compartir";
+import Vistas from "../components/vistas";
 
 export default function CardTour({ item }) {
   return (
@@ -35,7 +36,7 @@ export default function CardTour({ item }) {
                 Desde S/. {item.precio}
               </span>
 
-              <span>Vista</span>
+              <Vistas />
             </div>
           </div>
         </section>

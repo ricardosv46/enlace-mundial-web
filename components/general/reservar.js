@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import Calendar from "./calendar";
 
@@ -65,12 +66,18 @@ export default function Reservar() {
                 </div>
               </section>
 
-              <button
+              {/* <button
                 type="button"
                 className="btn btn-primary btn-block text-uppercase mt-2"
               >
                 Reservar ahora
-              </button>
+              </button> */}
+
+              <Link href="/finalizar-reserva">
+                <a className="btn btn-primary btn-block text-uppercase mt-2">
+                  Reservar ahora
+                </a>
+              </Link>
             </div>
           </div>
         </div>
