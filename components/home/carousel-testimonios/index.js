@@ -31,15 +31,15 @@ export default function CarouselBlog(props) {
   const items = [
     {
       id: 1,
-      imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
-      nombre: "Esmeralda Kathleen",
+      imagen: "https://avatars.githubusercontent.com/u/499550?v=4",
+      nombre: "Evan You",
       comentario:
         "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
     },
     {
       id: 2,
-      imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
-      nombre: "Esmeralda Kathleen",
+      imagen: "https://i.blogs.es/e3def9/torvalds3/840_560.jpg",
+      nombre: "Linus Torvals",
       comentario:
         "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
     },

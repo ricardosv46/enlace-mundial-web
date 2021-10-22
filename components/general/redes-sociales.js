@@ -2,7 +2,7 @@ import React from "react";
 
 export default function RedesSociales() {
   return (
-    <div className="redes-sociales">
+    <div className="redes-sociales pointer">
       <img src="/imagenes/redes-sociales/facebook.png" alt="Facebook" />
 
       <img src="/imagenes/redes-sociales/twitter.png" alt="Twitter" />

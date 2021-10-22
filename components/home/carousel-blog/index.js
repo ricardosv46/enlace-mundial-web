@@ -1,10 +1,15 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
+import Link from "next/link";
 
 // Componentes
 import Swiper from "react-id-swiper";
 import CardBlog from "../../cards/card-blog";
 
+import posts from "../../../datos-paginas/api/blog";
+
 export default function CarouselBlog(props) {
+  const [items, setItems] = useState(posts);
+
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
 
@@ -19,33 +24,6 @@ export default function CarouselBlog(props) {
     loop: true,
   };
 
-  const items = [
-    {
-      id: 1,
-      imagen:
-        "https://i1.wp.com/instyle.mx/wp-content/uploads/2019/07/parejas-felices.jpg",
-      titulo: "Y tú qué planes? Turismo, ofertas de viaje y tours por el Perú",
-      descripcion:
-        "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
-    },
-    {
-      id: 1,
-      imagen:
-        "https://i1.wp.com/instyle.mx/wp-content/uploads/2019/07/parejas-felices.jpg",
-      titulo: "Y tú qué planes? Turismo, ofertas de viaje y tours por el Perú",
-      descripcion:
-        "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
-    },
-    {
-      id: 3,
-      imagen:
-        "https://i1.wp.com/instyle.mx/wp-content/uploads/2019/07/parejas-felices.jpg",
-      titulo: "Y tú qué planes? Turismo, ofertas de viaje y tours por el Perú",
-      descripcion:
-        "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
-    },
-  ];
-
   const goNext = () => {
     swiperRefMobile.current.swiper.slideNext();
     swiperRefDesktop.current.swiper.slideNext();
@@ -57,7 +35,11 @@ export default function CarouselBlog(props) {
 
   return (
     <section className="carousel-3-columnas mt-5">
-      <h2 className="subtitulo-general text-black">Blog</h2>
+      <h2 className="subtitulo-general text-black">
+        <Link href="/blog" passHref>
+          <a className="text-dark text-decoration-none">Blog</a>
+        </Link>
+      </h2>
 
       <div className="container mt-5">
         <div className="row justify-content-center">
