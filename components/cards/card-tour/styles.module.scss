@@ -83,15 +83,20 @@
     padding-right: 1rem;
 
     @media (min-width: 768px) {
-      padding-right: 1.5rem;
+      padding-right: 1.3rem;
     }
   }
 
   &_precio {
+    width: 45%;
+
     font-size: 1em;
     font-weight: 700;
 
     color: $primary;
+
+    display: inline-block;
+    clip-path: polygon(100% 0%, 90% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
   }
 
   &_precio2 {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -28,6 +28,36 @@ export default function Home() {
     "https://i.pinimg.com/originals/75/80/78/75807881c354def7dcaf6f66c0d006d3.jpg",
     "https://mejorconsalud.as.com/wp-content/uploads/2019/02/elegir-lugar-luna-de-miel.jpg",
   ];
+
+  // Supervisar scroll
+  const [sidebarFixed, setSidebarFixed] = useState(true);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    function onScroll() {
+      let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
+
+      console.log(currentPosition);
+
+      if (currentPosition >= 4000) {
+        setSidebarFixed(false);
+      } else {
+        setSidebarFixed(true);
+      }
+
+      /* if (currentPosition > scrollTop) {
+        // downscroll code
+        setScrolling(false);
+      } else {
+        // upscroll code
+        setScrolling(true);
+      }
+      setScrollTop(currentPosition <= 0 ? 0 : currentPosition); */
+    }
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
 
   return (
     <div>
@@ -72,6 +102,23 @@ export default function Home() {
             <div className="row">
               <div className="col-md-8">
                 <Gallery imagenes={galeria} />
+              </div>
+
+              <div className="col-md-4 d-none d-md-block">
+                {/* Solo desktop */}
+                <section
+                  className={
+                    sidebarFixed
+                      ? "sidebar-reservar sidebar-reservar--fixed"
+                      : "sidebar-reservar"
+                  }
+                >
+                  <h3 className="sidebar-reservar__titulo font-weight-bold text-uppercase text-secondary my-0">
+                    Descubre grandes lugares
+                  </h3>
+
+                  <Reservar />
+                </section>
               </div>
             </div>
           </section>
@@ -437,17 +484,6 @@ export default function Home() {
               </div>
             </div>
           </section>
-
-          {/* Solo desktop */}
-          <aside className="d-none d-md-block">
-            <section className="sidebar-reservar text-center py-3 px-3">
-              <h3 className="sidebar-reservar__titulo font-weight-bold text-uppercase text-secondary my-0">
-                Descubre grandes lugares
-              </h3>
-
-              <Reservar />
-            </section>
-          </aside>
         </section>
       </main>
 

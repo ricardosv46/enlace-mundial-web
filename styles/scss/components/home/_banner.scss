@@ -6,6 +6,8 @@
   background-image: url("/imagenes/home/banner.jpg"); // 1280×853
   background-position: center;
 
+  position: relative;
+
   @media (min-width: 768px) {
     height: 60vh;
   }
@@ -20,28 +22,35 @@
     background-color: rgba($dark, 0.1);
 
     width: 100%;
-    height: 100vh;
+    height: 100%;
 
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 1;
   }
 
   &__title {
     font-size: 7vw;
 
+    position: relative;
+    z-index: 2;
+
     @media (min-width: 992px) {
-      font-size: 3.5vw;
+      font-size: 4vw;
     }
   }
 
   &__subtitle {
-    font-size: 5vw;
+    font-size: 6vw;
+
+    position: relative;
+    z-index: 2;
 
     @media (min-width: 992px) {
-      font-size: 2.8vw;
+      font-size: 3.5vw;
     }
   }
 }

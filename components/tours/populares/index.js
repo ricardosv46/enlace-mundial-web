@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 
-import tours from "../../../../datos-paginas/api/tours";
+import styles from "./styles.module.scss";
+
+import tours from "../../../datos-paginas/api/tours";
 
 // Componentes
 import Swiper from "react-id-swiper";
@@ -24,10 +26,12 @@ export default function ToursPopulares() {
   };
 
   return (
-    <section className="tours-populares mt-5">
-      <h2 className="subtitulo-general text-black">Tours más populares</h2>
+    <section className={`${styles.toursPopulares} mt-5`}>
+      <h2 className="subtitulo-general subtitulo-general--border-bottom text-black">
+        Tours más populares
+      </h2>
 
-      <div className="container mt-5">
+      <div className={`${styles.toursPopulares_container} container`}>
         {/* Carousel mobile */}
         <div className="row d-md-none">
           <div className="col-12">

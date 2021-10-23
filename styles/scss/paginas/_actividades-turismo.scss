@@ -6,13 +6,18 @@
 
   background-color: white;
 
+  text-align: center;
+  padding: 1rem;
+
   border: 1px solid rgba($dark, 0.1);
   border-radius: 1rem;
 
-  position: fixed;
-  top: 15vh;
-  right: 2rem;
-  z-index: 100;
+  &--fixed {
+    position: fixed;
+    top: 15vh;
+    right: 2rem;
+    z-index: 100;
+  }
 
   &__titulo {
     font-size: 1em;

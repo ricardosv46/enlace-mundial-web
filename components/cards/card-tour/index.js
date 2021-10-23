@@ -30,9 +30,11 @@ export default function CardTour({ item }) {
 
             {/* Precio y vista */}
             <div
-              className={`${styles.cardTour_precioVista} d-flex justify-content-between align-items-center py-2 px-3`}
+              className={`${styles.cardTour_precioVista} d-flex justify-content-between align-items-center pr-2`}
             >
-              <span className={`${styles.cardTour_precio} bg-light px-2`}>
+              <span
+                className={`${styles.cardTour_precio} bg-light py-1 px-2 text-uppercase`}
+              >
                 Desde S/. {item.precio}
               </span>
 
@@ -56,7 +58,7 @@ export default function CardTour({ item }) {
             <i className="fas fa-map-marker-alt"></i>
           </span>
 
-          <span>Huarochirí - Lima, Perú</span>
+          <span className="font-weight-bold">Huarochirí - Lima, Perú</span>
         </h4>
 
         <div className="card-tour__stars">

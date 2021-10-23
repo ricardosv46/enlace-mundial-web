@@ -13,7 +13,7 @@ export default function Vistas() {
   return (
     <>
       <div
-        className={`${styles.vistas} position-relative d-flex`}
+        className={`${styles.vistas} position-relative d-flex mb-2`}
         onClick={click}
         onMouseEnter={() => setMostrarContenido(true)}
         onMouseLeave={() => setMostrarContenido(false)}
