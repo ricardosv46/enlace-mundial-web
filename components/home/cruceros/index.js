@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
+
+import cruceros from "../../../datos-paginas/api/cruceros";
 
 // swiper component
 import Swiper from "react-id-swiper";
@@ -7,6 +9,8 @@ import Swiper from "react-id-swiper";
 import CardGeneral from "../../cards/card-general";
 
 const LunaDeMiel = (props) => {
+  const [items, setItems] = useState(cruceros);
+
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
 
@@ -26,39 +30,6 @@ const LunaDeMiel = (props) => {
     swiperRefMobile.current.swiper.slidePrev();
     swiperRefDesktop.current.swiper.slidePrev();
   };
-
-  const items = [
-    {
-      titulo: "Crucero",
-      idx: 1,
-      slug: "crucero",
-    },
-    {
-      titulo: "Crucero 2",
-      idx: 2,
-      slug: "crucero-2",
-    },
-    {
-      titulo: "Crucero 3",
-      idx: 3,
-      slug: "crucero-3",
-    },
-    {
-      titulo: "Crucero 4",
-      idx: 4,
-      slug: "crucero-4",
-    },
-    {
-      titulo: "Crucero 5",
-      idx: 5,
-      slug: "crucero-5",
-    },
-    {
-      titulo: "Crucero 6",
-      idx: 6,
-      slug: "crucero-6",
-    },
-  ];
 
   const carouselParamsMobile = {
     slidesPerView: 1,
@@ -84,7 +55,7 @@ const LunaDeMiel = (props) => {
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
               {items.map((item) => {
                 return (
-                  <div key={item.titulo}>
+                  <div key={item.id}>
                     <CardGeneral item={item} tipo="cruceros" />
                   </div>
                 );
@@ -97,7 +68,7 @@ const LunaDeMiel = (props) => {
             <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
               {items.map((item) => {
                 return (
-                  <div key={item.titulo}>
+                  <div key={item.id}>
                     <CardGeneral item={item} tipo="cruceros" />
                   </div>
                 );

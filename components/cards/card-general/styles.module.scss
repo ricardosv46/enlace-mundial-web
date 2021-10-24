@@ -1,38 +1,52 @@
-.card-general {
+@import "../../../styles/scss/variables";
+
+.cardGeneral {
   max-width: 100%;
 
   border: 1px solid rgba($secondary, 0.4);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 
-  &__image {
+  &_imagen {
     height: 300px;
-    background-image: url("https://estaticos.muyhistoria.es/media/cache/400x300_thumb/uploads/images/pyr/54941b888c770c961fd6df9e/pais-mas-vacaciones.jpg");
     background-size: cover;
+    background-position: center;
 
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
   }
 
-  &__body {
+  &_body {
     padding: 1.3rem 2rem;
   }
 
-  &__titulo {
+  &_titulo {
     font-size: 1.1em;
     font-weight: 700;
-    color: $secondary;
+    color: rgba($secondary, 0.9);
 
     text-align: center;
+
+    display: block;
 
     @media (min-width: 768px) {
       font-size: 1.1em;
 
       text-transform: uppercase;
     }
+
+    &:hover {
+      color: $secondary;
+
+      text-decoration: none;
+    }
   }
 
-  &__icono-maps {
-    font-size: 1em;
+  &_icono {
+    font-size: 1rem;
+  }
+
+  &_ubicacion {
+    font-size: 1rem;
   }
 }

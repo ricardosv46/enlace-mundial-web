@@ -1,6 +1,7 @@
 import React from "react";
-
 import Link from "next/link";
+
+import styles from "./styles.module.scss";
 
 export default function CardGeneral({ item, tipo }) {
   let ruta = "/luna-de-miel";
@@ -10,14 +11,17 @@ export default function CardGeneral({ item, tipo }) {
   }
 
   return (
-    <article className="card-general">
+    <article className={styles.cardGeneral}>
       <Link href={`${ruta}/${item.slug}`}>
-        <section className="card-general__image pointer"></section>
+        <section
+          style={{ backgroundImage: "url(" + item.imagenPrincipal + ")" }}
+          className={`${styles.cardGeneral_imagen} pointer`}
+        ></section>
       </Link>
 
-      <section className="card-general__body">
-        <Link href={`${ruta}/${item.slug}`}>
-          <h3 className="card-general__titulo pointer">{item.titulo}</h3>
+      <section className={styles.cardGeneral_body}>
+        <Link href={`${ruta}/${item.slug}`} passHref>
+          <a className={`${styles.cardGeneral_titulo} mt-3`}>{item.nombre}</a>
         </Link>
 
         <p className="text-muted mt-4">
@@ -25,11 +29,15 @@ export default function CardGeneral({ item, tipo }) {
         </p>
 
         <h4 className="card-tour__sub text-secondary text-left mt-3">
-          <span className="card-general__icono-maps text-muted d-inline-block mr-2">
+          <span
+            className={`${styles.cardGeneral_icono} text-muted d-inline-block mr-2`}
+          >
             <i className="fas fa-map-marker-alt"></i>
           </span>
 
-          <span className="small">Huarochirí - Lima, Perú</span>
+          <span className={styles.cardGeneral_ubicacion}>
+            Huarochirí - Lima, Perú
+          </span>
         </h4>
 
         <div className="card-tour__stars">
