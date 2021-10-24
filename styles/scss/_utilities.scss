@@ -47,12 +47,16 @@
 }
 
 .subtitulo-slug {
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 700;
   color: $black;
 
+  line-height: 1rem;
+
   @media (min-width: 768px) {
     font-size: 1.5em;
+
+    line-height: 1.3rem;
   }
 }
 
@@ -82,4 +86,10 @@
 
 .shadow-card {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 8px;
+}
+
+.shadow-bottom {
+  box-shadow: 0px 8px 14px -13px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 8px 14px -13px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 8px 14px -13px rgba(0,0,0,0.75);
 }

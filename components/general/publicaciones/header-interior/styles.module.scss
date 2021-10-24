@@ -1,0 +1,39 @@
+.headerInterior {
+  &__fixed {
+    width: 93vw;
+
+    position: fixed;
+    top: 60px;
+    left: 7%;
+    z-index: 10;
+
+    @media (min-width: 768px) {
+      width: 58%;
+
+      left: 7.5%;
+    }
+  }
+
+  h3 {
+    font-size: 1.3em;
+
+    @media (min-width: 768px) {
+      font-size: 2em;
+      line-height: 2rem;
+    }
+  }
+
+  p {
+    font-size: 0.7rem;
+    line-height: 0.8rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+    }
+  }
+
+  button {
+    padding: 0.1rem 1rem;
+  }
+}

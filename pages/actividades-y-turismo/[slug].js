@@ -10,6 +10,7 @@ import Gallery from "components/gallery/index";
 import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
 import Reservar from "@/components/general/reservar";
 import MenuInterior from "@/components/servicios/submenu";
+import HeaderInterior from "@/components/general/publicaciones/header-interior";
 
 export default function Home() {
   const router = useRouter();
@@ -35,24 +36,10 @@ export default function Home() {
 
   useEffect(() => {
     function onScroll() {
-      let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
+      let currentPosition = window.pageYOffset;
 
-      console.log(currentPosition);
-
-      if (currentPosition >= 4000) {
-        setSidebarFixed(false);
-      } else {
-        setSidebarFixed(true);
-      }
-
-      /* if (currentPosition > scrollTop) {
-        // downscroll code
-        setScrolling(false);
-      } else {
-        // upscroll code
-        setScrolling(true);
-      }
-      setScrollTop(currentPosition <= 0 ? 0 : currentPosition); */
+      // Calcular scroll para sidebar
+      currentPosition >= 4000 ? setSidebarFixed(false) : setSidebarFixed(true);
     }
 
     window.addEventListener("scroll", onScroll);
@@ -83,14 +70,11 @@ export default function Home() {
       </Modal>
 
       <main className="actividades-turismo">
-        <section className="l-miel__items mt-3">
+        <section className="mt-2">
           <div className="container">
             <div className="row">
-              <div className="col-md-12">
-                <span className="small text-primary">
-                  Actividades y turismo
-                </span>
-                <h2 className="subtitulo-slug text-primary">{slug}</h2>
+              <div className="col-md-8">
+                <HeaderInterior slug={slug} />
               </div>
             </div>
           </div>
@@ -247,7 +231,7 @@ export default function Home() {
               <div className="row">
                 <div className="col-md-8">
                   <h2 className="subtitulo-general text-uppercase my-0">
-                    Itinerario
+                    Incluye
                   </h2>
                 </div>
               </div>
