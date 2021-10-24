@@ -1,13 +1,13 @@
-.card-busqueda {
-  min-height: 240px;
+@import "../../../styles/scss/variables";
+
+.cardBusqueda {
+  min-height: 270px;
 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 200px 1fr;
 
   border: 1px solid $light;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
 
   transition: box-shadow 0.5s;
 
@@ -18,14 +18,23 @@
   }
 
   @media (min-width: 768px) {
+    min-height: 240px;
+
     grid-template-columns: 40% 1fr;
     grid-template-rows: 1fr;
-  }
-
-  &__imagen {
-    background-image: url("https://cdn2.civitatis.com/peru/cusco/galeria/laguna-pomacanchi.jpg");
 
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
+  }
+
+  &_imagen {
+    height: 100%;
+
+    background-size: cover;
+
+    @media (min-width: 768px) {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
   }
 }

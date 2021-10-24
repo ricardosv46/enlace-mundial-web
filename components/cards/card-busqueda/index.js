@@ -1,11 +1,15 @@
 import React from "react";
 
 import Link from "next/link";
+import styles from "./styles.module.scss";
 
 export default function CardBusqueda({ item }) {
   return (
-    <div className="card-busqueda mb-4">
-      <div className="card-busqueda__imagen"></div>
+    <div className={`${styles.cardBusqueda} mb-4`}>
+      <div
+        className={`${styles.cardBusqueda_imagen} mb-4`}
+        style={{ backgroundImage: "url(" + item.imagenPrincipal + ")" }}
+      ></div>
 
       <div className="card-busqueda__contenido d-flex flex-column justify-content-between py-3 px-4">
         <div className="d-flex justify-content-between align-items-center">

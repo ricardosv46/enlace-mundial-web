@@ -1,38 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Head from "next/head";
 import Script from "next/script";
 
 import CardBusqueda from "@/components/cards/card-busqueda";
 
+import tours from "../../datos-paginas/api/tours";
+
 export default function ActividadesYTurismo() {
-  const items = [
-    {
-      id: 1,
-      titulo: "Valle sagrado con Maras Moray - Cusco",
-      slug: "valle-sagrado-con-maras-moray-cusco",
-    },
-    {
-      id: 2,
-      titulo: "Activiadad 2 - Cusco",
-      slug: "actividad-2-cusco",
-    },
-    {
-      id: 3,
-      titulo: "Activiadad 3 - Cusco",
-      slug: "actividad-3-cusco",
-    },
-    {
-      id: 4,
-      titulo: "Activiadad 4 - Cusco",
-      slug: "actividad-4-cusco",
-    },
-    {
-      id: 5,
-      titulo: "Activiadad 5 - Cusco",
-      slug: "actividad-5-cusco",
-    },
-  ];
+  const [items, setItems] = useState(tours);
 
   return (
     <div className="busqueda-page">
