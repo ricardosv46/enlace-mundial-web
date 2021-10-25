@@ -1,10 +1,14 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
+
+import lunaDeMiel from "../../../datos-paginas/api/luna-de-miel";
 
 // Componentes
 import Swiper from "react-id-swiper";
 import CardGeneral from "../../cards/card-general";
 
 const LunaDeMiel = (props) => {
+  const [items, setItems] = useState(lunaDeMiel);
+
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
 
@@ -35,99 +39,6 @@ const LunaDeMiel = (props) => {
     swiperRefMobile.current.swiper.slidePrev();
     swiperRefDesktop.current.swiper.slidePrev();
   };
-
-  const items = [
-    {
-      id: 1,
-      titulo: "Paquete turístico",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item",
-    },
-    {
-      id: 2,
-      titulo: "Paquete turístico 2",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-2",
-    },
-    {
-      id: 3,
-      titulo: "Paquete turístico 3",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-3",
-    },
-    {
-      id: 4,
-      titulo: "Paquete turístico 4",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-4",
-    },
-    {
-      id: 5,
-      titulo: "Paquete turístico 5",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-5",
-    },
-    {
-      id: 6,
-      titulo: "Paquete turístico 6",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-6",
-    },
-    {
-      id: 7,
-      titulo: "Paquete turístico 7",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-7",
-    },
-    {
-      id: 8,
-      titulo: "Paquete turístico 8",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-8",
-    },
-    {
-      id: 9,
-      titulo: "Paquete turístico 9",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-9",
-    },
-  ];
 
   return (
     <section className="container carousel-app">

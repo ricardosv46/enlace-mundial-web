@@ -27,7 +27,7 @@ export default function HeaderInterior({ slug }) {
           headerFixed ? `${styles.headerInterior__fixed} shadow-bottom` : ""
         }`}
       >
-        <div class="col-8 pl-md-0">
+        <div className="col-8 pl-md-0">
           <span className="small text-primary">Actividades y turismo</span>
           <h2 className="subtitulo-slug text-primary my-0">{slug}</h2>
         </div>
@@ -41,7 +41,7 @@ export default function HeaderInterior({ slug }) {
           </p>
         </div>
 
-        <section class="d-md-none mt-3 pl-3">
+        <section className="d-md-none mt-3 pl-3">
           <SubMenuMobile />
         </section>
       </section>
