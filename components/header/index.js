@@ -60,7 +60,7 @@ export default function Header() {
               </li>
 
               <li>
-                <Link href="luna-de-miel">Luna de miel</Link>
+                <Link href="/luna-de-miel">Luna de miel</Link>
               </li>
 
               <li>

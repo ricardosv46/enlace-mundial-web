@@ -1,15 +1,60 @@
-import react from "react";
+import react, { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import moment from "moment";
+import Moment from "react-moment";
+
+import styles from "./styles.module.scss";
 
 import tours from "../../datos-paginas/api/tours";
 
-import styles from "./styles.module.scss";
+import { formatoAPrecio } from "../../utilidades/formato-precio";
 
 import { Tabs, Form } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 
+import Formularios from "../../components/general/reservar/formularios";
+
 export default function Home() {
+  const [carrito, setCarrito] = useState({});
+  const [formularios, setFormularios] = useState([]);
+  const [datosPasajero, setDatosPasajero] = useState({
+    validado: false,
+    nombres: "",
+    apellidos: "",
+    tipoDocumento: "",
+    nroDocumento: "",
+    comentarios: "",
+  });
+
+  // Asignar formularios
+  useEffect(() => {
+    setTimeout(() => {
+      const carritoLocal = JSON.parse(localStorage.getItem("carrito"));
+
+      setCarrito(carritoLocal);
+
+      // Calcular cuantos formularios se renderizarán
+      let forms = JSON.parse(JSON.stringify(formularios));
+
+      for (let i = 0; i < carritoLocal.nroAdultos; i++) {
+        let form = {};
+        form.adulto = true;
+
+        forms.push(form);
+      }
+
+      for (let i = 0; i < carritoLocal.nroMenores; i++) {
+        let form = {};
+        form.menor = true;
+
+        forms.push(form);
+      }
+
+      setFormularios(forms);
+    }, 500);
+  }, []);
+
   return (
     <div>
       <Head>
@@ -30,90 +75,48 @@ export default function Home() {
                 <div className="card-header bg-primary text-white text-uppercase font-weight-bold rounded-0">
                   Finalizar Reserva
                 </div>
+
                 <div className="card-body">
                   <Tabs
                     defaultActiveKey="home"
                     id="uncontrolled-tab-example"
                     className="mb-3"
                   >
-                    <Tab eventKey="home" title="Datos del comprador">
+                    <Tab
+                      eventKey="home"
+                      title={
+                        formularios.length > 1
+                          ? "Datos de los pasajeros"
+                          : "Datos del pasajero"
+                      }
+                    >
                       <section className="p-3">
-                        <form>
-                          <div className="form-row">
-                            <div className="col-md-6">
-                              <div className="form-group">
-                                <label>Nombres</label>
-                                <input type="text" className="form-control" />
-                              </div>
-                            </div>
+                        {formularios.length ? (
+                          <Formularios items={formularios} />
+                        ) : (
+                          "Debe agregar un tour a su carrito"
+                        )}
 
-                            <div className="col-md-6">
-                              <div className="form-group">
-                                <label>Apellidos</label>
-                                <input type="text" className="form-control" />
-                              </div>
-                            </div>
-                          </div>
+                        <div className="form-group mt-3 px-md-4">
+                          <Form.Check type="checkbox" />
+                          Acepto los{" "}
+                          <Link href="/terminos-y-condiciones">
+                            Términos y Condiciones Generales
+                          </Link>{" "}
+                          de Enlace Mundial
+                        </div>
 
-                          <div className="form-row mt-3">
-                            <div className="col-md-6">
-                              <div className="form-group">
-                                <label>Tipo de documento</label>
-                                <select className="form-control">
-                                  <option value="DNI">DNI</option>
-                                  <option value="CE">
-                                    Carnet de extranjería
-                                  </option>
-                                  <option value="PASAPORTE">Pasaporte</option>
-                                </select>
-                              </div>
-                            </div>
-
-                            <div className="col-md-6">
-                              <div className="form-group">
-                                <label>Número de documento</label>
-                                <input
-                                  type="number"
-                                  min="0"
-                                  step="1"
-                                  className="form-control"
-                                />
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="form-row mt-3">
-                            <div className="col-md-12">
-                              <div className="form-group">
-                                <label>Comentarios adicionales</label>
-                                <textarea className="form-control"></textarea>
-                              </div>
-
-                              <div className="form-group mt-3 px-md-4">
-                                <p>
-                                  <Form.Check type="checkbox" />
-                                  Acepto los{" "}
-                                  <Link href="/terminos-y-condiciones">
-                                    Términos y Condiciones Generales
-                                  </Link>{" "}
-                                  de Enlace Mundial
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="text-right">
-                            <button
-                              type="button"
-                              className="btn btn-primary px-4"
-                            >
-                              Siguiente
-                              <span className="d-inline-block ml-2">
-                                <i className="fas fa-chevron-right"></i>
-                              </span>
-                            </button>
-                          </div>
-                        </form>
+                        <div className="text-right mt-5">
+                          <button
+                            type="button"
+                            className="btn btn-primary px-4"
+                          >
+                            Ir a pagar
+                            <span className="d-inline-block ml-2">
+                              <i className="fas fa-chevron-right"></i>
+                            </span>
+                          </button>
+                        </div>
                       </section>
                     </Tab>
                     <Tab eventKey="profile" title="Finalizar pago" disabled>
@@ -133,8 +136,9 @@ export default function Home() {
                   className={`${styles.finalizarReserva_imagenTour} bg-info`}
                 ></div>
                 <div className="card-body">
-                  <h2 className="border-bottom pb-2">{tours[0].titulo}</h2>
-
+                  <h2 className="border-bottom pb-2">
+                    {carrito.producto ? carrito.producto.titulo : ""}
+                  </h2>
                   <div className="mt-2 border-bottom pb-3">
                     <span className="text-muted">Fecha de reserva: </span>
 
@@ -143,7 +147,7 @@ export default function Home() {
                         <p>
                           <i className="far fa-calendar-alt"></i>
                           <span className="d-inline-block ml-2">
-                            10/09/2021
+                            <Moment format="DD/MM/YYYY">{carrito.fecha}</Moment>
                           </span>
                         </p>
                       </div>
@@ -152,13 +156,12 @@ export default function Home() {
                         <p>
                           <i className="far fa-clock"></i>
                           <span className="d-inline-block ml-2">
-                            10/09/2021
+                            <Moment format="LT">{carrito.hora}</Moment>
                           </span>
                         </p>
                       </div>
                     </div>
                   </div>
-
                   <div className="mt-2 border-bottom pb-3">
                     <span className="text-muted">Pasajeros: </span>
 
@@ -167,7 +170,7 @@ export default function Home() {
                         <p>
                           <i className="fas fa-restroom"></i>
                           <span className="d-inline-block ml-2">
-                            10/09/2021
+                            {carrito.nroAdultos}
                           </span>
                         </p>
                         <span className="small text-primary">Adultos</span>
@@ -177,18 +180,31 @@ export default function Home() {
                         <p>
                           <i className="fas fa-child"></i>
                           <span className="d-inline-block ml-2">
-                            10/09/2021
+                            {carrito.nroMenores}
                           </span>
                         </p>
                         <span className="small text-primary">Niños</span>
                       </div>
                     </div>
                   </div>
-
                   <div className="d-flex justify-content-between align-items-center mt-2 pb-3 pr-md-3 border-bottom">
                     <span className="text-muted">TOTAL</span>
 
-                    <h3>S/. 100.00</h3>
+                    {carrito.producto ? (
+                      <div>
+                        <span className="small text-muted">
+                          {formatoAPrecio(carrito.producto.precio)} c/u
+                        </span>
+                        <h3>
+                          {formatoAPrecio(
+                            carrito.producto.precio *
+                              (carrito.nroAdultos + carrito.nroMenores)
+                          )}
+                        </h3>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </div>

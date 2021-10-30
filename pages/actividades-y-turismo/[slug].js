@@ -4,6 +4,8 @@ import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
 
+import tours from "../../datos-paginas/api/tours";
+
 import Modal from "react-bootstrap/Modal";
 
 import Gallery from "components/gallery/index";
@@ -16,6 +18,7 @@ export default function Home() {
   const router = useRouter();
 
   const [mostrarModal, setMostrarModal] = useState(false);
+  const [producto, setProducto] = useState(null);
 
   const cerrarModalReserva = () => setMostrarModal(false);
   const mostrarModalReserva = () => setMostrarModal(true);
@@ -46,6 +49,11 @@ export default function Home() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollTop]);
 
+  useEffect(() => {
+    let producto = tours.find((item) => item.slug === slug);
+    setProducto(producto);
+  }, producto);
+
   return (
     <div>
       <Head>
@@ -65,7 +73,7 @@ export default function Home() {
         centered
       >
         <section>
-          <Reservar />
+          <Reservar producto={producto} />
         </section>
       </Modal>
 
@@ -74,7 +82,7 @@ export default function Home() {
           <div className="container">
             <div className="row">
               <div className="col-md-8">
-                <HeaderInterior slug={slug} />
+                <HeaderInterior slug={producto ? producto.titulo : ""} />
               </div>
             </div>
           </div>
@@ -101,7 +109,7 @@ export default function Home() {
                     Descubre grandes lugares
                   </h3>
 
-                  <Reservar />
+                  <Reservar producto={producto} />
                 </section>
               </div>
             </div>
@@ -124,7 +132,9 @@ export default function Home() {
                 <div className="col-md-8">
                   <div className="card">
                     <div className="card-body">
-                      <h5 className="card-title font-weight-bold">{slug}</h5>
+                      <h5 className="card-title font-weight-bold">
+                        {producto ? producto.titulo : ""}
+                      </h5>
 
                       <div className="py-2 px-3">
                         <p className="card-text">
