@@ -96,27 +96,6 @@ export default function Home() {
                         ) : (
                           "Debe agregar un tour a su carrito"
                         )}
-
-                        <div className="form-group mt-3 px-md-4">
-                          <Form.Check type="checkbox" />
-                          Acepto los{" "}
-                          <Link href="/terminos-y-condiciones">
-                            Términos y Condiciones Generales
-                          </Link>{" "}
-                          de Enlace Mundial
-                        </div>
-
-                        <div className="text-right mt-5">
-                          <button
-                            type="button"
-                            className="btn btn-primary px-4"
-                          >
-                            Ir a pagar
-                            <span className="d-inline-block ml-2">
-                              <i className="fas fa-chevron-right"></i>
-                            </span>
-                          </button>
-                        </div>
                       </section>
                     </Tab>
                     <Tab eventKey="profile" title="Finalizar pago" disabled>

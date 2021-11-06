@@ -4,18 +4,22 @@ import Link from "next/link";
 import { Tabs, Form } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 
+const objetoInicial = {
+  validado: false,
+  nombres: null,
+  apellidos: null,
+  tipoDocumento: "DNI",
+  nroDocumento: null,
+  comentarios: null,
+};
+
 export default function Formularios({ items }) {
   const [forms, setForms] = useState(items);
   const [pasajeroActual, setPasajeroActual] = useState(1);
 
-  const [datosPasajero, setDatosPasajero] = useState({
-    validado: false,
-    nombres: null,
-    apellidos: null,
-    tipoDocumento: null,
-    nroDocumento: null,
-    comentarios: null,
-  });
+  const [datosPasajero, setDatosPasajero] = useState(
+    JSON.parse(JSON.stringify(objetoInicial))
+  );
 
   const asignarValor = (e, valor) => {
     let datos = datosPasajero;
@@ -24,38 +28,50 @@ export default function Formularios({ items }) {
     setDatosPasajero(datos);
   };
 
+  const atras = () => {
+    setPasajeroActual(pasajeroActual - 1);
+  };
+
   const siguiente = (index) => {
-    let { nombres, apellidos, tipoDocumento, nroDocumento } = datosPasajero;
+    if (pasajeroActual >= forms.length) {
+      alert("Finalizar pago");
+    } else {
+      let { nombres, apellidos, tipoDocumento, nroDocumento } = datosPasajero;
 
-    if (nombres && apellidos && tipoDocumento && nroDocumento) {
-      let datos = {
-        validado: true,
-        nombres,
-        apellidos,
-        tipoDocumento,
-        nroDocumento,
-      };
+      if (nombres && apellidos && tipoDocumento && nroDocumento) {
+        let datos = {
+          validado: true,
+          nombres,
+          apellidos,
+          tipoDocumento,
+          nroDocumento,
+        };
 
-      forms[index] = datos;
+        forms[index] = datos;
 
-      let form = forms[index];
-      console.log(form);
-      console.log("Siguiente");
+        setPasajeroActual(pasajeroActual + 1);
+      }
     }
+
+    // Limpiar campos
+    setDatosPasajero(JSON.parse(JSON.stringify(objetoInicial)));
   };
 
   return (
     <>
       {forms.map((item, index) => {
-        return (
+        return pasajeroActual == index + 1 ? (
           <form key={index}>
-            <p className="bg-light small font-weight-bold d-inline-block px-2 mb-3">
+            <p className="lead font-weight-bold d-inline-block mb-3">
               Datos de pasajero {index + 1}
             </p>
+
+            {objetoInicial.nombres}
 
             <div className="form-row">
               <div className="col-md-6">
                 <div className="form-group">
+                  {datosPasajero.nombres}
                   <label>Nombres</label>
                   <input
                     type="text"
@@ -115,19 +131,57 @@ export default function Formularios({ items }) {
               </div>
             </div>
 
-            <div className="text-right">
+            {/* Términos y condiciones */}
+            {forms.length == pasajeroActual ? (
+              <div className="form-group mt-3 px-md-4">
+                <Form.Check type="checkbox" />
+                Acepto los{" "}
+                <Link href="/terminos-y-condiciones">
+                  Términos y Condiciones Generales
+                </Link>{" "}
+                de Enlace Mundial
+              </div>
+            ) : (
+              ""
+            )}
+
+            <div
+              className={`d-flex ${
+                pasajeroActual > 1
+                  ? "justify-content-between"
+                  : "justify-content-end"
+              }`}
+            >
+              {/* Botón atrás */}
+              {pasajeroActual > 1 ? (
+                <button
+                  type="button"
+                  className="btn btn-link text-danger"
+                  onClick={() => atras(index)}
+                >
+                  <span className="d-inline-block mr-2 text-danger">
+                    <i className="fas fa-chevron-left"></i>
+                  </span>
+                  Atrás
+                </button>
+              ) : (
+                ""
+              )}
+
               <button
                 type="button"
                 className="btn btn-info text-white px-4"
                 onClick={() => siguiente(index)}
               >
-                {forms.length > 1 ? "Siguiente" : "Ir a pagar"}
+                {pasajeroActual >= forms.length ? "Ir a pagar" : "Siguiente"}
                 <span className="d-inline-block ml-2">
                   <i className="fas fa-chevron-right"></i>
                 </span>
               </button>
             </div>
           </form>
+        ) : (
+          ""
         );
       })}
     </>
