@@ -15,17 +15,18 @@ import Tab from "react-bootstrap/Tab";
 
 import Formularios from "../../components/general/reservar/formularios";
 
+const datosFormulario = {
+  validado: false,
+  nombres: "",
+  apellidos: "",
+  tipoDocumento: "DNI",
+  nroDocumento: undefined,
+  comentarios: "",
+};
+
 export default function Home() {
   const [carrito, setCarrito] = useState({});
   const [formularios, setFormularios] = useState([]);
-  const [datosPasajero, setDatosPasajero] = useState({
-    validado: false,
-    nombres: "",
-    apellidos: "",
-    tipoDocumento: "",
-    nroDocumento: "",
-    comentarios: "",
-  });
 
   // Asignar formularios
   useEffect(() => {
@@ -35,18 +36,22 @@ export default function Home() {
       setCarrito(carritoLocal);
 
       // Calcular cuantos formularios se renderizarán
-      let forms = JSON.parse(JSON.stringify(formularios));
+      let forms = [];
 
       for (let i = 0; i < carritoLocal.nroAdultos; i++) {
-        let form = {};
-        form.adulto = true;
+        let form = {
+          ...datosFormulario,
+          tipoPersona: "ADULTO",
+        };
 
         forms.push(form);
       }
 
       for (let i = 0; i < carritoLocal.nroMenores; i++) {
-        let form = {};
-        form.menor = true;
+        let form = {
+          ...datosFormulario,
+          tipoPersona: "MENOR",
+        };
 
         forms.push(form);
       }
@@ -92,20 +97,21 @@ export default function Home() {
                     >
                       <section className="p-3">
                         {formularios.length ? (
-                          <Formularios items={formularios} />
+                          <Formularios
+                            items={formularios}
+                            setFormularios={setFormularios}
+                          />
                         ) : (
                           "Debe agregar un tour a su carrito"
                         )}
                       </section>
-                    </Tab>
-                    <Tab eventKey="profile" title="Finalizar pago" disabled>
-                      Profile
                     </Tab>
                   </Tabs>
                 </div>
               </div>
             </div>
 
+            {/* Sidebar */}
             <div className={`${styles.finalizarReserva_col2} col-md-4`}>
               <div className="card shadow-card">
                 <div
