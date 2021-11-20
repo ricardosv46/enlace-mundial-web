@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.4.11",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
+    "apollo-upload-client": "^16.0.0",
     "bootstrap": "4.6",
     "formik": "^2.2.9",
     "graphql": "^15.5.3",
@@ -27,10 +29,15 @@
     "react-select": "^4.3.1",
     "sass": "^1.37.5",
     "swiper": "^6.8.2",
+    "typescript": "^4.5.2",
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.3.0",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.0"
+    "eslint-config-next": "11.1.0",
+    "@graphql-codegen/typescript-operations": "2.2.1",
+    "@graphql-codegen/typescript-react-apollo": "3.2.2",
+    "@graphql-codegen/typescript": "2.4.1"
   }
 }

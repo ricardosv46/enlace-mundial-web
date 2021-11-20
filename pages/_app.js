@@ -1,3 +1,4 @@
+import Head from "next/script";
 import Script from "next/script";
 
 import "../styles/globals.css";
@@ -12,15 +13,17 @@ import Header from "../components/header/index";
 import Footer from "../components/footer/index";
 
 import { ApolloProvider } from "@apollo/client";
-import client from "../apollo-client";
+import client from "../apollo";
 
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css"
-      />
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css"
+        />
+      </Head>
 
       <ApolloProvider client={client}>
         <Header />

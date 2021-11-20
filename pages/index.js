@@ -11,8 +11,13 @@ import Cruceros from "../components/home/cruceros/index";
 import CarouselBlog from "../components/home/carousel-blog/index";
 import Estadisticas from "../components/home/estadisticas/index";
 import CarouselTestimonios from "../components/home/carousel-testimonios/index";
+import { useGetImagenesQuery } from "../generated/graphql";
 
 export default function Home() {
+  const { data } = useGetImagenesQuery();
+
+  console.log(data)
+
   return (
     <div>
       <Head>
