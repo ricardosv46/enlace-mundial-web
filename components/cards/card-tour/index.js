@@ -9,16 +9,17 @@ import Compartir from "../components/compartir";
 import Vistas from "../components/vistas";
 
 export default function CardTour({ item }) {
+  // console.log('item es ', item)
   return (
     <article className={styles.cardTour}>
-      <Link href={`/actividades-y-turismo/${item.slug}`}>
+      <Link href={`/actividades-y-turismo/${item.slugTour}`}>
         <section
-          style={{ backgroundImage: `url(${item.imagenPrincipal})` }}
+          style={{ backgroundImage: `url(${item.imagenPrincipalTour?.url})` }}
           className={`${styles.cardTour_header} position-relative pointer`}
         >
           {/* Imagen con información */}
           <div
-            style={{ backgroundImage: `url(${item.imagenSecundaria})` }}
+            style={{ backgroundImage: `url(${item?.imagenSecundariaTour?.url})` }}
             className={`${styles.cardTour_imagenInfo} h-100 d-flex flex-column justify-content-between`}
           >
             {/* Compartir y like */}
@@ -57,8 +58,8 @@ export default function CardTour({ item }) {
           <span className="card-tour__icono-maps text-muted d-inline-block mr-2">
             <i className="fas fa-map-marker-alt"></i>
           </span>
-
-          <span className="font-weight-bold">Huarochirí - Lima, Perú</span>
+         {/* {const } */}
+          <span className="font-weight-bold capitalize transform">{`${item.ciudadTour.toUpperCase()} - ${item.regionTour}, PERÚ`}</span>
         </h4>
 
         <div className="card-tour__stars">

@@ -8,12 +8,22 @@ import Swiper from "react-id-swiper";
 // Componentes
 import CardGeneral from "../../cards/card-general";
 
-const LunaDeMiel = (props) => {
+const Cruceros = (props) => {
   const [items, setItems] = useState(cruceros);
 
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
 
+  const carouselParamsMobile = {
+    slidesPerView: 1,
+    loop: true,
+  };
+
+  const carouselParamsDesktop = {
+    slidesPerView: 3,
+    spaceBetween: 10,
+    loop: true,
+  };
   const goNext = () => {
     /* if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slideNext();
@@ -31,16 +41,7 @@ const LunaDeMiel = (props) => {
     swiperRefDesktop.current.swiper.slidePrev();
   };
 
-  const carouselParamsMobile = {
-    slidesPerView: 1,
-    loop: true,
-  };
-
-  const carouselParamsDesktop = {
-    slidesPerView: 3,
-    spaceBetween: 10,
-    loop: true,
-  };
+ 
 
   return (
     <section className="container carousel-app">
@@ -96,4 +97,4 @@ const LunaDeMiel = (props) => {
   );
 };
 
-export default LunaDeMiel;
+export default Cruceros;

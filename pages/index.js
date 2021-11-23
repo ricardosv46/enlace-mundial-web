@@ -12,6 +12,7 @@ import CarouselBlog from "../components/home/carousel-blog/index";
 import Estadisticas from "../components/home/estadisticas/index";
 import CarouselTestimonios from "../components/home/carousel-testimonios/index";
 import { useGetImagenesQuery } from "../generated/graphql";
+import Image from 'next/image'
 
 export default function Home() {
   const { data } = useGetImagenesQuery();
@@ -28,7 +29,7 @@ export default function Home() {
 
       <main>
         <Banner />
-
+        {/* <Image src="/imagenes/cruceros/banner.jpg" width="500" height="300"/> */}
         <ToursPopulares />
 
         <DestinosDestacados />

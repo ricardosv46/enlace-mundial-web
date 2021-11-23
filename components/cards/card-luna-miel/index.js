@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import styles from "./styles.module.scss";
 
-export default function CardGeneral({ item, tipo }) {
-  // console.log('valor item,luna miel', item)
+export default function CardLunaMiel({ item, tipo }) {
+  console.log('valor item,luna miel', item)
   let ruta = "/luna-de-miel";
 
   if (tipo === "cruceros") {
@@ -15,18 +15,18 @@ export default function CardGeneral({ item, tipo }) {
     <article className={styles.cardGeneral}>
       <Link href={`${ruta}/${item.slugLuna}`}>
         <section
-          style={{ backgroundImage: `url(${item.imagenPrincipal})` }}
+          style={{ backgroundImage: `url(${item?.imagenPrincipalLuna?.url})` }}
           className={`${styles.cardGeneral_imagen} pointer`}
         ></section>
       </Link>
 
       <section className={styles.cardGeneral_body}>
         <Link href={`${ruta}/${item.slug}`} passHref>
-          <a className={`${styles.cardGeneral_titulo} mt-3`}>{item.nombre}</a>
+          <a className={`${styles.cardGeneral_titulo} mt-3`}>{item?.tituloLuna}</a>
         </Link>
 
         <p className="text-muted mt-4">
-          Encuentra experiencias insólitas siempre, tenemos las mejores ofertas.
+          {item?.descripcionCortaLuna}
         </p>
 
         <h4 className="card-tour__sub text-secondary text-left mt-3">

@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 import styles from "./styles.module.scss";
 
 import tours from "../../../datos-paginas/api/tours";
@@ -7,10 +7,19 @@ import tours from "../../../datos-paginas/api/tours";
 // Componentes
 import Swiper from "react-id-swiper";
 import CardTour from "@/components/cards/card-tour";
+import GestionTours from "../../../gestion-de-endpoints/GestionTours";
+import GestionLuna from "../../../gestion-de-endpoints/GestionLunaMiel";
 
-export default function ToursPopulares() {
-  const [items, setItems] = useState(tours);
+const ToursPopulares = () => {
+  const { dataTours, loading: loadingGetTour } = GestionTours();
+  const [itemsTours, setItemsTours] = useState([]);
 
+  useEffect(() => {
+    if (!loadingGetTour) {
+      setItemsTours(dataTours);
+    }
+  }, [loadingGetTour]);
+  console.log("el valor del array es", itemsTours);
   const swiperRefMobile = useRef(null);
 
   const carouselParamsMobile = {
@@ -36,10 +45,10 @@ export default function ToursPopulares() {
         <div className="row d-md-none">
           <div className="col-12">
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
-              {items.length
-                ? items.map((item) => {
+              {itemsTours.length
+                ? itemsTours.map((item) => {
                     return (
-                      <div key={item.id}>
+                      <div key={item.tourId}>
                         <CardTour item={item} />
                       </div>
                     );
@@ -65,8 +74,8 @@ export default function ToursPopulares() {
         </div>
 
         <div className="row d-none d-md-flex">
-          {items.length
-            ? items.map((item) => {
+          {itemsTours.length
+            ? itemsTours.map((item) => {
                 return (
                   <div className="col-md-4 contenedor-card-tour" key={item.id}>
                     <CardTour item={item} />
@@ -84,4 +93,6 @@ export default function ToursPopulares() {
       </div>
     </section>
   );
-}
+};
+
+export default ToursPopulares;

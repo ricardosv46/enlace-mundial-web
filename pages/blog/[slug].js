@@ -17,7 +17,7 @@ import styles from "./styles.module.scss";
 
 export default function Home() {
   const router = useRouter();
-
+  // console.log(router)
   const post = {
     imagen:
       "https://i1.wp.com/instyle.mx/wp-content/uploads/2019/07/parejas-felices.jpg",

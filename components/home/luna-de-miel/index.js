@@ -1,14 +1,17 @@
-import React, { useState, useRef } from "react";
-
-import lunaDeMiel from "../../../datos-paginas/api/luna-de-miel";
-
-// Componentes
+import React, { useState, useRef, useEffect } from "react";
 import Swiper from "react-id-swiper";
-import CardGeneral from "../../cards/card-general";
+import GestionLuna from "../../../gestion-de-endpoints/GestionLunaMiel";
+import CardLunaMiel from "../../cards/card-luna-miel";
 
 const LunaDeMiel = (props) => {
-  const [items, setItems] = useState(lunaDeMiel);
-
+  const { dataLuna, loading: loadingGetLuna } = GestionLuna();
+  const [itemsLuna, setItemsLuna] = useState([]);
+  console.log("valor de data luna csmre", itemsLuna.length);
+  useEffect(() => {
+    if (loadingGetLuna === false) {
+      setItemsLuna(dataLuna);
+    }
+  }, [dataLuna]);
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
 
@@ -49,12 +52,12 @@ const LunaDeMiel = (props) => {
 
         <div className="col-md-11 mt-5 position-relative">
           {/* Carousel mobile */}
-          <section className="d-md-none">
+          <section className=" d-md-none">
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
-              {items.map((item) => {
+              {itemsLuna.map((item) => {
                 return (
-                  <div key={item.titulo}>
-                    <CardGeneral item={item} tipo="luna-de-miel" />
+                  <div key={item.lunaMielId}>
+                    <CardLunaMiel item={item} tipo="luna-de-miel" />
                   </div>
                 );
               })}
@@ -64,10 +67,10 @@ const LunaDeMiel = (props) => {
           {/* Carousel desktop */}
           <section className="d-none d-md-block">
             <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
-              {items.map((item) => {
+              {itemsLuna.map((item) => {
                 return (
-                  <div key={item.titulo}>
-                    <CardGeneral item={item} />
+                  <div key={item.lunaMielId}>
+                    <CardLunaMiel item={item} tipo="luna-de-miel" />
                   </div>
                 );
               })}
