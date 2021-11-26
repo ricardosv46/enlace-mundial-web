@@ -6,6 +6,7 @@ import Script from "next/script";
 import CardBusqueda from "@/components/cards/card-busqueda";
 
 import tours from "../../datos-paginas/api/tours";
+import Home from "../cruceros";
 
 export default function ActividadesYTurismo() {
   const [items, setItems] = useState(tours);
@@ -294,6 +295,9 @@ export default function ActividadesYTurismo() {
             </div>
           </div>
         </section>
+        <div className="hidden">
+
+        </div>
       </main>
 
       <Script

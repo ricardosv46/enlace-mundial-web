@@ -59,7 +59,7 @@ export default function CardTour({ item }) {
             <i className="fas fa-map-marker-alt"></i>
           </span>
          {/* {const } */}
-          <span className="font-weight-bold capitalize transform">{`${item.ciudadTour.toUpperCase()} - ${item.regionTour}, PERÚ`}</span>
+          <span className="font-weight-bold capitalize transform">{`${item?.ciudadTour?.toUpperCase()} - ${item.regionTour}, PERÚ`}</span>
         </h4>
 
         <div className="card-tour__stars">

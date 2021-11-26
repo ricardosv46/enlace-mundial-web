@@ -1,8 +1,7 @@
 import React from "react";
-
+import { request } from "graphql-request"
 import Head from "next/head";
 import Script from "next/script";
-
 import Banner from "../components/home/banner/index";
 import ToursPopulares from "@/components/tours/populares";
 import DestinosDestacados from "../components/home/destinos-destacados/index";
@@ -13,11 +12,90 @@ import Estadisticas from "../components/home/estadisticas/index";
 import CarouselTestimonios from "../components/home/carousel-testimonios/index";
 import { useGetImagenesQuery } from "../generated/graphql";
 import Image from 'next/image'
+import GestionLuna from "../gestion-de-endpoints/GestionLunaMiel";
+
+// export async function getStaticProps() {
+
+//   const res = await request('https://apienlacemundial.softaki.com/public/graphql', `
+//   query GetAllLunaMiel($estadoLuna:String,$page:Int,$numberPaginate:Int){
+//     GetAllLunaMiel(estadoLuna:$estadoLuna,page:$page,numberPaginate:$numberPaginate){
+//       nroTotalItems
+//       data{
+//         lunaMielId
+//         tituloLuna
+//         slugLuna
+//         estadoLuna
+//         destacadoLuna
+//         keywordsLuna
+//         regionLuna
+//         ciudadLuna
+//         descripcionCortaLuna
+//         descripcionLargaLuna
+//         itinerarioLuna
+//         puntoPartidaLuna
+//         incluyeLuna
+//         noIncluyeLuna
+//         actividadesLuna
+//         notasLuna
+//         politicasLuna
+//         videoPresentacionLuna
+//         imagenPrincipalLuna {
+//           id
+//           descripcion
+//           url
+//         }
+//         imagenSecundariaLuna {
+//           id
+//           descripcion
+//           url
+//         }
+//         galeriaLuna {
+//           id
+//           descripcion
+//           url
+//         }
+//         slugCategoria
+//         categoriaId
+//         Categoria {
+//           categoriaId
+//           slugCategoria
+//           tituloCategoria
+//           descripcion
+//           estadoCategoria
+//           keywordsCategoria
+//           imagenPrincipalCategoria {
+//             id
+//             descripcion
+//             url
+//           }
+//           imagenSecundariaCategoria {
+//             id
+//             descripcion
+//             url
+//           }
+//         }
+//       }
+//     }
+//   }
+//   `, {
+//     numberPaginate: 10,
+//     page: 1,
+//     estadoLuna: ''
+//   })
+//   const data = res?.GetAllLunaMiel?.data
+//   return {
+//     props: {
+//       pepe: data
+//     }
+//   }
+// }
 
 export default function Home() {
-  const { data } = useGetImagenesQuery();
 
-  console.log(data)
+  // console.log('los posts es ', pepe)
+  // const { data } = useGetImagenesQuery();
+
+  // console.log('valor de pepe es', pepe)
 
   return (
     <div>

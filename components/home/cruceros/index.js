@@ -2,13 +2,13 @@ import React, { useState, useRef } from "react";
 
 import cruceros from "../../../datos-paginas/api/cruceros";
 
-// swiper component
 import Swiper from "react-id-swiper";
 
-// Componentes
 import CardGeneral from "../../cards/card-general";
 
-const Cruceros = (props) => {
+
+const Cruceros = ({ name }) => {
+  console.log("haber name", name);
   const [items, setItems] = useState(cruceros);
 
   const swiperRefMobile = useRef(null);
@@ -40,8 +40,6 @@ const Cruceros = (props) => {
     swiperRefMobile.current.swiper.slidePrev();
     swiperRefDesktop.current.swiper.slidePrev();
   };
-
- 
 
   return (
     <section className="container carousel-app">
@@ -98,3 +96,9 @@ const Cruceros = (props) => {
 };
 
 export default Cruceros;
+
+Cruceros.getInitialProps = () => {
+  return {
+    name: 'jose'
+  }
+}

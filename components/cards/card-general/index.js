@@ -13,7 +13,7 @@ export default function CardGeneral({ item, tipo }) {
 
   return (
     <article className={styles.cardGeneral}>
-      <Link href={`${ruta}/${item.slugLuna}`}>
+      <Link href={`${ruta}/${item.slug}`}>
         <section
           style={{ backgroundImage: `url(${item.imagenPrincipal})` }}
           className={`${styles.cardGeneral_imagen} pointer`}

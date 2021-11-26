@@ -3,18 +3,30 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
-
 import tours from "../../datos-paginas/api/tours";
-
 import Modal from "react-bootstrap/Modal";
-
 import Gallery from "components/gallery/index";
 import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
 import Reservar from "@/components/general/reservar";
 import MenuInterior from "@/components/servicios/submenu";
 import HeaderInterior from "@/components/general/publicaciones/header-interior";
+import request from "graphql-request";
+import { GET_SLUG_TOUR, URL } from "../../endpoints y url/endpoints";
 
-export default function Home() {
+export async function getServerSideProps({ params }) {
+  const res = await request(URL, GET_SLUG_TOUR, {
+    slugTour: params.slug,
+  });
+  const data = res?.GetSlugTour;
+  return {
+    props: {
+      data: data,
+    },
+  };
+}
+
+export default function Home({ data }) {
+  console.log("valor de data", data);
   const router = useRouter();
 
   const [mostrarModal, setMostrarModal] = useState(false);
@@ -22,9 +34,7 @@ export default function Home() {
 
   const cerrarModalReserva = () => setMostrarModal(false);
   const mostrarModalReserva = () => setMostrarModal(true);
-
   let slug = router.query.slug;
-
   const galeria = [
     "https://i.pinimg.com/736x/ee/96/29/ee9629083c055b90ac4b3a51533671d8.jpg",
     "https://www.boletomachupicchu.com/gutblt/wp-content/images/cusco-compania-plaza-armas.jpg",
@@ -97,7 +107,8 @@ export default function Home() {
               </div>
 
               <div className="col-md-4 d-none d-md-block">
-                {/* Solo desktop */}
+                {/*
+                 Solo desktop */}
                 <section
                   className={
                     sidebarFixed
@@ -187,45 +198,19 @@ export default function Home() {
 
                       <div className="py-2">
                         <ul className="list-unstyled">
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Cuzco es una ciudad de los Andes peruanos que fue la
-                            capital del Imperio Inca y es conocida por sus
-                            restos arqueológicos y la arquitectura colonial
-                            española.
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Cuzco es una ciudad de los Andes peruanos que fue la
-                            capital del Imperio Inca y es conocida por sus
-                            restos arqueológicos y la arquitectura colonial
-                            española.
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Cuzco es una ciudad de los Andes peruanos que fue la
-                            capital del Imperio Inca y es conocida por sus
-                            restos arqueológicos y la arquitectura colonial
-                            española.
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Cuzco es una ciudad de los Andes peruanos que fue la
-                            capital del Imperio Inca y es conocida por sus
-                            restos arqueológicos y la arquitectura colonial
-                            española.
-                          </li>
+                          {data.itinerarioTour.split(",").map((item) => {
+                            return (
+                              <li
+                                className="l-miel-itinerario__list-item d-flex mb-2"
+                                key={item}
+                              >
+                                <span className="text-primary d-inline-block mr-2">
+                                  <i className="fas fa-check"></i>
+                                </span>
+                                {item}
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -264,20 +249,19 @@ export default function Home() {
                             </span>
                             Transporte turístico
                           </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="far fa-check-circle"></i>
-                            </span>
-                            Guiado profesional
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="far fa-check-circle"></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
+                          {data.incluyeTour.split(",").map((item) => {
+                            return (
+                              <li
+                                className="l-miel-itinerario__list-item d-flex mb-2"
+                                key={item}
+                              >
+                                <span className="text-primary d-inline-block mr-2">
+                                  <i className="far fa-check-circle"></i>
+                                </span>
+                                {item}
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
 
@@ -287,26 +271,19 @@ export default function Home() {
 
                       <div className="py-2">
                         <ul className="list-unstyled">
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-danger d-inline-block mr-2">
-                              <i className="far fa-check-circle"></i>
-                            </span>
-                            Entradas a los atractivos
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-danger d-inline-block mr-2">
-                              <i className="far fa-check-circle"></i>
-                            </span>
-                            Guiado profesional
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-danger d-inline-block mr-2">
-                              <i className="far fa-check-circle"></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
+                          {data.noIncluyeTour.split(",").map((item) => {
+                            return (
+                              <li
+                                key={item}
+                                className="l-miel-itinerario__list-item d-flex mb-2"
+                              >
+                                <span className="text-danger d-inline-block mr-2">
+                                  <i className="far fa-check-circle"></i>
+                                </span>
+                                {item}
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -320,26 +297,19 @@ export default function Home() {
 
                       <div className="py-2">
                         <ul className="list-unstyled">
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
+                          {data.actividadesTour.split(",").map((item) => {
+                            return (
+                             <li key={item}
+                             className="l-miel-itinerario__list-item d-flex mb-2">
                             <span className="text-primary d-inline-block mr-2">
                               <i className="far fa-check-circle"></i>
                             </span>
-                            Visitas culturales (Incluida)
+                            {item}
                           </li>
+                            )
+                          })}
+                          
 
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="far fa-check-circle"></i>
-                            </span>
-                            Visitas culturales (Incluida)
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="far fa-check-circle"></i>
-                            </span>
-                            Visitas culturales (Incluida)
-                          </li>
                         </ul>
                       </div>
                     </div>

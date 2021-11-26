@@ -1,17 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import Swiper from "react-id-swiper";
 import GestionLuna from "../../../gestion-de-endpoints/GestionLunaMiel";
+import CardGeneral from "../../cards/card-general";
 import CardLunaMiel from "../../cards/card-luna-miel";
+import cruceros from "../../../datos-paginas/api/cruceros";
 
-const LunaDeMiel = (props) => {
+const LunaDeMiel = ({ data }) => {
   const { dataLuna, loading: loadingGetLuna } = GestionLuna();
-  const [itemsLuna, setItemsLuna] = useState([]);
-  console.log("valor de data luna csmre", itemsLuna.length);
-  useEffect(() => {
-    if (loadingGetLuna === false) {
-      setItemsLuna(dataLuna);
-    }
-  }, [dataLuna]);
+  // const [itemsLuna, setItemsLuna] = useState([]);
+  // console.log("valor de data luna csmre", itemsLuna.length);
+  // useEffect(() => {
+  //   if (loadingGetLuna === false) {
+  //     setItemsLuna(dataLuna);
+  //   }
+  // }, [dataLuna]);
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
 
@@ -42,7 +44,7 @@ const LunaDeMiel = (props) => {
     swiperRefMobile.current.swiper.slidePrev();
     swiperRefDesktop.current.swiper.slidePrev();
   };
-
+  // const lunaDeMiel=dataLuna?dataLuna
   return (
     <section className="container carousel-app">
       <div className="row justify-content-center">
@@ -53,28 +55,35 @@ const LunaDeMiel = (props) => {
         <div className="col-md-11 mt-5 position-relative">
           {/* Carousel mobile */}
           <section className=" d-md-none">
-            <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
-              {itemsLuna.map((item) => {
-                return (
-                  <div key={item.lunaMielId}>
-                    <CardLunaMiel item={item} tipo="luna-de-miel" />
-                  </div>
-                );
-              })}
-            </Swiper>
+            {!loadingGetLuna &&
+              <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
+                {dataLuna.map((item) => {
+                  return (
+                    <div key={item.lunaId}>
+                      <CardLunaMiel item={item} />
+                    </div>
+                  );
+                })}
+              </Swiper>
+
+            }
+
           </section>
 
           {/* Carousel desktop */}
           <section className="d-none d-md-block">
-            <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
-              {itemsLuna.map((item) => {
-                return (
-                  <div key={item.lunaMielId}>
-                    <CardLunaMiel item={item} tipo="luna-de-miel" />
-                  </div>
-                );
-              })}
-            </Swiper>
+            {
+              !loadingGetLuna && <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
+                {dataLuna.map((item) => {
+                  return (
+                    <div key={item.lunaId}>
+                      <CardLunaMiel item={item} />
+                    </div>
+                  );
+                })}
+              </Swiper>
+            }
+
           </section>
 
           <button
