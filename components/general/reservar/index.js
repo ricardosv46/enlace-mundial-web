@@ -1,20 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import Calendar from "./calendar";
+import GestionHorariosTour from "../../../gestion-de-endpoints/GestionHorariosTour";
 
-export default function Reservar({ producto }) {
+export default function Reservar({ producto, tourId }) {
   const router = useRouter();
-
+  const today = new Date();
+  const month = today.getMonth();
+  const [mes, setMes] = useState(month + 1);
+  const [anio, setAnio] = useState(today.getFullYear());
+  const [dia, setDia] = useState(today.getDate());
   const [fecha, setFecha] = useState(new Date());
   const [nroAdultos, setNroAdultos] = useState(1);
   const [nroMenores, setNroMenores] = useState(0);
-
+  const [pintarDias, setPintarDias] = useState([]);
+  // console.log(anio,mes)
+  console.log("data cargada al inicio", tourId, mes, anio);
+  const { dataHorario, loading } = GestionHorariosTour({
+    tourId,
+    mes: mes,
+    anio,
+  });
+  console.log("el valor de data horario es", dataHorario);
+  // console.log("el valor del año es", anio);
   function asignarFecha(fecha) {
     setFecha(fecha);
   }
+  useEffect(() => {
+    setPintarDias([])
+    !loading && (
+      dataHorario.map((item) => {
+        if (item?.estado === "Activado" && new Date(item?.fecha) >= today) {
+          setPintarDias((pintar) => [...pintar, item.fecha]);
+        }
+      }))
+  }, [anio, mes, loading]);
 
+  console.log("que fue manito", pintarDias);
   function disminuir(tipo) {
     if (tipo === "adultos") {
       nroAdultos >= 1
@@ -54,7 +78,15 @@ export default function Reservar({ producto }) {
   return (
     <div className="reservar pb-4">
       <section className="d-flex justify-content-center mt-3">
-        <Calendar fechaSeleccionada={asignarFecha} />
+        <Calendar
+          fechaSeleccionada={asignarFecha}
+          mes={mes}
+          setMes={setMes}
+          anio={anio}
+          setAnio={setAnio}
+          dataHorario={dataHorario}
+          pintarDias={pintarDias}
+        />
       </section>
       <section>
         <div className="container">

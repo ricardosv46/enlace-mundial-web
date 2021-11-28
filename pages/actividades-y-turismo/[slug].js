@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Link from "next/link";
+// import Link from "next/link";
 import Script from "next/script";
 import tours from "../../datos-paginas/api/tours";
 import Modal from "react-bootstrap/Modal";
@@ -26,7 +26,7 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function Home({ data }) {
-  console.log("valor de data", data);
+  // console.log("valor de data", data);
   const router = useRouter();
 
   const [mostrarModal, setMostrarModal] = useState(false);
@@ -35,13 +35,6 @@ export default function Home({ data }) {
   const cerrarModalReserva = () => setMostrarModal(false);
   const mostrarModalReserva = () => setMostrarModal(true);
   let slug = router.query.slug;
-  const galeria = [
-    "https://i.pinimg.com/736x/ee/96/29/ee9629083c055b90ac4b3a51533671d8.jpg",
-    "https://www.boletomachupicchu.com/gutblt/wp-content/images/cusco-compania-plaza-armas.jpg",
-    "https://cdn0.matrimonio.com.pe/img_g/articulos-a-fotos/luna-de-miel/mexico/t10_2x_isla-de-holbox-lazaro-cardenas-quintana-roo-caribe.jpg",
-    "https://i.pinimg.com/originals/75/80/78/75807881c354def7dcaf6f66c0d006d3.jpg",
-    "https://mejorconsalud.as.com/wp-content/uploads/2019/02/elegir-lugar-luna-de-miel.jpg",
-  ];
 
   // Supervisar scroll
   const [sidebarFixed, setSidebarFixed] = useState(true);
@@ -75,7 +68,7 @@ export default function Home({ data }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css"
         />
       </Head>
-
+      { /* reservar un tour con una fecha asignada version mobile*/}
       <Modal
         dialogClassName="modal-auth"
         show={mostrarModal}
@@ -83,7 +76,10 @@ export default function Home({ data }) {
         centered
       >
         <section>
-          <Reservar producto={producto} />
+          <Reservar
+            producto={producto}
+            tourId={data.tourId}
+          />
         </section>
       </Modal>
 
@@ -92,7 +88,7 @@ export default function Home({ data }) {
           <div className="container">
             <div className="row">
               <div className="col-md-8">
-                <HeaderInterior slug={producto ? producto.titulo : ""} />
+                <HeaderInterior slug={data.tourTitulo} />
               </div>
             </div>
           </div>
@@ -103,12 +99,11 @@ export default function Home({ data }) {
           <section className="container mt-5">
             <div className="row">
               <div className="col-md-8">
-                <Gallery imagenes={galeria} />
+                <Gallery imagenes={data.galeriaTour} />
               </div>
 
               <div className="col-md-4 d-none d-md-block">
-                {/*
-                 Solo desktop */}
+                {/* Solo desktop */}
                 <section
                   className={
                     sidebarFixed
@@ -120,7 +115,10 @@ export default function Home({ data }) {
                     Descubre grandes lugares
                   </h3>
 
-                  <Reservar producto={producto} />
+                  <Reservar
+                    producto={data.tourId}
+                    tourId={data.tourId}
+                  />
                 </section>
               </div>
             </div>
@@ -144,13 +142,12 @@ export default function Home({ data }) {
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title font-weight-bold">
-                        {producto ? producto.titulo : ""}
+                        {data.tituloTour}
                       </h5>
 
                       <div className="py-2 px-3">
                         <p className="card-text">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
+                          {data.descripcionCortaTour}
                         </p>
                       </div>
                     </div>
@@ -164,8 +161,7 @@ export default function Home({ data }) {
 
                       <div className="py-2 px-3">
                         <p className="card-text">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
+                          {data.puntoPartidaTour}
                         </p>
                       </div>
                     </div>
@@ -299,17 +295,17 @@ export default function Home({ data }) {
                         <ul className="list-unstyled">
                           {data.actividadesTour.split(",").map((item) => {
                             return (
-                             <li key={item}
-                             className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="far fa-check-circle"></i>
-                            </span>
-                            {item}
-                          </li>
-                            )
+                              <li
+                                key={item}
+                                className="l-miel-itinerario__list-item d-flex mb-2"
+                              >
+                                <span className="text-primary d-inline-block mr-2">
+                                  <i className="far fa-check-circle"></i>
+                                </span>
+                                {item}
+                              </li>
+                            );
                           })}
-                          
-
                         </ul>
                       </div>
                     </div>
@@ -342,54 +338,19 @@ export default function Home({ data }) {
 
                       <div className="py-2">
                         <ul className="list-unstyled">
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Transporte turístico
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Guiado profesional
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
-
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="fas fa-check"></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
+                          {data.notasTour.split(",").map((item) => {
+                            return (
+                              <li
+                                key={item}
+                                className="l-miel-itinerario__list-item d-flex mb-2"
+                              >
+                                <span className="text-primary d-inline-block mr-2">
+                                  <i className="fas fa-check"></i>
+                                </span>
+                                {item}
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -402,7 +363,21 @@ export default function Home({ data }) {
                       </h5>
 
                       <div className="py-2">
-                        <p>Cancelación GRATIS hasta 24 horas del viaje</p>
+                        <ul className="list-unstyled">
+                          {data.politicasTour.split(",").map((item) => {
+                            return (
+                              <li
+                                key={item}
+                                className="l-miel-itinerario__list-item d-flex mb-2"
+                              >
+                                <span className="text-primary d-inline-block mr-2">
+                                  <i className="fas fa-check"></i>
+                                </span>
+                                {item}
+                              </li>
+                            );
+                          })}
+                        </ul>
                       </div>
                     </div>
                   </div>

@@ -13,7 +13,7 @@ export default function Gallery({ imagenes }) {
     <div className={styles.gallery}>
       <div
         className={styles.gallery_principal}
-        style={{ backgroundImage: "url(" + mainImage + ")" }}
+        style={{ backgroundImage: "url(" + mainImage.url + ")" }}
       ></div>
 
       <section
@@ -21,14 +21,12 @@ export default function Gallery({ imagenes }) {
       >
         {imagenes.map((item, index) => {
           return (
-            <div
+            (index < 5) && <div
               key={index}
-              style={{ backgroundImage: "url(" + item + ")" }}
-              className={`${
-                styles.gallery_carousel_item
-              } mb-1 py-4 px-1 pointer ${
-                item == mainImage ? styles.active : ""
-              }`}
+              style={{ backgroundImage: "url(" + item.url + ")" }}
+              className={`${styles.gallery_carousel_item
+                } mb-1 py-4 px-1 pointer ${item == mainImage ? styles.active : ""
+                }`}
               onClick={() => asignarImagen(item)}
             ></div>
           );
