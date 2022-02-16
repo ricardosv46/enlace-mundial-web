@@ -1,0 +1,19 @@
+.finalizarReserva_col2 {
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+}
+
+@media (min-width: 768px) {
+  .finalizarReserva_col2 {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+}
+
+.finalizarReserva_imagenTour {
+  height: 220px;
+  background-repeat: round;
+}
+/*# sourceMappingURL=styles.module.css.map */

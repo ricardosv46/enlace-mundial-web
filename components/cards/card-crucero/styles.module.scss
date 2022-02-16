@@ -1,0 +1,52 @@
+@import "../../../styles/scss/variables";
+
+.cardGeneral {
+  max-width: 100%;
+
+  border: 1px solid rgba($secondary, 0.4);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+  &_imagen {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  &_body {
+    padding: 1.3rem 2rem;
+  }
+
+  &_titulo {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: rgba($secondary, 0.9);
+
+    text-align: center;
+
+    display: block;
+
+    @media (min-width: 768px) {
+      font-size: 1.1em;
+
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      color: $secondary;
+
+      text-decoration: none;
+    }
+  }
+
+  &_icono {
+    font-size: 1rem;
+  }
+
+  &_ubicacion {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,47 @@
+.cardGeneral {
+  max-width: 100%;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.cardGeneral_imagen {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.cardGeneral_body {
+  padding: 1.3rem 2rem;
+}
+
+.cardGeneral_titulo {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: rgba(128, 128, 128, 0.9);
+  text-align: center;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .cardGeneral_titulo {
+    font-size: 1.1em;
+    text-transform: uppercase;
+  }
+}
+
+.cardGeneral_titulo:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+.cardGeneral_icono {
+  font-size: 1rem;
+}
+
+.cardGeneral_ubicacion {
+  font-size: 1rem;
+}
+/*# sourceMappingURL=styles.module.css.map */

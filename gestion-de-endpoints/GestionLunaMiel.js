@@ -10,7 +10,7 @@ const GestionLuna = () => {
     variables: {
       numberPaginate: 10,
       page: 1,
-      estadoLuna: ''
+      estadoLuna: 'Activado'
     }
     // onError: (error) => { console.error('Error al obtener la data de los Tours: ', error?.graphQLErrors[0]?.debugMessage) }
   })

@@ -7,9 +7,9 @@ const GestionTours = () => {
   const { data, loading } = useQuery(GET_ALL_TOURS, {
     fetchPolicy: 'network-only',
     variables: {
-      numberPaginate: 10,
+      numberPaginate: 1000,
       page: 1,
-      estadoTour: ''
+      estadoTour: 'Activado'
     }
     // onError: (error) => { console.error('Error al obtener la data de los Tours: ', error?.graphQLErrors[0]?.debugMessage) }
   })

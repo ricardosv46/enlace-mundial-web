@@ -3,26 +3,28 @@ import Link from "next/link";
 
 import styles from "./styles.module.scss";
 
-export default function CardLunaMiel({ item, tipo }) {
+export default function CardCrucero({ item, }) {
 
-  let ruta = "/luna-de-miel";
+  const ruta = "/cruceros";
+
+
 
   return (
     <article className={styles.cardGeneral}>
-      <Link href={`${ruta}/${item.slugLuna}`}>
+      <Link href={`${ruta}/${item?.slugCrucero}`}>
         <section
-          style={{ backgroundImage: `url(${item?.imagenPrincipalLuna?.url})` }}
+          style={{ backgroundImage: `url(${item?.imagenPrincipalCrucero?.url})` }}
           className={`${styles.cardGeneral_imagen} pointer`}
         ></section>
       </Link>
 
       <section className={styles.cardGeneral_body}>
-        <Link href={`${ruta}/${item.slug}`} passHref>
-          <a className={`${styles.cardGeneral_titulo} mt-3`}>{item?.tituloLuna}</a>
+        <Link href={`${ruta}/${item?.slugCrucero}`} passHref>
+          <a className={`${styles.cardGeneral_titulo} mt-3`}>{item?.tituloCrucero}</a>
         </Link>
 
         <p className="text-muted mt-4">
-          {item?.descripcionCortaLuna}
+          {item?.descripcionCortaCrucero}
         </p>
 
         <h4 className="card-tour__sub text-secondary text-left mt-3">
@@ -33,7 +35,7 @@ export default function CardLunaMiel({ item, tipo }) {
           </span>
 
           <span className={styles.cardGeneral_ubicacion}>
-            Huarochirí - Lima, Perú
+            {item?.ciudadCrucero} - <span style={{textTransform:'capitalize'}}>{item?.regionCrucero.toLowerCase()}</span> , Perú
           </span>
         </h4>
 

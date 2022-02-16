@@ -1,0 +1,55 @@
+.modalContacto {
+  min-width: 250px;
+  width: 30vw;
+  height: 300px;
+  background-color: #f2f2f2;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  position: absolute;
+  top: 35%;
+  right: 0;
+  z-index: 100;
+  display: none;
+}
+
+.modalContacto__fixed {
+  position: fixed;
+}
+
+@media (min-width: 768px) {
+  .modalContacto {
+    width: 35vw;
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .modalContacto {
+    height: 220px;
+  }
+}
+
+.modalContacto_titulo {
+  font-size: 1.3em;
+}
+
+@media (min-width: 992px) {
+  .modalContacto_titulo {
+    font-size: 1.5em;
+  }
+}
+
+.modalContacto_avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.modalContacto_icono {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 20%;
+  left: -0.6rem;
+}
+/*# sourceMappingURL=styles.module.css.map */

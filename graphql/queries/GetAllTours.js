@@ -1,24 +1,29 @@
 import { gql } from '@apollo/client'
 export const GET_ALL_TOURS = gql`
-query GetAllTour($estadoTour:String,$page:Int,$numberPaginate:Int){
-  GetAllTour(estadoTour:$estadoTour,page:$page,numberPaginate:$numberPaginate){
+query GetAllTour($page: Int, $numberPaginate: Int, $estadoTour: String) {
+  GetAllTour(
+    page: $page
+    numberPaginate: $numberPaginate
+    estadoTour: $estadoTour
+  ) {
     nroTotalItems
-    data{
+    data {
       tourId
       tituloTour
       slugTour
       regionTour
       ciudadTour
       estadoTour
+      precioBaseTour
+      nroHoras
+      nroDias
       destacadoTour
       keywordsTour
       descripcionCortaTour
       descripcionLargaTour
       itinerarioTour
       puntoPartidaTour
-      incluyeTour
       noIncluyeTour
-      actividadesTour
       notasTour
       politicasTour
       videoPresentacionTour
@@ -43,19 +48,24 @@ query GetAllTour($estadoTour:String,$page:Int,$numberPaginate:Int){
         categoriaId
         slugCategoria
         tituloCategoria
-        descripcion
         estadoCategoria
-        keywordsCategoria
-        imagenPrincipalCategoria {
-          id
-          descripcion
-          url
-        }
-        imagenSecundariaCategoria {
-          id
-          descripcion
-          url
-        }
+      }
+      IncluyeTour {
+        incluyeId
+        descripcionIncluye
+      }
+      ActividadesTour {
+        actividadId
+        descripcion_actividad
+      }
+      Departamento {
+        DeparCodi
+        DeparNom
+      }
+      Provincia {
+        ProvCodi
+        ProvNom
+        DeparCodi
       }
     }
   }

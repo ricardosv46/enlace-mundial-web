@@ -1,11 +1,12 @@
-import React, { useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 
 import Swiper from "react-id-swiper";
+import { useDepartamentosServices } from "../../../Services/useDepartamentosServices";
 
-// Componentes
 import CardDestino from "../../cards/card-destino";
 
 export default function DestinosDestacados() {
+  const { loadingGetData, db: dataDestacados } = useDepartamentosServices();
   const destinosDestacados = [
     {
       titulo: "Cusco",
@@ -37,6 +38,11 @@ export default function DestinosDestacados() {
       imagen:
         "https://media.vogue.mx/photos/5e19fa7ba3810f0008d96d3e/master/pass/Lima-%20La%20Costa%20Verde.jpg",
     },
+    {
+      titulo: "Cusco",
+      imagen:
+        "https://www.paquetesdeviajesperu.com/wp-content/uploads/2019/03/cusco-peru.jpg",
+    },
   ];
 
   let destinosTerceraFila = destinosDestacados.slice(2);
@@ -65,61 +71,89 @@ export default function DestinosDestacados() {
 
       <div className="container mt-5">
         <div className="row justify-content-center">
-          <div className="col-md-11">
-            {/* Fila 1 */}
-            <div className="destinos-destacados__fila-1">
-              <div>
-                <CardDestino item={destinosDestacados[0]} />
-              </div>
-
-              <div>
-                <CardDestino item={destinosDestacados[1]} />
-              </div>
-            </div>
-
-            {/* Fila 2 */}
-
-            {/* Fila 3 */}
-
-            {/* Carousel mobile */}
-            <section className="d-md-none position-relative">
-              <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
-                {destinosTerceraFila.map((item) => {
-                  return (
-                    <div key={item.id}>
-                      <CardDestino item={item} />
-                    </div>
-                  );
+          {loadingGetData ? (
+            <div>Cargando ...</div>
+          ) : (
+            <div className="col-md-11">
+              <div className="destinos-destacados__fila-1">
+                {dataDestacados.map((destino, contador) => {
+                  if (contador < 2) {
+                    return (
+                      <div>
+                        <CardDestino
+                          key={destino?.DeparCodi}
+                          item={{
+                            titulo: destino?.DeparNom,
+                            imagen: destino?.imagenPrincipal?.url,
+                          }}
+                        />
+                      </div>
+                    );
+                  } else {
+                    return;
+                  }
                 })}
-              </Swiper>
+              </div>
 
-              <button
-                type="button"
-                className="carousel-app-btn carousel-app-btn--prev"
-                onClick={goPrev}
-              >
-                <i className="fas fa-chevron-left"></i>
-              </button>
-              <button
-                type="button"
-                className="carousel-app-btn carousel-app-btn--next"
-                onClick={goNext}
-              >
-                <i className="fas fa-chevron-right"></i>
-              </button>
-            </section>
+              {/* Fila 2 */}
+              {/* Carousel mobile */}
+              
+                <section className="d-md-none position-relative">
+                  <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
+                    {dataDestacados.map((destino, contador) => {
+                      if (contador > 2) {
+                        return (
+                          <div key={destino?.DeparCodi}>
+                            <CardDestino
+                              item={{
+                                titulo: destino?.DeparNom,
+                                imagen: destino?.imagenPrincipal?.url,
+                              }}
+                            />
+                          </div>
+                        );
+                      }
+                    })}
+                  </Swiper>
 
-            {/* Carousel desktop */}
-            <div className="destinos-destacados__fila-3">
-              {destinosTerceraFila.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <CardDestino item={item} />
-                  </div>
-                );
-              })}
+                  <button
+                    type="button"
+                    className="carousel-app-btn carousel-app-btn--prev"
+                    onClick={goPrev}
+                  >
+                    <i className="fas fa-chevron-left"></i>
+                  </button>
+                  <button
+                    type="button"
+                    className="carousel-app-btn carousel-app-btn--next"
+                    onClick={goNext}
+                  >
+                    <i className="fas fa-chevron-right"></i>
+                  </button>
+                </section>
+              
+
+              {/* Carousel desktop */}
+              {dataDestacados.length > 2 && (
+                <div className="destinos-destacados__fila-3">
+                  {dataDestacados.map((destino, contador) => {
+                    if (contador > 2) {
+                      return (
+                        <div key={destino?.DeparCodi}>
+                          <CardDestino
+                            item={{
+                              titulo: destino?.DeparNom,
+                              imagen: destino?.imagenPrincipal?.url,
+                            }}
+                          />
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              )}
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

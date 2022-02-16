@@ -1,0 +1,21 @@
+.terminos article {
+  border-bottom: 3px solid rgba(63, 60, 56, 0.9);
+  padding-bottom: 0.5rem;
+}
+
+.terminos h2 {
+  font-size: 1.1em;
+}
+
+@media (min-width: 768px) {
+  .terminos h2 {
+    font-size: 1.3em;
+  }
+}
+
+@media (min-width: 768px) {
+  .terminos p {
+    font-size: 1.1em;
+  }
+}
+/*# sourceMappingURL=styles.module.css.map */

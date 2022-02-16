@@ -1,15 +1,10 @@
-import React, { useState, useRef } from "react";
-
-import cruceros from "../../../datos-paginas/api/cruceros";
-
+import React, { useRef } from "react";
+import gestionCrucero from "../../../gestion-de-endpoints/gestionCrucero";
 import Swiper from "react-id-swiper";
+import CardCrucero from "../../cards/card-crucero";
 
-import CardGeneral from "../../cards/card-general";
-
-
-const Cruceros = ({ name }) => {
-  console.log("haber name", name);
-  const [items, setItems] = useState(cruceros);
+const Cruceros = () => {
+  const { dataCrucero, loading: loadingGetCrucero } = gestionCrucero();
 
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
@@ -51,28 +46,32 @@ const Cruceros = ({ name }) => {
         <div className="col-md-11 mt-5 position-relative">
           {/* Carousel mobile */}
           <section className="d-md-none">
-            <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
-              {items.map((item) => {
-                return (
-                  <div key={item.id}>
-                    <CardGeneral item={item} tipo="cruceros" />
-                  </div>
-                );
-              })}
-            </Swiper>
+            {!loadingGetCrucero && (
+              <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
+                {dataCrucero.map((item) => {
+                  return (
+                    <div key={item.cruceroId}>
+                      <CardCrucero item={item}  />
+                    </div>
+                  );
+                })}
+              </Swiper>
+            )}
           </section>
 
           {/* Carousel desktop */}
           <section className="d-none d-md-block">
-            <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
-              {items.map((item) => {
-                return (
-                  <div key={item.id}>
-                    <CardGeneral item={item} tipo="cruceros" />
-                  </div>
-                );
-              })}
-            </Swiper>
+            {!loadingGetCrucero && (
+              <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
+                {dataCrucero.map((item) => {
+                  return (
+                    <div key={item.cruceroId}>
+                      <CardCrucero item={item}  />
+                    </div>
+                  );
+                })}
+              </Swiper>
+            )}
           </section>
 
           <button
@@ -96,9 +95,3 @@ const Cruceros = ({ name }) => {
 };
 
 export default Cruceros;
-
-Cruceros.getInitialProps = () => {
-  return {
-    name: 'jose'
-  }
-}

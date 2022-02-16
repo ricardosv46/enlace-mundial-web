@@ -1,0 +1,10 @@
+.preguntasFrecuentes h1 {
+  font-size: 1.6em;
+}
+
+@media (min-width: 768px) {
+  .preguntasFrecuentes h1 {
+    font-size: 3vw;
+  }
+}
+/*# sourceMappingURL=styles.module.css.map */

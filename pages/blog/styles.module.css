@@ -1,0 +1,36 @@
+.slug_imagen {
+  width: 100%;
+  height: 450px;
+  background-size: cover;
+}
+
+.slug_titulo {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.slug_subtitulo {
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 1.5em;
+}
+
+.slug aside {
+  border-left: 1px solid #f2f2f2;
+}
+
+.slug_tag {
+  background-color: rgba(97, 190, 0, 0.1);
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2rem;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.slug_tag:hover {
+  background-color: #61BE00;
+  color: white;
+  text-decoration: none;
+}
+/*# sourceMappingURL=styles.module.css.map */

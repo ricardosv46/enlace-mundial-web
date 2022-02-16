@@ -1,19 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Swiper from "react-id-swiper";
 import GestionLuna from "../../../gestion-de-endpoints/GestionLunaMiel";
-import CardGeneral from "../../cards/card-general";
 import CardLunaMiel from "../../cards/card-luna-miel";
-import cruceros from "../../../datos-paginas/api/cruceros";
 
-const LunaDeMiel = ({ data }) => {
+const LunaDeMiel = () => {
   const { dataLuna, loading: loadingGetLuna } = GestionLuna();
-  // const [itemsLuna, setItemsLuna] = useState([]);
-  // console.log("valor de data luna csmre", itemsLuna.length);
-  // useEffect(() => {
-  //   if (loadingGetLuna === false) {
-  //     setItemsLuna(dataLuna);
-  //   }
-  // }, [dataLuna]);
+
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
 
@@ -55,7 +47,7 @@ const LunaDeMiel = ({ data }) => {
         <div className="col-md-11 mt-5 position-relative">
           {/* Carousel mobile */}
           <section className=" d-md-none">
-            {!loadingGetLuna &&
+            {!loadingGetLuna && (
               <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
                 {dataLuna.map((item) => {
                   return (
@@ -65,15 +57,13 @@ const LunaDeMiel = ({ data }) => {
                   );
                 })}
               </Swiper>
-
-            }
-
+            )}
           </section>
 
           {/* Carousel desktop */}
           <section className="d-none d-md-block">
-            {
-              !loadingGetLuna && <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
+            {!loadingGetLuna && (
+              <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
                 {dataLuna.map((item) => {
                   return (
                     <div key={item.lunaId}>
@@ -82,8 +72,7 @@ const LunaDeMiel = ({ data }) => {
                   );
                 })}
               </Swiper>
-            }
-
+            )}
           </section>
 
           <button

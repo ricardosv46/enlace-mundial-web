@@ -13,13 +13,13 @@ import GestionLuna from "../../../gestion-de-endpoints/GestionLunaMiel";
 const ToursPopulares = () => {
   const { dataTours, loading: loadingGetTour } = GestionTours();
   const [itemsTours, setItemsTours] = useState([]);
-
+  console.log("items", itemsTours);
   useEffect(() => {
     if (!loadingGetTour) {
       setItemsTours(dataTours);
     }
   }, [loadingGetTour]);
-  console.log("el valor del array es", itemsTours);
+
   const swiperRefMobile = useRef(null);
 
   const carouselParamsMobile = {
@@ -47,11 +47,13 @@ const ToursPopulares = () => {
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
               {itemsTours.length
                 ? itemsTours.map((item) => {
-                    return (
-                      <div key={item.tourId}>
-                        <CardTour item={item} />
-                      </div>
-                    );
+                    if (item.destacadoTour.includes("Activado")) {
+                      return (
+                        <div key={item.tourId}>
+                          <CardTour item={item} />
+                        </div>
+                      );
+                    }
                   })
                 : "No existen"}
             </Swiper>
@@ -74,13 +76,18 @@ const ToursPopulares = () => {
         </div>
 
         <div className="row d-none d-md-flex">
-          {itemsTours.length
+          {itemsTours.length > 0
             ? itemsTours.map((item) => {
-                return (
-                  <div className="col-md-4 contenedor-card-tour" key={item.id}>
-                    <CardTour item={item} />
-                  </div>
-                );
+                if (item.destacadoTour.includes("Activado")) {
+                  return (
+                    <div
+                      className="col-md-4 contenedor-card-tour"
+                      key={item.id}
+                    >
+                      <CardTour item={item} />
+                    </div>
+                  );
+                }
               })
             : "No existen"}
         </div>

@@ -1,0 +1,102 @@
+.cardTour {
+  min-height: 400px;
+  margin-bottom: 5rem;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+}
+
+.cardTour_header {
+  height: 300px;
+  background-size: cover;
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+}
+
+.cardTour_header:hover .cardTour_imagenInfo {
+  opacity: 1;
+}
+
+.cardTour_header:hover .like {
+  color: #61BE00;
+}
+
+.cardTour_imagenInfo {
+  background-size: cover;
+  height: 500px;
+  border-radius: 0.7rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.7s;
+  transition: opacity 0.7s;
+}
+
+.cardTour_titulo {
+  font-size: 1.3em;
+}
+
+@media (min-width: 768px) {
+  .cardTour_titulo {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #2c508a;
+  }
+}
+
+.cardTour_titulo a {
+  color: #2c508a;
+}
+
+.cardTour_titulo a:hover {
+  color: #2c508a;
+}
+
+.cardTour_sub {
+  font-size: 0.9em;
+}
+
+@media (min-width: 768px) {
+  .cardTour_sub {
+    font-size: 0.95em;
+  }
+}
+
+.cardTour__icono-maps {
+  font-size: 0.9em;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.cardTour_precioVista {
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .cardTour_precioVista {
+    padding-right: 1.3rem;
+  }
+}
+
+.cardTour_precio {
+  width: 45%;
+  font-size: 1em;
+  font-weight: 700;
+  color: #61BE00;
+  display: inline-block;
+  -webkit-clip-path: polygon(100% 0%, 90% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+          clip-path: polygon(100% 0%, 90% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+}
+
+.cardTour_precio2 {
+  font-size: 1.3em;
+}
+
+.cardTour__dia {
+  display: inline-block;
+  margin-left: 1rem;
+}
+/*# sourceMappingURL=styles.module.css.map */

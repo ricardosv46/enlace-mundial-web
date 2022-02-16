@@ -12,53 +12,50 @@ export default function Calendar({
   dataHorario,
   pintarDias,
 }) {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   const [fechas, setFechas] = useState([]);
   // Evento para enviar la fecha seleccionada
-  const asignarFecha = (fecha) => {
-    fechaSeleccionada(fecha);
-    // setStartDate(fecha);
-  };
-  console.log('las fechas son', fechas)
+  console.log("esta es la fecha seleccionada");
+
   useEffect(() => {
+    setFechas([]);
     pintarDias.map((fecha) => {
       const arrayFecha = fecha.split("-");
       setFechas((f) => [
         ...f,
-        new Date((arrayFecha[0]),(arrayFecha[1] - 1),(arrayFecha[2])),
+        new Date(arrayFecha[0], arrayFecha[1] - 1, arrayFecha[2]),
       ]);
-    })
-  }, [pintarDias])
+    });
+  }, [pintarDias]);
   return (
     <>
       <DatePicker
         selected={startDate}
-        // onSelect={() => { alert('') }}
         onChange={(date) => {
-          asignarFecha(date);
+          setStartDate(date);
         }}
+        // onSelect={date => setStartDate(date)}
         onMonthChange={(date) => {
           setMes(date.getMonth() + 1);
           setAnio(date.getFullYear());
+          setStartDate(date);
         }}
-        highlightDates={
-          fechas
+        // filterDate={isWeekday}
+        filterDate={(date) =>
+          (date.getFullYear() === new Date(2021, 11, 21).getFullYear()) &&
+          (date.getMonth() === new Date(2021, 11, 21).getMonth()) &&
+          (date.getDate() === 
+          
+          new Date(2021, 11, 21).getDate()||date.getDate() === new Date(2021, 11, 22).getDate()
+          
+          )
+         
         }
-        // [new Date(2021, 10, 29), new Date(2021, 10, 30)]}
+        includeDates={[new Date(2021,11,21),new Date(2021,11,22),new Date(2021,11,24)]}
+        // includeDates={fechas}
+        highlightDates={fechas}
         locale="es"
         inline
-        // filterDate={(date) => {
-        //   return date.getMonth() === mes;
-        // }}
-        // includeDates={[
-        //   new Date(2021, 10, 29),
-        //   new Date(2021, 10, 30),
-        //   new Date(2021, 11, 10),
-        // ]}
-        showDisabledMonthNavigation
-      // dayClassName={(date = new Date) =>
-      //   date.getDate() < Math.random() * 31 ? "random" : undefined
-      // }
       >
         <div style={{ color: "red" }}>
           Debe de seleccionar una fecha asignada

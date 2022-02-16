@@ -1,0 +1,104 @@
+.modal-close {
+  font-size: 1.5em;
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 100;
+}
+
+.rsm-bg-white {
+  overflow: hidden !important;
+}
+
+/* Modal */
+.rsm-fixed {
+  z-index: 10000 !important;
+}
+
+.rsm-flex-1.rsm-p-8 {
+  padding: 0;
+}
+
+.authForm .formHeader {
+  height: 120px;
+}
+
+.authForm .formLogo {
+  max-width: 250px;
+}
+
+.authForm .formBody {
+  min-height: 420px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  box-shadow: 0px 19px 22px -25px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 19px 22px -25px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 19px 22px -25px rgba(0, 0, 0, 0.75);
+}
+
+@media (min-width: 768px) {
+  .authForm .formBody {
+    -ms-grid-columns: 45% 1fr;
+        grid-template-columns: 45% 1fr;
+  }
+}
+
+.authForm .formBodyBg {
+  min-height: 350px;
+  background-image: url("https://cdn2.salud180.com/sites/default/files/styles/medium/public/field/image/2018/05/vacaciones-ninos.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.authForm .formTitulo {
+  font-size: 1.3em;
+}
+
+@media (min-width: 768px) {
+  .authForm .formTitulo {
+    font-size: 1.5em;
+  }
+}
+
+.authForm .btnGoogle,
+.authForm .btnFacebook {
+  border-radius: 0.3rem;
+  -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+@media (min-width: 768px) {
+  .authForm .btnGoogle,
+  .authForm .btnFacebook {
+    width: 45%;
+  }
+}
+
+.authForm .btnGoogle img,
+.authForm .btnFacebook img {
+  width: 20px;
+}
+
+.authForm .btn--google {
+  background-color: white;
+}
+
+.authForm .btn--facebook {
+  background-color: #3b5998;
+}
+
+.authForm .separador {
+  height: 2px;
+  background-color: rgba(59, 89, 152, 0.5);
+}
+
+.authForm .form-control {
+  border-radius: 0.1rem;
+}
+
+.authForm .btn-link.text-blue:hover {
+  color: #3b5998;
+}
+/*# sourceMappingURL=styles.module.css.map */
