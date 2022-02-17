@@ -1,102 +1,10 @@
 import Head from "next/head";
-
+import GestionLuna from "../../gestion-de-endpoints/GestionLunaMiel";
 import Banner from "components/luna-de-miel/Banner";
 import CardLunaDeMiel from "components/cards/card-luna-de-miel";
 
 export default function Home() {
-  const items = [
-    {
-      id: 1,
-      titulo: "Machu Picchu",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item",
-    },
-    {
-      id: 2,
-      titulo: "Machu Picchu",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-2",
-    },
-    {
-      id: 3,
-      titulo: "Machu Picchu",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-3",
-    },
-    {
-      id: 4,
-      titulo: "Machu Picchu",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-4",
-    },
-    {
-      id: 5,
-      titulo: "Machu Picchu",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-5",
-    },
-    {
-      id: 6,
-      titulo: "Machu Picchu",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-6",
-    },
-    {
-      id: 7,
-      titulo: "Machu Picchu",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-7",
-    },
-    {
-      id: 8,
-      titulo: "Machu Picchu",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-8",
-    },
-    {
-      id: 9,
-      titulo: "Machu Picchu",
-      descripcion:
-        "La ciudad de Cusco, emplazada en el legendario Valle del Huatanay, a 3.350 metros respecto al nivel del mar, ha sido habitada desde tiempos inmemorables.",
-      imagen:
-        "https://gestion.pe/resizer/uwUASF0Zl47Qx0xmzlnny7_w4oQ=/1200x900/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BPT2O6BPWVB4XJIHMQP3SKV3GM.jpg",
-      categoria: "Cusco",
-      slug: "slug-item-9",
-    },
-  ];
-
+  const { dataLuna, loading } = GestionLuna();
   return (
     <div>
       <Head>
@@ -117,13 +25,17 @@ export default function Home() {
 
           <div className="container mt-5">
             <div className="row">
-              {items.map((item) => {
-                return (
-                  <div className="col-md-4 mb-5" key={item.id}>
-                    <CardLunaDeMiel tipo="luna-de-miel" item={item} />
-                  </div>
-                );
-              })}
+              {loading ? (
+                <p>Cargando ...</p>
+              ) : (
+                dataLuna.map((item) => {
+                  return (
+                    <div className="col-md-4 mb-5" key={item.lunaId}>
+                      <CardLunaDeMiel tipo="luna-de-miel" item={item} />
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
         </section>

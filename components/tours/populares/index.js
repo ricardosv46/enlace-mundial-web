@@ -8,12 +8,11 @@ import tours from "../../../datos-paginas/api/tours";
 import Swiper from "react-id-swiper";
 import CardTour from "@/components/cards/card-tour";
 import GestionTours from "../../../gestion-de-endpoints/GestionTours";
-import GestionLuna from "../../../gestion-de-endpoints/GestionLunaMiel";
+
 
 const ToursPopulares = () => {
   const { dataTours, loading: loadingGetTour } = GestionTours();
   const [itemsTours, setItemsTours] = useState([]);
-  console.log("items", itemsTours);
   useEffect(() => {
     if (!loadingGetTour) {
       setItemsTours(dataTours);
