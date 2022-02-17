@@ -32,7 +32,11 @@ export default function CardLunaMiel({ item, tipo }) {
           </span>
 
           <span className={styles.cardGeneral_ubicacion}>
-            Huarochirí - Lima, Perú
+            {item?.ciudadLuna} -{" "}
+            <span style={{ textTransform: "capitalize" }}>
+              {item?.regionLuna.toLowerCase()}
+            </span>{" "}
+            , Perú
           </span>
         </h4>
 

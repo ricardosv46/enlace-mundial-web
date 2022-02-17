@@ -36,7 +36,8 @@ export default function Home({ data }) {
 
   let slug = router.query.slug
 
-  const titulo = data === [] ? data[0].CategoriaBlog.tituloCategoriaBlog : slug
+  const titulo =
+    data.length !== 0 ? data[0].CategoriaBlog.tituloCategoriaBlog : slug
 
   // Swiper
   const swiperRef = useRef(null)
