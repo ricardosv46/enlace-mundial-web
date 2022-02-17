@@ -1,115 +1,57 @@
 export const URL = "https://apienlacemundial.softaki.com/public/graphql"
 
 export const GET_SLUG_TOUR = `
-query GetSlugTour($slugTour:String){
-  GetSlugTour(slugTour:$slugTour) {
+query GetSlugTour($slugTour: String) {
+  GetSlugTour(slugTour: $slugTour) {
     tourId
     tituloTour
     slugTour
     regionTour
     ciudadTour
     estadoTour
+    precioBaseTour
+    nroHoras
+    nroDias
     destacadoTour
     keywordsTour
     descripcionCortaTour
     descripcionLargaTour
     itinerarioTour
     puntoPartidaTour
-    incluyeTour
     noIncluyeTour
-    actividadesTour
     notasTour
     politicasTour
     videoPresentacionTour
     imagenPrincipalTour {
       id
-      descripcion
       url
     }
     imagenSecundariaTour {
       id
-      descripcion
       url
     }
     galeriaTour {
       id
-      descripcion
       url
     }
     slugCategoria
     categoriaId
-    Categoria {
-      categoriaId
-      slugCategoria
-      tituloCategoria
-      descripcion
-      estadoCategoria
-      keywordsCategoria
-      imagenPrincipalCategoria {
-        id
-        descripcion
-        url
-      }
-      imagenSecundariaCategoria {
-        id
-        descripcion
-        url
-      }
+    IncluyeTour {
+      incluyeId
+      descripcionIncluye
     }
-  }
-}
-`
-
-export const GET_SLUG_BLOG = `
-query Query($slugBlog: String) {
-  GetSlugBlog(slugBlog: $slugBlog) {
-    blogId
-    CategoriaBlog {
-      categoriaBlogId
-      created_at
-      descripcionCategoriaBlog
-      estadoCategoriaBlog
-      imagenPrincipalCategoriaBlog {
-        url
-        id
-        descripcion
-      }
-      imagenSecundariaCategoriaBlog {
-        url
-        id
-        descripcion
-      }
-      keywordsCategoriaBlog
-      slugCategoriaBlog
-      tituloCategoriaBlog
-      updated_at
+    ActividadesTour {
+      actividadId
+      descripcion_actividad
     }
-    categoriaBlogId
-    created_at
-    descripcionCortaBlog
-    descripcionLargaBlog
-    destacadoBlog
-    estadoBlog
-    galeriaBlog {
-      url
-      id
-      descripcion
+    Departamento {
+      DeparCodi
+      DeparNom
     }
-    imagenPrincipalBlog {
-      url
-      id
-      descripcion
+    Provincia {
+      ProvCodi
+      ProvNom
     }
-    imagenSecundariaBlog {
-      url
-      id
-      descripcion
-    }
-    keywordsBlog
-    slugBlog
-    slugCategoriaBlog
-    tituloBlog
-    updated_at
   }
 }
 `

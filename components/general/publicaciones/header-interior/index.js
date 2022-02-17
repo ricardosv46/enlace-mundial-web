@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 
 import SubMenuMobile from "@/components/servicios/submenu/sub-menu-mobile";
 
-export default function HeaderInterior({ slug }) {
+export default function HeaderInterior({ slug, precio, titulo }) {
   const [headerFixed, setHeaderFixed] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
 
@@ -27,14 +27,14 @@ export default function HeaderInterior({ slug }) {
           headerFixed ? `${styles.headerInterior__fixed} shadow-bottom` : ""
         }`}
       >
-        <div className="col-8 pl-md-0">
-          <span className="small text-primary">Actividades y turismo</span>
+        <div className="col-8 pl-md-2 pt-2 small ">
+          <span className=" text-primary font-weight-bold">TOUR - {titulo}</span>
           <h2 className="subtitulo-slug text-primary my-0">{slug}</h2>
         </div>
 
         <div className="col-4 col-md-3 d-flex align-items-end pl-0 pl-md-2">
           <span className="text-danger">S/.</span>
-          <h3 className="text-danger ml-2">95</h3>
+          <h3 className="text-danger ml-2">{precio}</h3>
           <p className="d-flex flex-column text-muted text-uppercase ml-2">
             <span>Por</span>
             <span>persona</span>

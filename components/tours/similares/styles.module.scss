@@ -1,0 +1,9 @@
+.toursPopulares {
+  &_container {
+    margin-top: 4rem;
+
+    @media (min-width: 768px) {
+      margin-top: 4.5rem;
+    }
+  }
+}

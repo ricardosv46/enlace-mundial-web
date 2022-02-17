@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -13,9 +12,7 @@ import MenuInterior from "@/components/servicios/submenu";
 import HeaderInterior from "@/components/general/publicaciones/header-interior";
 import request from "graphql-request";
 import { GET_SLUG_TOUR, URL } from "../../endpoints y url/endpoints";
-// const { data, loading: loadingSlugTour } = useQuery(GET_SLUG_TOUR, {
-//   variables: { slugTour }
-// })
+import ToursSimilares from "../../components/tours/similares";
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_TOUR, {
@@ -72,7 +69,7 @@ export default function Home({ data }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css"
         />
       </Head>
-      { /* reservar un tour con una fecha asignada version mobile*/}
+      {/* reservar un tour con una fecha asignada version mobile*/}
       <Modal
         dialogClassName="modal-auth"
         show={mostrarModal}
@@ -80,10 +77,7 @@ export default function Home({ data }) {
         centered
       >
         <section>
-          <Reservar
-            producto={producto}
-            tourId={data.tourId}
-          />
+          <Reservar producto={producto} tourId={data.tourId} />
         </section>
       </Modal>
 
@@ -92,7 +86,11 @@ export default function Home({ data }) {
           <div className="container">
             <div className="row">
               <div className="col-md-8">
-                <HeaderInterior slug={data.tourTitulo} />
+                <HeaderInterior
+                  slug={data.tourTitulo}
+                  precio={data?.precioBaseTour}
+                  titulo={data?.tituloTour}
+                />
               </div>
             </div>
           </div>
@@ -119,10 +117,7 @@ export default function Home({ data }) {
                     Descubre grandes lugares
                   </h3>
 
-                  <Reservar
-                    producto={data.tourId}
-                    tourId={data.tourId}
-                  />
+                  <Reservar producto={data.tourId} tourId={data.tourId} />
                 </section>
               </div>
             </div>
@@ -150,9 +145,7 @@ export default function Home({ data }) {
                       </h5>
 
                       <div className="py-2 px-3">
-                        <p className="card-text">
-                          {data.descripcionCortaTour}
-                        </p>
+                        <p className="card-text">{data.descripcionCortaTour}</p>
                       </div>
                     </div>
                   </div>
@@ -164,9 +157,7 @@ export default function Home({ data }) {
                       </h5>
 
                       <div className="py-2 px-3">
-                        <p className="card-text">
-                          {data.puntoPartidaTour}
-                        </p>
+                        <p className="card-text">{data.puntoPartidaTour}</p>
                       </div>
                     </div>
                   </div>
@@ -243,25 +234,19 @@ export default function Home({ data }) {
 
                       <div className="py-2">
                         <ul className="list-unstyled">
-                          <li className="l-miel-itinerario__list-item d-flex mb-2">
-                            <span className="text-primary d-inline-block mr-2">
-                              <i className="far fa-check-circle"></i>
-                            </span>
-                            Transporte turístico
-                          </li>
-                          {/* {data.incluyeTour.split(",").map((item) => {
+                          {data?.IncluyeTour?.map((item) => {
                             return (
                               <li
                                 className="l-miel-itinerario__list-item d-flex mb-2"
-                                key={item}
+                                key={item?.incluyeId}
                               >
                                 <span className="text-primary d-inline-block mr-2">
                                   <i className="far fa-check-circle"></i>
                                 </span>
-                                {item}
+                                {item?.descripcionIncluye}
                               </li>
                             );
-                          })} */}
+                          })}
                         </ul>
                       </div>
 
@@ -297,19 +282,19 @@ export default function Home({ data }) {
 
                       <div className="py-2">
                         <ul className="list-unstyled">
-                          {/* {data.actividadesTour.split(",").map((item) => {
+                          {data?.ActividadesTour?.map((item) => {
                             return (
                               <li
-                                key={item}
+                                key={item.actividadId}
                                 className="l-miel-itinerario__list-item d-flex mb-2"
                               >
                                 <span className="text-primary d-inline-block mr-2">
                                   <i className="far fa-check-circle"></i>
                                 </span>
-                                {item}
+                                {item?.descripcion_actividad}
                               </li>
                             );
-                          })} */}
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -422,7 +407,7 @@ export default function Home({ data }) {
             <div className="container">
               <div className="row">
                 <div className="col-md-8">
-                  <ToursRelacionados />
+                  <ToursSimilares deparCodi={data?.Departamento?.DeparCodi} />
                 </div>
               </div>
             </div>
