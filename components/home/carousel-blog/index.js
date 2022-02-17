@@ -8,7 +8,6 @@ import CardBlog from "../../cards/card-blog"
 
 export default function CarouselBlog() {
   const { dataBlog, loading: loadingGetBlog } = GestionBlog()
-  console.log(dataBlog)
 
   const swiperRefMobile = useRef(null)
   const swiperRefDesktop = useRef(null)
@@ -39,11 +38,6 @@ export default function CarouselBlog() {
           <a className='text-dark text-decoration-none'>Blog</a>
         </Link>
       </h2>
-      <div>
-        {dataBlog.map((item) => (
-          <p className='text-black'>{item.blogId}</p>
-        ))}
-      </div>
 
       <div className='container mt-5'>
         <div className='row justify-content-center'>
