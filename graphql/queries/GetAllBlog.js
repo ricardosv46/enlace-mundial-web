@@ -14,6 +14,7 @@ export const GET_ALL_BLOG = gql`
         estadoBlog
         destacadoBlog
         keywordsBlog
+        slugBlog
         descripcionCortaBlog
         descripcionLargaBlog
         imagenPrincipalBlog {

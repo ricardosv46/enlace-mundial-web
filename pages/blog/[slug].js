@@ -14,12 +14,37 @@ import RedesSociales from "@/components/general/redes-sociales"
 import CardBlog from "@/components/cards/card-blog"
 
 import styles from "./styles.module.scss"
+import {
+  GET_ALL_CATEGORIA_BLOG,
+  GET_SLUG_BLOG,
+  URL,
+} from "../../endpoints y url/endpoints"
+import request from "graphql-request"
 
-export default function Home() {
+export async function getServerSideProps({ params }) {
+  const res = await request(URL, GET_SLUG_BLOG, {
+    slugBlog: params.slug,
+  })
+  const data = res?.GetSlugBlog
+
+  const resp = await request(URL, GET_ALL_CATEGORIA_BLOG, {
+    estadoCategoriaBlog: "Activado",
+  })
+
+  const categorias = resp?.GetAllCategoriaBlog
+  return {
+    props: {
+      data: data,
+      categorias,
+    },
+  }
+}
+
+export default function Home({ data, categorias }) {
   const router = useRouter()
   let slug = router.query.slug
+  console.log(categorias)
 
-  console.log(slug)
   // console.log(router)
   const post = {
     imagen:
@@ -32,25 +57,6 @@ export default function Home() {
   }
 
   const [destacados, setDestacados] = useState(posts)
-
-  const categorias = [
-    {
-      id: 1,
-      nombre: "Lugares turísticos en Lima",
-    },
-    {
-      id: 2,
-      nombre: "Hoteles en Arequipa",
-    },
-    {
-      id: 3,
-      nombre: "Lugares turísticos en Cusco",
-    },
-    {
-      id: 4,
-      nombre: "Hoteles en La libertad",
-    },
-  ]
 
   const tags = [
     {
@@ -96,7 +102,7 @@ export default function Home() {
           <div className='container'>
             <div className='row'>
               <div className='col-md-12'>
-                <span className='small text-primary'>Blog / {post.titulo}</span>
+                <span className='small text-primary'>Blog / {slug}</span>
               </div>
             </div>
           </div>
@@ -105,17 +111,18 @@ export default function Home() {
           <section className='container mt-5'>
             <div className='row justify-content-between'>
               <article className='col-md-9 mt-3 mt-md-0 pr-md-5'>
-                <h2 className={styles.slug_titulo}>{post.titulo}</h2>
+                <h2 className={styles.slug_titulo}>{data.tituloBlog}</h2>
 
                 <section
-                  style={{ backgroundImage: "url(" + post.imagen + ")" }}
+                  style={{
+                    backgroundImage:
+                      "url(" + data?.imagenPrincipalBlog?.url + ")",
+                  }}
                   className={`${styles.slug_imagen} mt-4`}
                 ></section>
 
                 <section className='mt-3'>
-                  <p>{post.descripcion_larga}</p>
-                  <p>{post.descripcion_larga}</p>
-                  <p>{post.descripcion_larga}</p>
+                  <p>{data.descripcionLargaBlog}</p>
                 </section>
 
                 <div className='mt-3'>
@@ -142,16 +149,18 @@ export default function Home() {
                     <h3 className={styles.slug_subtitulo}>Categorías</h3>
 
                     <ul className='list-unstyled mt-3'>
-                      {categorias.map((c) => {
+                      {categorias.map((item) => {
                         return (
-                          <li key={c.id} className='mt-1'>
+                          <li key={item.categoriaBlogId} className='mt-1'>
                             <Link
-                              href={`/blog/categorias/${c.nombre}`}
+                              href={`/blog/categorias/${item.tituloCategoriaBlog}`}
                               passHref
                             >
                               <a className='text-primary text-decoration-none'>
                                 <i className='fas fa-chevron-right'></i>
-                                <span className='ml-2'>{c.nombre}</span>
+                                <span className='ml-2'>
+                                  {item.tituloCategoriaBlog}
+                                </span>
                               </a>
                             </Link>
                           </li>

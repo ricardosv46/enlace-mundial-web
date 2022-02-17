@@ -12,13 +12,7 @@ export default function CardBlog({ item }) {
       ></div>
 
       <div className='text-center py-2 px-3'>
-        <Link
-          href={{
-            pathname: "/blog/[slug]",
-            query: { slug: { item } },
-          }}
-          passHref
-        >
+        <Link href={`/blog/${item.slugBlog}`} passHref>
           <a className={`${styles.cardBlog_titulo} font-weight-bold`}>
             {item?.tituloBlog}
           </a>
