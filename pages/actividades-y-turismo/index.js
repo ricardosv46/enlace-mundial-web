@@ -5,11 +5,17 @@ import Script from "next/script";
 
 import CardBusqueda from "@/components/cards/card-busqueda";
 import GestionTours from "../../gestion-de-endpoints/GestionTours";
+import { useActividadesServices } from "../../gestion-de-endpoints/useActividadesServices";
+import { useIncluyeServices } from "../../gestion-de-endpoints/useIncluyeServices";
 import Home from "../cruceros";
 
 export default function ActividadesYTurismo() {
-
+  const { db: dataActividades, loadingGetData: loadingActiviades } =
+    useActividadesServices();
+  const { db: dataIncluye, loadingGetData: loadingIncluye } =
+    useIncluyeServices();
   const { dataTours, loading: loadingGetTour } = GestionTours();
+  console.log(dataIncluye)
   const [itemsTours, setItemsTours] = useState([]);
   useEffect(() => {
     if (!loadingGetTour) {
@@ -168,127 +174,62 @@ export default function ActividadesYTurismo() {
                       Incluye
                     </h3>
 
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="incluye"
-                      />
-                      <label className="form-check-label" htmlFor="incluye">
-                        Solo tours
-                      </label>
-                    </div>
-
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="defaultCheck2"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="defaultCheck2"
-                      >
-                        Tour + Hotel 1
-                      </label>
-                    </div>
-
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="defaultCheck2"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="defaultCheck2"
-                      >
-                        Tour + Hotel 2
-                      </label>
-                    </div>
-
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="defaultCheck2"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="defaultCheck2"
-                      >
-                        Tour + Hotel 3
-                      </label>
-                    </div>
+                    {loadingIncluye ? (
+                      <p>Cargando ...</p>
+                    ) : (
+                      dataIncluye.map((incluye) => {
+                        return (
+                          <div
+                          className="form-check"
+                          key={incluye?.incluyeId}
+                        >
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id={incluye?.incluyeId}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="actividad-1"
+                          >
+                            {incluye?.descripcionIncluye}
+                          </label>
+                        </div>
+                        )
+                        
+                      })
+                    )}
 
                     {/* Actividades */}
                     <h3 className="card-title stext-secondary font-weight-bold mt-3">
                       Actividades
                     </h3>
-
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="actividad-1"
-                      />
-                      <label className="form-check-label" htmlFor="actividad-1">
-                        Actividades 1
-                      </label>
-                    </div>
-
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="actividad-2"
-                      />
-                      <label className="form-check-label" htmlFor="actividad-2">
-                        Actividades 2
-                      </label>
-                    </div>
-
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="actividad-3"
-                      />
-                      <label className="form-check-label" htmlFor="actividad-3">
-                        Actividades 3
-                      </label>
-                    </div>
-
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="actividad-4"
-                      />
-                      <label className="form-check-label" htmlFor="actividad-4">
-                        Actividades 4
-                      </label>
-                    </div>
-
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="actividad-5"
-                      />
-                      <label className="form-check-label" htmlFor="actividad-5">
-                        Actividades 5
-                      </label>
-                    </div>
+                    {loadingActiviades ? (
+                      <p>Cargando ...</p>
+                    ) : (
+                      dataActividades.map((actividad) => {
+                        return (
+                          <div
+                            className="form-check"
+                            key={actividad?.actividadId}
+                          >
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              value=""
+                              id={actividad?.actividadId}
+                            />
+                            <label
+                              className="form-check-label"
+                              htmlFor="actividad-1"
+                            >
+                              {actividad?.descripcion_actividad}
+                            </label>
+                          </div>
+                        );
+                      })
+                    )}
                   </div>
                 </section>
               </aside>
@@ -301,9 +242,7 @@ export default function ActividadesYTurismo() {
             </div>
           </div>
         </section>
-        <div className="hidden">
-
-        </div>
+        <div className="hidden"></div>
       </main>
 
       <Script

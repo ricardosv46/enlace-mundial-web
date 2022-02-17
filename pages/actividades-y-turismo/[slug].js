@@ -13,6 +13,9 @@ import MenuInterior from "@/components/servicios/submenu";
 import HeaderInterior from "@/components/general/publicaciones/header-interior";
 import request from "graphql-request";
 import { GET_SLUG_TOUR, URL } from "../../endpoints y url/endpoints";
+// const { data, loading: loadingSlugTour } = useQuery(GET_SLUG_TOUR, {
+//   variables: { slugTour }
+// })
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_TOUR, {
@@ -27,7 +30,7 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function Home({ data }) {
-  // console.log("valor de data", data);
+  console.log("valor de data", data);
   const router = useRouter();
 
   const [mostrarModal, setMostrarModal] = useState(false);
@@ -246,7 +249,7 @@ export default function Home({ data }) {
                             </span>
                             Transporte turístico
                           </li>
-                          {data.incluyeTour.split(",").map((item) => {
+                          {/* {data.incluyeTour.split(",").map((item) => {
                             return (
                               <li
                                 className="l-miel-itinerario__list-item d-flex mb-2"
@@ -258,7 +261,7 @@ export default function Home({ data }) {
                                 {item}
                               </li>
                             );
-                          })}
+                          })} */}
                         </ul>
                       </div>
 
@@ -294,7 +297,7 @@ export default function Home({ data }) {
 
                       <div className="py-2">
                         <ul className="list-unstyled">
-                          {data.actividadesTour.split(",").map((item) => {
+                          {/* {data.actividadesTour.split(",").map((item) => {
                             return (
                               <li
                                 key={item}
@@ -306,7 +309,7 @@ export default function Home({ data }) {
                                 {item}
                               </li>
                             );
-                          })}
+                          })} */}
                         </ul>
                       </div>
                     </div>
