@@ -45,15 +45,6 @@ export default function Home({ data, categorias }) {
   let slug = router.query.slug
 
   // console.log(router)
-  const post = {
-    imagen:
-      "https://i1.wp.com/instyle.mx/wp-content/uploads/2019/07/parejas-felices.jpg",
-    titulo: "Y tú qué planes? Turismo, ofertas de viaje y tours por el Perú",
-    descripcion:
-      "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
-    descripcion_larga:
-      "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces. Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
-  }
 
   const [destacados, setDestacados] = useState(posts)
 
@@ -169,7 +160,8 @@ export default function Home({ data, categorias }) {
                   </section>
 
                   {/* Tags */}
-                  <section className='mt-4'>
+                  {/* Oculto hasta que haya api */}
+                  {/* <section className='mt-4'>
                     <h3 className={styles.slug_subtitulo}>Etiquetas</h3>
 
                     <ul className='d-flex flex-wrap list-unstyled mt-3'>
@@ -183,7 +175,7 @@ export default function Home({ data, categorias }) {
                         )
                       })}
                     </ul>
-                  </section>
+                  </section> */}
 
                   {/* Destacados */}
                   <section className='mt-4'>
