@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Head from "next/head";
 import Script from "next/script";
 
 import CardBusqueda from "@/components/cards/card-busqueda";
-
-import tours from "../../datos-paginas/api/tours";
+import GestionTours from "../../gestion-de-endpoints/GestionTours";
 import Home from "../cruceros";
 
 export default function ActividadesYTurismo() {
-  const [items, setItems] = useState(tours);
+
+  const { dataTours, loading: loadingGetTour } = GestionTours();
+  const [itemsTours, setItemsTours] = useState([]);
+  useEffect(() => {
+    if (!loadingGetTour) {
+      setItemsTours(dataTours);
+    }
+  }, [loadingGetTour]);
 
   return (
     <div className="busqueda-page">
@@ -289,8 +295,8 @@ export default function ActividadesYTurismo() {
             </div>
 
             <div className="col-md-9 mt-4 mt-md-0">
-              {items.map((item) => {
-                return <CardBusqueda item={item} key="item.id" />;
+              {itemsTours.map((item) => {
+                return <CardBusqueda item={item} key={item.tourId} />;
               })}
             </div>
           </div>

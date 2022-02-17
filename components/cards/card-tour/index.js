@@ -59,7 +59,7 @@ export default function CardTour({ item }) {
             <i className="fas fa-map-marker-alt"></i>
           </span>
          {/* {const } */}
-          <span className="font-weight-bold capitalize transform">{`${item?.ciudadTour?.toUpperCase()} - ${item.regionTour}, PERÚ`}</span>
+          <span className="font-weight-bold" style={{textTransform:'capitalize'}}>{`${item?.Provincia?.ProvNom?.toLowerCase()} - ${item?.Departamento?.DeparNom?.toLowerCase()}, PERÚ`}</span>
         </h4>
 
         <div className="card-tour__stars">
@@ -74,7 +74,7 @@ export default function CardTour({ item }) {
 
         {/* Días y precio */}
         <section className="d-flex justify-content-between">
-          <span className="text-secondary card-tour__dia"> 1 día</span>
+          <span className="text-secondary card-tour__dia">{item?.nroDias}</span>
 
           <p className="d-flex flex-column justify-content-end text-right">
             <span>Desde</span>
@@ -82,7 +82,7 @@ export default function CardTour({ item }) {
             <span
               className={`${styles.cardTour_precio2} text-blue font-weight-bold`}
             >
-              S/. {item.precio}
+              S/. {item.precioBaseTour}
             </span>
           </p>
         </section>
