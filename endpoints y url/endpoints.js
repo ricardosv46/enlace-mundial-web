@@ -77,3 +77,58 @@ query GetAllCategoriaBlog($estadoCategoriaBlog: String) {
   }
 }
 `
+export const GET_ALL_BLOG_CATEGORIA = `
+query GetAllBlogCategoria($estadoBlog: String, $numberPaginate: Int, $page: Int, $slugCategoriaBlog: String) {
+  GetAllBlogCategoria(estadoBlog: $estadoBlog, numberPaginate: $numberPaginate, page: $page, slugCategoriaBlog: $slugCategoriaBlog) {
+    data {
+      CategoriaBlog {
+        categoriaBlogId
+        created_at
+        descripcionCategoriaBlog
+        imagenPrincipalCategoriaBlog {
+          url
+          id
+          descripcion
+        }
+        estadoCategoriaBlog
+        imagenSecundariaCategoriaBlog {
+          url
+          id
+          descripcion
+        }
+        keywordsCategoriaBlog
+        slugCategoriaBlog
+        tituloCategoriaBlog
+        updated_at
+      }
+      blogId
+      categoriaBlogId
+      created_at
+      descripcionLargaBlog
+      descripcionCortaBlog
+      destacadoBlog
+      estadoBlog
+      galeriaBlog {
+        url
+        id
+        descripcion
+      }
+      imagenPrincipalBlog {
+        descripcion
+        id
+        url
+      }
+      imagenSecundariaBlog {
+        descripcion
+        id
+        url
+      }
+      keywordsBlog
+      slugBlog
+      slugCategoriaBlog
+      tituloBlog
+      updated_at
+    }
+  }
+}
+`

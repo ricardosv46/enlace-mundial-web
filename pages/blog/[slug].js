@@ -43,7 +43,6 @@ export async function getServerSideProps({ params }) {
 export default function Home({ data, categorias }) {
   const router = useRouter()
   let slug = router.query.slug
-  console.log(categorias)
 
   // console.log(router)
   const post = {
@@ -153,7 +152,7 @@ export default function Home({ data, categorias }) {
                         return (
                           <li key={item.categoriaBlogId} className='mt-1'>
                             <Link
-                              href={`/blog/categorias/${item.tituloCategoriaBlog}`}
+                              href={`/blog/categorias/${item.slugCategoriaBlog}`}
                               passHref
                             >
                               <a className='text-primary text-decoration-none'>
