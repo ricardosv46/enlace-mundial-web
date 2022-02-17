@@ -20,7 +20,7 @@ const ToursSimilares = ({ deparCodi }) => {
   }, [loadingGetTourSimilares]);
 
   const swiperRefMobile = useRef(null);
-
+  const swiperRefDesktop = useRef(null);
   const carouselParamsMobile = {
     slidesPerView: 1,
     loop: true,
@@ -86,7 +86,7 @@ const ToursSimilares = ({ deparCodi }) => {
           {itemsTours.length > 0
             ? itemsTours.map((item) => {
                 return (
-                  <div className="col-md-4 contenedor-card-tour" key={item.id}>
+                  <div className="col-md-6 contenedor-card-tour" key={item.id}>
                     <CardTour item={item} />
                   </div>
                 );
