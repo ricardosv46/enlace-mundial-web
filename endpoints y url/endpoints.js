@@ -132,3 +132,55 @@ query GetAllBlogCategoria($estadoBlog: String, $numberPaginate: Int, $page: Int,
   }
 }
 `
+export const GET_SLUG_BLOG = `query Query($slugBlog: String) {
+  GetSlugBlog(slugBlog: $slugBlog) {
+    blogId
+    CategoriaBlog {
+      categoriaBlogId
+      created_at
+      descripcionCategoriaBlog
+      estadoCategoriaBlog
+      imagenPrincipalCategoriaBlog {
+        url
+        id
+        descripcion
+      }
+      imagenSecundariaCategoriaBlog {
+        url
+        id
+        descripcion
+      }
+      keywordsCategoriaBlog
+      slugCategoriaBlog
+      tituloCategoriaBlog
+      updated_at
+    }
+    categoriaBlogId
+    created_at
+    descripcionCortaBlog
+    descripcionLargaBlog
+    destacadoBlog
+    estadoBlog
+    galeriaBlog {
+      url
+      id
+      descripcion
+    }
+    imagenPrincipalBlog {
+      url
+      id
+      descripcion
+    }
+    imagenSecundariaBlog {
+      url
+      id
+      descripcion
+    }
+    keywordsBlog
+    slugBlog
+    slugCategoriaBlog
+    tituloBlog
+    updated_at
+  }
+}
+`
