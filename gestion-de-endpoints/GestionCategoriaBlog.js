@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client"
-import { GET_ALL_CATEGORIA_BLOG } from "../graphql/queries/getAllcategoriaBlog"
+import { GET_ALL_CATEGORIA_BLOG } from "../graphql/queries/GetAllcategoriaBlog"
 
 const GestionCategoriaBlog = () => {
   const { data, loading } = useQuery(GET_ALL_CATEGORIA_BLOG, {
