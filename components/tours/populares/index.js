@@ -31,7 +31,6 @@ const ToursPopulares = () => {
     } */
 
     swiperRefMobile.current.swiper.slideNext()
-    swiperRefDesktop.current.swiper.slideNext()
   }
   const goPrev = () => {
     /* if (swiperRef.current && swiperRef.current.swiper) {
@@ -39,7 +38,6 @@ const ToursPopulares = () => {
     } */
 
     swiperRefMobile.current.swiper.slidePrev()
-    swiperRefDesktop.current.swiper.slidePrev()
   }
 
   return (
