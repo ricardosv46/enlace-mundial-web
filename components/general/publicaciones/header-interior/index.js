@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 
 import SubMenuMobile from "@/components/servicios/submenu/sub-menu-mobile";
 
-export default function HeaderInterior({ slug, precio, titulo }) {
+export default function HeaderInterior({ slug, precioBase, precioReal, titulo }) {
   const [headerFixed, setHeaderFixed] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
 
@@ -23,9 +23,8 @@ export default function HeaderInterior({ slug, precio, titulo }) {
   return (
     <div className="container">
       <section
-        className={`row bg-white ${styles.headerInterior} py-2 ${
-          headerFixed ? `${styles.headerInterior__fixed} shadow-bottom` : ""
-        }`}
+        className={`row bg-white ${styles.headerInterior} py-2 ${headerFixed ? `${styles.headerInterior__fixed} shadow-bottom` : ""
+          }`}
       >
         <div className="col-8 pl-md-2 pt-2 small ">
           <span className=" text-primary font-weight-bold">TOUR - {titulo}</span>
@@ -34,7 +33,7 @@ export default function HeaderInterior({ slug, precio, titulo }) {
 
         <div className="col-4 col-md-3 d-flex align-items-end pl-0 pl-md-2">
           <span className="text-danger">S/.</span>
-          <h3 className="text-danger ml-2">{precio}</h3>
+          <h3 className="text-danger ml-2">{precioReal ? precioReal : precioBase}</h3>
           <p className="d-flex flex-column text-muted text-uppercase ml-2">
             <span>Por</span>
             <span>persona</span>

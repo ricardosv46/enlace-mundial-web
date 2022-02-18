@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import DatePicker from "react-datepicker";
 import { registerLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
@@ -8,14 +7,45 @@ registerLocale("es", es);
 export default function Calendar({
   setMes,
   fechaSeleccionada,
+  setFechaSeleccionada,
   setAnio,
   dataHorario,
   pintarDias,
+  EsfechaValida,
+  setEsFechaValida,
+  setPrecioReal,
+  setCupos,
+  setDuracion,
+  setNroAdultos,
+  setNroMenores
 }) {
-  const [startDate, setStartDate] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
   const [fechas, setFechas] = useState([]);
-  // Evento para enviar la fecha seleccionada
-  console.log("esta es la fecha seleccionada");
+
+  useEffect(() => {
+    setCupos(0)
+    setPrecioReal(null)
+    setEsFechaValida(false)
+    setDuracion('No tiene fecha asignada')
+    setFechaSeleccionada(
+      startDate?.getFullYear() +
+      "-" +
+      (startDate?.getMonth() + 1) +
+      "-" +
+      startDate?.getDate()
+    );
+    dataHorario.map((item) => {
+      if (item.fecha === fechaSeleccionada) {
+        setDuracion(item.hora)
+        setEsFechaValida(true);
+        setPrecioReal(item.precio)
+        setCupos(item.cupos)
+        setNroAdultos(0)
+        setNroMenores(0)
+        return;
+      }
+    });
+  }, [startDate, fechaSeleccionada, dataHorario]);
 
   useEffect(() => {
     setFechas([]);
@@ -34,32 +64,20 @@ export default function Calendar({
         onChange={(date) => {
           setStartDate(date);
         }}
-        // onSelect={date => setStartDate(date)}
+        onSelect={(date) => setStartDate(date)}
         onMonthChange={(date) => {
           setMes(date.getMonth() + 1);
           setAnio(date.getFullYear());
           setStartDate(date);
         }}
-        // filterDate={isWeekday}
-        filterDate={(date) =>
-          (date.getFullYear() === new Date(2021, 11, 21).getFullYear()) &&
-          (date.getMonth() === new Date(2021, 11, 21).getMonth()) &&
-          (date.getDate() === 
-          
-          new Date(2021, 11, 21).getDate()||date.getDate() === new Date(2021, 11, 22).getDate()
-          
-          )
-         
-        }
-        includeDates={[new Date(2021,11,21),new Date(2021,11,22),new Date(2021,11,24)]}
-        // includeDates={fechas}
         highlightDates={fechas}
         locale="es"
         inline
-      >
-        <div style={{ color: "red" }}>
-          Debe de seleccionar una fecha asignada
-        </div>
+      > {
+          EsfechaValida
+            ? <div style={{ color: "green", margin: ".5rem 0" }}>Fecha seleccionada valida</div>
+            : <div style={{ color: "red", margin: ".5rem 0" }}>Seleccione una fecha valida</div>
+        }
       </DatePicker>
     </>
   );

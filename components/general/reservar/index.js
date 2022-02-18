@@ -5,40 +5,40 @@ import { useRouter } from "next/router";
 import Calendar from "./calendar";
 import GestionHorariosTour from "../../../gestion-de-endpoints/GestionHorariosTour";
 
-export default function Reservar({ producto, tourId }) {
+export default function Reservar({ producto, tourId, setPrecioReal }) {
   const router = useRouter();
   const today = new Date();
   const month = today.getMonth();
   const [mes, setMes] = useState(month + 1);
   const [anio, setAnio] = useState(today.getFullYear());
-  const [dia, setDia] = useState(today.getDate());
+  const [fechaSeleccionada, setFechaSeleccionada] = useState("");
   const [fecha, setFecha] = useState(new Date());
-  const [nroAdultos, setNroAdultos] = useState(1);
+  const [nroAdultos, setNroAdultos] = useState(0);
   const [nroMenores, setNroMenores] = useState(0);
   const [pintarDias, setPintarDias] = useState([]);
-  // console.log(anio,mes)
-  console.log("data cargada al inicio", tourId, mes, anio);
+  const [EsfechaValida, setEsFechaValida] = useState(false);
+  const [cupos, setCupos] = useState(0);
+  const [duracion, setDuracion] = useState("No tiene fecha asignada");
   const { dataHorario, loading } = GestionHorariosTour({
     tourId,
-    mes: mes,
+    mes,
     anio,
   });
-  console.log("el valor de data horario es", dataHorario);
-  // console.log("el valor del año es", anio);
+
   function asignarFecha(fecha) {
     setFecha(fecha);
   }
   useEffect(() => {
-    setPintarDias([])
-    !loading && (
+    setPintarDias([]);
+    !loading &&
       dataHorario.map((item) => {
         if (item?.estado === "Activado" && new Date(item?.fecha) >= today) {
           setPintarDias((pintar) => [...pintar, item.fecha]);
         }
-      }))
+      });
   }, [anio, mes, loading]);
 
-  console.log("que fue manito", pintarDias);
+  // console.log("que fue manito", pintarDias);
   function disminuir(tipo) {
     if (tipo === "adultos") {
       nroAdultos >= 1
@@ -52,10 +52,12 @@ export default function Reservar({ producto, tourId }) {
   }
 
   function aumentar(tipo) {
-    if (tipo === "adultos") {
-      setNroAdultos(nroAdultos + 1);
-    } else {
-      setNroMenores(nroMenores + 1);
+    if (nroAdultos + nroMenores < cupos) {
+      if (tipo === "adultos") {
+        setNroAdultos(nroAdultos + 1);
+      } else {
+        setNroMenores(nroMenores + 1);
+      }
     }
   }
 
@@ -70,7 +72,7 @@ export default function Reservar({ producto, tourId }) {
 
     localStorage.setItem("carrito", JSON.stringify(item));
 
-    console.log(JSON.parse(localStorage.getItem("carrito")));
+    // console.log(JSON.parse(localStorage.getItem("carrito")));
 
     router.push("/finalizar-reserva");
   }
@@ -79,21 +81,30 @@ export default function Reservar({ producto, tourId }) {
     <div className="reservar pb-4">
       <section className="d-flex justify-content-center mt-3">
         <Calendar
-          fechaSeleccionada={asignarFecha}
+          // fechaSeleccionada={asignarFecha}
           mes={mes}
           setMes={setMes}
           anio={anio}
           setAnio={setAnio}
           dataHorario={dataHorario}
           pintarDias={pintarDias}
+          fechaSeleccionada={fechaSeleccionada}
+          setFechaSeleccionada={setFechaSeleccionada}
+          EsfechaValida={EsfechaValida}
+          setEsFechaValida={setEsFechaValida}
+          setPrecioReal={setPrecioReal}
+          setCupos={setCupos}
+          setDuracion={setDuracion}
+          setNroAdultos={setNroAdultos}
+          setNroMenores={setNroMenores}
         />
       </section>
       <section>
         <div className="container">
-          <div className="row justify-content-center">
+          <div className="row justify-content-center ">
             <div className="col-md-10">
-              <span className="text-muted d-inline-block mt-1">
-                14 cupos disponibles
+              <span className="text-muted d-block mt-2 text-center">
+                {cupos} cupos disponibles
               </span>
             </div>
           </div>
@@ -156,7 +167,7 @@ export default function Reservar({ producto, tourId }) {
               <section className="text-left">
                 <span className="small text-muted">Duración</span>
                 <div className="sidebar-reservar__duracion-info py-1 px-3">
-                  <span>06:30 a.m. a 07:00 p.m.</span>
+                  <span>{duracion}</span>
                 </div>
               </section>
 

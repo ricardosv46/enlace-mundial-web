@@ -6,7 +6,6 @@ import Script from "next/script";
 import tours from "../../datos-paginas/api/tours";
 import Modal from "react-bootstrap/Modal";
 import Gallery from "components/gallery/index";
-import ToursRelacionados from "components/luna-de-miel/tours-relacionados";
 import Reservar from "@/components/general/reservar";
 import MenuInterior from "@/components/servicios/submenu";
 import HeaderInterior from "@/components/general/publicaciones/header-interior";
@@ -27,12 +26,12 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function Home({ data }) {
-  console.log("valor de data", data);
+  // console.log("valor de data", data);
   const router = useRouter();
 
   const [mostrarModal, setMostrarModal] = useState(false);
   const [producto, setProducto] = useState(null);
-
+  const [precioReal, setPrecioReal] = useState(null);
   const cerrarModalReserva = () => setMostrarModal(false);
   const mostrarModalReserva = () => setMostrarModal(true);
   let slug = router.query.slug;
@@ -77,7 +76,21 @@ export default function Home({ data }) {
         centered
       >
         <section>
-          <Reservar producto={producto} tourId={data.tourId} />
+          <div className="d-flex justify-content-end  ">
+            {" "}
+            <p
+              className="font-weight-bold btn  mr-2"
+              style={{ fontSize: "2rem", color: "#61be00" }}
+              onClick={cerrarModalReserva}
+            >
+              x
+            </p>{" "}
+          </div>
+          <Reservar
+            producto={producto}
+            tourId={data.tourId}
+            setPrecioReal={setPrecioReal}
+          />
         </section>
       </Modal>
 
@@ -88,7 +101,8 @@ export default function Home({ data }) {
               <div className="col-md-8">
                 <HeaderInterior
                   slug={data.tourTitulo}
-                  precio={data?.precioBaseTour}
+                  precioBase={data?.precioBaseTour}
+                  precioReal={precioReal}
                   titulo={data?.tituloTour}
                 />
               </div>
@@ -117,7 +131,11 @@ export default function Home({ data }) {
                     Descubre grandes lugares
                   </h3>
 
-                  <Reservar producto={data.tourId} tourId={data.tourId} />
+                  <Reservar
+                    producto={data.tourId}
+                    tourId={data.tourId}
+                    setPrecioReal={setPrecioReal}
+                  />
                 </section>
               </div>
             </div>

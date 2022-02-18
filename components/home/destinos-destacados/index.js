@@ -7,45 +7,9 @@ import CardDestino from "../../cards/card-destino";
 
 export default function DestinosDestacados() {
   const { loadingGetData, db: dataDestacados } = useDepartamentosServices();
-  const destinosDestacados = [
-    {
-      titulo: "Cusco",
-      imagen:
-        "https://www.paquetesdeviajesperu.com/wp-content/uploads/2019/03/cusco-peru.jpg",
-    },
-    {
-      titulo: "Arequipa",
-      imagen:
-        "https://www.paquetesdeviajesperu.com/wp-content/uploads/2019/03/cusco-peru.jpg",
-    },
-    {
-      titulo: "Ica",
-      imagen:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Oasis_de_Huacachina%2C_Ica%2C_Per%C3%BA%2C_2015-07-29%2C_DD_23.JPG/1200px-Oasis_de_Huacachina%2C_Ica%2C_Per%C3%BA%2C_2015-07-29%2C_DD_23.JPG",
-    },
-    {
-      titulo: "Piura",
-      imagen:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Oasis_de_Huacachina%2C_Ica%2C_Per%C3%BA%2C_2015-07-29%2C_DD_23.JPG/1200px-Oasis_de_Huacachina%2C_Ica%2C_Per%C3%BA%2C_2015-07-29%2C_DD_23.JPG",
-    },
-    {
-      titulo: "Lima",
-      imagen:
-        "https://media.vogue.mx/photos/5e19fa7ba3810f0008d96d3e/master/pass/Lima-%20La%20Costa%20Verde.jpg",
-    },
-    {
-      titulo: "La libertad",
-      imagen:
-        "https://media.vogue.mx/photos/5e19fa7ba3810f0008d96d3e/master/pass/Lima-%20La%20Costa%20Verde.jpg",
-    },
-    {
-      titulo: "Cusco",
-      imagen:
-        "https://www.paquetesdeviajesperu.com/wp-content/uploads/2019/03/cusco-peru.jpg",
-    },
-  ];
 
-  let destinosTerceraFila = destinosDestacados.slice(2);
+
+  // let destinosTerceraFila = destinosDestacados.slice(2);
 
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
