@@ -32,3 +32,42 @@
     color: $secondary;
   }
 }
+
+.cardBusqueda {
+  min-height: 270px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px 1fr;
+
+  border: 1px solid $light;
+
+  transition: box-shadow 0.5s;
+
+  &:hover {
+    box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
+  }
+
+  @media (min-width: 768px) {
+    min-height: 240px;
+
+    grid-template-columns: 40% 1fr;
+    grid-template-rows: 1fr;
+
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
+
+  &_imagen {
+    height: 100%;
+
+    background-size: cover;
+
+    @media (min-width: 768px) {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+  }
+}

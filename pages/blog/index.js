@@ -10,11 +10,15 @@ import CardBlog from "@/components/cards/card-blog"
 import styles from "./styles.module.scss"
 import GestionBlog from "../../gestion-de-endpoints/GestionBlog"
 import GestionCategoriaBlog from "../../gestion-de-endpoints/GestionCategoriaBlog"
+import GestionTours from "../../gestion-de-endpoints/GestionTours"
+import CardBusqueda from "../../components/cards/card-busqueda"
+import CardBlogLarge from "../../components/cards/card-blog/cardBlogLarge"
 
 export default function Home() {
   const router = useRouter()
   const { dataBlog } = GestionBlog()
   const { dataCategoriaBlog } = GestionCategoriaBlog()
+  const { dataTours } = GestionTours()
 
   const [items, setItems] = useState(posts)
 
@@ -78,26 +82,22 @@ export default function Home() {
           </div>
 
           {/* Info */}
-          <section className='container mt-5'>
+          <section className='container  mt-5'>
             <div className='row'>
               <div className='col'>
                 <h2 className={styles.slug_titulo}>Publicaciones recientes</h2>
               </div>
             </div>
-            <div className='row mt-4'>
+            <div className='col mt-5'>
               {dataBlog.map((item) => {
-                return (
-                  <div key={item.blogId} className='col-md-4'>
-                    <CardBlog item={item} />
-                  </div>
-                )
+                return <CardBlogLarge key={item.blogId} item={item} />
               })}
             </div>
           </section>
 
-          <section className='container mt-5'>
+          <section className='container mt-4 mt-md-5 px-4 px-md-0'>
             <div className='row'>
-              <div className='col'>
+              <div className='col-md-9 mt-4 mt-md-0'>
                 <h2 className={styles.slug_titulo}>Categorías</h2>
               </div>
             </div>
