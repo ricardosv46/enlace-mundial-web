@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-
+import Link from "next/link"
 import styles from "./styles.module.scss"
 
 export default function ModalContacto() {
@@ -47,9 +47,9 @@ export default function ModalContacto() {
                 <h4 className='small text-blue font-weight-bold'>
                   User support
                 </h4>
-                <a
+                <Link
                   href='https://api.whatsapp.com/send?phone=51994945265&app=facebook&entry_point=page_cta&fbclid=IwAR2vC2z8QYwce7fN5-c_Ca_6gFnejOHXgvOc6dnW_8IhqEph2QDEmEfEPTo'
-                  type='button'
+                  passHref
                   className='btn btn-primary d-flex w-btn justify-content-between py-1'
                 >
                   <img
@@ -59,7 +59,7 @@ export default function ModalContacto() {
                   />
 
                   <p>Contactar</p>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -75,9 +75,9 @@ export default function ModalContacto() {
                 <h4 className='small text-blue font-weight-bold'>
                   User support
                 </h4>
-                <a
+                <Link
                   href='https://api.whatsapp.com/send?phone=51994945265&app=facebook&entry_point=page_cta&fbclid=IwAR2vC2z8QYwce7fN5-c_Ca_6gFnejOHXgvOc6dnW_8IhqEph2QDEmEfEPTo'
-                  type='button'
+                  passHref
                   className='btn btn-primary d-flex w-btn justify-content-between py-1'
                 >
                   <img
@@ -85,7 +85,7 @@ export default function ModalContacto() {
                     className={styles.modalContacto_icono}
                   />
                   <p>Contactar</p>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

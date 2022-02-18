@@ -6,7 +6,7 @@ import styles from "./styles.module.scss"
 export default function CardBlog({ item }) {
   return (
     <article className={styles.cardBlog}>
-      <Link href={`/blog/${item.slugBlog}`}>
+      <Link href={`/blog/${item?.slugBlog}`} passHref>
         <section
           className={`${styles.cardBlog_imagen} pointer`}
           style={{
