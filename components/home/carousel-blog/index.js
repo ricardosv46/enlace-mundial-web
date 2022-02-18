@@ -42,7 +42,7 @@ export default function CarouselBlog() {
     <section className='carousel-3-columnas mt-5'>
       <h2 className='subtitulo-general text-black'>
         <Link href='/blog' passHref>
-          <a className='text-dark text-decoration-none'>Blog</a>
+          <a className='text-dark text-decoration-none'>Blogs</a>
         </Link>
       </h2>
 
@@ -95,6 +95,11 @@ export default function CarouselBlog() {
             </button>
           </div>
         </div>
+      </div>
+      <div className='text-center'>
+        <Link href='/blog'>
+          <a className='btn btn-primary'>Ver más Blogs</a>
+        </Link>
       </div>
     </section>
   )

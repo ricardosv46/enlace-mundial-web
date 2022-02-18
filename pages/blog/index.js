@@ -8,9 +8,13 @@ import posts from "../../datos-paginas/api/blog"
 import CardBlog from "@/components/cards/card-blog"
 
 import styles from "./styles.module.scss"
+import GestionBlog from "../../gestion-de-endpoints/GestionBlog"
+import GestionCategoriaBlog from "../../gestion-de-endpoints/GestionCategoriaBlog"
 
 export default function Home() {
   const router = useRouter()
+  const { dataBlog } = GestionBlog()
+  const { dataCategoriaBlog } = GestionCategoriaBlog()
 
   const [items, setItems] = useState(posts)
 
@@ -81,18 +85,9 @@ export default function Home() {
               </div>
             </div>
             <div className='row mt-4'>
-              {items.map((item) => {
+              {dataBlog.map((item) => {
                 return (
-                  <div key={item.id} className='col-md-4'>
-                    <CardBlog item={item} />
-                  </div>
-                )
-              })}
-            </div>
-            <div className='row mt-3'>
-              {items.map((item) => {
-                return (
-                  <div key={item.id} className='col-md-4'>
+                  <div key={item.blogId} className='col-md-4'>
                     <CardBlog item={item} />
                   </div>
                 )
@@ -107,20 +102,23 @@ export default function Home() {
               </div>
             </div>
             <div className='row mt-4'>
-              {categorias.map((item) => {
+              {dataCategoriaBlog.map((item) => {
                 return (
-                  <div key={item.id} className='col-md-4 mb-3'>
+                  <div key={item.categoriaBlogId} className='col-md-4 mb-3'>
                     <article>
                       <div
                         style={{
-                          backgroundImage: `url("${item.imagenPrincipal}")`,
+                          backgroundImage: `url("${item?.imagenPrincipalCategoriaBlog?.url}")`,
                           backgroundSize: "cover",
                           height: "200px",
                         }}
                         className={styles.blog_categoria}
                       ></div>
-                      <Link href={`/blog/categorias/${item.nombre}`} passHref>
-                        <a className='lead'>{item.nombre}</a>
+                      <Link
+                        href={`/blog/categorias/${item?.slugCategoriaBlog}`}
+                        passHref
+                      >
+                        <a className='lead'>{item?.tituloCategoriaBlog}</a>
                       </Link>
                     </article>
                   </div>

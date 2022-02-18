@@ -20,6 +20,7 @@ import {
   URL,
 } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
+import GestionCategoriaBlog from "../../gestion-de-endpoints/GestionCategoriaBlog"
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_BLOG, {
@@ -27,20 +28,15 @@ export async function getServerSideProps({ params }) {
   })
   const data = res?.GetSlugBlog
 
-  const resp = await request(URL, GET_ALL_CATEGORIA_BLOG, {
-    estadoCategoriaBlog: "Activado",
-  })
-
-  const categorias = resp?.GetAllCategoriaBlog
   return {
     props: {
       data: data,
-      categorias,
     },
   }
 }
 
-export default function Home({ data, categorias }) {
+export default function Home({ data }) {
+  const { dataCategoriaBlog: categorias } = GestionCategoriaBlog()
   const router = useRouter()
   let slug = router.query.slug
 
