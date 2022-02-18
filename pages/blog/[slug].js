@@ -6,19 +6,11 @@ import Link from "next/link"
 import posts from "../../datos-paginas/api/blog"
 
 import Swiper from "react-id-swiper"
-import Gallery from "components/gallery/index"
-import ToursRelacionados from "components/luna-de-miel/tours-relacionados"
-import ModalContacto from "components/general/modal-contacto"
-import MenuInterior from "@/components/servicios/submenu"
 import RedesSociales from "@/components/general/redes-sociales"
 import CardBlog from "@/components/cards/card-blog"
 
 import styles from "./styles.module.scss"
-import {
-  GET_ALL_CATEGORIA_BLOG,
-  GET_SLUG_BLOG,
-  URL,
-} from "../../endpoints y url/endpoints"
+import { GET_SLUG_BLOG, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
 import GestionCategoriaBlog from "../../gestion-de-endpoints/GestionCategoriaBlog"
 
