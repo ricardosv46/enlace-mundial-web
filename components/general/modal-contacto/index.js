@@ -42,14 +42,14 @@ export default function ModalContacto() {
               className={`${styles.modalContacto_avatar} img-fluid`}
             />
 
-            <div className='col-10 '>
+            <div className='col-12 '>
               <div className='d-flex flex-column align-items-center'>
                 <h4 className='small text-blue font-weight-bold'>
                   User support
                 </h4>
                 <button
                   type='button'
-                  className='btn btn-primary py-1 position-relative col-10 d-flex justify-content-end'
+                  className='btn btn-primary d-flex w-btn justify-content-between py-1'
                 >
                   <img
                     src='/imagenes/redes-sociales/whatsapp.svg'
@@ -68,20 +68,20 @@ export default function ModalContacto() {
               className={`${styles.modalContacto_avatar} img-fluid`}
             />
 
-            <div className=' col-10 '>
+            <div className=' col-12 '>
               <div className='d-flex flex-column align-items-center'>
                 <h4 className='small text-blue font-weight-bold'>
                   User support
                 </h4>
                 <button
                   type='button'
-                  className='btn btn-primary py-1 position-relative col-10 d-flex justify-content-end'
+                  className='btn btn-primary d-flex w-btn justify-content-between py-1'
                 >
                   <img
                     src='/imagenes/redes-sociales/whatsapp.svg'
                     className={styles.modalContacto_icono}
                   />
-                  Contactar
+                  <p>Contactar</p>
                 </button>
               </div>
             </div>
