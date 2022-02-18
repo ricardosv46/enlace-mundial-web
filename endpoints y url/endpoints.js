@@ -55,28 +55,6 @@ query GetSlugTour($slugTour: String) {
   }
 }
 `
-export const GET_ALL_CATEGORIA_BLOG = `
-query GetAllCategoriaBlog($estadoCategoriaBlog: String) {
-  GetAllCategoriaBlog(estadoCategoriaBlog: $estadoCategoriaBlog) {
-    categoriaBlogId
-    slugCategoriaBlog
-    tituloCategoriaBlog
-    estadoCategoriaBlog
-    descripcionCategoriaBlog
-    keywordsCategoriaBlog
-    imagenPrincipalCategoriaBlog {
-      id
-      descripcion
-      url
-    }
-    imagenSecundariaCategoriaBlog {
-      id
-      descripcion
-      url
-    }
-  }
-}
-`
 export const GET_ALL_BLOG_CATEGORIA = `
 query GetAllBlogCategoria($estadoBlog: String, $numberPaginate: Int, $page: Int, $slugCategoriaBlog: String) {
   GetAllBlogCategoria(estadoBlog: $estadoBlog, numberPaginate: $numberPaginate, page: $page, slugCategoriaBlog: $slugCategoriaBlog) {
