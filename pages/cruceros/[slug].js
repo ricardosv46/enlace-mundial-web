@@ -7,20 +7,26 @@ import Gallery from "components/gallery/index"
 import ToursRelacionados from "components/luna-de-miel/tours-relacionados"
 import ModalContacto from "components/general/modal-contacto"
 import MenuInterior from "@/components/servicios/submenu"
+import { GET_SLUG_CRUCERO, URL } from "../../endpoints y url/endpoints"
+import request from "graphql-request"
+export async function getServerSideProps({ params }) {
+  const res = await request(URL, GET_SLUG_CRUCERO, {
+    slugCrucero: params.slug,
+  })
+  const data = res?.GetSlugCrucero
+  return {
+    props: {
+      data: data,
+    },
+  }
+}
 
-export default function Home() {
+export default function Home({ data }) {
+  console.log(data)
   const router = useRouter()
 
   let slug = router.query.slug
   console.log(slug)
-
-  const galeria = [
-    "https://i.pinimg.com/736x/ee/96/29/ee9629083c055b90ac4b3a51533671d8.jpg",
-    "https://www.boletomachupicchu.com/gutblt/wp-content/images/cusco-compania-plaza-armas.jpg",
-    "https://cdn0.matrimonio.com.pe/img_g/articulos-a-fotos/luna-de-miel/mexico/t10_2x_isla-de-holbox-lazaro-cardenas-quintana-roo-caribe.jpg",
-    "https://i.pinimg.com/originals/75/80/78/75807881c354def7dcaf6f66c0d006d3.jpg",
-    "https://mejorconsalud.as.com/wp-content/uploads/2019/02/elegir-lugar-luna-de-miel.jpg",
-  ]
 
   return (
     <div>
@@ -40,7 +46,9 @@ export default function Home() {
             <div className='row'>
               <div className='col-md-12'>
                 <span className='small text-primary'>Viaje en crucero</span>
-                <h2 className='subtitulo-slug text-primary'>{slug}</h2>
+                <h2 className='subtitulo-slug text-primary'>
+                  {data?.tituloCrucero}
+                </h2>
               </div>
             </div>
             <div className='row'></div>
@@ -52,7 +60,7 @@ export default function Home() {
           <section className='container mt-5'>
             <div className='row'>
               <div className='col-md-8'>
-                <Gallery imagenes={galeria} />
+                <Gallery imagenes={data?.galeriaCrucero} />
               </div>
             </div>
           </section>
@@ -127,45 +135,19 @@ export default function Home() {
 
                       <div className='py-2'>
                         <ul className='list-unstyled'>
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Cuzco es una ciudad de los Andes peruanos que fue la
-                            capital del Imperio Inca y es conocida por sus
-                            restos arqueológicos y la arquitectura colonial
-                            española.
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Cuzco es una ciudad de los Andes peruanos que fue la
-                            capital del Imperio Inca y es conocida por sus
-                            restos arqueológicos y la arquitectura colonial
-                            española.
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Cuzco es una ciudad de los Andes peruanos que fue la
-                            capital del Imperio Inca y es conocida por sus
-                            restos arqueológicos y la arquitectura colonial
-                            española.
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Cuzco es una ciudad de los Andes peruanos que fue la
-                            capital del Imperio Inca y es conocida por sus
-                            restos arqueológicos y la arquitectura colonial
-                            española.
-                          </li>
+                          {data.itinerarioCrucero.split(",").map((item) => {
+                            return (
+                              <li
+                                className='l-miel-itinerario__list-item d-flex mb-2'
+                                key={item}
+                              >
+                                <span className='text-primary d-inline-block mr-2'>
+                                  <i className='fas fa-check'></i>
+                                </span>
+                                {item}
+                              </li>
+                            )
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -181,7 +163,7 @@ export default function Home() {
               <div className='row'>
                 <div className='col-md-8'>
                   <h2 className='subtitulo-general text-uppercase my-0'>
-                    Itinerario
+                    Incluye
                   </h2>
                 </div>
               </div>
@@ -198,26 +180,19 @@ export default function Home() {
 
                       <div className='py-2'>
                         <ul className='list-unstyled'>
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='far fa-check-circle'></i>
-                            </span>
-                            Transporte turístico
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='far fa-check-circle'></i>
-                            </span>
-                            Guiado profesional
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='far fa-check-circle'></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
+                          {data.incluyeCrucero.split(",").map((item) => {
+                            return (
+                              <li
+                                className='l-miel-itinerario__list-item d-flex mb-2'
+                                key={item}
+                              >
+                                <span className='text-primary d-inline-block mr-2'>
+                                  <i className='far fa-check-circle'></i>
+                                </span>
+                                {item}
+                              </li>
+                            )
+                          })}
                         </ul>
                       </div>
 
@@ -227,26 +202,19 @@ export default function Home() {
 
                       <div className='py-2'>
                         <ul className='list-unstyled'>
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-danger d-inline-block mr-2'>
-                              <i className='far fa-check-circle'></i>
-                            </span>
-                            Entradas a los atractivos
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-danger d-inline-block mr-2'>
-                              <i className='far fa-check-circle'></i>
-                            </span>
-                            Guiado profesional
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-danger d-inline-block mr-2'>
-                              <i className='far fa-check-circle'></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
+                          {data.noIncluyeCrucero.split(",").map((item) => {
+                            return (
+                              <li
+                                className='l-miel-itinerario__list-item d-flex mb-2'
+                                key={item}
+                              >
+                                <span className='text-danger d-inline-block mr-2'>
+                                  <i className='far fa-check-circle'></i>
+                                </span>
+                                {item}
+                              </li>
+                            )
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -260,26 +228,19 @@ export default function Home() {
 
                       <div className='py-2'>
                         <ul className='list-unstyled'>
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='far fa-check-circle'></i>
-                            </span>
-                            Visitas culturales (Incluida)
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='far fa-check-circle'></i>
-                            </span>
-                            Visitas culturales (Incluida)
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='far fa-check-circle'></i>
-                            </span>
-                            Visitas culturales (Incluida)
-                          </li>
+                          {data.actividadesCrucero.split(",").map((item) => {
+                            return (
+                              <li
+                                className='l-miel-itinerario__list-item d-flex mb-2'
+                                key={item}
+                              >
+                                <span className='text-primary d-inline-block mr-2'>
+                                  <i className='far fa-check-circle'></i>
+                                </span>
+                                {item} (Incluida)
+                              </li>
+                            )
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -312,54 +273,19 @@ export default function Home() {
 
                       <div className='py-2'>
                         <ul className='list-unstyled'>
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Transporte turístico
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Guiado profesional
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
-
-                          <li className='l-miel-itinerario__list-item d-flex mb-2'>
-                            <span className='text-primary d-inline-block mr-2'>
-                              <i className='fas fa-check'></i>
-                            </span>
-                            Almuerzo buffet
-                          </li>
+                          {data.notasCrucero.split(",").map((item) => {
+                            return (
+                              <li
+                                className='l-miel-itinerario__list-item d-flex mb-2'
+                                key={item}
+                              >
+                                <span className='text-primary d-inline-block mr-2'>
+                                  <i className='fas fa-check'></i>
+                                </span>
+                                {item}
+                              </li>
+                            )
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -372,7 +298,9 @@ export default function Home() {
                       </h5>
 
                       <div className='py-2'>
-                        <p>Cancelación GRATIS hasta 24 horas del viaje</p>
+                        {data?.politicasCrucero.split(",").map((item) => (
+                          <p>{item}</p>
+                        ))}
                       </div>
                     </div>
                   </div>

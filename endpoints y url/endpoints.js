@@ -162,3 +162,67 @@ export const GET_SLUG_BLOG = `query Query($slugBlog: String) {
   }
 }
 `
+export const GET_SLUG_CRUCERO = `
+query GetSlugCrucero($slugCrucero: String) {
+  GetSlugCrucero(slugCrucero: $slugCrucero) {
+    Categoria {
+      estadoCategoria
+      descripcion
+      created_at
+      categoriaId
+      imagenPrincipalCategoria {
+        url
+        id
+        descripcion
+      }
+      imagenSecundariaCategoria {
+        url
+        id
+        descripcion
+      }
+      keywordsCategoria
+      slugCategoria
+      tituloCategoria
+      updated_at
+    }
+    actividadesCrucero
+    categoriaId
+    ciudadCrucero
+    created_at
+    cruceroId
+    descripcionCortaCrucero
+    descripcionLargaCrucero
+    destacadoCrucero
+    estadoCrucero
+    galeriaCrucero {
+      url
+      id
+      descripcion
+    }
+    imagenPrincipalCrucero {
+      url
+      id
+      descripcion
+    }
+    imagenSecundariaCrucero {
+      url
+      id
+      descripcion
+    }
+    incluyeCrucero
+    itinerarioCrucero
+    keywordsCrucero
+    noIncluyeCrucero
+    notasCrucero
+    precioBaseCrucero
+    politicasCrucero
+    regionCrucero
+    puntoPartidaCrucero
+    slugCategoria
+    slugCrucero
+    tituloCrucero
+    updated_at
+    videoPresentacionCrucero
+  }
+}
+`
