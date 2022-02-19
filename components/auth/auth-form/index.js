@@ -6,16 +6,16 @@ import styles from "./styles.module.scss"
 import FormLogin from "../form-login"
 import FormRegister from "../form-register"
 
-export default function AuthForm() {
+export default function AuthForm({ setShow }) {
   const [tipoForm, setTipoForm] = useState("login")
 
   const asignarFormulario = () => {
     let component = null
 
     if (tipoForm === "login") {
-      component = <FormLogin />
+      component = <FormLogin setShow={setShow} />
     } else if (tipoForm === "register") {
-      component = <FormRegister />
+      component = <FormRegister setTipoForm={setTipoForm} />
     }
 
     return component
@@ -45,26 +45,35 @@ export default function AuthForm() {
 
   return (
     <section className={styles.authForm}>
-      <div className={`${styles.formHeader} py-3 px-5`}>
+      <div className={`${styles.formHeader} py-3 pl-5 pr-2  `}>
         <img
           src='/logo.png'
           alt='Logo Enlace mundial'
           className={styles.formLogo}
         />
+        <button
+          className='font-weight-bold btn   '
+          style={{
+            fontSize: "2rem",
+            color: "#61be00",
+            display: "flex",
+            flex: 1,
+            justifyContent: "flex-end",
+          }}
+          onClick={() => setShow(false)}
+        >
+          x
+        </button>
       </div>
-
       <div className={styles.formBody}>
         <section className={styles.formBodyBg}></section>
-
         <section className='py-3 px-3'>
           <h2
             className={`${styles.formTitulo} text-blue font-weight-bold text-center`}
           >
             Iniciar sesión
           </h2>
-
           <div className='separador mt-3'></div>
-
           <section className='mt-3'>
             {asignarFormulario()}
 
@@ -91,7 +100,6 @@ export default function AuthForm() {
           </section>
         </section>
       </div>
-
       {/* <div className="auth-form__footer pt-5 px-4">
         <ul className="list-unstyled">
           <li>

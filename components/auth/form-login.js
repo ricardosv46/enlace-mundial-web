@@ -1,62 +1,66 @@
-import React from "react"
+import React, { useState } from "react"
+import { GestionUsuario } from "../../gestion-de-endpoints/GestionUsuario"
+import toast from "react-hot-toast"
 
-import { gql, useMutation } from "@apollo/client"
-
-const LOGIN = gql`
-  mutation login($input: loginInput!) {
-    login(input: $input) {
-      id
-      typeUser
-      tipoInicio
-      typeDocument
-      numberDocument
-      name
-      sexo
-      urlPhoto
-      photo
-      surnames
-      email
-      api_token
-      customer_id
-    }
-  }
-`
-
-export default function FormLogin() {
-  const email = "ehldev@gmail.com"
-  const password = "secret"
-
-  const [loginAction] = useMutation(LOGIN, {
-    variables: {
-      input: {
-        email,
-        password,
-        tipoInicio: 1,
-      },
-    },
-    onCompleted: (data) => {
-      console.log(data)
-      // data.login && router.push("/");
-    },
+export default function FormLogin({ setShow }) {
+  const { loginUsuario } = GestionUsuario()
+  const [alerta, setAlerta] = useState("")
+  const [usuario, setUsuario] = useState({
+    email: "",
+    password: "",
   })
+
+  const { email, password } = usuario
+
+  const onChange = (e) => {
+    setUsuario({
+      ...usuario,
+      [e.target.name]: e.target.value,
+    })
+  }
 
   const login = (e) => {
     e.preventDefault()
+    if (email.trim() === "" || password.trim() === "") {
+      setAlerta("Todos los campos son obligatorios")
+      return
+    }
 
-    loginAction()
+    loginUsuario({
+      email: email,
+      password: password,
+    }).then((res) => {
+      if (res === "exito") {
+        toast.success("Usuario Logeado correctamente")
+        setShow(false)
+      } else {
+        setAlerta("Contraseña o usuario Incorrecto")
+      }
+    })
   }
 
   return (
     <form onSubmit={login}>
+      <p className='text-danger text-center'>{alerta}</p>
       <div className='form-group'>
-        <input type='email' placeholder='Correo' className='form-control' />
+        <input
+          type='email'
+          placeholder='Correo'
+          value={email}
+          name='email'
+          className='form-control'
+          onChange={onChange}
+        />
       </div>
 
       <div className='form-group'>
         <input
           type='password'
           placeholder='Contraseña'
+          value={password}
+          name='password'
           className='form-control'
+          onChange={onChange}
         />
       </div>
 
