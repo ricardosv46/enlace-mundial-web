@@ -39,15 +39,26 @@ export default function CardLunaMiel({ item, tipo }) {
             , Perú
           </span>
         </h4>
+        <div className={styles.cardGeneral_estrella_precio}>
+          <p className='d-flex flex-column justify-content-end text-right'>
+            <span>Desde</span>
 
-        <div className='card-tour__stars'>
-          <p className='text-warning small mt-2'>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
-            <i className='fas fa-star'></i>
+            <span
+              className={`${styles.cardGeneral_precio2} text-blue font-weight-bold`}
+            >
+              S/. {item.precioBaseLuna}
+            </span>
           </p>
+
+          <div className='card-tour__stars'>
+            <p className='text-warning small mt-2'>
+              <i className='fas fa-star'></i>
+              <i className='fas fa-star'></i>
+              <i className='fas fa-star'></i>
+              <i className='fas fa-star'></i>
+              <i className='fas fa-star'></i>
+            </p>
+          </div>
         </div>
       </section>
     </article>

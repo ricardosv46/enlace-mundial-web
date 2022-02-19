@@ -226,3 +226,67 @@ query GetSlugCrucero($slugCrucero: String) {
   }
 }
 `
+
+export const GET_SLUG_LUNA_MIEL = `
+query GetSlugLunaMiel($slugLuna: String) {
+  GetSlugLunaMiel(slugLuna: $slugLuna) {
+    Categoria {
+      categoriaId
+      created_at
+      descripcion
+      imagenPrincipalCategoria {
+        url
+        descripcion
+        id
+      }
+      estadoCategoria
+      imagenSecundariaCategoria {
+        url
+        id
+        descripcion
+      }
+      keywordsCategoria
+      slugCategoria
+      tituloCategoria
+      updated_at
+    }
+    actividadesLuna
+    categoriaId
+    ciudadLuna
+    created_at
+    descripcionCortaLuna
+    descripcionLargaLuna
+    destacadoLuna
+    estadoLuna
+    galeriaLuna {
+      url
+      id
+      descripcion
+    }
+    imagenPrincipalLuna {
+      descripcion
+      id
+      url
+    }
+    videoPresentacionLuna
+    updated_at
+    tituloLuna
+    slugLuna
+    slugCategoria
+    regionLuna
+    puntoPartidaLuna
+    precioBaseLuna
+    politicasLuna
+    notasLuna
+    noIncluyeLuna
+    lunaMielId
+    keywordsLuna
+    itinerarioLuna
+    incluyeLuna
+    imagenSecundariaLuna {
+      descripcion
+      id
+      url
+    }
+  }
+}`

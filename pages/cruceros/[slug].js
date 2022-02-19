@@ -1,14 +1,13 @@
 import React from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
-import Link from "next/link"
 
 import Gallery from "components/gallery/index"
-import ToursRelacionados from "components/luna-de-miel/tours-relacionados"
 import ModalContacto from "components/general/modal-contacto"
-import MenuInterior from "@/components/servicios/submenu"
 import { GET_SLUG_CRUCERO, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
+import CrucerosRelacionadoss from "../../components/cruceros/cruceros-relacionados"
+import MenuInteriorCrucero from "../../components/servicios/submenu/menuInteriorCrucero"
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_CRUCERO, {
     slugCrucero: params.slug,
@@ -54,7 +53,7 @@ export default function Home({ data }) {
             <div className='row'></div>
           </div>
 
-          <MenuInterior />
+          <MenuInteriorCrucero />
 
           {/* Info */}
           <section className='container mt-5'>
@@ -66,7 +65,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Detalles */}
-          <section>
+          <section id='detalles' style={{ scrollMarginTop: "170px" }}>
             <div className='container-fluid bg-light mt-4 py-2'>
               <div className='row'>
                 <div className='col-md-8'>
@@ -82,12 +81,13 @@ export default function Home({ data }) {
                 <div className='col-md-8'>
                   <div className='card'>
                     <div className='card-body'>
-                      <h5 className='card-title font-weight-bold'>{slug}</h5>
+                      <h5 className='card-title font-weight-bold'>
+                        {data.tituloCrucero}
+                      </h5>
 
                       <div className='py-2 px-3'>
                         <p className='card-text'>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
+                          {data.descripcionCortaCrucero}
                         </p>
                       </div>
                     </div>
@@ -100,10 +100,7 @@ export default function Home({ data }) {
                       </h5>
 
                       <div className='py-2 px-3'>
-                        <p className='card-text'>
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </p>
+                        <p className='card-text'>{data.puntoPartidaCrucero}</p>
                       </div>
                     </div>
                   </div>
@@ -113,7 +110,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Itinerario */}
-          <section>
+          <section id='itinerario' style={{ scrollMarginTop: "170px" }}>
             <div className='container-fluid bg-light mt-4 py-2'>
               <div className='row'>
                 <div className='col-md-8'>
@@ -158,7 +155,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Incluye */}
-          <section>
+          <section id='incluye' style={{ scrollMarginTop: "170px" }}>
             <div className='container-fluid bg-light mt-4 py-2'>
               <div className='row'>
                 <div className='col-md-8'>
@@ -251,7 +248,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Notas */}
-          <section>
+          <section id='notas' style={{ scrollMarginTop: "170px" }}>
             <div className='container-fluid bg-light mt-4 py-2'>
               <div className='row'>
                 <div className='col-md-8'>
@@ -310,7 +307,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Notas */}
-          <section>
+          <section id='cruceros-similares' style={{ scrollMarginTop: "170px" }}>
             <div className='bg-light mt-4 py-2'>
               <div className='container'>
                 <div className='row'>
@@ -326,7 +323,7 @@ export default function Home({ data }) {
             <div className='container'>
               <div className='row'>
                 <div className='col-md-8'>
-                  <ToursRelacionados />
+                  <CrucerosRelacionadoss />
                 </div>
               </div>
             </div>

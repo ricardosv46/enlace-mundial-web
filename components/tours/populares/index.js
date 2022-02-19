@@ -88,7 +88,7 @@ const ToursPopulares = () => {
                   return (
                     <div
                       className='col-md-4 contenedor-card-tour'
-                      key={item.id}
+                      key={item.tourId}
                     >
                       <CardTour item={item} />
                     </div>

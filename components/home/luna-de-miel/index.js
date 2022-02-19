@@ -51,7 +51,7 @@ const LunaDeMiel = () => {
               <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
                 {dataLuna.map((item) => {
                   return (
-                    <div key={item.lunaId}>
+                    <div key={item.lunaMielId}>
                       <CardLunaMiel item={item} />
                     </div>
                   )
@@ -66,7 +66,7 @@ const LunaDeMiel = () => {
               <Swiper ref={swiperRefDesktop} {...carouselParamsDesktop}>
                 {dataLuna.map((item) => {
                   return (
-                    <div key={item.lunaId}>
+                    <div key={item.lunaMielId}>
                       <CardLunaMiel item={item} />
                     </div>
                   )
