@@ -7,23 +7,23 @@ export default function MenuInterior() {
   const items = [
     {
       texto: "Detalles",
-      url: "",
+      url: "#detalles",
     },
     {
       texto: "Itinerario",
-      url: "",
+      url: "#itinerario",
     },
     {
-      texto: "Incluye",
-      url: "",
+      texto: "Incluye ",
+      url: "#incluye",
     },
     {
       texto: "Notas",
-      url: "",
+      url: "#notas",
     },
     {
       texto: "Tours similares",
-      url: "",
+      url: "#tours-similares",
     },
   ];
 
@@ -38,13 +38,12 @@ export default function MenuInterior() {
             <div className="col-12">
               {items.map((item, index) => {
                 return (
-                  <Link href="/" key={index} passHref>
-                    <a
-                      className={`${styles.headerInterior_link} text-dark text-uppercase font-weight-bold`}
-                    >
-                      {item.texto}
-                    </a>
-                  </Link>
+                  <a
+                    className={`${styles.headerInterior_link} text-dark text-uppercase font-weight-bold`}
+                    href={item.url}
+                  >
+                    {item.texto}
+                  </a>
                 );
               })}
             </div>

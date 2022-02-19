@@ -75,8 +75,8 @@ export default function Calendar({
         inline
       > {
           EsfechaValida
-            ? <div style={{ color: "green", margin: ".5rem 0" }}>Fecha seleccionada valida</div>
-            : <div style={{ color: "red", margin: ".5rem 0" }}>Seleccione una fecha valida</div>
+            ? <div style={{ color: "green", margin: ".5rem 0", textAlign:"center" }}>Fecha seleccionada valida</div>
+            : <div style={{ color: "red", margin: ".5rem 0", textAlign:"center"  }}>Seleccione una fecha valida</div>
         }
       </DatePicker>
     </>

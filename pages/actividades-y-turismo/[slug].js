@@ -142,7 +142,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Detalles */}
-          <section>
+          <section id="detalles" style={{scrollMarginTop:"170px"}}>
             <div className="container-fluid bg-light mt-4 py-2">
               <div className="row">
                 <div className="col-md-8">
@@ -185,7 +185,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Itinerario */}
-          <section>
+          <section id="itinerario" style={{scrollMarginTop:"170px"}}>
             <div className="container-fluid bg-light mt-4 py-2">
               <div className="row">
                 <div className="col-md-8">
@@ -230,7 +230,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Incluye */}
-          <section>
+          <section id="incluye" style={{scrollMarginTop:"170px"}}>
             <div className="container-fluid bg-light mt-4 py-2">
               <div className="row">
                 <div className="col-md-8">
@@ -323,7 +323,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Notas */}
-          <section>
+          <section id="notas" style={{scrollMarginTop:"170px"}}>
             <div className="container-fluid bg-light mt-4 py-2">
               <div className="row">
                 <div className="col-md-8">
@@ -422,9 +422,9 @@ export default function Home({ data }) {
               </div>
             </div>
 
-            <div className="container">
+            <div className="container" >
               <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-8" id="tours-similares" style={{scrollMarginTop:"190px"}}>
                   <ToursSimilares deparCodi={data?.Departamento?.DeparCodi} />
                 </div>
               </div>

@@ -10,23 +10,23 @@ export default function SubMenuMobile() {
   const items = [
     {
       texto: "Detalles",
-      url: "",
+      url: "#detalles",
     },
     {
       texto: "Itinerario",
-      url: "",
+      url: "#itinerario",
     },
     {
       texto: "Incluye",
-      url: "",
+      url: "#incluye",
     },
     {
       texto: "Notas",
-      url: "",
+      url: "#notas",
     },
     {
       texto: "Tours similares",
-      url: "",
+      url: "#tours-similares",
     },
   ];
 
@@ -40,7 +40,7 @@ export default function SubMenuMobile() {
       >
         {items.map((item, index) => {
           return (
-            <Dropdown.Item key={index} href="/">
+            <Dropdown.Item key={index} href={item.url}>
               {item.texto}
               {/* <Link href="/" passHref>
                 <a

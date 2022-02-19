@@ -36,7 +36,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
           setPintarDias((pintar) => [...pintar, item.fecha]);
         }
       });
-  }, [anio, mes, loading]);
+  }, [anio, mes, loading,tourId]);
 
   // console.log("que fue manito", pintarDias);
   function disminuir(tipo) {
