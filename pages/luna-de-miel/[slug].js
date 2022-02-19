@@ -8,6 +8,7 @@ import { GET_SLUG_LUNA_MIEL, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
 import LunasRelacionadas from "../../components/luna-de-miel/lunas-relacionadas"
 import MenuInteriorLunaMiel from "../../components/servicios/submenu/menuInteriorLunaMiel"
+import HeaderInterior from "../../components/general/publicaciones/header-interior"
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_LUNA_MIEL, {
@@ -42,11 +43,12 @@ export default function Home({ data }) {
         <section className='l-miel__items mt-3'>
           <div className='container'>
             <div className='row'>
-              <div className='col-md-12'>
-                <span className='small text-primary'>Luna de miel</span>
-                <h2 className='subtitulo-slug text-primary'>
-                  {data.tituloLuna}
-                </h2>
+              <div className='col-md-8'>
+                <HeaderInterior
+                  precioBase={data?.precioBaseLuna}
+                  head='Luna de miel'
+                  titulo={data?.tituloLuna}
+                />
               </div>
             </div>
           </div>

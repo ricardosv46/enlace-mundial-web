@@ -103,6 +103,7 @@ export default function Home({ data }) {
                   slug={data.tourTitulo}
                   precioBase={data?.precioBaseTour}
                   precioReal={precioReal}
+                  head='TOUR'
                   titulo={data?.tituloTour}
                 />
               </div>

@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
-import { ApolloClient, InMemoryCache } from "@apollo/client"
 import styles from "./styles.module.scss"
-
-import tours from "../../../datos-paginas/api/tours"
+import Link from "next/link"
 
 // Componentes
 import Swiper from "react-id-swiper"
@@ -100,9 +98,9 @@ const ToursPopulares = () => {
       </div>
 
       <div className='text-center'>
-        <a href='' className='btn btn-primary'>
-          Ver más Tours
-        </a>
+        <Link href='/actividades-y-turismo'>
+          <a className='btn btn-primary'>Ver más Tours</a>
+        </Link>
       </div>
     </section>
   )

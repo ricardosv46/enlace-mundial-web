@@ -8,6 +8,7 @@ import { GET_SLUG_CRUCERO, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
 import CrucerosRelacionadoss from "../../components/cruceros/cruceros-relacionados"
 import MenuInteriorCrucero from "../../components/servicios/submenu/menuInteriorCrucero"
+import HeaderInterior from "../../components/general/publicaciones/header-interior"
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_CRUCERO, {
     slugCrucero: params.slug,
@@ -43,14 +44,14 @@ export default function Home({ data }) {
         <section className='l-miel__items mt-3'>
           <div className='container'>
             <div className='row'>
-              <div className='col-md-12'>
-                <span className='small text-primary'>Viaje en crucero</span>
-                <h2 className='subtitulo-slug text-primary'>
-                  {data?.tituloCrucero}
-                </h2>
+              <div className='col-md-8'>
+                <HeaderInterior
+                  precioBase={data?.precioBaseCrucero}
+                  head='Viaje en crucero'
+                  titulo={data?.tituloCrucero}
+                />
               </div>
             </div>
-            <div className='row'></div>
           </div>
 
           <MenuInteriorCrucero />

@@ -15,7 +15,7 @@ export default function ActividadesYTurismo() {
   const { db: dataIncluye, loadingGetData: loadingIncluye } =
     useIncluyeServices()
   const { dataTours, loading: loadingGetTour } = GestionTours()
-  console.log(dataIncluye)
+
   const [itemsTours, setItemsTours] = useState([])
   useEffect(() => {
     if (!loadingGetTour) {

@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client"
 
 const LOGIN = gql`
   mutation login($input: loginInput!) {
@@ -20,11 +20,11 @@ const LOGIN = gql`
       customer_id
     }
   }
-`;
+`
 
 export default function FormLogin() {
-  const email = "ehldev@gmail.com";
-  const password = "secret";
+  const email = "ehldev@gmail.com"
+  const password = "secret"
 
   const [loginAction] = useMutation(LOGIN, {
     variables: {
@@ -35,38 +35,38 @@ export default function FormLogin() {
       },
     },
     onCompleted: (data) => {
-      console.log(data);
+      console.log(data)
       // data.login && router.push("/");
     },
-  });
+  })
 
   const login = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    loginAction();
-  };
+    loginAction()
+  }
 
   return (
     <form onSubmit={login}>
-      <div className="form-group">
-        <input type="email" placeholder="Correo" className="form-control" />
+      <div className='form-group'>
+        <input type='email' placeholder='Correo' className='form-control' />
       </div>
 
-      <div className="form-group">
+      <div className='form-group'>
         <input
-          type="password"
-          placeholder="Contraseña"
-          className="form-control"
+          type='password'
+          placeholder='Contraseña'
+          className='form-control'
         />
       </div>
 
-      <div className="text-right">
+      <div className='text-right d-flex justify-content-center'>
         <input
-          type="submit"
-          className="btn btn-primary px-5"
-          value="Ingresar"
+          type='submit'
+          className='btn btn-primary px-5'
+          value='Ingresar'
         />
       </div>
     </form>
-  );
+  )
 }
