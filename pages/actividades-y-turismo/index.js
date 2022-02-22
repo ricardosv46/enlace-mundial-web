@@ -18,7 +18,6 @@ export default function ActividadesYTurismo() {
   const [busqueda, setBusqueda] = useState({
     fecha_ini: "",
     fecha_fina: "",
-
     categoria_slug: "",
     precio_base: "",
     horas: "",
@@ -237,7 +236,7 @@ export default function ActividadesYTurismo() {
                               className='form-check-input'
                               type='radio'
                               name={incluye}
-                              onClick={(e) => setIncluye(e.target.value)}
+                              onClick={() => setIncluye(incluye?.incluyeId)}
                               value={incluye?.descripcionIncluye}
                               id={incluye?.incluyeId}
                             />
@@ -269,7 +268,9 @@ export default function ActividadesYTurismo() {
                               className='form-check-input'
                               type='radio'
                               name='actividad'
-                              onClick={(e) => setAactividades(e.target.value)}
+                              onClick={() =>
+                                setAactividades(actividad?.actividadId)
+                              }
                               value={actividad?.descripcion_actividad}
                               id={actividad?.actividadId}
                             />
