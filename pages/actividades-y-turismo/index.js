@@ -55,7 +55,7 @@ export default function ActividadesYTurismo() {
   const tours = dataBusqueda.length !== 0 ? dataBusqueda : itemsTours
   useEffect(() => {
     getBusquedaAvanzada()
-  }, [fecha_ini, fecha_fina])
+  }, [fecha_ini, fecha_fina, incluye, actividades])
 
   const onChange = (e) => {
     setBusqueda({
