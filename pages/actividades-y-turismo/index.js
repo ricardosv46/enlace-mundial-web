@@ -64,6 +64,19 @@ export default function ActividadesYTurismo() {
     })
   }
 
+  const quitar = () => {
+    setBusqueda({
+      fecha_ini: "",
+      fecha_fina: "",
+      categoria_slug: "",
+      precio_base: "",
+      horas: "",
+      dias: "",
+    })
+    setIncluye("")
+    setAactividades("")
+  }
+
   return (
     <div className='busqueda-page'>
       <Head>
@@ -102,6 +115,7 @@ export default function ActividadesYTurismo() {
                 <button
                   type='button'
                   className='btn btn-primary btn-block font-weight-bold'
+                  onClick={quitar}
                 >
                   Quitar filtros
                 </button>
