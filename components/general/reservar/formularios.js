@@ -1,8 +1,8 @@
-import react, { useEffect, useState } from "react";
-import Link from "next/link";
+import react, { useEffect, useState } from "react"
+import Link from "next/link"
 
-import { Tabs, Form } from "react-bootstrap";
-import Tab from "react-bootstrap/Tab";
+import { Tabs, Form } from "react-bootstrap"
+import Tab from "react-bootstrap/Tab"
 
 const datosBase = {
   nombres: "",
@@ -10,31 +10,31 @@ const datosBase = {
   tipoDocumento: "DNI",
   nroDocumento: undefined,
   comentarios: "",
-};
+}
 
-export default function Formularios({ items, setFormularios }) {
-  const [pasajeroActual, setPasajeroActual] = useState(1);
-  const [error, setError] = useState(null);
+export default function Formularios({ items, setFormularios, setPagos }) {
+  const [pasajeroActual, setPasajeroActual] = useState(1)
+  const [error, setError] = useState(null)
   const [datosPasajero, setDatosPasajero] = useState({
     ...datosBase,
-  });
-  const [terminos, setTerminos] = useState(false);
+  })
+  const [terminos, setTerminos] = useState(false)
 
   const actualizarInput = (e) => {
     setDatosPasajero({
       ...datosPasajero,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const atras = (index) => {
     if (pasajeroActual > 1) {
-      setError(null);
+      setError(null)
 
-      setPasajeroActual(pasajeroActual - 1);
+      setPasajeroActual(pasajeroActual - 1)
 
       let { nombres, apellidos, tipoDocumento, nroDocumento, comentarios } =
-        items[index - 1];
+        items[index - 1]
 
       setDatosPasajero({
         nombres,
@@ -42,13 +42,13 @@ export default function Formularios({ items, setFormularios }) {
         tipoDocumento,
         nroDocumento,
         comentarios,
-      });
+      })
     }
-  };
+  }
 
   const siguiente = (index) => {
     let { nombres, apellidos, tipoDocumento, nroDocumento, comentarios } =
-      datosPasajero;
+      datosPasajero
 
     if (nombres && apellidos && tipoDocumento && nroDocumento) {
       let datos = {
@@ -58,37 +58,37 @@ export default function Formularios({ items, setFormularios }) {
         tipoDocumento,
         nroDocumento,
         comentarios,
-      };
+      }
 
-      items[index] = datos;
+      items[index] = datos
 
       if (pasajeroActual >= items.length) {
         if (terminos) {
-          setError(null);
-          alert("Finalizar reserva");
+          setError(null)
+          setPagos(true)
         } else {
-          setError("Debe aceptar los téminos y condiciones");
+          setError("Debe aceptar los téminos y condiciones")
         }
       } else {
-        setPasajeroActual(pasajeroActual + 1);
+        setPasajeroActual(pasajeroActual + 1)
 
         /* Completar los campos con datos anteriores */
         if (items[pasajeroActual].validado) {
           setDatosPasajero({
             ...items[pasajeroActual],
-          });
+          })
         } else {
           setDatosPasajero({
             ...datosBase,
-          });
+          })
         }
 
-        setError(null);
+        setError(null)
       }
     } else {
-      setError("Por favor complete todos los campos requeridos.");
+      setError("Por favor complete todos los campos requeridos.")
     }
-  };
+  }
 
   return (
     <>
@@ -96,41 +96,41 @@ export default function Formularios({ items, setFormularios }) {
         ? items.map((item, index) => {
             return pasajeroActual == index + 1 ? (
               <form key={index}>
-                <p className="lead font-weight-bold d-inline-block mb-3">
+                <p className='lead font-weight-bold d-inline-block mb-3'>
                   Datos de pasajero {index + 1}
                 </p>
 
                 <p>
-                  <span className="small text-danger">
+                  <span className='small text-danger'>
                     (*) Campos requeridos
                   </span>
                 </p>
 
-                <div className="form-row mt-3">
-                  <div className="col-md-6">
-                    <div className="form-group">
+                <div className='form-row mt-3'>
+                  <div className='col-md-6'>
+                    <div className='form-group'>
                       <label>
-                        Nombres <span className="text-danger">*</span>
+                        Nombres <span className='text-danger'>*</span>
                       </label>
                       <input
-                        type="text"
-                        name="nombres"
-                        className="form-control"
+                        type='text'
+                        name='nombres'
+                        className='form-control'
                         value={datosPasajero.nombres}
                         onChange={(e) => actualizarInput(e)}
                       />
                     </div>
                   </div>
 
-                  <div className="col-md-6">
-                    <div className="form-group">
+                  <div className='col-md-6'>
+                    <div className='form-group'>
                       <label>
-                        Apellidos <span className="text-danger">*</span>
+                        Apellidos <span className='text-danger'>*</span>
                       </label>
                       <input
-                        type="text"
-                        name="apellidos"
-                        className="form-control"
+                        type='text'
+                        name='apellidos'
+                        className='form-control'
                         value={datosPasajero.apellidos}
                         onChange={(e) => actualizarInput(e)}
                       />
@@ -138,37 +138,37 @@ export default function Formularios({ items, setFormularios }) {
                   </div>
                 </div>
 
-                <div className="form-row mt-3">
-                  <div className="col-md-6">
-                    <div className="form-group">
+                <div className='form-row mt-3'>
+                  <div className='col-md-6'>
+                    <div className='form-group'>
                       <label>
-                        Tipo de documento <span className="text-danger">*</span>
+                        Tipo de documento <span className='text-danger'>*</span>
                       </label>
                       <select
-                        name="tipoDocumento"
-                        className="form-control"
+                        name='tipoDocumento'
+                        className='form-control'
                         value={datosPasajero.tipoDocumento}
                         onChange={(e) => actualizarInput(e)}
                       >
-                        <option value="DNI">DNI</option>
-                        <option value="CE">Carnet de extranjería</option>
-                        <option value="PASAPORTE">Pasaporte</option>
+                        <option value='DNI'>DNI</option>
+                        <option value='CE'>Carnet de extranjería</option>
+                        <option value='PASAPORTE'>Pasaporte</option>
                       </select>
                     </div>
                   </div>
 
-                  <div className="col-md-6">
-                    <div className="form-group">
+                  <div className='col-md-6'>
+                    <div className='form-group'>
                       <label>
                         Número de documento{" "}
-                        <span className="text-danger">*</span>
+                        <span className='text-danger'>*</span>
                       </label>
                       <input
-                        type="number"
-                        name="nroDocumento"
-                        min="0"
-                        step="1"
-                        className="form-control"
+                        type='number'
+                        name='nroDocumento'
+                        min='0'
+                        step='1'
+                        className='form-control'
                         value={datosPasajero.nroDocumento}
                         onChange={(e) => actualizarInput(e)}
                       />
@@ -176,13 +176,13 @@ export default function Formularios({ items, setFormularios }) {
                   </div>
                 </div>
 
-                <div className="form-row mt-3">
-                  <div className="col-md-12">
-                    <div className="form-group">
+                <div className='form-row mt-3'>
+                  <div className='col-md-12'>
+                    <div className='form-group'>
                       <label>Comentarios adicionales</label>
                       <textarea
-                        name="comentarios"
-                        className="form-control"
+                        name='comentarios'
+                        className='form-control'
                         value={datosPasajero.comentarios}
                         onChange={(e) => actualizarInput(e)}
                       ></textarea>
@@ -192,13 +192,13 @@ export default function Formularios({ items, setFormularios }) {
 
                 {/* Términos y condiciones */}
                 {items.length == pasajeroActual ? (
-                  <div className="form-group mt-3 px-md-4">
+                  <div className='form-group mt-3 px-md-4'>
                     <Form.Check
-                      type="checkbox"
+                      type='checkbox'
                       onChange={(e) => setTerminos(e.target.checked)}
                     />
                     Acepto los{" "}
-                    <Link href="/terminos-y-condiciones">
+                    <Link href='/terminos-y-condiciones'>
                       Términos y Condiciones Generales
                     </Link>{" "}
                     de Enlace Mundial
@@ -209,7 +209,7 @@ export default function Formularios({ items, setFormularios }) {
 
                 {/* Alerta de error */}
                 {error ? (
-                  <div className="alert alert-danger">
+                  <div className='alert alert-danger'>
                     <p>{error}</p>
                   </div>
                 ) : (
@@ -226,12 +226,12 @@ export default function Formularios({ items, setFormularios }) {
                   {/* Botón atrás */}
                   {pasajeroActual > 1 ? (
                     <button
-                      type="button"
-                      className="btn btn-link text-danger"
+                      type='button'
+                      className='btn btn-link text-danger'
                       onClick={() => atras(index)}
                     >
-                      <span className="d-inline-block mr-2 text-danger">
-                        <i className="fas fa-chevron-left"></i>
+                      <span className='d-inline-block mr-2 text-danger'>
+                        <i className='fas fa-chevron-left'></i>
                       </span>
                       Atrás
                     </button>
@@ -240,24 +240,24 @@ export default function Formularios({ items, setFormularios }) {
                   )}
 
                   <button
-                    type="button"
-                    className="btn btn-info text-white px-4"
+                    type='button'
+                    className='btn btn-info text-white px-4'
                     onClick={() => siguiente(index)}
                   >
                     {pasajeroActual >= items.length
                       ? "Ir a pagar"
                       : "Siguiente"}
-                    <span className="d-inline-block ml-2">
-                      <i className="fas fa-chevron-right"></i>
+                    <span className='d-inline-block ml-2'>
+                      <i className='fas fa-chevron-right'></i>
                     </span>
                   </button>
                 </div>
               </form>
             ) : (
               ""
-            );
+            )
           })
         : ""}
     </>
-  );
+  )
 }

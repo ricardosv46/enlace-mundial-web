@@ -3,11 +3,11 @@ export const formatoAPrecio = (precio) => {
     style: "currency",
     currency: "PEN",
     // useGrouping: true
-  });
+  })
 
-  let result = formatter.format(precio);
-  result = result.replace("PEN", "");
+  let result = formatter.format(precio)
+  result = result.replace("PEN", "")
   // result = result.replace(' ', '')
 
-  return result;
-};
+  return result
+}

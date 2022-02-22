@@ -1,0 +1,95 @@
+import React, { useState } from "react"
+import Image from "next/image"
+
+const Pagos = ({ setTarjeta, setTipoPago }) => {
+  const pagar = () => {
+    setTarjeta(true)
+  }
+  return (
+    <>
+      <div className='row mx-lg-5'>
+        <div className='col-lg-6 px-1 py-1'>
+          <div className='bg-warning py-2  px-3 d-flex justify-content-start align-items-center rounded '>
+            <input
+              type='radio'
+              name='pago'
+              id='yape'
+              value='yape'
+              onClick={() => setTipoPago("yape")}
+            />
+            <div className='ml-2 '>
+              <Image
+                width={25}
+                height={25}
+                layout='fixed'
+                src='/imagenes/pagos/yape.png'
+                alt='yape'
+              />
+            </div>
+
+            <label className='ml-2 ' htmlFor='yape'>
+              YAPE
+            </label>
+          </div>
+        </div>
+        <div className='col-lg-6 px-1 py-1'>
+          <div className='bg-warning py-2 px-3 d-flex justify-content-start align-items-center  rounded '>
+            <input
+              type='radio'
+              name='pago'
+              id='transferencia'
+              value='transferencia'
+              onClick={() => setTipoPago("transferencia")}
+            />
+            <div className='ml-2 '>
+              <Image
+                width={25}
+                height={25}
+                layout='fixed'
+                src='/imagenes/pagos/interbank.png'
+                alt='yape'
+              />
+            </div>
+            <label className='ml-2' htmlFor='transferencia'>
+              TRANSFERENCIA
+            </label>
+          </div>
+        </div>
+        <div className='col-lg-6 px-1 py-1'>
+          <div className='bg-warning py-2 px-3 d-flex justify-content-start align-items-center rounded'>
+            <input
+              type='radio'
+              name='pago'
+              id='tarjeta'
+              value='tarjeta'
+              onClick={() => setTipoPago("tarjeta")}
+            />
+            <div className='ml-2 '>
+              <Image
+                width={25}
+                height={25}
+                layout='fixed'
+                src='/imagenes/pagos/bcp.png'
+                alt='yape'
+              />
+            </div>
+            <label className='ml-2' htmlFor='tarjeta'>
+              TARJETA
+            </label>
+          </div>
+        </div>
+      </div>
+      <div className='d-flex justify-content-end'>
+        <button
+          type='button'
+          className='btn btn-info text-white px-4'
+          onClick={pagar}
+        >
+          Ir a Pagar
+        </button>
+      </div>
+    </>
+  )
+}
+
+export default Pagos

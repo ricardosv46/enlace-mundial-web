@@ -30,7 +30,7 @@ export default function Home({ data }) {
   const router = useRouter()
 
   const [mostrarModal, setMostrarModal] = useState(false)
-  const [producto, setProducto] = useState(null)
+
   const [precioReal, setPrecioReal] = useState(null)
   const cerrarModalReserva = () => setMostrarModal(false)
   const mostrarModalReserva = () => setMostrarModal(true)
@@ -51,11 +51,6 @@ export default function Home({ data }) {
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
   }, [scrollTop])
-
-  useEffect(() => {
-    let producto = tours.find((item) => item.slug === slug)
-    setProducto(producto)
-  }, producto)
 
   return (
     <div>
@@ -87,7 +82,7 @@ export default function Home({ data }) {
             </p>{" "}
           </div>
           <Reservar
-            producto={producto}
+            producto={data}
             tourId={data.tourId}
             setPrecioReal={setPrecioReal}
           />
@@ -133,7 +128,7 @@ export default function Home({ data }) {
                   </h3>
 
                   <Reservar
-                    producto={data.tourId}
+                    producto={data}
                     tourId={data.tourId}
                     setPrecioReal={setPrecioReal}
                   />
