@@ -1,18 +1,20 @@
-import react, { useEffect, useState } from "react"
+import react, { useContext, useEffect, useState } from "react"
 import Link from "next/link"
 
 import styles from "./styles.module.scss"
+import { ContextAuth } from "../../../context/ContextAuth"
 
 export default function SidebarCuenta() {
-  const [usuario, setUsuario] = useState({})
+  const contextAuth = useContext(ContextAuth)
+  const { dataUser: usuario, setDataUser, setAuth } = contextAuth
 
-  useEffect(() => {
+  const salir = () => {
     if (localStorage) {
-      const data = JSON.parse(localStorage.getItem("usuario"))
-      const usuario = data
-      setUsuario(usuario)
+      localStorage.removeItem("usuario")
     }
-  }, [])
+    setDataUser({})
+    setAuth(false)
+  }
 
   return (
     <div
@@ -48,11 +50,16 @@ export default function SidebarCuenta() {
               Preferencias
             </a>
           </Link>
-
-          <button type='button' className='btn btn-danger btn-block mt-4'>
-            Salir
-            <i className='fas fa-sign-out-alt ml-1'></i>
-          </button>
+          <Link href='/' passHref>
+            <button
+              type='button'
+              className='btn btn-danger btn-block mt-4'
+              onClick={salir}
+            >
+              Salir
+              <i className='fas fa-sign-out-alt ml-1'></i>
+            </button>
+          </Link>
         </section>
       </div>
 

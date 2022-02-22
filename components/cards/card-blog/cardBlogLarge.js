@@ -4,7 +4,6 @@ import Link from "next/link"
 import styles from "./styles.module.scss"
 
 export default function CardBlogLarge({ item }) {
-  console.log(item)
   return (
     <div className={`${styles.cardBusqueda} mb-4`}>
       <div

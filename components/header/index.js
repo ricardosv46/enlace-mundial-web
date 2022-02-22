@@ -1,12 +1,16 @@
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 
 import Link from "next/link"
 import { Toaster } from "react-hot-toast"
 import Modal from "react-bootstrap/Modal"
 
 import AuthForm from "@/components/auth/auth-form"
+import { ContextAuth } from "../../context/ContextAuth"
 
 export default function Header() {
+  const contextAuth = useContext(ContextAuth)
+  const { auth } = contextAuth
+
   const [navStatus, setNavStatus] = useState(false)
 
   const [show, setShow] = useState(false)
@@ -73,15 +77,17 @@ export default function Header() {
             </ul>
             {/* Botones */}
             <section className='d-flex flex-column flex-md-row'>
-              <div className='header__button-c d-flex justify-content-center align-items-center'>
-                <button
-                  type='button'
-                  className='btn btn-primary header__button d-flex justify-content-center align-items-center'
-                  onClick={handleShow}
-                >
-                  Iniciar sesión
-                </button>
-              </div>
+              {!auth && (
+                <div className='header__button-c d-flex justify-content-center align-items-center'>
+                  <button
+                    type='button'
+                    className='btn btn-primary header__button d-flex justify-content-center align-items-center'
+                    onClick={handleShow}
+                  >
+                    Iniciar sesión
+                  </button>
+                </div>
+              )}
 
               {/* <div className="header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0">
                 <button
@@ -91,14 +97,15 @@ export default function Header() {
                   Regístrate
                 </button>
               </div> */}
-
-              <div className='header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0'>
-                <Link href='/mi-cuenta' passHref>
-                  <a className='btn btn-outline-primary header__button d-flex justify-content-center align-items-center'>
-                    Mi cuenta
-                  </a>
-                </Link>
-              </div>
+              {auth && (
+                <div className='header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0'>
+                  <Link href='/mi-cuenta' passHref>
+                    <a className='btn btn-outline-primary header__button d-flex justify-content-center align-items-center'>
+                      Mi cuenta
+                    </a>
+                  </Link>
+                </div>
+              )}
             </section>
             <Toaster
               position='top-right'

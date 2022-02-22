@@ -7,7 +7,7 @@ import GestionBlog from "../../../gestion-de-endpoints/GestionBlog"
 import CardBlog from "../../cards/card-blog"
 
 export default function CarouselBlog() {
-  const { dataBlog, loading: loadingGetBlog } = GestionBlog()
+  const { dataBlog, loading: loadingGetBlog } = GestionBlog({ pagina: 1 })
 
   const swiperRefMobile = useRef(null)
   const swiperRefDesktop = useRef(null)

@@ -1,29 +1,19 @@
-import react, { useEffect, useState } from "react"
+import react, { useContext, useEffect, useState } from "react"
 import Link from "next/link"
 
 import styles from "../styles.module.scss"
-
+import { useRouter } from "next/router"
 // Components
 import SidebarCuenta from "@/components/mi-cuenta/sidebar"
+import { ContextAuth } from "../../../context/ContextAuth"
+import { GestionUsuario } from "../../../gestion-de-endpoints/GestionUsuario"
+import toast from "react-hot-toast"
 
 export default function MiCuenta() {
-  const [user, setUser] = useState({})
-
-  useEffect(() => {
-    if (localStorage) {
-      const data = JSON.parse(localStorage.getItem("usuario"))
-      const user = data
-      setUser(user)
-      setUsuario({
-        nombre: user.nombre,
-        apellidos: user.apellidos,
-        email: user.email,
-        tipoDocumento: user.tipoDocumento ? user.tipoDocumento : "",
-        numDocumento: user.numDocumento ? user.numDocumento : "",
-        celular: user.celular ? user.celular : "",
-      })
-    }
-  }, [])
+  const router = useRouter()
+  const { updateUsuario } = GestionUsuario()
+  const contextAuth = useContext(ContextAuth)
+  const { dataUser: user, setDataUser } = contextAuth
 
   const [usuario, setUsuario] = useState({
     nombre: user.nombre,
@@ -41,6 +31,42 @@ export default function MiCuenta() {
     setUsuario({
       ...usuario,
       [e.target.name]: e.target.value,
+    })
+  }
+
+  const update = (e) => {
+    e.preventDefault()
+
+    if (
+      nombre.trim() === "" ||
+      apellidos.trim() === "" ||
+      email.trim() === ""
+    ) {
+      setAlerta("Todos los campos son obligatorios")
+      return
+    }
+
+    updateUsuario({
+      tipoUsuario: 1,
+      nombre: nombre,
+      apellidos: apellidos,
+      email: email,
+      estado: "1",
+      userId: user.userId,
+      tipoDocumento: tipoDocumento,
+      numDocumento: numDocumento,
+      celular: celular,
+    }).then((res) => {
+      if (res === "exito") {
+        toast.success("Usuario Actualizado correctamente")
+        if (localStorage) {
+          const data = JSON.parse(localStorage.getItem("usuario"))
+          setDataUser(data)
+        }
+        router.push("/mi-cuenta")
+      } else {
+        toast.error("No se puedo Actualizar")
+      }
     })
   }
 
@@ -170,6 +196,7 @@ export default function MiCuenta() {
                   <input
                     type='submit'
                     value='Actualizar'
+                    onClick={update}
                     className='btn btn-primary px-4'
                   />
                 </div>

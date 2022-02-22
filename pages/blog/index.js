@@ -1,63 +1,34 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import Link from "next/link"
-
-import posts from "../../datos-paginas/api/blog"
-
-import CardBlog from "@/components/cards/card-blog"
-
 import styles from "./styles.module.scss"
 import GestionBlog from "../../gestion-de-endpoints/GestionBlog"
 import GestionCategoriaBlog from "../../gestion-de-endpoints/GestionCategoriaBlog"
-import GestionTours from "../../gestion-de-endpoints/GestionTours"
-import CardBusqueda from "../../components/cards/card-busqueda"
 import CardBlogLarge from "../../components/cards/card-blog/cardBlogLarge"
+import useCounter from "../../hooks/useCounter"
 
 export default function Home() {
+  const [arregloSelect, setArregloSelect] = useState(0)
+  const { pagina, increment, decrement } = useCounter(arregloSelect)
   const router = useRouter()
-  const { dataBlog } = GestionBlog()
+  const {
+    dataBlog,
+    loading: loadingGetData,
+    nroTotalItems,
+  } = GestionBlog({
+    pagina: pagina ? pagina : 1,
+  })
+
   const { dataCategoriaBlog } = GestionCategoriaBlog()
-  const { dataTours } = GestionTours()
-
-  const [items, setItems] = useState(posts)
-
-  const categorias = [
-    {
-      id: 1,
-      nombre: "Lugares turísticos en Lima",
-      imagenPrincipal:
-        "https://www.iperu.org/wp-content/uploads/2016/01/plaza-de-armas-de-lima.jpg",
-    },
-    {
-      id: 2,
-      nombre: "Hoteles en Arequipa",
-      imagenPrincipal:
-        "https://media-cdn.tripadvisor.com/media/photo-s/17/9d/a1/a2/pool.jpg",
-    },
-    {
-      id: 3,
-      nombre: "Lugares turísticos en Cusco",
-      imagenPrincipal:
-        "https://www.paquetesdeviajesperu.com/wp-content/uploads/2019/04/ciudad-cusco-peru-1.jpg",
-    },
-    {
-      id: 4,
-      nombre: "Hoteles en La libertad",
-      imagenPrincipal:
-        "https://1.bp.blogspot.com/-TcAASy4riJ4/WR9WDa10YwI/AAAAAAAAD1o/_E2rUhdXpsw1nv1_3a9eG-pDqP7oa23TgCLcB/s1600/37785994.jpg",
-    },
-  ]
 
   let slug = router.query.slug
 
-  // Swiper
-  const swiperRef = useRef(null)
-
-  const carouselParams = {
-    slidesPerView: 1,
-    loop: true,
-  }
+  useEffect(() => {
+    if (!loadingGetData) {
+      setArregloSelect(Math.ceil(parseFloat(nroTotalItems / 3)))
+    }
+  }, [loadingGetData])
 
   return (
     <div>
@@ -94,6 +65,18 @@ export default function Home() {
               })}
             </div>
           </section>
+          <div className='d-flex justify-content-center align-items-center'>
+            <button
+              className='btn btn-primary py-1'
+              onClick={decrement}
+            >{`<`}</button>
+
+            <h2 className={styles.slug_counter}>{pagina}</h2>
+            <button
+              className='btn btn-primary py-1'
+              onClick={increment}
+            >{`>`}</button>
+          </div>
 
           <section className='container mt-4 mt-md-5 px-4 px-md-0'>
             <div className='row'>

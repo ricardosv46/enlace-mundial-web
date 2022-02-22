@@ -8,8 +8,26 @@ import GestionTours from "../../gestion-de-endpoints/GestionTours"
 import { useActividadesServices } from "../../gestion-de-endpoints/useActividadesServices"
 import { useIncluyeServices } from "../../gestion-de-endpoints/useIncluyeServices"
 import Home from "../cruceros"
+import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda"
 
 export default function ActividadesYTurismo() {
+  const [incluye, setIncluye] = useState("")
+
+  const [actividades, setAactividades] = useState("")
+
+  const [busqueda, setBusqueda] = useState({
+    fecha_ini: "",
+    fecha_fina: "",
+
+    categoria_slug: "",
+    precio_base: "",
+    horas: "",
+    dias: "",
+  })
+
+  const { fecha_ini, fecha_fina, categoria_slug, precio_base, horas, dias } =
+    busqueda
+
   const { db: dataActividades, loadingGetData: loadingActiviades } =
     useActividadesServices()
   const { db: dataIncluye, loadingGetData: loadingIncluye } =
@@ -22,6 +40,30 @@ export default function ActividadesYTurismo() {
       setItemsTours(dataTours)
     }
   }, [loadingGetTour])
+
+  const { dataBusqueda, getBusquedaAvanzada } = GestionBusqueda({
+    fecha_ini: fecha_ini,
+    fecha_fina: fecha_fina,
+    incluye: incluye,
+    actividades: actividades,
+    categoria_slug: "",
+    precio_base: "",
+    horas: "",
+    dias: "",
+    page: 1,
+    numberPaginate: 12,
+  })
+  const tours = dataBusqueda.length !== 0 ? dataBusqueda : itemsTours
+  useEffect(() => {
+    getBusquedaAvanzada()
+  }, [fecha_ini, fecha_fina])
+
+  const onChange = (e) => {
+    setBusqueda({
+      ...busqueda,
+      [e.target.name]: e.target.value,
+    })
+  }
 
   return (
     <div className='busqueda-page'>
@@ -75,14 +117,26 @@ export default function ActividadesYTurismo() {
                       <label htmlFor='fechaInicial' className='text-secondary'>
                         Desde
                       </label>
-                      <input type='date' className='form-control rounded-0' />
+                      <input
+                        type='date'
+                        className='form-control rounded-0'
+                        value={fecha_ini}
+                        name='fecha_ini'
+                        onChange={onChange}
+                      />
                     </div>
 
                     <div className='form-group'>
                       <label htmlFor='fechaInicial' className='text-secondary'>
                         Hasta
                       </label>
-                      <input type='date' className='form-control rounded-0' />
+                      <input
+                        type='date'
+                        className='form-control rounded-0'
+                        value={fecha_fina}
+                        name='fecha_fina'
+                        onChange={onChange}
+                      />
                     </div>
                   </div>
                 </div>
@@ -101,7 +155,6 @@ export default function ActividadesYTurismo() {
                         name='disponibles'
                         id='disponible-1'
                         value='option1'
-                        checked
                       />
                       <label
                         className='form-check-label text-muted'
@@ -182,13 +235,15 @@ export default function ActividadesYTurismo() {
                           <div className='form-check' key={incluye?.incluyeId}>
                             <input
                               className='form-check-input'
-                              type='checkbox'
-                              value=''
+                              type='radio'
+                              name={incluye}
+                              onClick={(e) => setIncluye(e.target.value)}
+                              value={incluye?.descripcionIncluye}
                               id={incluye?.incluyeId}
                             />
                             <label
                               className='form-check-label'
-                              htmlFor='actividad-1'
+                              htmlFor={incluye?.incluyeId}
                             >
                               {incluye?.descripcionIncluye}
                             </label>
@@ -212,13 +267,15 @@ export default function ActividadesYTurismo() {
                           >
                             <input
                               className='form-check-input'
-                              type='checkbox'
-                              value=''
+                              type='radio'
+                              name='actividad'
+                              onClick={(e) => setAactividades(e.target.value)}
+                              value={actividad?.descripcion_actividad}
                               id={actividad?.actividadId}
                             />
                             <label
                               className='form-check-label'
-                              htmlFor='actividad-1'
+                              htmlFor={actividad?.actividadId}
                             >
                               {actividad?.descripcion_actividad}
                             </label>
@@ -232,7 +289,7 @@ export default function ActividadesYTurismo() {
             </div>
 
             <div className='col-md-9 mt-4 mt-md-0'>
-              {itemsTours.map((item) => {
+              {tours.map((item) => {
                 return <CardBusqueda item={item} key={item.tourId} />
               })}
             </div>

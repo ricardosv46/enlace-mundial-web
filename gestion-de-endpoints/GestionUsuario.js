@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client"
 import { CREATE_USUARIO } from "../graphql/mutation/CrearUsuario"
 import { LOGIN_USUARIO } from "../graphql/mutation/LoginUsuario"
-
+import { UPDATE_USUARIO } from "../graphql/mutation/UpdateUser"
 // Obtenemos todas las categorias
 export const GestionUsuario = () => {
   const [CreateUsuario, { loading: loadingCreate }] = useMutation(
@@ -64,11 +64,52 @@ export const GestionUsuario = () => {
     })
     console.log("LoginUsuario", res)
 
-    const Usuario = res.data?.login
+    if (res.data?.login) {
+      localStorage.setItem("token", res.data?.login?.apiToken)
+      localStorage.setItem("usuario", JSON.stringify(res.data?.login))
 
-    localStorage.setItem("usuario", JSON.stringify(Usuario))
+      return "exito"
+    }
+  }
 
-    if (res.data?.login) return "exito"
+  const [UpdateUsuario] = useMutation(UPDATE_USUARIO, {
+    onError: (err) => {
+      console.log("onError Update Usuario", err?.graphQLErrors[0]?.debugMessage)
+    },
+  })
+
+  const updateUsuario = async ({
+    tipoDocumento,
+    numDocumento,
+    celular,
+    tipoUsuario,
+    nombre,
+    apellidos,
+    email,
+    estado,
+    userId,
+  }) => {
+    const resp = await UpdateUsuario({
+      variables: {
+        input: {
+          tipoDocumento: tipoDocumento,
+          numDocumento: numDocumento,
+          celular: celular,
+          tipoUsuario: tipoUsuario,
+          nombre: nombre,
+          apellidos: apellidos,
+          email: email,
+          estado: estado,
+          userId: userId,
+        },
+      },
+    })
+    console.log("UpdateUsuario", resp)
+
+    if (resp.data?.UpdateUsuario) {
+      localStorage.setItem("usuario", JSON.stringify(resp.data?.UpdateUsuario))
+      return "exito"
+    }
   }
 
   return {
@@ -76,5 +117,6 @@ export const GestionUsuario = () => {
     loadingCreate,
     loginUsuario,
     createUsuario,
+    updateUsuario,
   }
 }

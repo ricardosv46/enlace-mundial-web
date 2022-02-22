@@ -1,8 +1,11 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { GestionUsuario } from "../../gestion-de-endpoints/GestionUsuario"
 import toast from "react-hot-toast"
+import { ContextAuth } from "../../context/ContextAuth"
 
 export default function FormLogin({ setShow }) {
+  const contextAuth = useContext(ContextAuth)
+  const { setAuth, setDataUser } = contextAuth
   const { loginUsuario } = GestionUsuario()
   const [alerta, setAlerta] = useState("")
   const [usuario, setUsuario] = useState({
@@ -32,6 +35,13 @@ export default function FormLogin({ setShow }) {
     }).then((res) => {
       if (res === "exito") {
         toast.success("Usuario Logeado correctamente")
+
+        if (localStorage) {
+          const data = JSON.parse(localStorage.getItem("usuario"))
+          setDataUser(data)
+        }
+
+        setAuth(true)
         setShow(false)
       } else {
         setAlerta("Contraseña o usuario Incorrecto")
