@@ -88,3 +88,34 @@ a.nav-link-tab.active {
 .w-btn {
   width: 115px;
 }
+
+label {
+  margin: 0;
+}
+
+.text-md {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.text-sm {
+  font-size: 20px;
+  font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+}
+
+.btn-copiar {
+  background-color: aqua;
+  border: 0;
+  border-style: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 5px 5px 5px;
+}
+
+.rounded-1 {
+  border-radius: 15px;
+}

@@ -29,7 +29,7 @@ export default function Home() {
   const [pagos, setPagos] = useState(false)
   const [carrito, setCarrito] = useState({})
   const [formularios, setFormularios] = useState([])
-
+  console.log(carrito)
   // Asignar formularios
   useEffect(() => {
     setTimeout(() => {
@@ -99,7 +99,7 @@ export default function Home() {
                           : "Datos de la Tarjeta"
                       }
                     >
-                      <section className='p-3'>
+                      <section className='p-1 p-lg-3'>
                         {!pagos ? (
                           formularios.length ? (
                             <Formularios

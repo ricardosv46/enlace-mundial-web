@@ -1,3 +1,38 @@
 .error-message {
   font-size: 12px;
 }
+
+.caja {
+  margin: 20px;
+  width: 450px;
+  height: 250px;
+  position: relative;
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+@media (max-width: 576px) {
+  .caja {
+    width: 300px;
+    height: 150px;
+    font-size: 14px;
+  }
+}
+
+.input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}

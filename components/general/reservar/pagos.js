@@ -7,7 +7,7 @@ const Pagos = ({ setTarjeta, setTipoPago }) => {
   }
   return (
     <>
-      <div className='row mx-lg-5'>
+      <div className='row mx-lg-5 mx-2'>
         <div className='col-lg-6 px-1 py-1'>
           <div className='bg-warning py-2  px-3 d-flex justify-content-start align-items-center rounded '>
             <input
@@ -17,7 +17,7 @@ const Pagos = ({ setTarjeta, setTipoPago }) => {
               value='yape'
               onClick={() => setTipoPago("yape")}
             />
-            <div className='ml-2 '>
+            <div className='ml-2 pt-1'>
               <Image
                 width={25}
                 height={25}
@@ -41,7 +41,7 @@ const Pagos = ({ setTarjeta, setTipoPago }) => {
               value='transferencia'
               onClick={() => setTipoPago("transferencia")}
             />
-            <div className='ml-2 '>
+            <div className='ml-2 pt-1'>
               <Image
                 width={25}
                 height={25}
@@ -64,7 +64,7 @@ const Pagos = ({ setTarjeta, setTipoPago }) => {
               value='tarjeta'
               onClick={() => setTipoPago("tarjeta")}
             />
-            <div className='ml-2 '>
+            <div className='ml-2 pt-1'>
               <Image
                 width={25}
                 height={25}
@@ -82,7 +82,7 @@ const Pagos = ({ setTarjeta, setTipoPago }) => {
       <div className='d-flex justify-content-end'>
         <button
           type='button'
-          className='btn btn-info text-white px-4'
+          className='btn btn-info text-white px-4 mt-4'
           onClick={pagar}
         >
           Ir a Pagar

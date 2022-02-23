@@ -47,7 +47,7 @@ export default function CardTour({ item }) {
       </Link>
 
       <div className='card-tour__body p-3 p-md-4'>
-        <Link href={`/actividades-y-turismo/${item.slug}`}>
+        <Link href={`/actividades-y-turismo/${item.slugTour}`}>
           <h3
             className={`${styles.cardTour_titulo} font-weight-bold my-0 pointer text-center`}
           >
