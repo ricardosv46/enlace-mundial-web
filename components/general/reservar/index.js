@@ -24,7 +24,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
     mes,
     anio,
   })
-
+  console.log(dataHorario)
   function asignarFecha(fecha) {
     setFecha(fecha)
   }
@@ -68,6 +68,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
       hora: fecha,
       nroAdultos,
       nroMenores,
+      duracion,
     }
 
     localStorage.setItem("carrito", JSON.stringify(item))
@@ -167,7 +168,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
               <section className='text-left'>
                 <span className='small text-muted'>Duración</span>
                 <div className='sidebar-reservar__duracion-info py-1 px-3'>
-                  <span>{duracion}</span>
+                  <span>{duracion.hora}</span>
                 </div>
               </section>
 

@@ -56,22 +56,22 @@ export default function Header() {
           >
             {/* Menu items */}
             <ul className='list-unstyled d-flex flex-column flex-md-row align-items-center mt-0 mb-0 py-3 py-lg-0'>
-              <li>
+              <li onClick={() => setNavStatus(false)}>
                 <Link href='/'>Inicio</Link>
               </li>
 
-              <li>
+              <li onClick={() => setNavStatus(false)}>
                 <Link href='/luna-de-miel'>Luna de miel</Link>
               </li>
 
-              <li>
+              <li onClick={() => setNavStatus(false)}>
                 <Link href='/cruceros'>Crucero</Link>
               </li>
 
-              <li>
+              <li onClick={() => setNavStatus(false)}>
                 <Link href='/actividades-y-turismo'>Actividades y turismo</Link>
               </li>
-              <li>
+              <li onClick={() => setNavStatus(false)}>
                 <Link href='/blog'>Blogs</Link>
               </li>
             </ul>
@@ -98,7 +98,10 @@ export default function Header() {
                 </button>
               </div> */}
               {auth && (
-                <div className='header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0'>
+                <div
+                  className='header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0'
+                  onClick={() => setNavStatus(false)}
+                >
                   <Link href='/mi-cuenta' passHref>
                     <a className='btn btn-outline-primary header__button d-flex justify-content-center align-items-center'>
                       Mi cuenta

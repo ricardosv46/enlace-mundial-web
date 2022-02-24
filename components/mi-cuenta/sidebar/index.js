@@ -21,7 +21,7 @@ export default function SidebarCuenta() {
       className={`${styles.sidebarCuenta_card} shadow-card d-flex flex-column justify-content-center align-items-center py-3`}
     >
       <img
-        src='https://i.pinimg.com/280x280_RS/3b/32/47/3b3247c707f4006002364ecd4ec3f124.jpg'
+        src='https://cdn-icons-png.flaticon.com/512/236/236831.png'
         className={`${styles.sidebarCuenta_imagen}`}
       />
 

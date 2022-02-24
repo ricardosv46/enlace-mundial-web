@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
-import { registerLocale } from "react-datepicker";
-import es from "date-fns/locale/es";
-registerLocale("es", es);
+import React, { useEffect, useState } from "react"
+import DatePicker from "react-datepicker"
+import { registerLocale } from "react-datepicker"
+import es from "date-fns/locale/es"
+registerLocale("es", es)
 
 export default function Calendar({
   setMes,
@@ -17,68 +17,77 @@ export default function Calendar({
   setCupos,
   setDuracion,
   setNroAdultos,
-  setNroMenores
+  setNroMenores,
 }) {
-  const [startDate, setStartDate] = useState(new Date());
-  const [fechas, setFechas] = useState([]);
+  const [startDate, setStartDate] = useState(new Date())
+  const [fechas, setFechas] = useState([])
 
   useEffect(() => {
     setCupos(0)
     setPrecioReal(null)
     setEsFechaValida(false)
-    setDuracion('No tiene fecha asignada')
+    setDuracion("No tiene fecha asignada")
     setFechaSeleccionada(
       startDate?.getFullYear() +
-      "-" +
-      (startDate?.getMonth() + 1) +
-      "-" +
-      startDate?.getDate()
-    );
+        "-" +
+        (startDate?.getMonth() + 1) +
+        "-" +
+        startDate?.getDate()
+    )
     dataHorario.map((item) => {
       if (item.fecha === fechaSeleccionada) {
-        setDuracion(item.hora)
-        setEsFechaValida(true);
+        setDuracion(item)
+        setEsFechaValida(true)
         setPrecioReal(item.precio)
         setCupos(item.cupos)
         setNroAdultos(0)
         setNroMenores(0)
-        return;
+        console.log(item)
+        return
       }
-    });
-  }, [startDate, fechaSeleccionada, dataHorario]);
+    })
+  }, [startDate, fechaSeleccionada, dataHorario])
 
   useEffect(() => {
-    setFechas([]);
+    setFechas([])
     pintarDias.map((fecha) => {
-      const arrayFecha = fecha.split("-");
+      const arrayFecha = fecha.split("-")
       setFechas((f) => [
         ...f,
         new Date(arrayFecha[0], arrayFecha[1] - 1, arrayFecha[2]),
-      ]);
-    });
-  }, [pintarDias]);
+      ])
+    })
+  }, [pintarDias])
   return (
     <>
       <DatePicker
         selected={startDate}
         onChange={(date) => {
-          setStartDate(date);
+          setStartDate(date)
         }}
         onSelect={(date) => setStartDate(date)}
         onMonthChange={(date) => {
-          setMes(date.getMonth() + 1);
-          setAnio(date.getFullYear());
-          setStartDate(date);
+          setMes(date.getMonth() + 1)
+          setAnio(date.getFullYear())
+          setStartDate(date)
         }}
         highlightDates={fechas}
-        locale="es"
+        locale='es'
         inline
-      > {
-          EsfechaValida
-            ? <div style={{ color: "green", margin: ".5rem 0", textAlign:"center" }}>Fecha seleccionada valida</div>
-            : <div style={{ color: "red", margin: ".5rem 0", textAlign:"center"  }}>Seleccione una fecha valida</div>
-        }
+      >
+        {" "}
+        {EsfechaValida ? (
+          <div
+            style={{ color: "green", margin: ".5rem 0", textAlign: "center" }}
+          >
+            Fecha seleccionada valida
+          </div>
+        ) : (
+          <div style={{ color: "red", margin: ".5rem 0", textAlign: "center" }}>
+            Seleccione una fecha valida
+          </div>
+        )}
       </DatePicker>
     </>
-  );
+  )
 }

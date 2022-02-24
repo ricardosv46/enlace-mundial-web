@@ -11,21 +11,17 @@ export default function DestinosDestacados() {
   // let destinosTerceraFila = destinosDestacados.slice(2);
 
   const swiperRefMobile = useRef(null)
-  const swiperRefDesktop = useRef(null)
 
   const carouselParamsMobile = {
-    slidesPerView: 2,
+    slidesPerView: 1,
     loop: true,
-    spaceBetween: 8,
   }
 
   const goNext = () => {
     swiperRefMobile.current.swiper.slideNext()
-    // swiperRefDesktop.current.swiper.slideNext();
   }
   const goPrev = () => {
     swiperRefMobile.current.swiper.slidePrev()
-    // swiperRefDesktop.current.swiper.slidePrev();
   }
 
   return (
@@ -63,18 +59,16 @@ export default function DestinosDestacados() {
               <section className='d-md-none position-relative'>
                 <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
                   {dataDestacados.map((destino, contador) => {
-                    if (contador > 2) {
-                      return (
-                        <div key={destino?.DeparCodi}>
-                          <CardDestino
-                            item={{
-                              titulo: destino?.DeparNom,
-                              imagen: destino?.imagenPrincipal?.url,
-                            }}
-                          />
-                        </div>
-                      )
-                    }
+                    return (
+                      <div key={destino?.DeparCodi}>
+                        <CardDestino
+                          item={{
+                            titulo: destino?.DeparNom,
+                            imagen: destino?.imagenPrincipal?.url,
+                          }}
+                        />
+                      </div>
+                    )
                   })}
                 </Swiper>
 

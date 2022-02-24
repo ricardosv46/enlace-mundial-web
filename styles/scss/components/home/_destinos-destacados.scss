@@ -1,7 +1,11 @@
 .destinos-destacados {
   &__fila-1 {
-    display: grid;
-    grid-gap: 0.5rem;
+    display: none;
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-gap: 0.5rem;
+    }
   }
 
   &__fila-3 {
