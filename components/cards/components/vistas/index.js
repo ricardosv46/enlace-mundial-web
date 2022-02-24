@@ -1,13 +1,13 @@
-import react, { useState } from "react";
+import react, { useState } from "react"
 
-import styles from "./styles.module.scss";
+import styles from "./styles.module.scss"
 
-export default function Vistas() {
-  const [mostrarContenido, setMostrarContenido] = useState(false);
+export default function Vistas({ precioBaseTour }) {
+  const [mostrarContenido, setMostrarContenido] = useState(false)
 
   function click(e) {
-    e.preventDefault();
-    mostrarContenido ? setMostrarContenido(false) : setMostrarContenido(true);
+    e.preventDefault()
+    mostrarContenido ? setMostrarContenido(false) : setMostrarContenido(true)
   }
 
   return (
@@ -19,11 +19,11 @@ export default function Vistas() {
         onMouseLeave={() => setMostrarContenido(false)}
       >
         <button
-          type="button"
+          type='button'
           className={`${styles.vistas_boton} text-dark d-flex justify-content-center align-items-center border-0`}
         >
-          <span className="d-inline-block w-100 h-100">
-            <i className="far fa-eye"></i>
+          <span className='d-inline-block w-100 h-100'>
+            <i className='far fa-eye'></i>
           </span>
         </button>
 
@@ -31,12 +31,12 @@ export default function Vistas() {
           <section
             className={`${styles.vistas_contenido} d-flex align-items-center ml-1 mr-3 px-2`}
           >
-            100
+            {precioBaseTour}
           </section>
         ) : (
           ""
         )}
       </div>
     </>
-  );
+  )
 }

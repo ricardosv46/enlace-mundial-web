@@ -5,15 +5,15 @@
 
   background-image: url("/imagenes/home/banner.jpg"); // 1280×853
   background-position: center;
-
+  background-repeat: repeat-x;
   position: relative;
 
   @media (min-width: 768px) {
-    height: 60vh;
+    height: 60%;
   }
 
   @media (min-width: 1200px) {
-    height: 95vh;
+    height: 825px;
   }
 
   &::before {
@@ -24,7 +24,7 @@
     width: 100%;
     height: 100%;
 
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     bottom: 0;
@@ -33,24 +33,24 @@
   }
 
   &__title {
-    font-size: 7vw;
+    font-size: 30px;
 
     position: relative;
     z-index: 2;
 
     @media (min-width: 992px) {
-      font-size: 4vw;
+      font-size: 80px;
     }
   }
 
   &__subtitle {
-    font-size: 6vw;
+    font-size: 30px;
 
     position: relative;
     z-index: 2;
 
     @media (min-width: 992px) {
-      font-size: 3.5vw;
+      font-size: 80px;
     }
   }
 }

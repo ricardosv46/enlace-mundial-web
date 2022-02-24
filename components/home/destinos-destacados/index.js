@@ -56,7 +56,7 @@ export default function DestinosDestacados() {
               {/* Fila 2 */}
               {/* Carousel mobile */}
 
-              <section className='d-md-none position-relative'>
+              <section className='d-md-none position-relative  '>
                 <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
                   {dataDestacados.map((destino, contador) => {
                     return (

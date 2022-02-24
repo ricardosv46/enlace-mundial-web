@@ -26,7 +26,7 @@ export default function Header() {
     <section>
       <Modal dialogClassName='modal-auth' show={show} onHide={handleClose}>
         <section>
-          <AuthForm setShow={setShow} />
+          <AuthForm setShow={setShow} setNavStatus={setNavStatus} />
         </section>
       </Modal>
       <header className='header'>

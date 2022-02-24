@@ -45,11 +45,6 @@ export default function SidebarCuenta() {
             </a>
           </Link>
 
-          <Link href='/mi-cuenta/editar' passHref>
-            <a className='btn btn-light btn-block font-weight-bold text-left mt-2 px-3 rounded-0'>
-              Preferencias
-            </a>
-          </Link>
           <Link href='/' passHref>
             <button
               type='button'

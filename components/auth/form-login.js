@@ -3,7 +3,7 @@ import { GestionUsuario } from "../../gestion-de-endpoints/GestionUsuario"
 import toast from "react-hot-toast"
 import { ContextAuth } from "../../context/ContextAuth"
 
-export default function FormLogin({ setShow }) {
+export default function FormLogin({ setShow, setNavStatus }) {
   const contextAuth = useContext(ContextAuth)
   const { setAuth, setDataUser } = contextAuth
   const { loginUsuario } = GestionUsuario()
@@ -47,6 +47,8 @@ export default function FormLogin({ setShow }) {
         setAlerta("Contraseña o usuario Incorrecto")
       }
     })
+
+    setNavStatus(false)
   }
 
   return (

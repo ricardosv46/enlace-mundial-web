@@ -6,14 +6,14 @@ import styles from "./styles.module.scss"
 import FormLogin from "../form-login"
 import FormRegister from "../form-register"
 
-export default function AuthForm({ setShow }) {
+export default function AuthForm({ setShow, setNavStatus }) {
   const [tipoForm, setTipoForm] = useState("login")
 
   const asignarFormulario = () => {
     let component = null
 
     if (tipoForm === "login") {
-      component = <FormLogin setShow={setShow} />
+      component = <FormLogin setShow={setShow} setNavStatus={setNavStatus} />
     } else if (tipoForm === "register") {
       component = <FormRegister setTipoForm={setTipoForm} />
     }

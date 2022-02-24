@@ -37,10 +37,10 @@ export default function CardTour({ item }) {
               <span
                 className={`${styles.cardTour_precio} bg-light py-1 px-2 text-uppercase`}
               >
-                Desde S/. {item.precio}
+                Desde S/. {item.precioBaseTour}
               </span>
 
-              <Vistas />
+              <Vistas precioBaseTour={item.precioBaseTour} />
             </div>
           </div>
         </section>
