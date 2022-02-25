@@ -8,7 +8,6 @@ import CategoriasServices from "../../../gestion-de-endpoints/useCategoriasServi
 export default function BuscadorPrincipal() {
   const { dataCategoria, loadingCategoria } = CategoriasServices()
   const { dataDepartamentos, loadingGetData } = useDepartamentosServices()
-  console.log(dataDepartamentos)
 
   const categorias =
     !loadingCategoria &&

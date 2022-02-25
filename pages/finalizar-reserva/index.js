@@ -114,6 +114,7 @@ export default function Home() {
 
                         {!tarjeta && pagos && (
                           <Pagos
+                            setPagos={setPagos}
                             setTarjeta={setTarjeta}
                             setTipoPago={setTipoPago}
                           />

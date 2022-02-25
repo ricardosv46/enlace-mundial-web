@@ -49,7 +49,7 @@ const Tarjeta = ({ tipoPago, setPagos, setTarjeta, carrito }) => {
                 adjuntarlo después.
               </p>
               <div className='d-flex justify-content-center row'>
-                <div className={`${styles.caja} bg-secondary rounded `}>
+                <div className={`${styles.caja} bg-light rounded `}>
                   {!imagePrevios && <p>Arrastre la imagen o haga click aquí</p>}
                   <p>Archivos permitidos: .jpg, .jpeg, .png</p>
                   <input
@@ -240,9 +240,9 @@ const Tarjeta = ({ tipoPago, setPagos, setTarjeta, carrito }) => {
                     />
                   </div>
                   <div className='d-flex justify-content-center px-lg-0 px-1 py-3 py-lg-3'>
-                    <div className='col-lg-6 bg-secondary rounded px-3 py-3 d-flex justify-content-between align-items-center px-lg-3'>
-                      <p className='text-white text-md '>991 615 223</p>
-                      <button className=' btn-copiar text-white '>
+                    <div className='col-lg-6 bg-light rounded px-3 py-3 d-flex justify-content-between align-items-center px-lg-3'>
+                      <p className=' text-md '>991 615 223</p>
+                      <button className=' btn-copiar bg-secondary text-white '>
                         Copiar
                       </button>
                     </div>
@@ -334,7 +334,7 @@ const Tarjeta = ({ tipoPago, setPagos, setTarjeta, carrito }) => {
                     </div>
                   </div>
                   <div className='d-flex justify-content-center px-lg-0 px-1 py-3 py-lg-3 row '>
-                    <div className='col-lg-7 bg-secondary rounded px-3 py-0 d-flex justify-content-between align-items-center px-lg-3 my-1'>
+                    <div className='col-lg-7 bg-light rounded px-3 py-0 d-flex justify-content-between align-items-center px-lg-3 my-1'>
                       <div className='mt-2'>
                         <Image
                           width={50}
@@ -345,12 +345,12 @@ const Tarjeta = ({ tipoPago, setPagos, setTarjeta, carrito }) => {
                           className='rounded-1'
                         />
                       </div>
-                      <p className='text-white text-sm '>4557 2323 4891 6123</p>
-                      <button className=' btn-copiar text-white '>
+                      <p className=' text-sm '>4557 2323 4891 6123</p>
+                      <button className=' btn-copiar bg-secondary text-white'>
                         Copiar
                       </button>
                     </div>
-                    <div className='col-lg-7 bg-secondary rounded px-3 py-0 d-flex justify-content-between align-items-center px-lg-3 my-1'>
+                    <div className='col-lg-7 bg-light rounded px-3 py-0 d-flex justify-content-between align-items-center px-lg-3 my-1'>
                       <div className='mt-2'>
                         <Image
                           width={50}
@@ -361,12 +361,12 @@ const Tarjeta = ({ tipoPago, setPagos, setTarjeta, carrito }) => {
                           className='rounded-1'
                         />
                       </div>
-                      <p className='text-white text-sm '>4557 2323 4891 6123</p>
-                      <button className=' btn-copiar text-white '>
+                      <p className='text-sm '>4557 2323 4891 6123</p>
+                      <button className=' btn-copiar bg-secondary text-white'>
                         Copiar
                       </button>
                     </div>
-                    <div className='col-lg-7 bg-secondary rounded px-3 py-0 d-flex justify-content-between align-items-center px-lg-3 my-1'>
+                    <div className='col-lg-7 bg-light rounded px-3 py-0 d-flex justify-content-between align-items-center px-lg-3 my-1'>
                       <div className='mt-2'>
                         <Image
                           width={50}
@@ -377,12 +377,12 @@ const Tarjeta = ({ tipoPago, setPagos, setTarjeta, carrito }) => {
                           className='rounded-1'
                         />
                       </div>
-                      <p className='text-white text-sm '>4557 2323 4891 6123</p>
-                      <button className=' btn-copiar text-white '>
+                      <p className=' text-sm '>4557 2323 4891 6123</p>
+                      <button className=' btn-copiar bg-secondary text-white'>
                         Copiar
                       </button>
                     </div>
-                    <div className=' col-lg-7 bg-secondary rounded px-3 py-0 d-flex justify-content-between align-items-center px-lg-3 my-1'>
+                    <div className=' col-lg-7 bg-light rounded px-3 py-0 d-flex justify-content-between align-items-center px-lg-3 my-1'>
                       <div className='mt-2'>
                         <Image
                           width={50}
@@ -393,8 +393,8 @@ const Tarjeta = ({ tipoPago, setPagos, setTarjeta, carrito }) => {
                           className='rounded-1'
                         />
                       </div>
-                      <p className='text-white text-sm '>4557 2323 4891 6123</p>
-                      <button className=' btn-copiar text-white '>
+                      <p className=' text-sm '>4557 2323 4891 6123</p>
+                      <button className=' btn-copiar bg-secondary text-white'>
                         Copiar
                       </button>
                     </div>
