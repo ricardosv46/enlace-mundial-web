@@ -2,15 +2,20 @@ import React from "react"
 import { useRouter } from "next/router"
 
 import Select from "react-select"
+import { useDepartamentosServices } from "../../../gestion-de-endpoints/useDepartamentosServices"
 
 export default function BuscadorPrincipal() {
-  const router = useRouter()
+  const { dataDepartamentos, loadingGetData } = useDepartamentosServices()
+  console.log(dataDepartamentos)
 
-  const lugares = [
-    { value: "Lima", label: "Lima" },
-    { value: "Arequipa", label: "Arequipa" },
-    { value: "Puno", label: "Puno" },
-  ]
+  const lugares = !loadingGetData
+    ? dataDepartamentos.map((data) => ({
+        value: data.DeparCodi,
+        label: data.DeparNom,
+      }))
+    : null
+
+  const router = useRouter()
 
   const categorias = [
     { value: "Tours", label: "Tours" },
