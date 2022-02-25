@@ -9,6 +9,8 @@ import styles from "./styles.module.scss"
 import SidebarCuenta from "@/components/mi-cuenta/sidebar"
 
 export default function MiCuenta() {
+  const [items, setItems] = useState(tours)
+
   return (
     <>
       <Head>
