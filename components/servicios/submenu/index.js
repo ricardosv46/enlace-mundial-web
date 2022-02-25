@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
+import React from "react"
+import Link from "next/link"
 
-import styles from "./styles.module.scss";
+import styles from "./styles.module.scss"
 
 export default function MenuInterior() {
   const items = [
@@ -25,7 +25,7 @@ export default function MenuInterior() {
       texto: "Tours similares",
       url: "#tours-similares",
     },
-  ];
+  ]
 
   return (
     <section>
@@ -33,23 +33,24 @@ export default function MenuInterior() {
         className={`${styles.headerInterior} d-none d-md-flex bg-light mt-3 py-2`}
       >
         {/* Desktop */}
-        <nav className="container">
-          <div className="row">
-            <div className="col-12">
+        <nav className='container'>
+          <div className='row'>
+            <div className='col-12'>
               {items.map((item, index) => {
                 return (
                   <a
+                    key={item.url}
                     className={`${styles.headerInterior_link} text-dark text-uppercase font-weight-bold`}
                     href={item.url}
                   >
                     {item.texto}
                   </a>
-                );
+                )
               })}
             </div>
           </div>
         </nav>
       </header>
     </section>
-  );
+  )
 }

@@ -11,8 +11,6 @@ import CardLunaMiel from "../cards/card-luna-miel"
 export default function LunasRelacionadas() {
   const { dataLuna: items, loading: loadingGetCrucero } = GestionLuna()
 
-  console.log(items)
-
   const swiperRefMobile = useRef(null)
 
   const carouselParamsMobile = {
@@ -63,7 +61,7 @@ export default function LunasRelacionadas() {
         <div className='row d-none d-md-flex'>
           {items.map((item) => {
             return (
-              <div className='col-md-6 mt-4' key={item.id}>
+              <div className='col-md-6 mt-4' key={item.lunaMielId}>
                 <CardLunaMiel item={item} />
               </div>
             )

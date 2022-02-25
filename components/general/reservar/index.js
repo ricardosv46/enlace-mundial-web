@@ -24,7 +24,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
     mes,
     anio,
   })
-  console.log(dataHorario)
+
   function asignarFecha(fecha) {
     setFecha(fecha)
   }
