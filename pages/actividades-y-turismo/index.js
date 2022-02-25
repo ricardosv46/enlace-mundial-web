@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from "react"
-
 import Head from "next/head"
+import Select from "react-select"
 import Script from "next/script"
-
 import CardBusqueda from "@/components/cards/card-busqueda"
 import GestionTours from "../../gestion-de-endpoints/GestionTours"
 import { useActividadesServices } from "../../gestion-de-endpoints/useActividadesServices"
 import { useIncluyeServices } from "../../gestion-de-endpoints/useIncluyeServices"
-import Home from "../cruceros"
 import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda"
+import CategoriasServices from "../../gestion-de-endpoints/useCategoriasServices"
 
 export default function ActividadesYTurismo() {
   const [incluye, setIncluye] = useState("")
-
+  const [elmo, setElmo] = useState("hola")
   const [actividades, setAactividades] = useState("")
-
+  const [categoria, setCategoria] = useState("")
+  console.log(categoria)
+  const { dataCategoria, loadingCategoria } = CategoriasServices()
   const [busqueda, setBusqueda] = useState({
     fecha_ini: "",
     fecha_fina: "",
-    categoria_slug: "",
     precio_base: "",
     horas: "",
     dias: "",
   })
 
-  const { fecha_ini, fecha_fina, categoria_slug, precio_base, horas, dias } =
-    busqueda
+  const { fecha_ini, fecha_fina, precio_base, horas, dias } = busqueda
+
+  const categorias = dataCategoria.map((data) => ({
+    value: data.slugCategoria,
+    label: data.tituloCategoria,
+  }))
 
   const { db: dataActividades, loadingGetData: loadingActiviades } =
     useActividadesServices()
@@ -40,22 +44,31 @@ export default function ActividadesYTurismo() {
     }
   }, [loadingGetTour])
 
-  const { dataBusqueda, getBusquedaAvanzada } = GestionBusqueda({
-    fecha_ini: fecha_ini,
-    fecha_fina: fecha_fina,
-    incluye: incluye,
-    actividades: actividades,
-    categoria_slug: "",
-    precio_base: "",
-    horas: "",
-    dias: "",
-    page: 1,
-    numberPaginate: 12,
-  })
-  const tours = dataBusqueda.length !== 0 ? dataBusqueda : itemsTours
+  const { dataBusqueda, getBusquedaAvanzada, loadingBusqueda } =
+    GestionBusqueda({
+      fecha_ini: fecha_ini,
+      fecha_fina: fecha_fina,
+      incluye: incluye,
+      actividades: actividades,
+      categoria_slug: categoria,
+      precio_base: "",
+      horas: "",
+      dias: "",
+      page: 1,
+      numberPaginate: 12,
+    })
+  console.log(dataBusqueda)
+  useEffect(() => {
+    if (!loadingBusqueda) {
+      if (dataBusqueda.length !== 0) {
+        setItemsTours(dataBusqueda)
+      }
+    }
+  }, [dataBusqueda])
+
   useEffect(() => {
     getBusquedaAvanzada()
-  }, [fecha_ini, fecha_fina, incluye, actividades])
+  }, [fecha_ini, fecha_fina, incluye, actividades, categoria])
 
   const onChange = (e) => {
     setBusqueda({
@@ -65,6 +78,7 @@ export default function ActividadesYTurismo() {
   }
 
   const quitar = () => {
+    setItemsTours(dataTours)
     setBusqueda({
       fecha_ini: "",
       fecha_fina: "",
@@ -76,7 +90,7 @@ export default function ActividadesYTurismo() {
     setIncluye("")
     setAactividades("")
   }
-
+  console.log(itemsTours)
   return (
     <div className='busqueda-page'>
       <Head>
@@ -153,6 +167,15 @@ export default function ActividadesYTurismo() {
                     </div>
                   </div>
                 </div>
+                <div className='mt-4'>
+                  {!loadingCategoria && (
+                    <Select
+                      options={categorias}
+                      placeholder='Categorías'
+                      onChange={(e) => setCategoria(e.value)}
+                    />
+                  )}
+                </div>
 
                 {/* Solo desktop */}
                 <section className='mt-4 d-none d-md-block'>
@@ -195,7 +218,7 @@ export default function ActividadesYTurismo() {
                   </div>
 
                   <div className='mt-3'>
-                    <h3 className='card-title stext-secondary font-weight-bold'>
+                    {/* <h3 className='card-title stext-secondary font-weight-bold'>
                       Destinos en Perú
                     </h3>
 
@@ -233,7 +256,7 @@ export default function ActividadesYTurismo() {
                           Tours a Cusco
                         </label>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* Incluye */}
                     <h3 className='card-title stext-secondary font-weight-bold mt-3'>
@@ -304,9 +327,13 @@ export default function ActividadesYTurismo() {
             </div>
 
             <div className='col-md-9 mt-4 mt-md-0'>
-              {tours.map((item) => {
-                return <CardBusqueda item={item} key={item.tourId} />
-              })}
+              {itemsTours.length !== 0 ? (
+                itemsTours.map((item) => {
+                  return <CardBusqueda item={item} key={item.tourId} />
+                })
+              ) : (
+                <p>No hay Resultados</p>
+              )}
             </div>
           </div>
         </section>

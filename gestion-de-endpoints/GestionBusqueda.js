@@ -14,9 +14,8 @@ const GestionBusqueda = ({
   page,
   numberPaginate,
 }) => {
-  const [getBusquedaAvanzada, { data, loading }] = useLazyQuery(
-    GET_BUSQUEDA_AVANZADA_TOUR,
-    {
+  const [getBusquedaAvanzada, { data, loading: loadingBusqueda }] =
+    useLazyQuery(GET_BUSQUEDA_AVANZADA_TOUR, {
       fetchPolicy: "network-only",
       variables: {
         fecha_ini: fecha_ini,
@@ -36,15 +35,14 @@ const GestionBusqueda = ({
           error?.graphQLErrors[0]?.debugMessage
         )
       },
-    }
-  )
+    })
 
   useEffect(() => {
     getBusquedaAvanzada()
   }, [])
 
   const dataBusqueda = data ? data?.GetBusquedaAvanzadaTour?.data : []
-  return { dataBusqueda, loading, getBusquedaAvanzada }
+  return { dataBusqueda, loadingBusqueda, getBusquedaAvanzada }
 }
 
 export default GestionBusqueda
