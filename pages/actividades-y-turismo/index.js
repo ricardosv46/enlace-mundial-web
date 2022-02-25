@@ -11,11 +11,11 @@ import CategoriasServices from "../../gestion-de-endpoints/useCategoriasServices
 
 export default function ActividadesYTurismo() {
   const [incluye, setIncluye] = useState("")
-  const [elmo, setElmo] = useState("hola")
   const [actividades, setAactividades] = useState("")
   const [categoria, setCategoria] = useState("")
   console.log(categoria)
   const { dataCategoria, loadingCategoria } = CategoriasServices()
+  console.log(dataCategoria)
   const [busqueda, setBusqueda] = useState({
     fecha_ini: "",
     fecha_fina: "",
@@ -25,11 +25,6 @@ export default function ActividadesYTurismo() {
   })
 
   const { fecha_ini, fecha_fina, precio_base, horas, dias } = busqueda
-
-  const categorias = dataCategoria.map((data) => ({
-    value: data.slugCategoria,
-    label: data.tituloCategoria,
-  }))
 
   const { db: dataActividades, loadingGetData: loadingActiviades } =
     useActividadesServices()
@@ -167,13 +162,36 @@ export default function ActividadesYTurismo() {
                     </div>
                   </div>
                 </div>
+
                 <div className='mt-4'>
-                  {!loadingCategoria && (
-                    <Select
-                      options={categorias}
-                      placeholder='Categorías'
-                      onChange={(e) => setCategoria(e.value)}
-                    />
+                  {loadingCategoria ? (
+                    <p>Cargando ...</p>
+                  ) : (
+                    dataCategoria.map((categoria) => {
+                      return (
+                        <div
+                          className='form-check'
+                          key={categoria?.categoriaId}
+                        >
+                          <input
+                            className='form-check-input'
+                            type='radio'
+                            name={categoria}
+                            onClick={() =>
+                              setCategoria(categoria?.slugCategoria)
+                            }
+                            value={categoria?.tituloCategoria}
+                            id={categoria?.categoriaId}
+                          />
+                          <label
+                            className='form-check-label'
+                            htmlFor={categoria?.categoriaId}
+                          >
+                            {categoria?.tituloCategoria}
+                          </label>
+                        </div>
+                      )
+                    })
                   )}
                 </div>
 
