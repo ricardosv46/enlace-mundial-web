@@ -39,10 +39,7 @@ export default function Home({ data }) {
           description: data?.descripcionCortaCrucero,
           images: [
             {
-              url: "https://apienlacemundial.softaki.com/storage/app/imagenesGenerales/2021-11/images.webp",
-            },
-            {
-              url: "https://apienlacemundial.softaki.com/storage/app/imagenesGenerales/2022-02/images10.webp",
+              url: "https://bolsas.epack.pe/imagenes/epack-logo-wsp.webp",
             },
           ],
           site_name: data?.tituloCrucero,
