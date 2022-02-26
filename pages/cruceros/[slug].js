@@ -40,11 +40,11 @@ export default function Home({ data }) {
           images: [
             {
               url: "https://apienlacemundial.softaki.com/storage/app/imagenesGenerales/2022-02/images10.webp",
-              width: 300,
-              height: 300,
             },
             {
               url: "https://apienlacemundial.softaki.com/storage/app/imagenesGenerales/2022-02/images10.webp",
+              width: 200,
+              height: 200,
             },
           ],
           site_name: data?.tituloCrucero,
