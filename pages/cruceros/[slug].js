@@ -1,7 +1,7 @@
 import React from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
-
+import { NextSeo } from "next-seo"
 import Gallery from "components/gallery/index"
 import ModalContacto from "components/general/modal-contacto"
 import { GET_SLUG_CRUCERO, URL } from "../../endpoints y url/endpoints"
@@ -28,9 +28,28 @@ export default function Home({ data }) {
 
   return (
     <div>
-      <Head>
-        <title>{data?.tituloCrucero} - Enlace mundial</title>
-        <meta name='description' content={data?.descripcionCortaCrucero} />
+      <NextSeo
+        title={`${data?.tituloCrucero} - Enlace mundial`}
+        description={data?.descripcionCortaCrucero}
+        keywords={data?.keywordsCrucero}
+        openGraph={{
+          type: "website",
+          url: `https://enlace-mundial-peru.vercel.app/cruceros/${slug}`,
+          title: data?.tituloCrucero,
+          description: data?.descripcionCortaCrucero,
+          images: [
+            {
+              url: data?.imagenPrincipalCrucero?.url,
+            },
+            {
+              url: data?.imagenSecundariaCrucero?.url,
+            },
+          ],
+          site_name: data?.tituloCrucero,
+        }}
+      />
+
+      {/* <Head>
         <meta name='keywords' content={data?.keywordsCrucero} />
         <meta property='og:type' content='article' />
         <meta property='og:title' content={data?.tituloCrucero} />
@@ -44,7 +63,7 @@ export default function Home({ data }) {
               property='og:image'
               content={data?.imagenSecundariaCrucero?.url}
             />
-            <meta property='og:image:alt' content={data?.tituloCrucero} />
+            <meta property='og:image:alt' content='imagen-1' />
           </>
         )}
 
@@ -54,17 +73,16 @@ export default function Home({ data }) {
               property='og:image'
               content={data?.imagenPrincipalCrucero?.url}
             />
-            <meta property='og:image:alt' content={data?.tituloCrucero} />
+            <meta property='og:image:alt' content='imagen-2' />
           </>
         )}
 
-        <meta property='og:image' content={data?.imagenPrincipalCrucero?.url} />
         <link rel='icon' href='/favicon.ico' />
         <link
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
-      </Head>
+      </Head> */}
 
       <main className='l-miel'>
         <section className='l-miel__items mt-3'>
