@@ -28,4 +28,4 @@ export const terminosYCondiciones = {
         "Las presentes condiciones generales de uso de la página web, regulan los términos y condiciones de acceso y uso de www.enlacemundial.com. El mero acceso y/o utilización del portal, de todos o parte de sus contenidos y/o servicios significa la plena aceptación de las presentes condiciones generales de uso.",
     },
   ],
-};
+}

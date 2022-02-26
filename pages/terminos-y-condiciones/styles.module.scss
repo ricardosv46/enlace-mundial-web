@@ -1,6 +1,10 @@
 @import "../../styles/scss/variables";
 
 .terminos {
+  @media (max-width: 768px) {
+    padding: 0px 35px;
+  }
+
   article {
     border-bottom: 3px solid rgba($dark, 0.9);
     padding-bottom: 0.5rem;
