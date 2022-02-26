@@ -38,10 +38,26 @@ export default function Home({ data }) {
           property='og:url'
           content={`https://enlace-mundial-peru.vercel.app/cruceros/${slug}`}
         />
-        <meta
-          property='og:image'
-          content={data?.imagenSecundariaCrucero?.url}
-        />
+        {data?.imagenSecundariaCrucero?.url && (
+          <>
+            <meta
+              property='og:image'
+              content={data?.imagenSecundariaCrucero?.url}
+            />
+            <meta property='og:image:alt' content={data?.tituloCrucero} />
+          </>
+        )}
+
+        {data?.imagenPrincipalCrucero?.url && (
+          <>
+            <meta
+              property='og:image'
+              content={data?.imagenPrincipalCrucero?.url}
+            />
+            <meta property='og:image:alt' content={data?.tituloCrucero} />
+          </>
+        )}
+
         <meta property='og:image' content={data?.imagenPrincipalCrucero?.url} />
         <link rel='icon' href='/favicon.ico' />
         <link
