@@ -10,6 +10,8 @@ export default function BuscadorPrincipal() {
   const { dataDepartamentos, loadingGetData } = useDepartamentosServices()
   const [categoria, setCategoria] = useState("")
 
+  const [departamento, setDepartamento] = useState({ nombre: "", id: "" })
+  const { nombre, id } = departamento
   const categorias =
     !loadingCategoria &&
     dataCategoria.map((data) => ({
@@ -33,6 +35,8 @@ export default function BuscadorPrincipal() {
     router.push({
       pathname: "/actividades-y-turismo",
       query: {
+        departamentoId: id,
+        nombreDepartamento: nombre,
         categoria: categoria,
         fechaActual: date.toISOString().split("T")[0],
         fechaFinal: "2022-03-26",
@@ -58,7 +62,13 @@ export default function BuscadorPrincipal() {
       </div>
 
       <div>
-        <Select options={lugares} placeholder='Lugar' />
+        <Select
+          options={lugares}
+          placeholder='Lugar'
+          onChange={(e) => {
+            setDepartamento({ nombre: e.label, id: e.value })
+          }}
+        />
       </div>
 
       <div>

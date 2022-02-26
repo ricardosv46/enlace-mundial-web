@@ -12,8 +12,6 @@ import { useRouter } from "next/router"
 export default function ActividadesYTurismo() {
   const router = useRouter()
   const query = router.query
-  console.log(query)
-
   const [incluye, setIncluye] = useState("")
   const [actividades, setAactividades] = useState("")
   const [categoria, setCategoria] = useState(query.categoria)
@@ -23,17 +21,13 @@ export default function ActividadesYTurismo() {
     fecha_ini: query.fechaActual,
     fecha_fina: query.fechaFinal,
   })
-  console.log(categoria)
   const { fecha_ini, fecha_fina } = busqueda
-  console.log(fecha_ini)
   const { db: dataActividades, loadingGetData: loadingActiviades } =
     useActividadesServices()
   const { db: dataIncluye, loadingGetData: loadingIncluye } =
     useIncluyeServices()
   const { dataTours, loading: loadingGetTour } = GestionTours()
-
   const [itemsTours, setItemsTours] = useState([])
-
   const { dataBusqueda, getBusquedaAvanzada, loadingBusqueda } =
     GestionBusqueda({
       fecha_ini: fecha_ini,
@@ -54,8 +48,6 @@ export default function ActividadesYTurismo() {
     }
   }, [loadingGetTour])
 
-  console.log(dataBusqueda)
-  console.log(fecha_ini)
   useEffect(() => {
     getBusquedaAvanzada()
     if (
@@ -87,11 +79,8 @@ export default function ActividadesYTurismo() {
     setBusqueda({
       fecha_ini: "",
       fecha_fina: "",
-      categoria_slug: "",
-      precio_base: "",
-      horas: "",
-      dias: "",
     })
+    setCategoria("")
     setIncluye("")
     setAactividades("")
   }
@@ -114,7 +103,7 @@ export default function ActividadesYTurismo() {
             <div className='col-12'>
               <div className='d-flex justify-content-between align-items-center'>
                 <h3 className='subtitulo-slug text-secondary text-left'>
-                  Tours a Cusco (Región Cusco)
+                  Tours a región {query.nombreDepartamento}
                 </h3>
 
                 {/* Solo desktop */}
@@ -182,30 +171,31 @@ export default function ActividadesYTurismo() {
                 </div>
 
                 <div className='mt-4'>
+                  <h3 className='card-title stext-secondary font-weight-bold mt-3'>
+                    Categorias
+                  </h3>
                   {loadingCategoria ? (
                     <p>Cargando ...</p>
                   ) : (
-                    dataCategoria.map((categoria) => {
+                    dataCategoria.map((item) => {
                       return (
-                        <div
-                          className='form-check'
-                          key={categoria?.categoriaId}
-                        >
+                        <div className='form-check' key={item?.categoriaId}>
                           <input
+                            id={item?.categoriaId}
                             className='form-check-input'
                             type='radio'
-                            name={categoria}
-                            onClick={() =>
-                              setCategoria(categoria?.slugCategoria)
+                            name='categorias'
+                            value={item?.slugCategoria}
+                            checked={
+                              categoria == item?.slugCategoria ? true : false
                             }
-                            value={categoria?.tituloCategoria}
-                            id={categoria?.categoriaId}
+                            onChange={(e) => setCategoria(e.target.value)}
                           />
                           <label
                             className='form-check-label'
-                            htmlFor={categoria?.categoriaId}
+                            htmlFor={item?.categoriaId}
                           >
-                            {categoria?.tituloCategoria}
+                            {item?.tituloCategoria}
                           </label>
                         </div>
                       )
@@ -214,8 +204,8 @@ export default function ActividadesYTurismo() {
                 </div>
 
                 {/* Solo desktop */}
-                <section className='mt-4 d-none d-md-block'>
-                  <h4 className='card-subtitle font-weight-bold'>
+                <section className='  d-md-block'>
+                  {/* <h4 className='card-subtitle font-weight-bold'>
                     Tours de último minuto
                   </h4>
 
@@ -251,7 +241,7 @@ export default function ActividadesYTurismo() {
                         Disponibles hoy o mañana o pasado
                       </label>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className='mt-3'>
                     {/* <h3 className='card-title stext-secondary font-weight-bold'>
@@ -293,37 +283,39 @@ export default function ActividadesYTurismo() {
                         </label>
                       </div>
                     </div> */}
-
                     {/* Incluye */}
                     <h3 className='card-title stext-secondary font-weight-bold mt-3'>
                       Incluye
                     </h3>
-
                     {loadingIncluye ? (
                       <p>Cargando ...</p>
                     ) : (
-                      dataIncluye.map((incluye) => {
+                      dataIncluye.map((item) => {
                         return (
-                          <div className='form-check' key={incluye?.incluyeId}>
+                          <div className='form-check' key={item?.incluyeId}>
                             <input
+                              id={item?.incluyeId}
                               className='form-check-input'
                               type='radio'
-                              name={incluye}
-                              onClick={() => setIncluye(incluye?.incluyeId)}
-                              value={incluye?.descripcionIncluye}
-                              id={incluye?.incluyeId}
+                              name='incluye'
+                              value={item?.descripcionIncluye}
+                              checked={
+                                incluye == item?.descripcionIncluye
+                                  ? true
+                                  : false
+                              }
+                              onChange={(e) => setIncluye(e.target.value)}
                             />
                             <label
                               className='form-check-label'
-                              htmlFor={incluye?.incluyeId}
+                              htmlFor={item?.incluyeId}
                             >
-                              {incluye?.descripcionIncluye}
+                              {item?.descripcionIncluye}
                             </label>
                           </div>
                         )
                       })
                     )}
-
                     {/* Actividades */}
                     <h3 className='card-title stext-secondary font-weight-bold mt-3'>
                       Actividades
@@ -331,27 +323,27 @@ export default function ActividadesYTurismo() {
                     {loadingActiviades ? (
                       <p>Cargando ...</p>
                     ) : (
-                      dataActividades.map((actividad) => {
+                      dataActividades.map((item) => {
                         return (
-                          <div
-                            className='form-check'
-                            key={actividad?.actividadId}
-                          >
+                          <div className='form-check' key={item?.actividadId}>
                             <input
+                              id={item?.actividadId}
                               className='form-check-input'
                               type='radio'
-                              name='actividad'
-                              onClick={() =>
-                                setAactividades(actividad?.actividadId)
+                              name='actividades'
+                              value={item?.descripcion_actividad}
+                              checked={
+                                actividades == item?.descripcion_actividad
+                                  ? true
+                                  : false
                               }
-                              value={actividad?.descripcion_actividad}
-                              id={actividad?.actividadId}
+                              onChange={(e) => setAactividades(e.target.value)}
                             />
                             <label
                               className='form-check-label'
-                              htmlFor={actividad?.actividadId}
+                              htmlFor={item?.actividadId}
                             >
-                              {actividad?.descripcion_actividad}
+                              {item?.descripcion_actividad}
                             </label>
                           </div>
                         )
