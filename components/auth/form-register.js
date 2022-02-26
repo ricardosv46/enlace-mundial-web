@@ -36,7 +36,7 @@ export default function FormRegister({ setTipoForm }) {
     }
 
     createUsuario({
-      tipoUsuario: 1,
+      tipoUsuario: 2,
       nombre: nombre,
       apellidos: apellidos,
       email: email,
