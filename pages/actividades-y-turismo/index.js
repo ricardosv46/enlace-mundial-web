@@ -33,11 +33,6 @@ export default function ActividadesYTurismo() {
   const { dataTours, loading: loadingGetTour } = GestionTours()
 
   const [itemsTours, setItemsTours] = useState([])
-  useEffect(() => {
-    if (!loadingGetTour) {
-      setItemsTours(dataTours)
-    }
-  }, [loadingGetTour])
 
   const { dataBusqueda, getBusquedaAvanzada, loadingBusqueda } =
     GestionBusqueda({
@@ -52,6 +47,12 @@ export default function ActividadesYTurismo() {
       page: 1,
       numberPaginate: 12,
     })
+
+  useEffect(() => {
+    if (!loadingBusqueda) {
+      setItemsTours(dataBusqueda)
+    }
+  }, [loadingGetTour])
 
   console.log(dataBusqueda)
   console.log(fecha_ini)
