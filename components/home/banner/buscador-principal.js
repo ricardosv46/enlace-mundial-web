@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useRouter } from "next/router"
 
 import Select from "react-select"
@@ -8,6 +8,7 @@ import CategoriasServices from "../../../gestion-de-endpoints/useCategoriasServi
 export default function BuscadorPrincipal() {
   const { dataCategoria, loadingCategoria } = CategoriasServices()
   const { dataDepartamentos, loadingGetData } = useDepartamentosServices()
+  const [categoria, setCategoria] = useState("")
 
   const categorias =
     !loadingCategoria &&
@@ -25,10 +26,18 @@ export default function BuscadorPrincipal() {
 
   const router = useRouter()
 
+  let date = new Date()
   const buscar = (e) => {
     e.preventDefault()
 
-    router.push("/actividades-y-turismo")
+    router.push({
+      pathname: "/actividades-y-turismo",
+      query: {
+        categoria: categoria,
+        fechaActual: date.toISOString().split("T")[0],
+        fechaFinal: "2022-03-26",
+      },
+    })
   }
 
   return (
@@ -53,7 +62,11 @@ export default function BuscadorPrincipal() {
       </div>
 
       <div>
-        <Select options={categorias} placeholder='Categorías' />
+        <Select
+          options={categorias}
+          placeholder='Categorías'
+          onChange={(e) => setCategoria(e.value)}
+        />
       </div>
 
       <div className='buscador-p__button-c d-flex justify-content-center align-items-center'>

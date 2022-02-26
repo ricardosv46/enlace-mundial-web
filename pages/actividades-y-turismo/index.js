@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import Head from "next/head"
-import Select from "react-select"
 import Script from "next/script"
 import CardBusqueda from "@/components/cards/card-busqueda"
 import GestionTours from "../../gestion-de-endpoints/GestionTours"
@@ -8,22 +7,25 @@ import { useActividadesServices } from "../../gestion-de-endpoints/useActividade
 import { useIncluyeServices } from "../../gestion-de-endpoints/useIncluyeServices"
 import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda"
 import CategoriasServices from "../../gestion-de-endpoints/useCategoriasServices"
+import { useRouter } from "next/router"
 
 export default function ActividadesYTurismo() {
+  const router = useRouter()
+  const query = router.query
+  console.log(query)
+
   const [incluye, setIncluye] = useState("")
   const [actividades, setAactividades] = useState("")
-  const [categoria, setCategoria] = useState("")
+  const [categoria, setCategoria] = useState(query.categoria)
+  const [disable, setDisable] = useState("")
   const { dataCategoria, loadingCategoria } = CategoriasServices()
   const [busqueda, setBusqueda] = useState({
-    fecha_ini: "",
-    fecha_fina: "",
-    precio_base: "",
-    horas: "",
-    dias: "",
+    fecha_ini: query.fechaActual,
+    fecha_fina: query.fechaFinal,
   })
-
-  const { fecha_ini, fecha_fina, precio_base, horas, dias } = busqueda
-
+  console.log(categoria)
+  const { fecha_ini, fecha_fina } = busqueda
+  console.log(fecha_ini)
   const { db: dataActividades, loadingGetData: loadingActiviades } =
     useActividadesServices()
   const { db: dataIncluye, loadingGetData: loadingIncluye } =
@@ -51,16 +53,21 @@ export default function ActividadesYTurismo() {
       numberPaginate: 12,
     })
 
-  useEffect(() => {
-    if (!loadingBusqueda) {
-      if (dataBusqueda.length !== 0) {
-        setItemsTours(dataBusqueda)
-      }
-    }
-  }, [dataBusqueda])
-
+  console.log(dataBusqueda)
+  console.log(fecha_ini)
   useEffect(() => {
     getBusquedaAvanzada()
+    if (
+      fecha_ini !== "" ||
+      fecha_fina !== "" ||
+      incluye !== "" ||
+      actividades !== "" ||
+      categoria !== ""
+    ) {
+      setDisable(true)
+    } else {
+      setDisable(false)
+    }
   }, [fecha_ini, fecha_fina, incluye, actividades, categoria])
 
   const onChange = (e) => {
@@ -68,6 +75,10 @@ export default function ActividadesYTurismo() {
       ...busqueda,
       [e.target.name]: e.target.value,
     })
+  }
+
+  const buscar = () => {
+    setItemsTours(dataBusqueda)
   }
 
   const quitar = () => {
@@ -119,6 +130,14 @@ export default function ActividadesYTurismo() {
           <div className='row'>
             <div className='col-md-3'>
               <aside>
+                <button
+                  type='button'
+                  className='btn btn-primary btn-block font-weight-bold'
+                  disabled={disable ? false : true}
+                  onClick={buscar}
+                >
+                  Buscar
+                </button>
                 <button
                   type='button'
                   className='btn btn-primary btn-block font-weight-bold'
@@ -348,7 +367,9 @@ export default function ActividadesYTurismo() {
                   return <CardBusqueda item={item} key={item.tourId} />
                 })
               ) : (
-                <p>No hay Resultados</p>
+                <div className='d-flex justify-content-center'>
+                  <p className='text-md'>No hay Resultados</p>
+                </div>
               )}
             </div>
           </div>
