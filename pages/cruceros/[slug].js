@@ -39,10 +39,10 @@ export default function Home({ data }) {
           description: data?.descripcionCortaCrucero,
           images: [
             {
-              url: data?.imagenPrincipalCrucero?.url,
+              url: "https://apienlacemundial.softaki.com/storage/app/imagenesGenerales/2021-11/images.webp",
             },
             {
-              url: data?.imagenSecundariaCrucero?.url,
+              url: "https://apienlacemundial.softaki.com/storage/app/imagenesGenerales/2022-02/images10.webp",
             },
           ],
           site_name: data?.tituloCrucero,
