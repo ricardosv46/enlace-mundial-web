@@ -40,6 +40,8 @@ export default function Home({ data }) {
           images: [
             {
               url: "https://apienlacemundial.softaki.com/storage/app/imagenesGenerales/2021-11/images.webp",
+              width: 200,
+              height: 200,
             },
             {
               url: "https://apienlacemundial.softaki.com/storage/app/imagenesGenerales/2022-02/images10.webp",
