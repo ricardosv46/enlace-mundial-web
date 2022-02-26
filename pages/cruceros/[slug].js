@@ -30,8 +30,19 @@ export default function Home({ data }) {
     <div>
       <Head>
         <title>{data?.tituloCrucero} - Enlace mundial</title>
-        <meta name='description' content={data.descripcionCortaCrucero} />
-        <meta name='keywords' content={data.keywordsCrucero} />
+        <meta name='description' content={data?.descripcionCortaCrucero} />
+        <meta name='keywords' content={data?.keywordsCrucero} />
+        <meta property='og:type' content='article' />
+        <meta property='og:title' content={data?.tituloCrucero} />
+        <meta
+          property='og:url'
+          content={`https://enlace-mundial-peru.vercel.app/cruceros/${slug}`}
+        />
+        <meta
+          property='og:image'
+          content={data?.imagenSecundariaCrucero?.url}
+        />
+        <meta property='og:image' content={data?.imagenPrincipalCrucero?.url} />
         <link rel='icon' href='/favicon.ico' />
         <link
           rel='stylesheet'
