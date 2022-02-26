@@ -28,45 +28,7 @@ export default function Home({ data }) {
 
   return (
     <div>
-      <Head>
-        {/* <meta name="keywords" content={data?.keywordsCrucero} /> */}
-        <meta property='title' content='Crucero mancora' />
-        <meta property='description' content='Crucero mancora description' />
-        <meta
-          property='image'
-          content='https://hashnode.com/utility/r?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1633359143115%2FlKXI2HGn1.png%3Fw%3D1200%26h%3D630%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp%26fm%3Dpng'
-        />
-
-        <meta property='og:type' content='article' />
-        <meta property='og:title' content='Crucero mancora' />
-        <meta property='og:description' content='Crucero mancora description' />
-        <meta
-          property='og:url'
-          content={`https://enlace-mundial-peru.vercel.app/cruceros/${slug}`}
-        />
-        <meta
-          name='image'
-          property='og:image'
-          content='https://hashnode.com/utility/r?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1633359143115%2FlKXI2HGn1.png%3Fw%3D1200%26h%3D630%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp%26fm%3Dpng'
-        />
-
-        <meta property='twitter:title' content='Crucero mancora' />
-        <meta
-          property='twitter:description'
-          content='Crucero mancora description'
-        />
-        <meta
-          property='twitter:image'
-          content='https://hashnode.com/utility/r?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1633359143115%2FlKXI2HGn1.png%3Fw%3D1200%26h%3D630%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp%26fm%3Dpng'
-        />
-
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
-        />
-      </Head>
-      {/* <NextSeo
+      <NextSeo
         title={`${data?.tituloCrucero} - Enlace mundial`}
         description={data?.descripcionCortaCrucero}
         keywords={data?.keywordsCrucero}
@@ -78,13 +40,11 @@ export default function Home({ data }) {
           images: [
             {
               url: "https://apienlacemundial.softaki.com/storage/app/imagenesGenerales/2022-02/images10.webp",
-              width: 1200,
-              height: 600,
             },
           ],
           site_name: data?.tituloCrucero,
         }}
-      /> */}
+      />
 
       {/* <Head>
         <meta name='keywords' content={data?.keywordsCrucero} />
