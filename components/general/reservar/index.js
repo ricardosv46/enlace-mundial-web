@@ -25,9 +25,15 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
     anio,
   })
 
+  console.log(tourId)
+
   function asignarFecha(fecha) {
     setFecha(fecha)
   }
+
+  console.log(!loading && dataHorario)
+  console.log("hola")
+
   useEffect(() => {
     setPintarDias([])
     !loading &&

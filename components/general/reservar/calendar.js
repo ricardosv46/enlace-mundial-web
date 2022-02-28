@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import DatePicker from "react-datepicker"
 import { registerLocale } from "react-datepicker"
 import es from "date-fns/locale/es"
+import { addDays } from "date-fns"
+import moment from "moment"
 registerLocale("es", es)
 
 export default function Calendar({
@@ -71,7 +73,7 @@ export default function Calendar({
           setAnio(date.getFullYear())
           setStartDate(date)
         }}
-        highlightDates={fechas}
+        // includeDates={[new Date(), addDays(Date.parse(pintarDias), 1)]}
         locale='es'
         inline
       >

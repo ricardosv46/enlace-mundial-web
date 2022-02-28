@@ -13,6 +13,7 @@ import CarouselTestimonios from "../components/home/carousel-testimonios/index"
 import { useGetImagenesQuery } from "../generated/graphql"
 import Image from "next/image"
 import GestionLuna from "../gestion-de-endpoints/GestionLunaMiel"
+import Calendarios from "../components/general/reservar/calendarios"
 
 // export async function getStaticProps() {
 
@@ -125,6 +126,7 @@ export default function Home() {
         <Estadisticas />
 
         <CarouselTestimonios />
+        <Calendarios />
       </main>
     </div>
   )
