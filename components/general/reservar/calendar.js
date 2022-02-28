@@ -44,7 +44,7 @@ export default function Calendar({
         setCupos(item.cupos)
         setNroAdultos(0)
         setNroMenores(0)
-        console.log(item)
+
         return
       }
     })
@@ -60,6 +60,7 @@ export default function Calendar({
       ])
     })
   }, [pintarDias])
+
   return (
     <>
       <DatePicker
@@ -73,7 +74,8 @@ export default function Calendar({
           setAnio(date.getFullYear())
           setStartDate(date)
         }}
-        // includeDates={[new Date(), addDays(Date.parse(pintarDias), 1)]}
+        highlightDates={fechas}
+        includeDates={fechas}
         locale='es'
         inline
       >

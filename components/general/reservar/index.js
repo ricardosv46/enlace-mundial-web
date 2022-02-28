@@ -8,8 +8,14 @@ import GestionHorariosTour from "../../../gestion-de-endpoints/GestionHorariosTo
 export default function Reservar({ producto, tourId, setPrecioReal }) {
   const router = useRouter()
   const today = new Date()
-  const month = today.getMonth()
-  const [mes, setMes] = useState(month + 1)
+
+  const day = today.getDate()
+  const month = today.getMonth() + 1
+  const ani = today.getFullYear()
+  const fechita = String(ani + "-" + month + "-" + day)
+  const fecha_actual = new Date(fechita)
+
+  const [mes, setMes] = useState("")
   const [anio, setAnio] = useState(today.getFullYear())
   const [fechaSeleccionada, setFechaSeleccionada] = useState("")
   const [fecha, setFecha] = useState(new Date())
@@ -25,20 +31,18 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
     anio,
   })
 
-  console.log(tourId)
-
   function asignarFecha(fecha) {
     setFecha(fecha)
   }
-
-  console.log(!loading && dataHorario)
-  console.log("hola")
 
   useEffect(() => {
     setPintarDias([])
     !loading &&
       dataHorario.map((item) => {
-        if (item?.estado === "Activado" && new Date(item?.fecha) >= today) {
+        if (
+          item?.estado === "Activado" &&
+          Date.parse(item?.fecha) >= Date.parse(fecha_actual)
+        ) {
           setPintarDias((pintar) => [...pintar, item.fecha])
         }
       })
