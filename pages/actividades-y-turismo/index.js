@@ -12,6 +12,9 @@ import { useRouter } from "next/router"
 export default function ActividadesYTurismo() {
   const router = useRouter()
   const query = router.query
+
+  const [fecha_ini, setFecha_ini] = useState(query.fechaActual)
+  const [fecha_fina, setFecha_fina] = useState(query.fechaFinal)
   const [incluye, setIncluye] = useState("")
   const [actividades, setAactividades] = useState("")
   const [categoria, setCategoria] = useState(
@@ -20,11 +23,6 @@ export default function ActividadesYTurismo() {
   console.log(query)
   const [disable, setDisable] = useState("")
   const { dataCategoria, loadingCategoria } = CategoriasServices()
-  const [busqueda, setBusqueda] = useState({
-    fecha_ini: query.fechaActual,
-    fecha_fina: query.fechaFinal,
-  })
-  const { fecha_ini, fecha_fina } = busqueda
   const { db: dataActividades, loadingGetData: loadingActiviades } =
     useActividadesServices()
   const { db: dataIncluye, loadingGetData: loadingIncluye } =
@@ -44,6 +42,14 @@ export default function ActividadesYTurismo() {
       page: 1,
       numberPaginate: 12,
     })
+
+  useEffect(() => {
+    setFecha_ini(query.fechaActual)
+    setFecha_fina(query.fechaFinal)
+    setIncluye(query.incluye ? query.incluye : "")
+    setAactividades(query.actividades ? query.actividades : "")
+    setCategoria(query.categoria ? query.categoria : "")
+  }, [query])
 
   useEffect(() => {
     if (!loadingBusqueda) {
@@ -66,23 +72,14 @@ export default function ActividadesYTurismo() {
     }
   }, [fecha_ini, fecha_fina, incluye, actividades, categoria])
 
-  const onChange = (e) => {
-    setBusqueda({
-      ...busqueda,
-      [e.target.name]: e.target.value,
-    })
-  }
-
   const buscar = () => {
     setItemsTours(dataBusqueda)
   }
 
   const quitar = () => {
     setItemsTours(dataTours)
-    setBusqueda({
-      fecha_ini: "",
-      fecha_fina: "",
-    })
+    setFecha_ini("")
+    setFecha_fina("")
     setCategoria("")
     setIncluye("")
     setAactividades("")
@@ -123,7 +120,9 @@ export default function ActividadesYTurismo() {
             <div className='col-12'>
               <div className='d-flex justify-content-between align-items-center'>
                 <h3 className='subtitulo-slug text-secondary text-left'>
-                  Tours a región {query.nombreDepartamento}
+                  {query.nombreDepartamento
+                    ? `Tours a región ${query.nombreDepartamento}`
+                    : "Tours a regiones del Perú"}
                 </h3>
 
                 {/* Solo desktop */}
@@ -171,7 +170,10 @@ export default function ActividadesYTurismo() {
                         className='form-control rounded-0'
                         value={fecha_ini}
                         name='fecha_ini'
-                        onChange={onChange}
+                        onChange={(e) => {
+                          setFecha_ini(e.target.value)
+                          updateRouter("fechaActual", e.target.value)
+                        }}
                       />
                     </div>
 
@@ -184,7 +186,10 @@ export default function ActividadesYTurismo() {
                         className='form-control rounded-0'
                         value={fecha_fina}
                         name='fecha_fina'
-                        onChange={onChange}
+                        onChange={(e) => {
+                          setFecha_fina(e.target.value)
+                          updateRouter("fechaFinal", e.target.value)
+                        }}
                       />
                     </div>
                   </div>
@@ -327,7 +332,10 @@ export default function ActividadesYTurismo() {
                                   ? true
                                   : false
                               }
-                              onChange={(e) => setIncluye(e.target.value)}
+                              onChange={(e) => {
+                                setIncluye(e.target.value)
+                                updateRouter("incluye", e.target.value)
+                              }}
                             />
                             <label
                               className='form-check-label'
@@ -360,7 +368,10 @@ export default function ActividadesYTurismo() {
                                   ? true
                                   : false
                               }
-                              onChange={(e) => setAactividades(e.target.value)}
+                              onChange={(e) => {
+                                setAactividades(e.target.value)
+                                updateRouter("actividades", e.target.value)
+                              }}
                             />
                             <label
                               className='form-check-label'
