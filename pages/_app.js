@@ -16,6 +16,7 @@ import { ApolloProvider } from "@apollo/client"
 import client from "../apollo"
 import { ContextAuth } from "../context/ContextAuth"
 import { useEffect, useState } from "react"
+import Facebook from "../components/facebook"
 
 function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = useState(false)
@@ -39,7 +40,7 @@ function MyApp({ Component, pageProps }) {
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
       </Head>
-
+      <Facebook />
       <ApolloProvider client={client}>
         <ContextAuth.Provider value={{ auth, setAuth, dataUser, setDataUser }}>
           <Header />

@@ -14,7 +14,10 @@ export default function ActividadesYTurismo() {
   const query = router.query
   const [incluye, setIncluye] = useState("")
   const [actividades, setAactividades] = useState("")
-  const [categoria, setCategoria] = useState(query.categoria)
+  const [categoria, setCategoria] = useState(
+    query?.categoria ? query?.categoria : ""
+  )
+  console.log(query)
   const [disable, setDisable] = useState("")
   const { dataCategoria, loadingCategoria } = CategoriasServices()
   const [busqueda, setBusqueda] = useState({
@@ -83,6 +86,23 @@ export default function ActividadesYTurismo() {
     setCategoria("")
     setIncluye("")
     setAactividades("")
+  }
+  const updateRouter = (name, valor) => {
+    if (valor.length === 0) {
+      const { [name]: toDelete, ...res } = query
+      router.replace({
+        query: {
+          ...res,
+        },
+      })
+    } else {
+      router.replace({
+        query: {
+          ...query,
+          [name]: valor,
+        },
+      })
+    }
   }
 
   return (
@@ -189,7 +209,10 @@ export default function ActividadesYTurismo() {
                             checked={
                               categoria == item?.slugCategoria ? true : false
                             }
-                            onChange={(e) => setCategoria(e.target.value)}
+                            onChange={(e) => {
+                              setCategoria(e.target.value)
+                              updateRouter("categoria", e.target.value)
+                            }}
                           />
                           <label
                             className='form-check-label'
