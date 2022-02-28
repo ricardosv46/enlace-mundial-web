@@ -12,6 +12,7 @@ import HeaderInterior from "@/components/general/publicaciones/header-interior"
 import request from "graphql-request"
 import { GET_SLUG_TOUR, URL } from "../../endpoints y url/endpoints"
 import ToursSimilares from "../../components/tours/similares"
+import { NextSeo } from "next-seo"
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_TOUR, {
@@ -64,6 +65,21 @@ export default function Home({ data }) {
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
       </Head>
+      <NextSeo
+        openGraph={{
+          type: "website",
+          url: `https://enlace-mundial-peru.vercel.app/actividades-y-turismo/${slug}`,
+          title: data?.tituloTour,
+          description: data?.descripcionCortaTour,
+          images: [
+            {
+              url: data?.imagenPrincipalTour?.url,
+            },
+          ],
+          site_name: data?.tituloTour,
+        }}
+      />
+
       {/* reservar un tour con una fecha asignada version mobile*/}
       <Modal
         dialogClassName='modal-auth'

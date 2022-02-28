@@ -28,6 +28,17 @@ export default function Home({ data }) {
 
   return (
     <div>
+      <Head>
+        <title>{data?.tituloCrucero} - Enlace mundial</title>
+        <meta name='description' content={data?.descripcionCortaCrucero} />
+        <meta name='keywords' content={data?.keywordsCrucero} />
+
+        <link rel='icon' href='/favicon.ico' />
+        <link
+          rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
+        />
+      </Head>
       <NextSeo
         openGraph={{
           type: "website",
@@ -42,18 +53,6 @@ export default function Home({ data }) {
           site_name: data?.tituloCrucero,
         }}
       />
-
-      <Head>
-        <title>{data?.tituloCrucero} - Enlace mundial</title>
-        <meta name='description' content={data?.descripcionCortaCrucero} />
-        <meta name='keywords' content={data?.keywordsCrucero} />
-
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
-        />
-      </Head>
 
       <main className='l-miel'>
         <section className='l-miel__items mt-3'>

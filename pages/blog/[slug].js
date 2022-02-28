@@ -13,6 +13,7 @@ import styles from "./styles.module.scss"
 import { GET_SLUG_BLOG, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
 import GestionCategoriaBlog from "../../gestion-de-endpoints/GestionCategoriaBlog"
+import { NextSeo } from "next-seo"
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_BLOG, {
@@ -75,6 +76,20 @@ export default function Home({ data }) {
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
       </Head>
+      <NextSeo
+        openGraph={{
+          type: "website",
+          url: `https://enlace-mundial-peru.vercel.app/blog/${slug}`,
+          title: data?.tituloBlog,
+          description: data?.descripcionCortaBlog,
+          images: [
+            {
+              url: data?.imagenPrincipalBlog?.url,
+            },
+          ],
+          site_name: data?.tituloBlog,
+        }}
+      />
 
       <main className={styles.slug}>
         <section className='l-miel__items mt-4'>
