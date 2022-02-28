@@ -29,9 +29,6 @@ export default function Home({ data }) {
   return (
     <div>
       <NextSeo
-        title={`${data?.tituloCrucero} - Enlace mundial`}
-        description={data?.descripcionCortaCrucero}
-        keywords={data?.keywordsCrucero}
         openGraph={{
           type: "website",
           url: `https://enlace-mundial-peru.vercel.app/cruceros/${slug}`,
@@ -46,40 +43,17 @@ export default function Home({ data }) {
         }}
       />
 
-      {/* <Head>
+      <Head>
+        <title>{data?.tituloCrucero} - Enlace mundial</title>
+        <meta name='description' content={data?.descripcionCortaCrucero} />
         <meta name='keywords' content={data?.keywordsCrucero} />
-        <meta property='og:type' content='article' />
-        <meta property='og:title' content={data?.tituloCrucero} />
-        <meta
-          property='og:url'
-          content={`https://enlace-mundial-peru.vercel.app/cruceros/${slug}`}
-        />
-        {data?.imagenSecundariaCrucero?.url && (
-          <>
-            <meta
-              property='og:image'
-              content={data?.imagenSecundariaCrucero?.url}
-            />
-            <meta property='og:image:alt' content='imagen-1' />
-          </>
-        )}
-
-        {data?.imagenPrincipalCrucero?.url && (
-          <>
-            <meta
-              property='og:image'
-              content={data?.imagenPrincipalCrucero?.url}
-            />
-            <meta property='og:image:alt' content='imagen-2' />
-          </>
-        )}
 
         <link rel='icon' href='/favicon.ico' />
         <link
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
-      </Head> */}
+      </Head>
 
       <main className='l-miel'>
         <section className='l-miel__items mt-3'>

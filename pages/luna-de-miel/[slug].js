@@ -9,6 +9,7 @@ import request from "graphql-request"
 import LunasRelacionadas from "../../components/luna-de-miel/lunas-relacionadas"
 import MenuInteriorLunaMiel from "../../components/servicios/submenu/menuInteriorLunaMiel"
 import HeaderInterior from "../../components/general/publicaciones/header-interior"
+import { NextSeo } from "next-seo"
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_LUNA_MIEL, {
@@ -29,6 +30,20 @@ export default function Home({ data }) {
 
   return (
     <div>
+      <NextSeo
+        openGraph={{
+          type: "website",
+          url: `https://enlace-mundial-peru.vercel.app/luna-de-miel/${slug}`,
+          title: data?.tituloLuna,
+          description: data?.descripcionCortaLuna,
+          images: [
+            {
+              url: data?.imagenPrincipalLuna?.url,
+            },
+          ],
+          site_name: data?.tituloLuna,
+        }}
+      />
       <Head>
         <title>{data?.tituloLuna} - Enlace mundial</title>
         <meta name='description' content={data?.descripcionCortaLuna} />

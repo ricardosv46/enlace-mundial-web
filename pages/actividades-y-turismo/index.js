@@ -13,8 +13,8 @@ export default function ActividadesYTurismo() {
   const router = useRouter()
   const query = router.query
 
-  const [fecha_ini, setFecha_ini] = useState(query.fechaActual)
-  const [fecha_fina, setFecha_fina] = useState(query.fechaFinal)
+  const [fecha_ini, setFecha_ini] = useState("")
+  const [fecha_fina, setFecha_fina] = useState("")
   const [incluye, setIncluye] = useState("")
   const [actividades, setAactividades] = useState("")
   const [categoria, setCategoria] = useState(
@@ -44,8 +44,8 @@ export default function ActividadesYTurismo() {
     })
 
   useEffect(() => {
-    setFecha_ini(query.fechaActual)
-    setFecha_fina(query.fechaFinal)
+    setFecha_ini(query.fechaActual ? query.fechaActual : "")
+    setFecha_fina(query.fechaFinal ? query.fechaFinal : "")
     setIncluye(query.incluye ? query.incluye : "")
     setAactividades(query.actividades ? query.actividades : "")
     setCategoria(query.categoria ? query.categoria : "")
@@ -76,14 +76,6 @@ export default function ActividadesYTurismo() {
     setItemsTours(dataBusqueda)
   }
 
-  const quitar = () => {
-    setItemsTours(dataTours)
-    setFecha_ini("")
-    setFecha_fina("")
-    setCategoria("")
-    setIncluye("")
-    setAactividades("")
-  }
   const updateRouter = (name, valor) => {
     if (valor.length === 0) {
       const { [name]: toDelete, ...res } = query
@@ -100,6 +92,18 @@ export default function ActividadesYTurismo() {
         },
       })
     }
+  }
+
+  const quitar = () => {
+    setItemsTours(dataTours)
+    setFecha_ini("")
+    setFecha_fina("")
+    setCategoria("")
+    setIncluye("")
+    setAactividades("")
+    router.replace({
+      query: {},
+    })
   }
 
   return (
