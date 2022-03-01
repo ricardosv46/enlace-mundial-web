@@ -9,71 +9,77 @@ import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda"
 import CategoriasServices from "../../gestion-de-endpoints/useCategoriasServices"
 import { useRouter } from "next/router"
 
+const initialState = {
+  fecha_ini: "",
+  fecha_fina: "",
+  incluye: "",
+  actividades: "",
+  categoria: "",
+}
+
+const isEmpty = (text = "") => {
+  return text.trim().length === 0
+}
+
 export default function ActividadesYTurismo() {
+  const [state, setState] = useState(initialState)
+  const [isBusqueda, setIsBusqueda] = useState(false)
+
+  const handleChange = (name, valor) => {
+    setState((preState) => {
+      return { ...preState, [name]: valor }
+    })
+  }
+
   const router = useRouter()
   const query = router.query
-
-  const [fecha_ini, setFecha_ini] = useState("")
-  const [fecha_fina, setFecha_fina] = useState("")
-  const [incluye, setIncluye] = useState("")
-  const [actividades, setAactividades] = useState("")
-  const [categoria, setCategoria] = useState(
-    query?.categoria ? query?.categoria : ""
-  )
-  console.log(query)
-  const [disable, setDisable] = useState("")
   const { dataCategoria, loadingCategoria } = CategoriasServices()
   const { db: dataActividades, loadingGetData: loadingActiviades } =
     useActividadesServices()
+
   const { db: dataIncluye, loadingGetData: loadingIncluye } =
     useIncluyeServices()
   const { dataTours, loading: loadingGetTour } = GestionTours()
-  const [itemsTours, setItemsTours] = useState([])
+
   const { dataBusqueda, getBusquedaAvanzada, loadingBusqueda } =
-    GestionBusqueda({
-      fecha_ini: fecha_ini,
-      fecha_fina: fecha_fina,
-      incluye: incluye,
-      actividades: actividades,
-      categoria_slug: categoria,
+    GestionBusqueda()
+  console.log({ dataBusqueda })
+  console.log({ dataTours })
+  useEffect(() => {
+    setState({
+      fecha_ini: query.fechaActual ? query.fechaActual : "",
+      fecha_fina: query.fechaFinal ? query.fechaFinal : "",
+      incluye: query.incluye ? query.incluye : "",
+      actividades: query.actividades ? query.actividades : "",
+      categoria: query.categoria ? query.categoria : "",
+    })
+    if (!isEmpty(query.categoria)) {
+      setIsBusqueda(true)
+    }
+  }, [query])
+
+  const isDisable =
+    isEmpty(state.fecha_ini) &&
+    isEmpty(state.fecha_fina) &&
+    isEmpty(state.incluye) &&
+    isEmpty(state.actividades) &&
+    isEmpty(state.categoria)
+
+  console.log({ isDisable })
+  const buscar = () => {
+    getBusquedaAvanzada({
+      fecha_ini: state.fecha_ini,
+      fecha_fina: state.fecha_fina,
+      incluye: state.incluye,
+      actividades: state.actividades,
+      categoria_slug: state.categoria,
       precio_base: "",
       horas: "",
       dias: "",
       page: 1,
       numberPaginate: 12,
     })
-
-  useEffect(() => {
-    setFecha_ini(query.fechaActual ? query.fechaActual : "")
-    setFecha_fina(query.fechaFinal ? query.fechaFinal : "")
-    setIncluye(query.incluye ? query.incluye : "")
-    setAactividades(query.actividades ? query.actividades : "")
-    setCategoria(query.categoria ? query.categoria : "")
-  }, [query])
-
-  useEffect(() => {
-    if (!loadingBusqueda) {
-      setItemsTours(dataBusqueda)
-    }
-  }, [loadingGetTour])
-
-  useEffect(() => {
-    getBusquedaAvanzada()
-    if (
-      fecha_ini !== "" ||
-      fecha_fina !== "" ||
-      incluye !== "" ||
-      actividades !== "" ||
-      categoria !== ""
-    ) {
-      setDisable(true)
-    } else {
-      setDisable(false)
-    }
-  }, [fecha_ini, fecha_fina, incluye, actividades, categoria])
-
-  const buscar = () => {
-    setItemsTours(dataBusqueda)
+    setIsBusqueda(true)
   }
 
   const updateRouter = (name, valor) => {
@@ -95,12 +101,8 @@ export default function ActividadesYTurismo() {
   }
 
   const quitar = () => {
-    setItemsTours(dataTours)
-    setFecha_ini("")
-    setFecha_fina("")
-    setCategoria("")
-    setIncluye("")
-    setAactividades("")
+    setIsBusqueda(false)
+    setState(initialState)
     router.replace({
       query: {},
     })
@@ -146,7 +148,7 @@ export default function ActividadesYTurismo() {
                 <button
                   type='button'
                   className='btn btn-primary btn-block font-weight-bold'
-                  disabled={disable ? false : true}
+                  disabled={isDisable}
                   onClick={buscar}
                 >
                   Buscar
@@ -172,10 +174,10 @@ export default function ActividadesYTurismo() {
                       <input
                         type='date'
                         className='form-control rounded-0'
-                        value={fecha_ini}
+                        value={state.fecha_ini}
                         name='fecha_ini'
                         onChange={(e) => {
-                          setFecha_ini(e.target.value)
+                          handleChange("fecha_ini", e.target.value)
                           updateRouter("fechaActual", e.target.value)
                         }}
                       />
@@ -188,10 +190,10 @@ export default function ActividadesYTurismo() {
                       <input
                         type='date'
                         className='form-control rounded-0'
-                        value={fecha_fina}
+                        value={state.fecha_fina}
                         name='fecha_fina'
                         onChange={(e) => {
-                          setFecha_fina(e.target.value)
+                          handleChange("fecha_fina", e.target.value)
                           updateRouter("fechaFinal", e.target.value)
                         }}
                       />
@@ -215,11 +217,9 @@ export default function ActividadesYTurismo() {
                             type='radio'
                             name='categorias'
                             value={item?.slugCategoria}
-                            checked={
-                              categoria == item?.slugCategoria ? true : false
-                            }
+                            checked={state.categoria === item?.slugCategoria}
                             onChange={(e) => {
-                              setCategoria(e.target.value)
+                              handleChange("categoria", e.target.value)
                               updateRouter("categoria", e.target.value)
                             }}
                           />
@@ -332,12 +332,10 @@ export default function ActividadesYTurismo() {
                               name='incluye'
                               value={item?.descripcionIncluye}
                               checked={
-                                incluye == item?.descripcionIncluye
-                                  ? true
-                                  : false
+                                state.incluye === item?.descripcionIncluye
                               }
                               onChange={(e) => {
-                                setIncluye(e.target.value)
+                                handleChange("incluye", e.target.value)
                                 updateRouter("incluye", e.target.value)
                               }}
                             />
@@ -368,12 +366,11 @@ export default function ActividadesYTurismo() {
                               name='actividades'
                               value={item?.descripcion_actividad}
                               checked={
-                                actividades == item?.descripcion_actividad
-                                  ? true
-                                  : false
+                                state.actividades ===
+                                item?.descripcion_actividad
                               }
                               onChange={(e) => {
-                                setAactividades(e.target.value)
+                                handleChange("actividades", e.target.value)
                                 updateRouter("actividades", e.target.value)
                               }}
                             />
@@ -393,7 +390,7 @@ export default function ActividadesYTurismo() {
             </div>
 
             <div className='col-md-9 mt-4 mt-md-0'>
-              {itemsTours.length !== 0 ? (
+              {/* {itemsTours.length !== 0 ? (
                 itemsTours.map((item) => {
                   return <CardBusqueda item={item} key={item.tourId} />
                 })
@@ -401,6 +398,22 @@ export default function ActividadesYTurismo() {
                 <div className='d-flex justify-content-center'>
                   <p className='text-md'>No hay Resultados</p>
                 </div>
+              )} */}
+
+              {isBusqueda ? (
+                dataBusqueda.length === 0 ? (
+                  <div className='d-flex justify-content-center'>
+                    <p className='text-md'>No hay Resultados</p>
+                  </div>
+                ) : (
+                  dataBusqueda.map((item) => {
+                    return <CardBusqueda item={item} key={item.tourId} />
+                  })
+                )
+              ) : (
+                dataTours.map((item) => {
+                  return <CardBusqueda item={item} key={item.tourId} />
+                })
               )}
             </div>
           </div>

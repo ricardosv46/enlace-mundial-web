@@ -1,48 +1,55 @@
 import { useLazyQuery, useQuery } from "@apollo/client"
-import { useEffect } from "react"
+import { request } from "graphql-request"
+import { useEffect, useState } from "react"
+import { URL } from "../endpoints y url/endpoints"
 import { GET_BUSQUEDA_AVANZADA_TOUR } from "../graphql/queries/GetBusquedaAvanzadaTour"
 
-const GestionBusqueda = ({
-  fecha_ini,
-  fecha_fina,
-  incluye,
-  actividades,
-  categoria_slug,
-  precio_base,
-  horas,
-  dias,
-  page,
-  numberPaginate,
-}) => {
-  const [getBusquedaAvanzada, { data, loading: loadingBusqueda }] =
-    useLazyQuery(GET_BUSQUEDA_AVANZADA_TOUR, {
-      fetchPolicy: "network-only",
-      variables: {
-        fecha_ini: fecha_ini,
-        fecha_fina: fecha_fina,
-        incluye: incluye,
-        actividades: actividades,
-        categoria_slug: categoria_slug,
-        precio_base: precio_base,
-        horas: horas,
-        dias: dias,
-        page: page,
-        numberPaginate: numberPaginate,
-      },
-      onError: (error) => {
-        console.error(
-          "Error al obtener la data de la busqueda: ",
-          error?.graphQLErrors[0]?.debugMessage
-        )
-      },
+const GestionBusqueda = () => {
+  const [loading, setLoading] = useState(false)
+  const [itemTours, setItemTours] = useState([])
+  const getBusquedaAvanzada = async ({
+    fecha_ini,
+    fecha_fina,
+    incluye,
+    actividades,
+    categoria_slug,
+    precio_base,
+    horas,
+    dias,
+    page,
+    numberPaginate,
+  }) => {
+    setLoading(true)
+    const res = await request(URL, GET_BUSQUEDA_AVANZADA_TOUR, {
+      fecha_ini: fecha_ini ? fecha_ini : new Date().toISOString().split("T")[0],
+      fecha_fina: fecha_fina ? fecha_fina : "2022-03-26",
+      incluye: incluye,
+      actividades: actividades,
+      categoria_slug: categoria_slug,
+      precio_base: precio_base,
+      horas: horas,
+      dias: dias,
+      page: page,
+      numberPaginate: numberPaginate,
+    }).catch((error) => {
+      console.log("error", error)
     })
+    setLoading(false)
+    console.log(res)
 
-  useEffect(() => {
-    getBusquedaAvanzada()
-  }, [])
-
-  const dataBusqueda = data ? data?.GetBusquedaAvanzadaTour?.data : []
-  return { dataBusqueda, loadingBusqueda, getBusquedaAvanzada }
+    if (res) {
+      setItemTours(res?.GetBusquedaAvanzadaTour?.data)
+    } else {
+      setItemTours([])
+    }
+  }
+  console.log("databusqueda")
+  // const dataBusqueda = data ? data?.GetBusquedaAvanzadaTour?.data : []
+  return {
+    dataBusqueda: itemTours,
+    loadingBusqueda: loading,
+    getBusquedaAvanzada,
+  }
 }
 
 export default GestionBusqueda

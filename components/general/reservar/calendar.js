@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import DatePicker from "react-datepicker"
 import { registerLocale } from "react-datepicker"
 import es from "date-fns/locale/es"
-import { addDays } from "date-fns"
+import { addDays, getDate } from "date-fns"
 import moment from "moment"
 registerLocale("es", es)
 
@@ -60,6 +60,7 @@ export default function Calendar({
       ])
     })
   }, [pintarDias])
+  console.log(fechas)
 
   return (
     <>
@@ -79,7 +80,6 @@ export default function Calendar({
         locale='es'
         inline
       >
-        {" "}
         {EsfechaValida ? (
           <div
             style={{ color: "green", margin: ".5rem 0", textAlign: "center" }}
