@@ -19,10 +19,20 @@ const GestionBusqueda = () => {
     page,
     numberPaginate,
   }) => {
+    const date = new Date()
+
+    const month = date.getMonth()
+    const year = date.getFullYear()
+    const day = date.getDate()
+    const fechaInicial = date.toISOString().split("T")[0]
+    const fechaFinal = new Date(year, month + 1, day)
+      .toISOString()
+      .split("T")[0]
+
     setLoading(true)
     const res = await request(URL, GET_BUSQUEDA_AVANZADA_TOUR, {
-      fecha_ini: fecha_ini ? fecha_ini : new Date().toISOString().split("T")[0],
-      fecha_fina: fecha_fina ? fecha_fina : "2022-03-26",
+      fecha_ini: fecha_ini ? fecha_ini : fechaInicial,
+      fecha_fina: fecha_fina ? fecha_fina : fechaFinal,
       incluye: incluye,
       actividades: actividades,
       categoria_slug: categoria_slug,

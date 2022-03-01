@@ -62,6 +62,12 @@ export default function Calendar({
   }, [pintarDias])
   console.log(fechas)
 
+  const highlightWithRanges = [
+    {
+      "react-datepicker__day--highlighted-custom-2": fechas,
+    },
+  ]
+
   return (
     <>
       <DatePicker
@@ -75,7 +81,7 @@ export default function Calendar({
           setAnio(date.getFullYear())
           setStartDate(date)
         }}
-        highlightDates={fechas}
+        highlightDates={highlightWithRanges}
         includeDates={fechas}
         locale='es'
         inline

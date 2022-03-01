@@ -28,7 +28,6 @@ export default function BuscadorPrincipal() {
 
   const router = useRouter()
 
-  let date = new Date()
   const buscar = (e) => {
     e.preventDefault()
 
@@ -38,8 +37,6 @@ export default function BuscadorPrincipal() {
         departamentoId: id,
         nombreDepartamento: nombre,
         categoria: categoria,
-        fechaActual: date.toISOString().split("T")[0],
-        fechaFinal: "2022-03-26",
       },
     })
   }

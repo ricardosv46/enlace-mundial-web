@@ -22,6 +22,8 @@ const isEmpty = (text = "") => {
 }
 
 export default function ActividadesYTurismo() {
+  const [firstQuery, setFirstQuery] = useState({ isValid: false, query: {} })
+
   const [state, setState] = useState(initialState)
   const [isBusqueda, setIsBusqueda] = useState(false)
 
@@ -43,20 +45,57 @@ export default function ActividadesYTurismo() {
 
   const { dataBusqueda, getBusquedaAvanzada, loadingBusqueda } =
     GestionBusqueda()
-  console.log({ dataBusqueda })
-  console.log({ dataTours })
+
   useEffect(() => {
-    setState({
+    // const date = new Date()
+
+    // const month = date.getMonth()
+    // const year = date.getFullYear()
+    // const day = date.getDate()
+    // const fechaInicial = date.toISOString().split("T")[0]
+    // const fechaFinal = new Date(year, month + 1, day)
+    //   .toISOString()
+    //   .split("T")[0]
+
+    const payload = {
       fecha_ini: query.fechaActual ? query.fechaActual : "",
       fecha_fina: query.fechaFinal ? query.fechaFinal : "",
       incluye: query.incluye ? query.incluye : "",
       actividades: query.actividades ? query.actividades : "",
       categoria: query.categoria ? query.categoria : "",
-    })
+    }
+
+    console.log({ query })
     if (!isEmpty(query.categoria)) {
+      setState(payload)
+
+      setFirstQuery({ isValid: true, query: payload })
       setIsBusqueda(true)
     }
-  }, [query])
+  }, [Object.keys(query).length !== 0 && query?.categoria?.trim().length !== 0])
+
+  useEffect(() => {
+    const payload = {
+      fecha_ini: firstQuery.query.fecha_ini,
+      fecha_fina: firstQuery.query.fecha_fina,
+      incluye: firstQuery.query.incluye ? firstQuery.query.incluye : "",
+      actividades: firstQuery.query.actividades
+        ? firstQuery.query.actividades
+        : "",
+      categoria_slug: firstQuery.query.categoria
+        ? firstQuery.query.categoria
+        : "",
+      precio_base: "",
+      horas: "",
+      dias: "",
+      page: 1,
+      numberPaginate: 12,
+    }
+
+    if (firstQuery.isValid) {
+      getBusquedaAvanzada(payload)
+    }
+  }, [firstQuery.isValid])
 
   const isDisable =
     isEmpty(state.fecha_ini) &&
@@ -65,7 +104,6 @@ export default function ActividadesYTurismo() {
     isEmpty(state.actividades) &&
     isEmpty(state.categoria)
 
-  console.log({ isDisable })
   const buscar = () => {
     getBusquedaAvanzada({
       fecha_ini: state.fecha_ini,
@@ -102,7 +140,12 @@ export default function ActividadesYTurismo() {
 
   const quitar = () => {
     setIsBusqueda(false)
-    setState(initialState)
+
+    setState((prevState) => ({
+      ...initialState,
+      fecha_ini: prevState.fecha_ini,
+      fecha_fina: prevState.fecha_fina,
+    }))
     router.replace({
       query: {},
     })
@@ -400,21 +443,20 @@ export default function ActividadesYTurismo() {
                 </div>
               )} */}
 
-              {isBusqueda ? (
-                dataBusqueda.length === 0 ? (
-                  <div className='d-flex justify-content-center'>
-                    <p className='text-md'>No hay Resultados</p>
-                  </div>
-                ) : (
-                  dataBusqueda.map((item) => {
-                    return <CardBusqueda item={item} key={item.tourId} />
-                  })
-                )
+              {isBusqueda && dataBusqueda.length === 0 ? (
+                <div className='d-flex justify-content-center'>
+                  <p className='text-md'>No hay Resultados</p>
+                </div>
               ) : (
-                dataTours.map((item) => {
+                dataBusqueda.map((item) => {
                   return <CardBusqueda item={item} key={item.tourId} />
                 })
               )}
+
+              {!isBusqueda &&
+                dataTours.map((item) => {
+                  return <CardBusqueda item={item} key={item.tourId} />
+                })}
             </div>
           </div>
         </section>
