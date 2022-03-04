@@ -8,28 +8,20 @@ import styles from "./styles.module.scss"
 
 // Components
 import SidebarCuenta from "@/components/mi-cuenta/sidebar"
+import { useIdOrdenTour } from "../../../gestion-de-endpoints/useIdOrdenTour"
 
 export default function MiCuentaDetalle() {
-  const router = useRouter(),
-    idPublicacion = parseInt(router.query.id)
+  const router = useRouter()
 
-  const [publicacions, setpublicacions] = useState(tours)
-  const [publicacion, setPublicacion] = useState({
-    titulo: "Ica y paracas",
-    descripcion:
-      "Disfruta de 3 días recorriendo la laguna de Huacachina, Nazca y las islas Ballestas desde Ica. Con este tour conocerás algunos de los paisajes más bonitos del oeste de Perú.",
-    imagenPrincipal: "/imagenes/tours/ica.jpg",
-    imagenSecundaria: "/imagenes/tours/secundaria.jpg",
-    precio: 99,
-  })
+  const id = router.query.id
 
-  /* useEffect(() => {
-    setpublicacions(tours);
+  const [items, setItems] = useState()
 
-    const publicacion = publicacions.find((publicacion) => publicacion.id === idPublicacion);
+  const { dataIdOrden, loadingGetData } = useIdOrdenTour({ ordenTourId: id })
 
-    setPublicacion(publicacion);
-  }, []); */
+  useEffect(() => {
+    !loadingGetData && setItems(dataIdOrden)
+  }, [loadingGetData])
 
   return (
     <>
@@ -56,7 +48,7 @@ export default function MiCuentaDetalle() {
             </Link>
 
             <span className='text-primary font-weight-bold d-flex align-items-center'>
-              RESERVA N° {publicacion.id}
+              RESERVA N° {items?.ordenTourId}
             </span>
           </div>
         </div>
@@ -70,11 +62,11 @@ export default function MiCuentaDetalle() {
             <div className='shadow-card'>
               <section className={`${styles.reservas_banner} p-3 bg-primary`}>
                 <h3 className='subtitulo-general text-white font-weight-bold text-left mt-1'>
-                  {publicacion ? publicacion.titulo : ""}
+                  {items?.Pasajes[0].tituloTour}
                 </h3>
 
                 <p className='small text-white mt-2'>
-                  {publicacion.descripcion}
+                  {items?.Pasajes[0].Tour.descripcionLargaTour}
                 </p>
               </section>
 
@@ -88,7 +80,7 @@ export default function MiCuentaDetalle() {
                             <span className='text-muted'>
                               Fecha de compra:{" "}
                             </span>
-                            10/09/2021
+                            {items?.Pasajes[0].fechaReserva}
                           </p>
                           <p>
                             <span className='text-muted'>
@@ -101,7 +93,9 @@ export default function MiCuentaDetalle() {
                         <div className='row mt-5'>
                           <div className='col-md-3'>
                             <img
-                              src={publicacion.imagenPrincipal}
+                              src={
+                                items?.Pasajes[0].Tour.imagenPrincipalTour?.url
+                              }
                               className={`${styles.reservas_imagenDetalle}`}
                             />
                           </div>
@@ -120,7 +114,7 @@ export default function MiCuentaDetalle() {
 
                                   <div className='col-4 col-md-12 text-right text-md-left'>
                                     <p className='mt-md-2'>
-                                      S/ {publicacion.precio}
+                                      {items?.Pasajes[0].precioTour}
                                     </p>
                                   </div>
                                 </div>
@@ -135,7 +129,9 @@ export default function MiCuentaDetalle() {
                                   </div>
 
                                   <div className='col-4 col-md-12 text-right text-md-left'>
-                                    <p className='mt-md-2'>2</p>
+                                    <p className='mt-md-2'>
+                                      {items?.Pasajes.length}
+                                    </p>
                                   </div>
                                 </div>
                               </div>
@@ -150,7 +146,8 @@ export default function MiCuentaDetalle() {
 
                                   <div className='col-4 col-md-12 text-right text-md-left'>
                                     <p className='mt-md-2'>
-                                      S/ {publicacion.precio * 2}
+                                      {items?.Pasajes[0].precioTour *
+                                        items?.Pasajes.length}
                                     </p>
                                   </div>
                                 </div>
@@ -166,7 +163,8 @@ export default function MiCuentaDetalle() {
                                 TOTAL:
                               </span>
                               <span className='lead text-right'>
-                                S/ {publicacion.precio * 2}.00
+                                {items?.Pasajes[0].precioTour *
+                                  items?.Pasajes.length}
                               </span>
                             </p>
                           </div>

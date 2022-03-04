@@ -24,6 +24,8 @@ const datosFormulario = {
 }
 
 export default function Home() {
+  const [arraypasajero, setArrayPasajero] = useState([])
+
   const [tarjeta, setTarjeta] = useState(false)
   const [tipoPago, setTipoPago] = useState("")
   const [pagos, setPagos] = useState(false)
@@ -106,6 +108,8 @@ export default function Home() {
                               items={formularios}
                               setFormularios={setFormularios}
                               setPagos={setPagos}
+                              setArrayPasajero={setArrayPasajero}
+                              arraypasajero={arraypasajero}
                             />
                           ) : (
                             "Debe agregar un tour a su carrito"
@@ -122,6 +126,7 @@ export default function Home() {
 
                         {tarjeta && (
                           <Tarjeta
+                            arraypasajero={arraypasajero}
                             carrito={carrito}
                             tipoPago={tipoPago}
                             setPagos={setPagos}

@@ -76,8 +76,8 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
   function guardarCarrito() {
     let item = {
       producto,
-      fecha: fechaSeleccionada,
-      hora: fecha,
+      tourId,
+      fecha: fecha,
       nroAdultos,
       nroMenores,
       duracion,

@@ -1,4 +1,4 @@
-import react, { useState } from "react"
+import react, { useEffect, useState } from "react"
 import Link from "next/link"
 
 import tours from "../../../datos-paginas/api/tours"
@@ -7,9 +7,17 @@ import styles from "./styles.module.scss"
 
 // Components
 import SidebarCuenta from "@/components/mi-cuenta/sidebar"
+import { useOrdenServices } from "../../../gestion-de-endpoints/useOrdenServices"
 
 export default function MiCuenta() {
-  const [items, setItems] = useState(tours)
+  const [items, setItems] = useState([])
+  console.log(items)
+
+  const { dataOrden, loadingGetData } = useOrdenServices()
+
+  useEffect(() => {
+    !loadingGetData && setItems(dataOrden?.data)
+  }, [loadingGetData])
 
   return (
     <>
@@ -50,7 +58,7 @@ export default function MiCuenta() {
                               <div className='d-flex justify-content-between flex-xl-row flex-column '>
                                 <div className='col-md-2'>
                                   <img
-                                    src={item.imagenPrincipal}
+                                    src={item.imagenPrincipalTour?.url}
                                     className={`${styles.reservas_imagen}`}
                                   />
                                 </div>
@@ -62,7 +70,7 @@ export default function MiCuenta() {
                                       </span>
 
                                       <span className='d-inline-block ml-3'>
-                                        Completado
+                                        {item.estadoOrdenTour}
                                       </span>
                                     </div>
 
@@ -72,7 +80,7 @@ export default function MiCuenta() {
                                       </span>
 
                                       <span className='d-inline-block ml-3'>
-                                        10/12/2021
+                                        {item.Pasajes[0].fechaReserva}
                                       </span>
                                     </div>
                                     <div className='d-flex mt-2'>
@@ -81,7 +89,7 @@ export default function MiCuenta() {
                                       </span>
 
                                       <span className='d-inline-block ml-3'>
-                                        5
+                                        {item.Pasajes.length}
                                       </span>
                                     </div>
                                     <div className='d-flex mt-2'>
@@ -90,7 +98,12 @@ export default function MiCuenta() {
                                       </span>
 
                                       <span className='d-inline-block ml-3'>
-                                        s/100.00
+                                        s/{" "}
+                                        {item.Pasajes.reduce(
+                                          (total, precio) =>
+                                            total + precio.precioTour,
+                                          0
+                                        )}
                                       </span>
                                     </div>
                                   </div>
@@ -99,7 +112,7 @@ export default function MiCuenta() {
                               <div className='d-flex align-items-end '>
                                 <div>
                                   <Link
-                                    href={`/mi-cuenta/reservas/ejemplo`}
+                                    href={`/mi-cuenta/reservas/${item.ordenTourId}`}
                                     passHref
                                   >
                                     <a className='btn btn-outline-primary d-flex align-items-center mt-2 px-3'>

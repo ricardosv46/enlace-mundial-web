@@ -9,15 +9,23 @@ const datosBase = {
   apellidos: "",
   tipoDocumento: "DNI",
   nroDocumento: undefined,
+  edad: "",
   comentarios: "",
 }
 
-export default function Formularios({ items, setFormularios, setPagos }) {
+export default function Formularios({
+  items,
+  setFormularios,
+  arraypasajero,
+  setArrayPasajero,
+  setPagos,
+}) {
   const [pasajeroActual, setPasajeroActual] = useState(1)
   const [error, setError] = useState(null)
   const [datosPasajero, setDatosPasajero] = useState({
     ...datosBase,
   })
+
   const [terminos, setTerminos] = useState(false)
 
   const actualizarInput = (e) => {
@@ -179,6 +187,23 @@ export default function Formularios({ items, setFormularios, setPagos }) {
                 <div className='form-row mt-3'>
                   <div className='col-md-12'>
                     <div className='form-group'>
+                      <label>
+                        Edad <span className='text-danger'>*</span>
+                      </label>
+                      <input
+                        type='number'
+                        name='edad'
+                        className='form-control'
+                        value={datosPasajero.edad}
+                        onChange={(e) => actualizarInput(e)}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className='form-row mt-3'>
+                  <div className='col-md-12'>
+                    <div className='form-group'>
                       <label>Comentarios adicionales</label>
                       <textarea
                         name='comentarios'
@@ -242,7 +267,10 @@ export default function Formularios({ items, setFormularios, setPagos }) {
                   <button
                     type='button'
                     className='btn btn-info text-white px-4'
-                    onClick={() => siguiente(index)}
+                    onClick={() => {
+                      setArrayPasajero([...arraypasajero, datosPasajero])
+                      siguiente(index)
+                    }}
                   >
                     {pasajeroActual >= items.length
                       ? "Ir a pagar"

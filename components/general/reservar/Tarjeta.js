@@ -3,11 +3,19 @@ import Image from "next/image"
 import { formatoAPrecio } from "../../../utilidades/formato-precio"
 import styles from "../styles.module.css"
 import Check from "../../../public/imagenes/pagos/Check"
+import { useOrdenServices } from "../../../gestion-de-endpoints/useOrdenServices"
 
-const Tarjeta = ({ tipoPago, setPagos, setTarjeta, carrito }) => {
+const Tarjeta = ({
+  tipoPago,
+  setPagos,
+  setTarjeta,
+  carrito,
+  arraypasajero,
+}) => {
   const [comprobante, setComprobante] = useState(false)
   const [pagoCompleto, setPagoCompleto] = useState(false)
   const [imagePrevios, setImagePrevios] = useState(null)
+  const { createOrdenTour } = useOrdenServices()
   const changeImage = (e) => {
     if (e.target.files[0]) {
       const reader = new FileReader()
@@ -19,12 +27,38 @@ const Tarjeta = ({ tipoPago, setPagos, setTarjeta, carrito }) => {
     }
   }
 
+  const datosPasaje = arraypasajero.map((data) => ({
+    estadoPasaje: "NO ASISTIO",
+    nombresVisitante: data.nombres,
+    apellidosVisitante: data.apellidos,
+    edadVisitante: data.edad,
+    fechaReserva: carrito.fecha,
+    tourId: carrito.tourId,
+  }))
+
   const subir = () => {
     setComprobante(true)
   }
 
   const pagar = () => {
     setPagoCompleto(true)
+    createOrdenTour({
+      input: {
+        tipoPago: 1,
+        nroOperacion: "121",
+        estadoOrdenTour: "PENDIENTE",
+        descuento: "12.2",
+        PasajesInput: datosPasaje,
+      },
+
+      input1: {
+        type_save: 0,
+        source_id: "566d1f7828d7edbf8a23cb3e8c7ab6b2",
+        payment_method_id: "visa",
+        installments: 1,
+        tipo_tarjeta: 1,
+      },
+    })
   }
 
   return (
