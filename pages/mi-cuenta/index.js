@@ -5,10 +5,29 @@ import Head from "next/head"
 // Components
 import SidebarCuenta from "@/components/mi-cuenta/sidebar"
 import { ContextAuth } from "../../context/ContextAuth"
+import { useRouter } from "next/router"
 
-export default function MiCuenta() {
+const MiCuenta = () => {
+  const router = useRouter()
   const contextAuth = useContext(ContextAuth)
-  const { dataUser: usuario } = contextAuth
+  const { dataUser: usuario, auth } = contextAuth
+
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (!auth) {
+      router.push("/")
+    } else {
+      setLoading(false)
+    }
+    return () => {
+      setLoading(true)
+    }
+  }, [auth])
+
+  if (loading) {
+    return <div></div>
+  }
 
   return (
     <>
@@ -40,7 +59,7 @@ export default function MiCuenta() {
                   </h4>
 
                   <p>
-                    {usuario.nombre} {usuario.apellidos}
+                    {usuario?.nombre} {usuario?.apellidos}
                   </p>
                 </div>
 
@@ -50,7 +69,7 @@ export default function MiCuenta() {
                   </h4>
 
                   <p>
-                    {usuario.tipoDocumento} : {usuario.numDocumento}
+                    {usuario?.tipoDocumento} : {usuario?.numDocumento}
                   </p>
                 </div>
 
@@ -59,13 +78,13 @@ export default function MiCuenta() {
                     Dirección de correo electrónico
                   </h4>
 
-                  <p>{usuario.email}</p>
+                  <p>{usuario?.email}</p>
                 </div>
 
                 <div className={`${styles.miCuenta_borderItem} mt-4 pb-3`}>
                   <h4 className='small font-weight-bold'>Número de contacto</h4>
 
-                  <p>{usuario.celular}</p>
+                  <p>{usuario?.celular}</p>
                 </div>
               </section>
             </div>
@@ -75,3 +94,4 @@ export default function MiCuenta() {
     </>
   )
 }
+export default MiCuenta

@@ -11,8 +11,8 @@ import { Tabs, Form } from "react-bootstrap"
 import Tab from "react-bootstrap/Tab"
 
 import Formularios from "../../components/general/reservar/formularios"
-import Pagos from "../../components/general/reservar/pagos"
-import Tarjeta from "../../components/general/reservar/Tarjeta"
+import Pagos from "../../components/general/reservar/tipoPago/pagos"
+import TipoPago from "../../components/general/reservar/tipoPago"
 
 const datosFormulario = {
   validado: false,
@@ -117,15 +117,16 @@ export default function Home() {
                         ) : null}
 
                         {!tarjeta && pagos && (
-                          <Pagos
+                          <TipoPago
                             setPagos={setPagos}
                             setTarjeta={setTarjeta}
                             setTipoPago={setTipoPago}
+                            tipoPago={tipoPago}
                           />
                         )}
 
                         {tarjeta && (
-                          <Tarjeta
+                          <Pagos
                             arraypasajero={arraypasajero}
                             carrito={carrito}
                             tipoPago={tipoPago}

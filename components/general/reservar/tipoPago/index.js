@@ -1,10 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import Image from "next/image"
 
-const Pagos = ({ setTarjeta, setTipoPago, setPagos }) => {
+const TipoPago = ({ setTarjeta, tipoPago, setTipoPago, setPagos }) => {
   const pagar = () => {
     setTarjeta(true)
   }
+
   return (
     <>
       <div className='row mx-lg-5 mx-2'>
@@ -97,6 +98,7 @@ const Pagos = ({ setTarjeta, setTipoPago, setPagos }) => {
           type='button'
           className='btn btn-info text-white px-4 mt-4'
           onClick={pagar}
+          disabled={tipoPago === ""}
         >
           Ir a Pagar
         </button>
@@ -105,4 +107,4 @@ const Pagos = ({ setTarjeta, setTipoPago, setPagos }) => {
   )
 }
 
-export default Pagos
+export default TipoPago

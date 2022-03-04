@@ -26,7 +26,7 @@ export default function SidebarCuenta() {
       />
 
       <div className='mt-3 text-center w-100'>
-        <h2 className='font-weight-bold'>{usuario.nombre}</h2>
+        <h2 className='font-weight-bold'>{usuario?.nombre}</h2>
 
         <Link href='/mi-cuenta/editar' passHref>
           <a className='btn btn-outline-primary mt-2 px-3'>Editar cuenta</a>
