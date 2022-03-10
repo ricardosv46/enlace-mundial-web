@@ -21,6 +21,7 @@ import Facebook from "../components/facebook"
 function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = useState(false)
   const [dataUser, setDataUser] = useState({})
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     if (localStorage) {
@@ -42,7 +43,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Facebook />
       <ApolloProvider client={client}>
-        <ContextAuth.Provider value={{ auth, setAuth, dataUser, setDataUser }}>
+        <ContextAuth.Provider
+          value={{ auth, setAuth, dataUser, setDataUser, show, setShow }}
+        >
           <Header />
 
           <Component {...pageProps} />

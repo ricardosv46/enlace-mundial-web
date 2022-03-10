@@ -10,13 +10,14 @@ import { useRouter } from "next/router"
 const MiCuenta = () => {
   const router = useRouter()
   const contextAuth = useContext(ContextAuth)
-  const { dataUser: usuario, auth } = contextAuth
+  const { dataUser: usuario, auth, setShow } = contextAuth
 
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (!auth) {
       router.push("/")
+      setShow(true)
     } else {
       setLoading(false)
     }
@@ -26,7 +27,7 @@ const MiCuenta = () => {
   }, [auth])
 
   if (loading) {
-    return <div></div>
+    return <div className={styles.todo}></div>
   }
 
   return (

@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react"
+import react, { useContext, useEffect, useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
 import Moment from "react-moment"
@@ -13,6 +13,8 @@ import Tab from "react-bootstrap/Tab"
 import Formularios from "../../components/general/reservar/formularios"
 import Pagos from "../../components/general/reservar/tipoPago/pagos"
 import TipoPago from "../../components/general/reservar/tipoPago"
+import { ContextAuth } from "../../context/ContextAuth"
+import { useRouter } from "next/router"
 
 const datosFormulario = {
   validado: false,
@@ -24,6 +26,24 @@ const datosFormulario = {
 }
 
 export default function Home() {
+  const router = useRouter()
+  const contextAuth = useContext(ContextAuth)
+  const { auth, setShow } = contextAuth
+
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (!auth) {
+      router.back()
+      setShow(true)
+    } else {
+      setLoading(false)
+    }
+    return () => {
+      setLoading(true)
+    }
+  }, [auth])
+
   const [arraypasajero, setArrayPasajero] = useState([])
 
   const [tarjeta, setTarjeta] = useState(false)
@@ -63,6 +83,10 @@ export default function Home() {
       setFormularios(forms)
     }, 500)
   }, [])
+
+  if (loading) {
+    return <div className={styles.todo}></div>
+  }
 
   return (
     <div>

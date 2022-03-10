@@ -9,11 +9,9 @@ import { ContextAuth } from "../../context/ContextAuth"
 
 export default function Header() {
   const contextAuth = useContext(ContextAuth)
-  const { auth } = contextAuth
+  const { auth, show, setShow } = contextAuth
 
   const [navStatus, setNavStatus] = useState(false)
-
-  const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)

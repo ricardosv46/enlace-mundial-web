@@ -11,6 +11,7 @@ export default function SidebarCuenta() {
   const salir = () => {
     if (localStorage) {
       localStorage.removeItem("usuario")
+      localStorage.removeItem("token")
     }
     setDataUser({})
     setAuth(false)
