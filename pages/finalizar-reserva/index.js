@@ -51,7 +51,7 @@ export default function Home() {
   const [pagos, setPagos] = useState(false)
   const [carrito, setCarrito] = useState({})
   const [formularios, setFormularios] = useState([])
-  console.log(carrito)
+
   // Asignar formularios
   useEffect(() => {
     setTimeout(() => {

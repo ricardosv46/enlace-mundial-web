@@ -12,7 +12,6 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
   const [pagoCompleto, setPagoCompleto] = useState(false)
   const [imagePrevios, setImagePrevios] = useState(null)
   const [payment, setPayment] = useState({})
-  console.log(payment)
   const { createOrdenTour } = useOrdenServices()
   const changeImage = (e) => {
     if (e.target.files[0]) {

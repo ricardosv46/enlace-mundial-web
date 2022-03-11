@@ -48,8 +48,6 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
       })
   }, [anio, mes, loading, tourId])
 
-  console.log(pintarDias)
-
   // console.log("que fue manito", pintarDias);
   function disminuir(tipo) {
     if (tipo === "adultos") {

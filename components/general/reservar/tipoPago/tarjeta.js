@@ -36,7 +36,7 @@ const Tarjeta = ({
       setState({ ...state, [name]: e.target.value })
     }
   }
-  console.log(state)
+
   const monto = carrito?.producto.precioBaseTour * arraypasajero.length
 
   const isDisable =
@@ -119,7 +119,7 @@ const Tarjeta = ({
               payment_method_id,
               transaction_amount: Number(amount),
               installments: Number(installments),
-              description: "Descripción del producto",
+              description: "Compra de Pasajes",
               payer: {
                 email,
                 identification: {

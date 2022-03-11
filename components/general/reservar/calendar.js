@@ -60,7 +60,6 @@ export default function Calendar({
       ])
     })
   }, [pintarDias])
-  console.log(fechas)
 
   const highlightWithRanges = [
     {
