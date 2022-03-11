@@ -47,7 +47,7 @@ export default function Home() {
   const [arraypasajero, setArrayPasajero] = useState([])
 
   const [tarjeta, setTarjeta] = useState(false)
-  const [tipoPago, setTipoPago] = useState("")
+  const [tipoPago, setTipoPago] = useState("tarjeta")
   const [pagos, setPagos] = useState(false)
   const [carrito, setCarrito] = useState({})
   const [formularios, setFormularios] = useState([])
@@ -129,6 +129,7 @@ export default function Home() {
                         {!pagos ? (
                           formularios.length ? (
                             <Formularios
+                              setTarjeta={setTarjeta}
                               items={formularios}
                               setFormularios={setFormularios}
                               setPagos={setPagos}
@@ -140,14 +141,15 @@ export default function Home() {
                           )
                         ) : null}
 
-                        {!tarjeta && pagos && (
+                        {/* {!tarjeta && pagos && (
                           <TipoPago
                             setPagos={setPagos}
                             setTarjeta={setTarjeta}
                             setTipoPago={setTipoPago}
                             tipoPago={tipoPago}
+                            arraypasajero={arraypasajero}
                           />
-                        )}
+                        )} */}
 
                         {tarjeta && (
                           <Pagos

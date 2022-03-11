@@ -19,6 +19,7 @@ export default function Formularios({
   arraypasajero,
   setArrayPasajero,
   setPagos,
+  setTarjeta,
 }) {
   const [pasajeroActual, setPasajeroActual] = useState(1)
   const [error, setError] = useState(null)
@@ -74,6 +75,7 @@ export default function Formularios({
         if (terminos) {
           setError(null)
           setPagos(true)
+          setTarjeta(true)
         } else {
           setError("Debe aceptar los téminos y condiciones")
         }

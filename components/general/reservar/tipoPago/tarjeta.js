@@ -1,38 +1,143 @@
 import React, { useState } from "react"
 import Image from "next/image"
+import Script from "next/script"
 
 const isEmpty = (text = "") => {
-  return text.trim().length !== 0
+  return text.trim().length === 0
 }
 
 const Tarjeta = ({
   pagar,
+  carrito,
+  arraypasajero,
   setTarjeta,
   setPagos,
   comprobante,
   setComprobante,
+  setPayment,
 }) => {
   const [state, setState] = useState({
-    tarjeta: "",
-    fecha: "",
-    cvv: "",
-    titular: "",
-    correo: "",
-    documento: "",
+    cardNumber: "",
+    securityCode: "",
+    cardholderName: "",
+    cardholderEmail: "",
+    identificationNumber: "",
   })
-  const { tarjeta, fecha, cvv, titular, correo, documento } = state
+  const {
+    cardNumber,
+    securityCode,
+    cardholderName,
+    cardholderEmail,
+    identificationNumber,
+  } = state
 
-  const onChange = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value })
+  const onChange = (name) => {
+    return (e) => {
+      setState({ ...state, [name]: e.target.value })
+    }
   }
+  console.log(state)
+  const monto = carrito?.producto.precioBaseTour * arraypasajero.length
 
   const isDisable =
-    isEmpty(tarjeta) &&
-    isEmpty(fecha) &&
-    isEmpty(cvv) &&
-    isEmpty(titular) &&
-    isEmpty(correo) &&
-    isEmpty(documento)
+    isEmpty(cardNumber) ||
+    isEmpty(securityCode) ||
+    isEmpty(cardholderName) ||
+    isEmpty(cardholderEmail) ||
+    isEmpty(identificationNumber)
+
+  const onload = () => {
+    const mp = new MercadoPago("TEST-0ff678c6-d074-4dab-8b05-076734e5e8d2")
+    const cardForm = mp.cardForm({
+      amount: monto.toString(),
+      autoMount: true,
+      form: {
+        id: "form-checkout",
+        cardholderName: {
+          id: "form-checkout__cardholderName",
+          placeholder: "Titular de la tarjeta",
+        },
+        cardholderEmail: {
+          id: "form-checkout__cardholderEmail",
+          placeholder: "E-mail",
+        },
+        cardNumber: {
+          id: "form-checkout__cardNumber",
+          placeholder: "Número de la tarjeta",
+        },
+        cardExpirationDate: {
+          id: "form-checkout__cardExpirationDate",
+          placeholder: "Data de vencimiento (MM/YY)",
+        },
+        securityCode: {
+          id: "form-checkout__securityCode",
+          placeholder: "Código de seguridad",
+        },
+        installments: {
+          id: "form-checkout__installments",
+          placeholder: "Cuotas",
+        },
+        identificationType: {
+          id: "form-checkout__identificationType",
+          placeholder: "Tipo de documento",
+        },
+        identificationNumber: {
+          id: "form-checkout__identificationNumber",
+          placeholder: "Número de documento",
+        },
+        issuer: {
+          id: "form-checkout__issuer",
+          placeholder: "Banco emisor",
+        },
+      },
+      callbacks: {
+        onFormMounted: (error) => {
+          if (error) return console.warn("Form Mounted handling error: ", error)
+          console.log("Form mounted")
+        },
+        onSubmit: (event) => {
+          event.preventDefault()
+          const {
+            paymentMethodId: payment_method_id,
+            issuerId: issuer_id,
+            cardholderEmail: email,
+            amount,
+            token,
+            installments,
+            identificationNumber,
+            identificationType,
+          } = cardForm.getCardFormData()
+
+          fetch("/process_payment", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              token,
+              issuer_id,
+              payment_method_id,
+              transaction_amount: Number(amount),
+              installments: Number(installments),
+              description: "Descripción del producto",
+              payer: {
+                email,
+                identification: {
+                  type: identificationType,
+                  number: identificationNumber,
+                },
+              },
+            }),
+          })
+          setPayment({ token, payment_method_id })
+          pagar()
+        },
+        onFetching: (resource) => {
+          console.log("Fetching resource: ", resource)
+        },
+      },
+    })
+  }
 
   return (
     <div>
@@ -45,120 +150,113 @@ const Tarjeta = ({
           alt='tarjeta'
         />
       </div>
-
-      <div>
-        <h4 className='small font-weight-bold ml-2'>Nro de Tarjeta</h4>
-        <div className='form-group'>
-          <input
-            type='number'
-            className='form-control'
-            placeholder='0000 0000 0000 0000'
-            name='tarjeta'
-            value={tarjeta}
-            onChange={onChange}
-          />
-        </div>
-      </div>
-      <div className='row'>
-        <div className='col-6'>
-          <h4 className='small font-weight-bold ml-2'>Fecha de expiración</h4>
-          <div className='form-group'>
-            <input
-              type='text'
-              className='form-control'
-              placeholder='MM/YY'
-              name='fecha'
-              value={fecha}
-              onChange={onChange}
-            />
-          </div>
-        </div>
-
-        <div className='col-6'>
-          <h4 className='small font-weight-bold ml-2'>CVV</h4>
-          <div className='form-group'>
-            <input
-              type='number'
-              className='form-control'
-              placeholder='***'
-              name='cvv'
-              value={cvv}
-              onChange={onChange}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h4 className='small font-weight-bold ml-2'>Titular de la Tarjeta</h4>
+      <form id='form-checkout'>
         <div className='form-group'>
           <input
             type='text'
+            name='cardNumber'
+            id='form-checkout__cardNumber'
             className='form-control'
-            placeholder='Ingresar nombre'
-            name='titular'
-            value={titular}
-            onChange={onChange}
+            onChange={onChange("cardNumber")}
           />
         </div>
-      </div>
-      <div className='row'>
-        <div className='col-lg-6'>
-          <h4 className='small font-weight-bold ml-2'>Correo electrónico</h4>
-          <div className='form-group'>
-            <input
-              type='email'
-              className='form-control'
-              placeholder='Ingresar correo'
-              name='correo'
-              value={correo}
-              onChange={onChange}
-            />
-          </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            name='cardExpirationDate'
+            id='form-checkout__cardExpirationDate'
+            className='form-control'
+          />
         </div>
-
-        <div className='col-lg-6'>
-          <h4 className='small font-weight-bold ml-2'>Número de documento</h4>
-          <div className='form-group'>
-            <input
-              type='number'
-              className='form-control'
-              placeholder='Ingresar número de documento'
-              name='documento'
-              value={documento}
-              onChange={onChange}
-            />
-          </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            name='cardholderName'
+            id='form-checkout__cardholderName'
+            className='form-control'
+            onChange={onChange("cardholderName")}
+          />
         </div>
-      </div>
-      <div className='d-flex justify-content-between mt-4'>
-        <button
-          type='button'
-          className='btn btn-link text-danger '
-          onClick={() => {
-            setTarjeta(false)
-            setPagos(true)
-            if (comprobante) {
-              setTarjeta(true)
-              setComprobante(false)
-            }
-          }}
-        >
-          <span className='d-inline-block mr-2 text-danger'>
-            <i className='fas fa-chevron-left'></i>
-          </span>
-          Atrás
-        </button>
+        <div className='form-group'>
+          <input
+            type='email'
+            name='cardholderEmail'
+            id='form-checkout__cardholderEmail'
+            className='form-control'
+            onChange={onChange("cardholderEmail")}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            name='securityCode'
+            id='form-checkout__securityCode'
+            className='form-control'
+            onChange={onChange("securityCode")}
+          />
+        </div>
+        <div className='form-group'>
+          <select
+            name='issuer'
+            id='form-checkout__issuer'
+            className='form-control'
+            onChange={onChange("issuer")}
+          ></select>
+        </div>
+        <div className='form-group'>
+          <select
+            name='identificationType'
+            id='form-checkout__identificationType'
+            className='form-control'
+          ></select>
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            name='identificationNumber'
+            id='form-checkout__identificationNumber'
+            className='form-control'
+            onChange={onChange("identificationNumber")}
+          />
+        </div>
+        <div className='form-group'>
+          <select
+            name='installments'
+            id='form-checkout__installments'
+            className='form-control'
+          ></select>
+        </div>
+        <div className='d-flex justify-content-between mt-4'>
+          <button
+            type='button'
+            className='btn btn-link text-danger '
+            onClick={() => {
+              setTarjeta(false)
+              setPagos(false)
+              if (comprobante) {
+                setTarjeta(true)
+                setComprobante(false)
+              }
+            }}
+          >
+            <span className='d-inline-block mr-2 text-danger'>
+              <i className='fas fa-chevron-left'></i>
+            </span>
+            Atrás
+          </button>
 
-        <button
-          type='button'
-          className='btn btn-primary text-white px-4'
-          onClick={pagar}
-          disabled={!isDisable}
-        >
-          Realizar Pago
-        </button>
-      </div>
+          <button
+            type='submit'
+            id='form-checkout__submit'
+            className='btn btn-primary text-white px-4'
+            disabled={isDisable}
+          >
+            Realizar Pago
+          </button>
+        </div>
+      </form>
+
+      <Script src='https://sdk.mercadopago.com/js/v2' onLoad={onload} />
     </div>
   )
 }

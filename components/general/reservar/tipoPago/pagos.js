@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Image from "next/image"
 import styles from "../../styles.module.css"
 import Check from "../../../../public/imagenes/pagos/Check"
-import TarjetaP from "./tarjeta"
+import Tarjeta from "./tarjeta"
 import Yape from "./yape"
 import Transferencia from "./transferencia"
 import { useOrdenServices } from "../../../../gestion-de-endpoints/useOrdenServices"
@@ -11,6 +11,8 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
   const [comprobante, setComprobante] = useState(false)
   const [pagoCompleto, setPagoCompleto] = useState(false)
   const [imagePrevios, setImagePrevios] = useState(null)
+  const [payment, setPayment] = useState({})
+  console.log(payment)
   const { createOrdenTour } = useOrdenServices()
   const changeImage = (e) => {
     if (e.target.files[0]) {
@@ -42,16 +44,16 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
         tipoPago: 1,
         nroOperacion: "121",
         estadoOrdenTour: "PENDIENTE",
-        descuento: "12.2",
+        descuento: "0",
         PasajesInput: datosPasaje,
       },
 
       input1: {
         type_save: 0,
-        source_id: "566d1f7828d7edbf8a23cb3e8c7ab6b2",
-        payment_method_id: "visa",
+        source_id: payment.payment_method_id,
+        payment_method_id: payment.token,
         installments: 1,
-        tipo_tarjeta: 1,
+        tipo_tarjeta: 0,
       },
     })
   }
@@ -69,7 +71,6 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
         </div>
       ) : (
         <>
-          {" "}
           {comprobante ? (
             <div className='px-0'>
               <p className='d-flex justify-content-center text-center text-sm'>
@@ -133,15 +134,18 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
           ) : (
             <>
               {tipoPago === "tarjeta" && (
-                <TarjetaP
+                <Tarjeta
                   pagar={pagar}
+                  setPayment={setPayment}
                   setTarjeta={setTarjeta}
                   setPagos={setPagos}
+                  carrito={carrito}
                   setComprobante={setComprobante}
                   comprobante={comprobante}
+                  arraypasajero={arraypasajero}
                 />
               )}
-              {tipoPago === "yape" && (
+              {/* {tipoPago === "yape" && (
                 <Yape
                   subir={subir}
                   setTarjeta={setTarjeta}
@@ -150,6 +154,7 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
                   carrito={carrito}
                   comprobante={comprobante}
                   imagePrevios={imagePrevios}
+                  arraypasajero={arraypasajero}
                 />
               )}
               {tipoPago === "transferencia" && (
@@ -161,8 +166,9 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
                   carrito={carrito}
                   comprobante={comprobante}
                   imagePrevios={imagePrevios}
+                  arraypasajero={arraypasajero}
                 />
-              )}
+              )} */}
             </>
           )}
         </>

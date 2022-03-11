@@ -8,6 +8,7 @@ const Yape = ({
   setPagos,
   comprobante,
   setComprobante,
+  arraypasajero,
 }) => {
   return (
     <div>
@@ -35,7 +36,9 @@ const Yape = ({
         Monto a pagar con YAPE
       </h4>
       <h5 className='d-flex justify-content-center text-md'>
-        {formatoAPrecio(carrito?.producto.precioBaseTour)}
+        {formatoAPrecio(
+          carrito?.producto.precioBaseTour * arraypasajero.length
+        )}
       </h5>
       <div className='d-flex justify-content-between mt-4'>
         <button

@@ -1,7 +1,13 @@
 import React from "react"
 import Image from "next/image"
 
-const TipoPago = ({ setTarjeta, tipoPago, setTipoPago, setPagos }) => {
+const TipoPago = ({
+  setTarjeta,
+  tipoPago,
+  setTipoPago,
+  setPagos,
+  arraypasajero,
+}) => {
   const pagar = () => {
     setTarjeta(true)
   }
