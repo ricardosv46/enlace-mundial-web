@@ -14,7 +14,7 @@ const Tarjeta = ({
   setPagos,
   comprobante,
   setComprobante,
-  setPayment,
+  alerta,
 }) => {
   const [state, setState] = useState({
     cardNumber: "",
@@ -129,8 +129,11 @@ const Tarjeta = ({
               },
             }),
           })
-          setPayment({ token, payment_method_id })
-          pagar()
+          pagar({
+            token,
+            payment_method_id,
+            installments: Number(installments),
+          })
         },
         onFetching: (resource) => {
           console.log("Fetching resource: ", resource)
@@ -226,6 +229,11 @@ const Tarjeta = ({
             className='form-control'
           ></select>
         </div>
+
+        <div className='d-flex justify-content-center'>
+          <h5 className='text-danger fw-bold'>{alerta}</h5>
+        </div>
+
         <div className='d-flex justify-content-between mt-4'>
           <button
             type='button'

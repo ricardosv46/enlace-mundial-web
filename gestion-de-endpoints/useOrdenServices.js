@@ -46,7 +46,7 @@ export const useOrdenServices = () => {
       tipo_tarjeta,
     },
   }) => {
-    const resp = await CreateOrdenTour({
+    const res = await CreateOrdenTour({
       variables: {
         input: {
           tipoPago: tipoPago,
@@ -66,8 +66,8 @@ export const useOrdenServices = () => {
       },
     })
     refetch()
-    console.log("CreateOrdenTour", resp)
-    if (resp.data?.CreateOrdenTour) return "exito"
+    console.log("CreateOrdenTour", res)
+    if (res.data?.CreateOrdenTour) return "exito"
   }
 
   return {

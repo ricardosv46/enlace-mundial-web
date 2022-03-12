@@ -70,12 +70,11 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
       }
     }
   }
-
   function guardarCarrito() {
     let item = {
       producto,
       tourId,
-      fecha: fecha,
+      fecha: fechaSeleccionada,
       nroAdultos,
       nroMenores,
       duracion,
@@ -175,10 +174,15 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
 
           <div className='row justify-content-center mt-2'>
             <div className='col-md-10'>
-              <section className='text-left'>
+              <section className='text-center'>
                 <span className='small text-muted'>Duración</span>
-                <div className='sidebar-reservar__duracion-info py-1 px-3'>
-                  <span>{duracion.hora}</span>
+                <div className='sidebar-reservar__duracion-info py-1 px-3 '>
+                  <span>
+                    {duracion?.hora &&
+                      `De  ${duracion?.hora?.split(",")[0]} a ${
+                        duracion?.hora?.split(",")[1]
+                      }`}
+                  </span>
                 </div>
               </section>
 

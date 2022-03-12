@@ -46,16 +46,27 @@ export const GET_ALL_ORDEN_TOUR_USER = gql`
             keywordsTour
             descripcionCortaTour
             descripcionLargaTour
+            imagenPrincipalTour {
+              id
+              descripcion
+              url
+            }
+            imagenSecundariaTour {
+              id
+              descripcion
+              url
+            }
+            galeriaTour {
+              id
+              descripcion
+              url
+            }
             itinerarioTour
             puntoPartidaTour
             noIncluyeTour
             notasTour
             politicasTour
             videoPresentacionTour
-            imagenPrincipalTour {
-              id
-              url
-            }
             slugCategoria
             categoriaId
             created_at

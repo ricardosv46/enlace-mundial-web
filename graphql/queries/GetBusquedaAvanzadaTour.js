@@ -11,6 +11,7 @@ export const GET_BUSQUEDA_AVANZADA_TOUR = gql`
     $dias: String
     $page: Int
     $numberPaginate: Int
+    $DeparCodi: String
   ) {
     GetBusquedaAvanzadaTour(
       fecha_ini: $fecha_ini
@@ -23,6 +24,7 @@ export const GET_BUSQUEDA_AVANZADA_TOUR = gql`
       dias: $dias
       page: $page
       numberPaginate: $numberPaginate
+      DeparCodi: $DeparCodi
     ) {
       nroTotalItems
       data {
@@ -79,6 +81,18 @@ export const GET_BUSQUEDA_AVANZADA_TOUR = gql`
             descripcion
             url
           }
+        }
+        IncluyeTour {
+          incluyeId
+          descripcionIncluye
+          created_at
+          updated_at
+        }
+        ActividadesTour {
+          actividadId
+          descripcion_actividad
+          created_at
+          updated_at
         }
         Departamento {
           DeparCodi

@@ -42,6 +42,21 @@ export const GET_ID_ORDEN_TOUR_ = gql`
           nroDias
           destacadoTour
           keywordsTour
+          imagenPrincipalTour {
+            id
+            descripcion
+            url
+          }
+          imagenSecundariaTour {
+            id
+            descripcion
+            url
+          }
+          galeriaTour {
+            id
+            descripcion
+            url
+          }
           descripcionCortaTour
           descripcionLargaTour
           itinerarioTour

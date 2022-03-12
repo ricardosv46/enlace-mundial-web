@@ -25,6 +25,7 @@ export default function Home({ data }) {
   const router = useRouter()
 
   let slug = router.query.slug
+  console.log(data)
 
   return (
     <div>

@@ -16,6 +16,7 @@ const GestionBusqueda = () => {
     precio_base,
     horas,
     dias,
+    DeparCodi,
     page,
     numberPaginate,
   }) => {
@@ -39,6 +40,7 @@ const GestionBusqueda = () => {
       precio_base: precio_base,
       horas: horas,
       dias: dias,
+      DeparCodi: DeparCodi,
       page: page,
       numberPaginate: numberPaginate,
     }).catch((error) => {

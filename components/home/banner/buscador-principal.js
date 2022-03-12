@@ -34,7 +34,7 @@ export default function BuscadorPrincipal() {
     router.push({
       pathname: "/actividades-y-turismo",
       query: {
-        departamentoId: id,
+        DeparCodi: id,
         nombreDepartamento: nombre,
         categoria: categoria,
       },

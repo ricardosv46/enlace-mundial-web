@@ -14,10 +14,11 @@ export default function MiCuentaDetalle() {
   const router = useRouter()
 
   const id = router.query.id
-
+  console.log(id)
   const [items, setItems] = useState()
 
   const { dataIdOrden, loadingGetData } = useIdOrdenTour({ ordenTourId: id })
+  console.log(dataIdOrden)
 
   useEffect(() => {
     !loadingGetData && setItems(dataIdOrden)
@@ -86,7 +87,7 @@ export default function MiCuentaDetalle() {
                             <span className='text-muted'>
                               Fecha de reseva:{" "}
                             </span>
-                            15/09/2021
+                            {items?.Pasajes[0].fechaReserva}
                           </p>
                         </div>
 

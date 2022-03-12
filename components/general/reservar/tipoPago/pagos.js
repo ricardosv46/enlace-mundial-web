@@ -2,16 +2,18 @@ import React, { useState } from "react"
 import Image from "next/image"
 import styles from "../../styles.module.css"
 import Check from "../../../../public/imagenes/pagos/Check"
+import { useRouter } from "next/router"
 import Tarjeta from "./tarjeta"
 import Yape from "./yape"
 import Transferencia from "./transferencia"
 import { useOrdenServices } from "../../../../gestion-de-endpoints/useOrdenServices"
 
 const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
+  const router = useRouter()
   const [comprobante, setComprobante] = useState(false)
   const [pagoCompleto, setPagoCompleto] = useState(false)
+  const [alerta, setAlerta] = useState("")
   const [imagePrevios, setImagePrevios] = useState(null)
-  const [payment, setPayment] = useState({})
   const { createOrdenTour } = useOrdenServices()
   const changeImage = (e) => {
     if (e.target.files[0]) {
@@ -36,24 +38,28 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
     setComprobante(true)
   }
 
-  const pagar = () => {
-    setPagoCompleto(true)
-    createOrdenTour({
+  const pagar = async ({ payment_method_id, token, installments }) => {
+    await createOrdenTour({
       input: {
-        tipoPago: 1,
+        tipoPago: 3,
         nroOperacion: "121",
         estadoOrdenTour: "PENDIENTE",
         descuento: "0",
         PasajesInput: datosPasaje,
       },
-
       input1: {
         type_save: 0,
-        source_id: payment.payment_method_id,
-        payment_method_id: payment.token,
-        installments: 1,
+        source_id: token,
+        payment_method_id: payment_method_id,
+        installments: installments,
         tipo_tarjeta: 0,
       },
+    }).then((res) => {
+      if (res === "exito") {
+        setPagoCompleto(true)
+      } else {
+        setAlerta("No se genero el pago vuelva a intentarlo")
+      }
     })
   }
 
@@ -64,9 +70,15 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
           <div className='col-12 d-flex justify-content-center text-sm'>
             Secompleto el pago exitosamente
           </div>
-          <div className='col-12 d-flex justify-content-center mt-3'>
+          <div className='col-12 d-flex justify-content-center mt-4'>
             <Check width={100} height={100} />
           </div>
+          <button
+            className='btn btn-primary mt-4'
+            onClick={() => router.push("/")}
+          >
+            Ir a Inicio
+          </button>
         </div>
       ) : (
         <>
@@ -98,7 +110,8 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
                       alt='image'
                     />
                   )}
-                </div>
+                </div>{" "}
+                <button className='btn btn-danger mt-4'>Reintentar</button>
               </div>
               <div className='d-flex justify-content-between mt-4'>
                 <button
@@ -134,8 +147,8 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
             <>
               {tipoPago === "tarjeta" && (
                 <Tarjeta
+                  alerta={alerta}
                   pagar={pagar}
-                  setPayment={setPayment}
                   setTarjeta={setTarjeta}
                   setPagos={setPagos}
                   carrito={carrito}

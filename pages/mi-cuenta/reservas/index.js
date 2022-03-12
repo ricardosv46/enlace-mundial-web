@@ -1,6 +1,6 @@
 import react, { useEffect, useState } from "react"
 import Link from "next/link"
-
+import Moment from "react-moment"
 import tours from "../../../datos-paginas/api/tours"
 import Head from "next/head"
 import styles from "./styles.module.scss"
@@ -14,6 +14,7 @@ export default function MiCuenta() {
   console.log(items)
 
   const { dataOrden, loadingGetData } = useOrdenServices()
+  console.log(dataOrden)
 
   useEffect(() => {
     !loadingGetData && setItems(dataOrden?.data)
@@ -36,7 +37,7 @@ export default function MiCuenta() {
             <SidebarCuenta />
           </div>
 
-          <div className='col-md-7 mt-4 mt-md-0'>
+          <div className='col-md-8 col-xl-7 mt-4 mt-md-0'>
             <div className='p-3 shadow-card'>
               <h3 className='subtitulo-general font-weight-bold text-left'>
                 Mis reservaciones
@@ -48,22 +49,25 @@ export default function MiCuenta() {
                       return (
                         <div
                           key={index}
-                          className={`${styles.card_reserva} card bg-light border-0 mt-3 rounded`}
+                          className={`${styles.card_reserva} card bg-light border-0 mt-3 rounded `}
                         >
-                          <div className=' py-3 pl-lg-2 pr-4 '>
+                          <div className=' p-3 d-flex justify-content-center flex-column align-items-center '>
                             <h4 className='card-title text-md ml-4'>
-                              {item.titulo}
+                              {item.Pasajes[0].tituloTour}
                             </h4>
-                            <div className='d-flex justify-content-lg-between   '>
-                              <div className='d-flex justify-content-between flex-xl-row flex-column '>
-                                <div className='col-md-2'>
+                            <div className='d-flex justify-content-lg-between  flex-column flex-lg-row  justify-content-center '>
+                              <div className='d-flex  flex-column flex-lg-row align-items-center '>
+                                <div className='col-md-6 d-flex justify-content-center '>
                                   <img
-                                    src={item.imagenPrincipalTour?.url}
-                                    className={`${styles.reservas_imagen}`}
+                                    src={
+                                      item.Pasajes[0].Tour.imagenPrincipalTour
+                                        .url
+                                    }
+                                    className={`${styles.reservas_imagen} `}
                                   />
                                 </div>
-                                <div className='d-flex align-items-center mt-3 mt-xl-0'>
-                                  <div className='col-md-10'>
+                                <div className='d-flex align-items-center col-md-6 mt-3 mt-xl-0  justify-content-center'>
+                                  <div className='  '>
                                     <div className='d-flex'>
                                       <span className='font-weight-bold '>
                                         Estado:
@@ -92,7 +96,7 @@ export default function MiCuenta() {
                                         {item.Pasajes.length}
                                       </span>
                                     </div>
-                                    <div className='d-flex mt-2'>
+                                    <div className='d-flex mt-2 '>
                                       <span className='font-weight-bold '>
                                         Monto:
                                       </span>
@@ -109,7 +113,7 @@ export default function MiCuenta() {
                                   </div>
                                 </div>
                               </div>
-                              <div className='d-flex align-items-end '>
+                              <div className='d-flex align-items-end  justify-content-center'>
                                 <div>
                                   <Link
                                     href={`/mi-cuenta/reservas/${item.ordenTourId}`}
