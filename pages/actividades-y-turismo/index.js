@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react"
 import Head from "next/head"
 import Script from "next/script"
 import CardBusqueda from "@/components/cards/card-busqueda"
-import GestionTours from "../../gestion-de-endpoints/GestionTours"
+import Select from "react-select"
+
 import { useActividadesServices } from "../../gestion-de-endpoints/useActividadesServices"
 import { useIncluyeServices } from "../../gestion-de-endpoints/useIncluyeServices"
 import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda"
 import CategoriasServices from "../../gestion-de-endpoints/useCategoriasServices"
 import { useRouter } from "next/router"
+import { useDepartamentosServices } from "../../gestion-de-endpoints/useDepartamentosServices"
 
 const initialState = {
   fecha_ini: "",
@@ -23,6 +25,8 @@ const isEmpty = (text = "") => {
 }
 
 export default function ActividadesYTurismo() {
+  const { dataDepartamentos, loadingGetData } = useDepartamentosServices()
+
   const [firstQuery, setFirstQuery] = useState({ isValid: false, query: {} })
 
   const [state, setState] = useState(initialState)
@@ -35,6 +39,7 @@ export default function ActividadesYTurismo() {
   const router = useRouter()
   const query = router.query
   const { dataCategoria, loadingCategoria } = CategoriasServices()
+
   const { db: dataActividades, loadingGetData: loadingActiviades } =
     useActividadesServices()
 
@@ -44,6 +49,22 @@ export default function ActividadesYTurismo() {
   const { dataBusqueda, getBusquedaAvanzada, loadingBusqueda } =
     GestionBusqueda()
 
+  const lugares =
+    !loadingGetData &&
+    dataDepartamentos.map((data) => ({
+      value: data.DeparCodi,
+      label: data.DeparNom,
+    }))
+
+  const lugar =
+    !loadingGetData &&
+    dataDepartamentos.filter((data) => data.DeparCodi === state.DeparCodi)
+
+  const lugarSelect = {
+    value: lugar[0]?.DeparCodi,
+    label: lugar[0]?.DeparNom ? lugar[0]?.DeparNom : "Lugar",
+  }
+
   useEffect(() => {
     const payload = {
       fecha_ini: query.fechaActual ? query.fechaActual : "",
@@ -51,33 +72,18 @@ export default function ActividadesYTurismo() {
       incluye: query.incluye ? query.incluye : "",
       DeparCodi: query.DeparCodi ? query.DeparCodi : "",
       actividades: query.actividades ? query.actividades : "",
-      categoria: query.categoria ? query.categoria : "",
+      categoria: query.categoria_slug ? query.categoria_slug : "",
     }
-    if (!isEmpty(query.categoria) || !isEmpty(query.DeparCodi)) {
+    if (!isEmpty(query.categoria_slug) || !isEmpty(query.DeparCodi)) {
       setState(payload)
 
       setFirstQuery({ isValid: true, query: payload })
     }
   }, [
-    Object.keys(query).length !== 0 && query?.categoria?.trim().length !== 0,
+    Object.keys(query).length !== 0 &&
+      query?.categoria_slug?.trim().length !== 0,
     Object.keys(query).length !== 0 && query?.DeparCodi?.trim().length !== 0,
   ])
-
-  useEffect(() => {
-    getBusquedaAvanzada({
-      fecha_ini: query.fechaActual ? query.fechaActual : "",
-      fecha_fina: query.fechaFinal ? query.fechaFinal : "",
-      incluye: "",
-      actividades: "",
-      categoria_slug: "",
-      precio_base: "",
-      horas: "",
-      dias: "",
-      DeparCodi: "",
-      page: 1,
-      numberPaginate: 12,
-    })
-  }, [])
 
   useEffect(() => {
     const payload = {
@@ -107,7 +113,8 @@ export default function ActividadesYTurismo() {
     isEmpty(state.fecha_fina) &&
     isEmpty(state.incluye) &&
     isEmpty(state.actividades) &&
-    isEmpty(state.categoria)
+    isEmpty(state.categoria) &&
+    isEmpty(state.DeparCodi)
 
   const buscar = () => {
     getBusquedaAvanzada({
@@ -123,24 +130,35 @@ export default function ActividadesYTurismo() {
       page: 1,
       numberPaginate: 12,
     })
+
+    router.replace({
+      query: {
+        fechaActual: state.fecha_ini,
+        fechaFinal: state.fecha_fina,
+        incluye: state.incluye,
+        actividades: state.actividades,
+        categoria_slug: state.categoria,
+        DeparCodi: state.DeparCodi,
+      },
+    })
   }
 
   const updateRouter = (name, valor) => {
-    if (valor.length === 0) {
-      const { [name]: toDelete, ...res } = query
-      router.replace({
-        query: {
-          ...res,
-        },
-      })
-    } else {
-      router.replace({
-        query: {
-          ...query,
-          [name]: valor,
-        },
-      })
-    }
+    // if (valor.length === 0) {
+    //   const { [name]: toDelete, ...res } = query
+    //   router.replace({
+    //     query: {
+    //       ...res,
+    //     },
+    //   })
+    // } else {
+    //   router.replace({
+    //     query: {
+    //       ...query,
+    //       [name]: valor,
+    //     },
+    //   })
+    // }
   }
 
   const quitar = () => {
@@ -245,6 +263,21 @@ export default function ActividadesYTurismo() {
                       />
                     </div>
                   </div>
+                </div>
+                <div className='mt-4'>
+                  {loadingGetData ? (
+                    <p>Cargando ...</p>
+                  ) : (
+                    <Select
+                      options={lugares}
+                      placeholder='Lugar'
+                      defaultValue={lugarSelect}
+                      onChange={(e) => {
+                        handleChange("DeparCodi", e.value)
+                        updateRouter("DeparCodi", e.value)
+                      }}
+                    />
+                  )}
                 </div>
 
                 <div className='mt-4'>
