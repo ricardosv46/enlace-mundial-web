@@ -24,6 +24,12 @@ export default function MiCuentaDetalle() {
     !loadingGetData && setItems(dataIdOrden)
   }, [loadingGetData])
 
+  const fechaActual = new Date(items?.fechaCompra)
+
+  const fechaCompra = `${fechaActual.getFullYear()}-${
+    fechaActual.getMonth() + 1
+  }-${fechaActual.getDate()}`
+
   return (
     <>
       <Head>
@@ -81,13 +87,13 @@ export default function MiCuentaDetalle() {
                             <span className='text-muted'>
                               Fecha de compra:{" "}
                             </span>
-                            {items?.Pasajes[0].fechaReserva}
+                            {fechaCompra}
                           </p>
                           <p>
                             <span className='text-muted'>
                               Fecha de reseva:{" "}
                             </span>
-                            {items?.Pasajes[0].fechaReserva}
+                            {items?.fechaReserva}
                           </p>
                         </div>
 

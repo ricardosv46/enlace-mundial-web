@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client"
-
 export const CREATE_ORDEN_TOUR = gql`
   mutation CreateOrdenTour($input: OrdenTourInput, $input1: MercadoPagoInput) {
     CreateOrdenTour(input: $input, input1: $input1) {
@@ -9,6 +8,8 @@ export const CREATE_ORDEN_TOUR = gql`
       estadoOrdenTour
       descuento
       total
+      fechaCompra
+      fechaReserva
       User {
         userId
         tipoUsuario

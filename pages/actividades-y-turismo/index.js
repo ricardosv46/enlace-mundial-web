@@ -28,7 +28,7 @@ export default function ActividadesYTurismo() {
   const { dataDepartamentos, loadingGetData } = useDepartamentosServices()
 
   const [firstQuery, setFirstQuery] = useState({ isValid: false, query: {} })
-
+  const [select, setSelect] = useState({ value: "", label: "" })
   const [state, setState] = useState(initialState)
 
   const handleChange = (name, valor) => {
@@ -60,7 +60,7 @@ export default function ActividadesYTurismo() {
     !loadingGetData &&
     dataDepartamentos.filter((data) => data.DeparCodi === state.DeparCodi)
 
-  const lugarSelect = {
+  let lugarSelect = {
     value: lugar[0]?.DeparCodi,
     label: lugar[0]?.DeparNom ? lugar[0]?.DeparNom : "Lugar",
   }
@@ -74,10 +74,25 @@ export default function ActividadesYTurismo() {
       actividades: query.actividades ? query.actividades : "",
       categoria: query.categoria_slug ? query.categoria_slug : "",
     }
+
     if (!isEmpty(query.categoria_slug) || !isEmpty(query.DeparCodi)) {
       setState(payload)
 
       setFirstQuery({ isValid: true, query: payload })
+    } else {
+      getBusquedaAvanzada({
+        fecha_ini: "",
+        fecha_fina: "",
+        incluye: "",
+        actividades: "",
+        categoria_slug: "",
+        precio_base: "",
+        horas: "",
+        dias: "",
+        DeparCodi: "",
+        page: 1,
+        numberPaginate: 12,
+      })
     }
   }, [
     Object.keys(query).length !== 0 &&
@@ -170,6 +185,20 @@ export default function ActividadesYTurismo() {
     router.replace({
       query: {},
     })
+    getBusquedaAvanzada({
+      fecha_ini: "",
+      fecha_fina: "",
+      incluye: "",
+      actividades: "",
+      categoria_slug: "",
+      precio_base: "",
+      horas: "",
+      dias: "",
+      DeparCodi: "",
+      page: 1,
+      numberPaginate: 12,
+    })
+    setSelect({ value: "Lugar", label: "Lugar" })
   }
 
   return (
@@ -271,7 +300,7 @@ export default function ActividadesYTurismo() {
                     <Select
                       options={lugares}
                       placeholder='Lugar'
-                      defaultValue={lugarSelect}
+                      value={select.value.length === 0 ? lugarSelect : select}
                       onChange={(e) => {
                         handleChange("DeparCodi", e.value)
                         updateRouter("DeparCodi", e.value)

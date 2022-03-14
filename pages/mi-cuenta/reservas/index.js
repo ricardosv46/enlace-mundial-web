@@ -84,7 +84,7 @@ export default function MiCuenta() {
                                       </span>
 
                                       <span className='d-inline-block ml-3'>
-                                        {item.Pasajes[0].fechaReserva}
+                                        {item.fechaReserva}
                                       </span>
                                     </div>
                                     <div className='d-flex mt-2'>

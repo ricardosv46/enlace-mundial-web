@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client"
-export const GET_ID_ORDEN_TOUR_ = gql`
+export const GET_ID_ORDEN_TOUR = gql`
   query GetIdOrdenTour($ordenTourId: Int) {
     GetIdOrdenTour(ordenTourId: $ordenTourId) {
       ordenTourId
@@ -7,6 +7,8 @@ export const GET_ID_ORDEN_TOUR_ = gql`
       nroOperacion
       estadoOrdenTour
       descuento
+      fechaCompra
+      fechaReserva
       User {
         userId
         tipoUsuario

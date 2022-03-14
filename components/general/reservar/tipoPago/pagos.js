@@ -42,9 +42,10 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
     await createOrdenTour({
       input: {
         tipoPago: 3,
-        nroOperacion: "121",
+        nroOperacion: "",
         estadoOrdenTour: "PENDIENTE",
         descuento: "0",
+        horarioTourId: carrito.duracion.horarioTourId.toString(),
         PasajesInput: datosPasaje,
       },
       input1: {

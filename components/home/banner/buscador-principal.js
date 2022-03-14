@@ -36,7 +36,7 @@ export default function BuscadorPrincipal() {
       query: {
         DeparCodi: id,
         nombreDepartamento: nombre,
-        categoria: categoria,
+        categoria_slug: categoria,
       },
     })
   }

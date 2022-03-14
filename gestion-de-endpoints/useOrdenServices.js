@@ -36,7 +36,14 @@ export const useOrdenServices = () => {
   )
 
   const createOrdenTour = async ({
-    input: { tipoPago, nroOperacion, estadoOrdenTour, descuento, PasajesInput },
+    input: {
+      tipoPago,
+      nroOperacion,
+      estadoOrdenTour,
+      descuento,
+      horarioTourId,
+      PasajesInput,
+    },
 
     input1: {
       type_save,
@@ -53,6 +60,7 @@ export const useOrdenServices = () => {
           nroOperacion: nroOperacion,
           estadoOrdenTour: estadoOrdenTour,
           descuento: descuento,
+          horarioTourId: horarioTourId,
           PasajesInput: PasajesInput,
         },
 

@@ -9,6 +9,8 @@ export const GET_ALL_ORDEN_TOUR_USER = gql`
         nroOperacion
         estadoOrdenTour
         descuento
+        fechaCompra
+        fechaReserva
         User {
           userId
           tipoUsuario
