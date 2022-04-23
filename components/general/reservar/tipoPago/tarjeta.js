@@ -24,8 +24,7 @@ const Tarjeta = ({
     securityCode: '',
     cardholderName: '',
     cardholderEmail: '',
-    identificationNumber: '',
-    show: false
+    identificationNumber: ''
   })
 
   const {
@@ -42,7 +41,6 @@ const Tarjeta = ({
       setState({ ...state, [name]: e.target.value })
     }
   }
-
   const monto = carrito?.producto.precioBaseTour * arraypasajero.length
 
   const isDisable =
@@ -148,10 +146,6 @@ const Tarjeta = ({
     })
     console.log('me ejecute mercado pago')
   }
-
-  useEffect(() => {
-    setState({ ...state, show: true })
-  }, [])
 
   return (
     <div>

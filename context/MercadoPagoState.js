@@ -1,21 +1,21 @@
-import React, { createContext, useContext, useState } from 'react'
-import useMercadoPago from '../hooks/useMercadoPago'
+// import React, { createContext, useContext, useState } from 'react'
+// import useMercadoPago from '../hooks/useMercadoPago'
 
-const MercadoPagoContext = createContext()
+// const MercadoPagoContext = createContext()
 
-const MercadoPagoState = ({ children }) => {
-  const [monto, setMonto] = useState(180)
-  const resultPayment = useMercadoPago({ monto })
+// const MercadoPagoState = ({ children }) => {
+//   const [monto, setMonto] = useState(180)
+//   const resultPayment = useMercadoPago({ monto })
 
-  console.log({ resultPayment })
+//   console.log({ resultPayment })
 
-  return (
-    <MercadoPagoContext.Provider value={{ monto, setMonto }}>
-      {children}
-    </MercadoPagoContext.Provider>
-  )
-}
+//   return (
+//     <MercadoPagoContext.Provider value={{ monto, setMonto }}>
+//       {children}
+//     </MercadoPagoContext.Provider>
+//   )
+// }
 
-export default MercadoPagoState
+// export default MercadoPagoState
 
-export const useMercadoPagoContext = () => useContext(MercadoPagoContext)
+// export const useMercadoPagoContext = () => useContext(MercadoPagoContext)

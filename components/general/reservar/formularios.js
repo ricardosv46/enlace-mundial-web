@@ -227,7 +227,7 @@ export default function Formularios({
                     <Link href='/terminos-y-condiciones'>
                       Términos y Condiciones Generales
                     </Link>{' '}
-                    de Enlace Mundial
+                    de Enlace Mundial Perú
                   </div>
                 ) : (
                   ''
