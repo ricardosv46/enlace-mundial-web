@@ -47,6 +47,7 @@ const Pagos = ({
   }
 
   const pagar = async ({ payment_method_id, token, installments }) => {
+    console.log('se esta ejecuntando el pago papurri')
     await createOrdenTour({
       input: {
         tipoPago: 3,
