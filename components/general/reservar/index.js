@@ -5,7 +5,12 @@ import { useRouter } from 'next/router'
 import Calendar from './calendar'
 import GestionHorariosTour from '../../../gestion-de-endpoints/GestionHorariosTour'
 
-export default function Reservar({ producto, tourId, setPrecioReal }) {
+export default function Reservar({
+  producto,
+  tourId,
+  setPrecioReal,
+  precioReal
+}) {
   const router = useRouter()
   const today = new Date()
 
@@ -73,6 +78,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
   function guardarCarrito() {
     let item = {
       producto,
+      precioReal,
       tourId,
       fecha: fechaSeleccionada,
       nroAdultos,
