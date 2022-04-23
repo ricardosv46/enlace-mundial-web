@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/router"
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-import Calendar from "./calendar"
-import GestionHorariosTour from "../../../gestion-de-endpoints/GestionHorariosTour"
+import Calendar from './calendar'
+import GestionHorariosTour from '../../../gestion-de-endpoints/GestionHorariosTour'
 
 export default function Reservar({ producto, tourId, setPrecioReal }) {
   const router = useRouter()
@@ -12,23 +12,23 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
   const day = today.getDate()
   const month = today.getMonth() + 1
   const ani = today.getFullYear()
-  const fechita = String(ani + "-" + month + "-" + day)
+  const fechita = String(ani + '-' + month + '-' + day)
   const fecha_actual = new Date(fechita)
 
-  const [mes, setMes] = useState("")
+  const [mes, setMes] = useState('')
   const [anio, setAnio] = useState(today.getFullYear())
-  const [fechaSeleccionada, setFechaSeleccionada] = useState("")
+  const [fechaSeleccionada, setFechaSeleccionada] = useState('')
   const [fecha, setFecha] = useState(new Date())
   const [nroAdultos, setNroAdultos] = useState(0)
   const [nroMenores, setNroMenores] = useState(0)
   const [pintarDias, setPintarDias] = useState([])
   const [EsfechaValida, setEsFechaValida] = useState(false)
   const [cupos, setCupos] = useState(0)
-  const [duracion, setDuracion] = useState("No tiene fecha asignada")
+  const [duracion, setDuracion] = useState('No tiene fecha asignada')
   const { dataHorario, loading } = GestionHorariosTour({
     tourId,
     mes,
-    anio,
+    anio
   })
 
   function asignarFecha(fecha) {
@@ -40,7 +40,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
     !loading &&
       dataHorario.map((item) => {
         if (
-          item?.estado === "Activado" &&
+          item?.estado === 'Activado' &&
           Date.parse(item?.fecha) >= Date.parse(fecha_actual)
         ) {
           setPintarDias((pintar) => [...pintar, item.fecha])
@@ -50,7 +50,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
 
   // console.log("que fue manito", pintarDias);
   function disminuir(tipo) {
-    if (tipo === "adultos") {
+    if (tipo === 'adultos') {
       nroAdultos >= 1
         ? setNroAdultos(nroAdultos - 1)
         : setNroAdultos(nroAdultos)
@@ -63,7 +63,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
 
   function aumentar(tipo) {
     if (nroAdultos + nroMenores < cupos) {
-      if (tipo === "adultos") {
+      if (tipo === 'adultos') {
         setNroAdultos(nroAdultos + 1)
       } else {
         setNroMenores(nroMenores + 1)
@@ -77,14 +77,21 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
       fecha: fechaSeleccionada,
       nroAdultos,
       nroMenores,
-      duracion,
+      duracion
     }
 
-    localStorage.setItem("carrito", JSON.stringify(item))
+    localStorage.setItem('carrito', JSON.stringify(item))
 
     // console.log(JSON.parse(localStorage.getItem("carrito")));
 
-    router.push("/finalizar-reserva")
+    router.push('/finalizar-reserva')
+  }
+  const isDisable = () => {
+    if (nroAdultos + nroMenores === 0) {
+      return true
+    } else {
+      return false
+    }
   }
 
   return (
@@ -128,7 +135,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
               <button
                 className='sidebar-reservar__btn-reservar'
                 type='button'
-                onClick={() => disminuir("adultos")}
+                onClick={() => disminuir('adultos')}
               >
                 <i className='fas fa-minus'></i>
               </button>
@@ -138,7 +145,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
               <button
                 className='sidebar-reservar__btn-reservar'
                 type='button'
-                onClick={() => aumentar("adultos")}
+                onClick={() => aumentar('adultos')}
               >
                 <i className='fas fa-plus'></i>
               </button>
@@ -155,7 +162,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
               <button
                 className='sidebar-reservar__btn-reservar'
                 type='button'
-                onClick={() => disminuir("menores")}
+                onClick={() => disminuir('menores')}
               >
                 <i className='fas fa-minus'></i>
               </button>
@@ -165,7 +172,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
               <button
                 className='sidebar-reservar__btn-reservar'
                 type='button'
-                onClick={() => aumentar("menores")}
+                onClick={() => aumentar('menores')}
               >
                 <i className='fas fa-plus'></i>
               </button>
@@ -179,8 +186,8 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
                 <div className='sidebar-reservar__duracion-info py-1 px-3 '>
                   <span>
                     {duracion?.hora &&
-                      `De  ${duracion?.hora?.split(",")[0]} a ${
-                        duracion?.hora?.split(",")[1]
+                      `De  ${duracion?.hora?.split(',')[0]} a ${
+                        duracion?.hora?.split(',')[1]
                       }`}
                   </span>
                 </div>
@@ -200,6 +207,7 @@ export default function Reservar({ producto, tourId, setPrecioReal }) {
 
               <button
                 type='button'
+                disabled={isDisable()}
                 className='btn btn-primary btn-block text-uppercase mt-2'
                 onClick={guardarCarrito}
               >

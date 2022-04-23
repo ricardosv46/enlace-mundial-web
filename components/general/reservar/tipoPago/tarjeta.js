@@ -1,34 +1,35 @@
-import React, { useState } from "react"
-import Image from "next/image"
-import Script from "next/script"
+import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Script from 'next/script'
 
-const isEmpty = (text = "") => {
+const isEmpty = (text = '') => {
   return text.trim().length === 0
 }
 
 const Tarjeta = ({
   pagar,
+  tipoPago,
   carrito,
   arraypasajero,
   setTarjeta,
   setPagos,
   comprobante,
   setComprobante,
-  alerta,
+  alerta
 }) => {
   const [state, setState] = useState({
-    cardNumber: "",
-    securityCode: "",
-    cardholderName: "",
-    cardholderEmail: "",
-    identificationNumber: "",
+    cardNumber: '',
+    securityCode: '',
+    cardholderName: '',
+    cardholderEmail: '',
+    identificationNumber: ''
   })
   const {
     cardNumber,
     securityCode,
     cardholderName,
     cardholderEmail,
-    identificationNumber,
+    identificationNumber
   } = state
 
   const onChange = (name) => {
@@ -47,53 +48,53 @@ const Tarjeta = ({
     isEmpty(identificationNumber)
 
   const onload = () => {
-    const mp = new MercadoPago("TEST-0ff678c6-d074-4dab-8b05-076734e5e8d2")
+    const mp = new MercadoPago('TEST-0ff678c6-d074-4dab-8b05-076734e5e8d2')
     const cardForm = mp.cardForm({
       amount: monto.toString(),
       autoMount: true,
       form: {
-        id: "form-checkout",
+        id: 'form-checkout',
         cardholderName: {
-          id: "form-checkout__cardholderName",
-          placeholder: "Titular de la tarjeta",
+          id: 'form-checkout__cardholderName',
+          placeholder: 'Titular de la tarjeta'
         },
         cardholderEmail: {
-          id: "form-checkout__cardholderEmail",
-          placeholder: "E-mail",
+          id: 'form-checkout__cardholderEmail',
+          placeholder: 'E-mail'
         },
         cardNumber: {
-          id: "form-checkout__cardNumber",
-          placeholder: "Número de la tarjeta",
+          id: 'form-checkout__cardNumber',
+          placeholder: 'Número de la tarjeta'
         },
         cardExpirationDate: {
-          id: "form-checkout__cardExpirationDate",
-          placeholder: "Data de vencimiento (MM/YY)",
+          id: 'form-checkout__cardExpirationDate',
+          placeholder: 'Data de vencimiento (MM/YY)'
         },
         securityCode: {
-          id: "form-checkout__securityCode",
-          placeholder: "Código de seguridad",
+          id: 'form-checkout__securityCode',
+          placeholder: 'Código de seguridad'
         },
         installments: {
-          id: "form-checkout__installments",
-          placeholder: "Cuotas",
+          id: 'form-checkout__installments',
+          placeholder: 'Cuotas'
         },
         identificationType: {
-          id: "form-checkout__identificationType",
-          placeholder: "Tipo de documento",
+          id: 'form-checkout__identificationType',
+          placeholder: 'Tipo de documento'
         },
         identificationNumber: {
-          id: "form-checkout__identificationNumber",
-          placeholder: "Número de documento",
+          id: 'form-checkout__identificationNumber',
+          placeholder: 'Número de documento'
         },
         issuer: {
-          id: "form-checkout__issuer",
-          placeholder: "Banco emisor",
-        },
+          id: 'form-checkout__issuer',
+          placeholder: 'Banco emisor'
+        }
       },
       callbacks: {
         onFormMounted: (error) => {
-          if (error) return console.warn("Form Mounted handling error: ", error)
-          console.log("Form mounted")
+          if (error) return console.warn('Form Mounted handling error: ', error)
+          console.log('Form mounted')
         },
         onSubmit: (event) => {
           event.preventDefault()
@@ -105,13 +106,13 @@ const Tarjeta = ({
             token,
             installments,
             identificationNumber,
-            identificationType,
+            identificationType
           } = cardForm.getCardFormData()
 
-          fetch("/process_payment", {
-            method: "POST",
+          fetch('/process_payment', {
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json'
             },
             body: JSON.stringify({
               token,
@@ -119,28 +120,32 @@ const Tarjeta = ({
               payment_method_id,
               transaction_amount: Number(amount),
               installments: Number(installments),
-              description: "Compra de Pasajes",
+              description: 'Compra de Pasajes',
               payer: {
                 email,
                 identification: {
                   type: identificationType,
-                  number: identificationNumber,
-                },
-              },
-            }),
+                  number: identificationNumber
+                }
+              }
+            })
           })
           pagar({
             token,
             payment_method_id,
-            installments: Number(installments),
+            installments: Number(installments)
           })
         },
         onFetching: (resource) => {
-          console.log("Fetching resource: ", resource)
-        },
-      },
+          console.log('Fetching resource: ', resource)
+        }
+      }
     })
   }
+
+  useEffect(() => {
+    onload()
+  }, [])
 
   return (
     <div>
@@ -160,7 +165,7 @@ const Tarjeta = ({
             name='cardNumber'
             id='form-checkout__cardNumber'
             className='form-control'
-            onChange={onChange("cardNumber")}
+            onChange={onChange('cardNumber')}
           />
         </div>
         <div className='form-group'>
@@ -177,7 +182,7 @@ const Tarjeta = ({
             name='cardholderName'
             id='form-checkout__cardholderName'
             className='form-control'
-            onChange={onChange("cardholderName")}
+            onChange={onChange('cardholderName')}
           />
         </div>
         <div className='form-group'>
@@ -186,7 +191,7 @@ const Tarjeta = ({
             name='cardholderEmail'
             id='form-checkout__cardholderEmail'
             className='form-control'
-            onChange={onChange("cardholderEmail")}
+            onChange={onChange('cardholderEmail')}
           />
         </div>
         <div className='form-group'>
@@ -195,7 +200,7 @@ const Tarjeta = ({
             name='securityCode'
             id='form-checkout__securityCode'
             className='form-control'
-            onChange={onChange("securityCode")}
+            onChange={onChange('securityCode')}
           />
         </div>
         <div className='form-group'>
@@ -203,7 +208,7 @@ const Tarjeta = ({
             name='issuer'
             id='form-checkout__issuer'
             className='form-control'
-            onChange={onChange("issuer")}
+            onChange={onChange('issuer')}
           ></select>
         </div>
         <div className='form-group'>
@@ -219,7 +224,7 @@ const Tarjeta = ({
             name='identificationNumber'
             id='form-checkout__identificationNumber'
             className='form-control'
-            onChange={onChange("identificationNumber")}
+            onChange={onChange('identificationNumber')}
           />
         </div>
         <div className='form-group'>
@@ -263,8 +268,6 @@ const Tarjeta = ({
           </button>
         </div>
       </form>
-
-      <Script src='https://sdk.mercadopago.com/js/v2' onLoad={onload} />
     </div>
   )
 }

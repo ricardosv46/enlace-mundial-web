@@ -1,18 +1,18 @@
-import React, { useState } from "react"
-import Image from "next/image"
-import styles from "../../styles.module.css"
-import Check from "../../../../public/imagenes/pagos/Check"
-import { useRouter } from "next/router"
-import Tarjeta from "./tarjeta"
-import Yape from "./yape"
-import Transferencia from "./transferencia"
-import { useOrdenServices } from "../../../../gestion-de-endpoints/useOrdenServices"
+import React, { useState } from 'react'
+import Image from 'next/image'
+import styles from '../../styles.module.css'
+import Check from '../../../../public/imagenes/pagos/Check'
+import { useRouter } from 'next/router'
+import Tarjeta from './tarjeta'
+import Yape from './yape'
+import Transferencia from './transferencia'
+import { useOrdenServices } from '../../../../gestion-de-endpoints/useOrdenServices'
 
 const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
   const router = useRouter()
   const [comprobante, setComprobante] = useState(false)
   const [pagoCompleto, setPagoCompleto] = useState(false)
-  const [alerta, setAlerta] = useState("")
+  const [alerta, setAlerta] = useState('')
   const [imagePrevios, setImagePrevios] = useState(null)
   const { createOrdenTour } = useOrdenServices()
   const changeImage = (e) => {
@@ -26,12 +26,12 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
     }
   }
   const datosPasaje = arraypasajero.map((data) => ({
-    estadoPasaje: "NO ASISTIO",
+    estadoPasaje: 'NO ASISTIO',
     nombresVisitante: data.nombres,
     apellidosVisitante: data.apellidos,
     edadVisitante: data.edad,
     fechaReserva: carrito.fecha,
-    tourId: carrito.tourId,
+    tourId: carrito.tourId
   }))
 
   const subir = () => {
@@ -42,24 +42,24 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
     await createOrdenTour({
       input: {
         tipoPago: 3,
-        nroOperacion: "",
-        estadoOrdenTour: "PENDIENTE",
-        descuento: "0",
+        nroOperacion: '',
+        estadoOrdenTour: 'PENDIENTE',
+        descuento: '0',
         horarioTourId: carrito.duracion.horarioTourId.toString(),
-        PasajesInput: datosPasaje,
+        PasajesInput: datosPasaje
       },
       input1: {
         type_save: 0,
         source_id: token,
         payment_method_id: payment_method_id,
         installments: installments,
-        tipo_tarjeta: 0,
-      },
+        tipo_tarjeta: 0
+      }
     }).then((res) => {
-      if (res === "exito") {
+      if (res === 'exito') {
         setPagoCompleto(true)
       } else {
-        setAlerta("No se genero el pago vuelva a intentarlo")
+        setAlerta('No se genero el pago vuelva a intentarlo')
       }
     })
   }
@@ -76,7 +76,7 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
           </div>
           <button
             className='btn btn-primary mt-4'
-            onClick={() => router.push("/")}
+            onClick={() => router.push('/')}
           >
             Ir a Inicio
           </button>
@@ -111,7 +111,7 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
                       alt='image'
                     />
                   )}
-                </div>{" "}
+                </div>{' '}
                 <button className='btn btn-danger mt-4'>Reintentar</button>
               </div>
               <div className='d-flex justify-content-between mt-4'>
@@ -146,8 +146,9 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
             </div>
           ) : (
             <>
-              {tipoPago === "tarjeta" && (
+              {tipoPago === 'tarjeta' && (
                 <Tarjeta
+                  tipoPago={tipoPago}
                   alerta={alerta}
                   pagar={pagar}
                   setTarjeta={setTarjeta}

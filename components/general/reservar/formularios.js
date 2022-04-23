@@ -1,16 +1,16 @@
-import react, { useEffect, useState } from "react"
-import Link from "next/link"
+import react, { useEffect, useState } from 'react'
+import Link from 'next/link'
 
-import { Tabs, Form } from "react-bootstrap"
-import Tab from "react-bootstrap/Tab"
+import { Tabs, Form } from 'react-bootstrap'
+import Tab from 'react-bootstrap/Tab'
 
 const datosBase = {
-  nombres: "",
-  apellidos: "",
-  tipoDocumento: "DNI",
+  nombres: '',
+  apellidos: '',
+  tipoDocumento: 'DNI',
   nroDocumento: undefined,
-  edad: "",
-  comentarios: "",
+  edad: '',
+  comentarios: ''
 }
 
 export default function Formularios({
@@ -19,12 +19,12 @@ export default function Formularios({
   arraypasajero,
   setArrayPasajero,
   setPagos,
-  setTarjeta,
+  setTarjeta
 }) {
   const [pasajeroActual, setPasajeroActual] = useState(1)
   const [error, setError] = useState(null)
   const [datosPasajero, setDatosPasajero] = useState({
-    ...datosBase,
+    ...datosBase
   })
 
   const [terminos, setTerminos] = useState(false)
@@ -32,7 +32,7 @@ export default function Formularios({
   const actualizarInput = (e) => {
     setDatosPasajero({
       ...datosPasajero,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     })
   }
 
@@ -50,7 +50,7 @@ export default function Formularios({
         apellidos,
         tipoDocumento,
         nroDocumento,
-        comentarios,
+        comentarios
       })
     }
   }
@@ -66,7 +66,7 @@ export default function Formularios({
         apellidos,
         tipoDocumento,
         nroDocumento,
-        comentarios,
+        comentarios
       }
 
       items[index] = datos
@@ -77,7 +77,7 @@ export default function Formularios({
           setPagos(true)
           setTarjeta(true)
         } else {
-          setError("Debe aceptar los téminos y condiciones")
+          setError('Debe aceptar los téminos y condiciones')
         }
       } else {
         setPasajeroActual(pasajeroActual + 1)
@@ -85,18 +85,18 @@ export default function Formularios({
         /* Completar los campos con datos anteriores */
         if (items[pasajeroActual].validado) {
           setDatosPasajero({
-            ...items[pasajeroActual],
+            ...items[pasajeroActual]
           })
         } else {
           setDatosPasajero({
-            ...datosBase,
+            ...datosBase
           })
         }
 
         setError(null)
       }
     } else {
-      setError("Por favor complete todos los campos requeridos.")
+      setError('Por favor complete todos los campos requeridos.')
     }
   }
 
@@ -131,7 +131,6 @@ export default function Formularios({
                       />
                     </div>
                   </div>
-
                   <div className='col-md-6'>
                     <div className='form-group'>
                       <label>
@@ -170,7 +169,7 @@ export default function Formularios({
                   <div className='col-md-6'>
                     <div className='form-group'>
                       <label>
-                        Número de documento{" "}
+                        Número de documento{' '}
                         <span className='text-danger'>*</span>
                       </label>
                       <input
@@ -224,14 +223,14 @@ export default function Formularios({
                       type='checkbox'
                       onChange={(e) => setTerminos(e.target.checked)}
                     />
-                    Acepto los{" "}
+                    Acepto los{' '}
                     <Link href='/terminos-y-condiciones'>
                       Términos y Condiciones Generales
-                    </Link>{" "}
+                    </Link>{' '}
                     de Enlace Mundial
                   </div>
                 ) : (
-                  ""
+                  ''
                 )}
 
                 {/* Alerta de error */}
@@ -240,14 +239,14 @@ export default function Formularios({
                     <p>{error}</p>
                   </div>
                 ) : (
-                  ""
+                  ''
                 )}
 
                 <div
                   className={`d-flex ${
                     pasajeroActual > 1
-                      ? "justify-content-between"
-                      : "justify-content-end"
+                      ? 'justify-content-between'
+                      : 'justify-content-end'
                   }`}
                 >
                   {/* Botón atrás */}
@@ -263,7 +262,7 @@ export default function Formularios({
                       Atrás
                     </button>
                   ) : (
-                    ""
+                    ''
                   )}
 
                   <button
@@ -275,8 +274,8 @@ export default function Formularios({
                     }}
                   >
                     {pasajeroActual >= items.length
-                      ? "Ir a pagar"
-                      : "Siguiente"}
+                      ? 'Ir a pagar'
+                      : 'Siguiente'}
                     <span className='d-inline-block ml-2'>
                       <i className='fas fa-chevron-right'></i>
                     </span>
@@ -284,10 +283,10 @@ export default function Formularios({
                 </div>
               </form>
             ) : (
-              ""
+              ''
             )
           })
-        : ""}
+        : ''}
     </>
   )
 }

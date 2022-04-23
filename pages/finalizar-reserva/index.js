@@ -1,28 +1,28 @@
-import react, { useContext, useEffect, useState } from "react"
-import Head from "next/head"
-import Image from "next/image"
-import Moment from "react-moment"
+import react, { useContext, useEffect, useState } from 'react'
+import Head from 'next/head'
+import Image from 'next/image'
+import Moment from 'react-moment'
 
-import styles from "./styles.module.scss"
+import styles from './styles.module.scss'
 
-import { formatoAPrecio } from "../../utilidades/formato-precio"
+import { formatoAPrecio } from '../../utilidades/formato-precio'
 
-import { Tabs, Form } from "react-bootstrap"
-import Tab from "react-bootstrap/Tab"
+import { Tabs, Form } from 'react-bootstrap'
+import Tab from 'react-bootstrap/Tab'
 
-import Formularios from "../../components/general/reservar/formularios"
-import Pagos from "../../components/general/reservar/tipoPago/pagos"
-import TipoPago from "../../components/general/reservar/tipoPago"
-import { ContextAuth } from "../../context/ContextAuth"
-import { useRouter } from "next/router"
+import Formularios from '../../components/general/reservar/formularios'
+import Pagos from '../../components/general/reservar/tipoPago/pagos'
+import TipoPago from '../../components/general/reservar/tipoPago'
+import { ContextAuth } from '../../context/ContextAuth'
+import { useRouter } from 'next/router'
 
 const datosFormulario = {
   validado: false,
-  nombres: "",
-  apellidos: "",
-  tipoDocumento: "DNI",
+  nombres: '',
+  apellidos: '',
+  tipoDocumento: 'DNI',
   nroDocumento: undefined,
-  comentarios: "",
+  comentarios: ''
 }
 
 export default function Home() {
@@ -47,7 +47,7 @@ export default function Home() {
   const [arraypasajero, setArrayPasajero] = useState([])
 
   const [tarjeta, setTarjeta] = useState(false)
-  const [tipoPago, setTipoPago] = useState("tarjeta")
+  const [tipoPago, setTipoPago] = useState('tarjeta')
   const [pagos, setPagos] = useState(false)
   const [carrito, setCarrito] = useState({})
   const [formularios, setFormularios] = useState([])
@@ -55,7 +55,7 @@ export default function Home() {
   // Asignar formularios
   useEffect(() => {
     setTimeout(() => {
-      const carritoLocal = JSON.parse(localStorage.getItem("carrito"))
+      const carritoLocal = JSON.parse(localStorage.getItem('carrito'))
 
       setCarrito(carritoLocal)
 
@@ -65,7 +65,7 @@ export default function Home() {
       for (let i = 0; i < carritoLocal.nroAdultos; i++) {
         let form = {
           ...datosFormulario,
-          tipoPersona: "ADULTO",
+          tipoPersona: 'ADULTO'
         }
 
         forms.push(form)
@@ -74,7 +74,7 @@ export default function Home() {
       for (let i = 0; i < carritoLocal.nroMenores; i++) {
         let form = {
           ...datosFormulario,
-          tipoPersona: "MENOR",
+          tipoPersona: 'MENOR'
         }
 
         forms.push(form)
@@ -98,6 +98,7 @@ export default function Home() {
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
+        <script src='https://sdk.mercadopago.com/js/v2'></script>
       </Head>
 
       <main className={`${styles.finalizarReserva} mt-5`}>
@@ -120,9 +121,9 @@ export default function Home() {
                       title={
                         !pagos
                           ? formularios.length > 1
-                            ? "Datos de los pasajeros"
-                            : "Datos del pasajero"
-                          : "Datos de la Tarjeta"
+                            ? 'Datos de los pasajeros'
+                            : 'Datos del pasajero'
+                          : 'Datos de la Tarjeta'
                       }
                     >
                       <section className='p-1 p-lg-3'>
@@ -137,7 +138,7 @@ export default function Home() {
                               arraypasajero={arraypasajero}
                             />
                           ) : (
-                            "Debe agregar un tour a su carrito"
+                            'Debe agregar un tour a su carrito'
                           )
                         ) : null}
 
@@ -173,15 +174,13 @@ export default function Home() {
                 <div
                   style={{
                     backgroundImage:
-                      "url(" +
-                      carrito?.producto?.imagenPrincipalTour?.url +
-                      ")",
+                      'url(' + carrito?.producto?.imagenPrincipalTour?.url + ')'
                   }}
                   className={`${styles.finalizarReserva_imagenTour} bg-info`}
                 ></div>
                 <div className='card-body'>
                   <h2 className='border-bottom pb-2'>
-                    {carrito.producto ? carrito.producto.tituloTour : ""}
+                    {carrito.producto ? carrito.producto.tituloTour : ''}
                   </h2>
                   <div className='mt-2 border-bottom pb-3'>
                     <span className='text-muted'>Fecha de reserva: </span>
@@ -247,7 +246,7 @@ export default function Home() {
                         </h3>
                       </div>
                     ) : (
-                      ""
+                      ''
                     )}
                   </div>
                 </div>

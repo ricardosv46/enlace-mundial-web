@@ -1,12 +1,12 @@
-import React from "react"
-import Image from "next/image"
+import React from 'react'
+import Image from 'next/image'
 
 const TipoPago = ({
   setTarjeta,
   tipoPago,
   setTipoPago,
   setPagos,
-  arraypasajero,
+  arraypasajero
 }) => {
   const pagar = () => {
     setTarjeta(true)
@@ -22,7 +22,7 @@ const TipoPago = ({
               name='pago'
               id='yape'
               value='yape'
-              onClick={() => setTipoPago("yape")}
+              onClick={() => setTipoPago('yape')}
             />
             <div className='ml-2 pt-1'>
               <Image
@@ -46,7 +46,7 @@ const TipoPago = ({
               name='pago'
               id='transferencia'
               value='transferencia'
-              onClick={() => setTipoPago("transferencia")}
+              onClick={() => setTipoPago('transferencia')}
             />
             <div className='ml-2 pt-1'>
               <Image
@@ -69,7 +69,7 @@ const TipoPago = ({
               name='pago'
               id='tarjeta'
               value='tarjeta'
-              onClick={() => setTipoPago("tarjeta")}
+              onClick={() => setTipoPago('tarjeta')}
             />
             <div className='ml-2 pt-1'>
               <Image
@@ -104,7 +104,7 @@ const TipoPago = ({
           type='button'
           className='btn btn-info text-white px-4 mt-4'
           onClick={pagar}
-          disabled={tipoPago === ""}
+          disabled={tipoPago === ''}
         >
           Ir a Pagar
         </button>
