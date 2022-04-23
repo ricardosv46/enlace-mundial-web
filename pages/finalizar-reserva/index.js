@@ -15,9 +15,6 @@ import Pagos from '../../components/general/reservar/tipoPago/pagos'
 import TipoPago from '../../components/general/reservar/tipoPago'
 import { ContextAuth } from '../../context/ContextAuth'
 import { useRouter } from 'next/router'
-import MercadoPagoState, {
-  useMercadoPagoContext
-} from '../../context/MercadoPagoState'
 
 const datosFormulario = {
   validado: false,
@@ -54,16 +51,6 @@ export default function Home() {
   const [pagos, setPagos] = useState(false)
   const [carrito, setCarrito] = useState({})
   const [formularios, setFormularios] = useState([])
-
-  const data = useMercadoPagoContext()
-
-  console.log({ data })
-
-  // const monto = carrito?.producto.precioBaseTour * arraypasajero.length
-
-  useEffect(() => {
-    // setMonto(monto)
-  }, [tarjeta])
 
   // Asignar formularios
   useEffect(() => {
@@ -102,7 +89,7 @@ export default function Home() {
   }
 
   return (
-    <MercadoPagoState>
+
       <div>
         <Head>
           <title>Luna de miel - Enlace mundial</title>
@@ -112,7 +99,7 @@ export default function Home() {
             rel='stylesheet'
             href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
           />
-          {/* <script src="https://sdk.mercadopago.com/js/v2"></script> */}
+          <script src="https://sdk.mercadopago.com/js/v2"></script>
         </Head>
 
         <main className={`${styles.finalizarReserva} mt-5`}>
@@ -306,6 +293,5 @@ export default function Home() {
           </section>
         </main>
       </div>
-    </MercadoPagoState>
   )
 }

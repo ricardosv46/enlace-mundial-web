@@ -43,7 +43,7 @@ const Tarjeta = ({
     }
   }
 
-  // const monto = carrito?.producto.precioBaseTour * arraypasajero.length
+  const monto = carrito?.producto.precioBaseTour * arraypasajero.length
 
   const isDisable =
     isEmpty(cardNumber) ||
@@ -52,110 +52,110 @@ const Tarjeta = ({
     isEmpty(cardholderEmail) ||
     isEmpty(identificationNumber)
 
-  // const onload = () => {
-  //   const mp = new MercadoPago('APP_USR-b2edd7f8-1b69-4481-ab35-1d612bf1634c')
-  //   const cardForm = mp.cardForm({
-  //     amount: monto.toString(),
-  //     autoMount: true,
-  //     form: {
-  //       id: 'form-checkout',
-  //       cardholderName: {
-  //         id: 'form-checkout__cardholderName',
-  //         placeholder: 'Titular de la tarjeta'
-  //       },
-  //       cardholderEmail: {
-  //         id: 'form-checkout__cardholderEmail',
-  //         placeholder: 'E-mail'
-  //       },
-  //       cardNumber: {
-  //         id: 'form-checkout__cardNumber',
-  //         placeholder: 'Número de la tarjeta'
-  //       },
-  //       cardExpirationDate: {
-  //         id: 'form-checkout__cardExpirationDate',
-  //         placeholder: 'Data de vencimiento (MM/YY)'
-  //       },
-  //       securityCode: {
-  //         id: 'form-checkout__securityCode',
-  //         placeholder: 'Código de seguridad'
-  //       },
-  //       installments: {
-  //         id: 'form-checkout__installments',
-  //         placeholder: 'Cuotas'
-  //       },
-  //       identificationType: {
-  //         id: 'form-checkout__identificationType',
-  //         placeholder: 'Tipo de documento'
-  //       },
-  //       identificationNumber: {
-  //         id: 'form-checkout__identificationNumber',
-  //         placeholder: 'Número de documento'
-  //       },
-  //       issuer: {
-  //         id: 'form-checkout__issuer',
-  //         placeholder: 'Banco emisor'
-  //       }
-  //     },
-  //     callbacks: {
-  //       onFormMounted: (error) => {
-  //         if (error) return console.warn('Form Mounted handling error: ', error)
-  //         console.log('Form mounted')
-  //       },
-  //       onSubmit: (event) => {
-  //         event.preventDefault()
-  //         const {
-  //           paymentMethodId: payment_method_id,
-  //           issuerId: issuer_id,
-  //           cardholderEmail: email,
-  //           amount,
-  //           token,
-  //           installments,
-  //           identificationNumber,
-  //           identificationType
-  //         } = cardForm.getCardFormData()
+  const onload = () => {
+    const mp = new MercadoPago('APP_USR-b2edd7f8-1b69-4481-ab35-1d612bf1634c')
+    const cardForm = mp.cardForm({
+      amount: monto.toString(),
+      autoMount: true,
+      form: {
+        id: 'form-checkout',
+        cardholderName: {
+          id: 'form-checkout__cardholderName',
+          placeholder: 'Titular de la tarjeta'
+        },
+        cardholderEmail: {
+          id: 'form-checkout__cardholderEmail',
+          placeholder: 'E-mail'
+        },
+        cardNumber: {
+          id: 'form-checkout__cardNumber',
+          placeholder: 'Número de la tarjeta'
+        },
+        cardExpirationDate: {
+          id: 'form-checkout__cardExpirationDate',
+          placeholder: 'Data de vencimiento (MM/YY)'
+        },
+        securityCode: {
+          id: 'form-checkout__securityCode',
+          placeholder: 'Código de seguridad'
+        },
+        installments: {
+          id: 'form-checkout__installments',
+          placeholder: 'Cuotas'
+        },
+        identificationType: {
+          id: 'form-checkout__identificationType',
+          placeholder: 'Tipo de documento'
+        },
+        identificationNumber: {
+          id: 'form-checkout__identificationNumber',
+          placeholder: 'Número de documento'
+        },
+        issuer: {
+          id: 'form-checkout__issuer',
+          placeholder: 'Banco emisor'
+        }
+      },
+      callbacks: {
+        onFormMounted: (error) => {
+          if (error) return console.warn('Form Mounted handling error: ', error)
+          console.log('Form mounted')
+        },
+        onSubmit: (event) => {
+          event.preventDefault()
+          const {
+            paymentMethodId: payment_method_id,
+            issuerId: issuer_id,
+            cardholderEmail: email,
+            amount,
+            token,
+            installments,
+            identificationNumber,
+            identificationType
+          } = cardForm.getCardFormData()
 
-  //         fetch('/process_payment', {
-  //           method: 'POST',
-  //           headers: {
-  //             'Content-Type': 'application/json'
-  //           },
-  //           body: JSON.stringify({
-  //             token,
-  //             issuer_id,
-  //             payment_method_id,
-  //             transaction_amount: Number(amount),
-  //             installments: Number(installments),
-  //             description: 'Compra de Pasajes',
-  //             payer: {
-  //               email,
-  //               identification: {
-  //                 type: identificationType,
-  //                 number: identificationNumber
-  //               }
-  //             }
-  //           })
-  //         })
-  //         pagar({
-  //           token,
-  //           payment_method_id,
-  //           installments: Number(installments)
-  //         })
-  //       },
-  //       onFetching: (resource) => {
-  //         console.log('Fetching resource: ', resource)
-  //       }
-  //     }
-  //   })
-  //   console.log('me ejecute mercado pago')
-  // }
+          fetch('/process_payment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              token,
+              issuer_id,
+              payment_method_id,
+              transaction_amount: Number(amount),
+              installments: Number(installments),
+              description: 'Compra de Pasajes',
+              payer: {
+                email,
+                identification: {
+                  type: identificationType,
+                  number: identificationNumber
+                }
+              }
+            })
+          })
+          pagar({
+            token,
+            payment_method_id,
+            installments: Number(installments)
+          })
+        },
+        onFetching: (resource) => {
+          console.log('Fetching resource: ', resource)
+        }
+      }
+    })
+    console.log('me ejecute mercado pago')
+  }
 
   useEffect(() => {
     setState({ ...state, show: true })
   }, [])
 
-  // useEffect(() => {
-  //   onload()
-  // }, [show])
+  useEffect(() => {
+    onload()
+  }, [show])
 
   return (
     <div>
