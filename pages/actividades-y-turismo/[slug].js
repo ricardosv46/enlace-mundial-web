@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react"
-import { useRouter } from "next/router"
-import Head from "next/head"
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
 // import Link from "next/link";
-import Script from "next/script"
-import tours from "../../datos-paginas/api/tours"
-import Modal from "react-bootstrap/Modal"
-import Gallery from "components/gallery/index"
-import Reservar from "@/components/general/reservar"
-import MenuInterior from "@/components/servicios/submenu"
-import HeaderInterior from "@/components/general/publicaciones/header-interior"
-import request from "graphql-request"
-import { GET_SLUG_TOUR, URL } from "../../endpoints y url/endpoints"
-import ToursSimilares from "../../components/tours/similares"
-import { NextSeo } from "next-seo"
+import Script from 'next/script'
+import tours from '../../datos-paginas/api/tours'
+import Modal from 'react-bootstrap/Modal'
+import Gallery from 'components/gallery/index'
+import Reservar from '@/components/general/reservar'
+import MenuInterior from '@/components/servicios/submenu'
+import HeaderInterior from '@/components/general/publicaciones/header-interior'
+import request from 'graphql-request'
+import { GET_SLUG_TOUR, URL } from '../../endpoints y url/endpoints'
+import ToursSimilares from '../../components/tours/similares'
+import { NextSeo } from 'next-seo'
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_TOUR, {
-    slugTour: params.slug,
+    slugTour: params.slug
   })
   const data = res?.GetSlugTour
   return {
     props: {
-      data: data,
-    },
+      data: data
+    }
   }
 }
 
@@ -49,8 +49,8 @@ export default function Home({ data }) {
       currentPosition >= 4000 ? setSidebarFixed(false) : setSidebarFixed(true)
     }
 
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [scrollTop])
 
   return (
@@ -67,16 +67,16 @@ export default function Home({ data }) {
       </Head>
       <NextSeo
         openGraph={{
-          type: "website",
+          type: 'website',
           url: `https://enlace-mundial-peru.vercel.app/actividades-y-turismo/${slug}`,
           title: data?.tituloTour,
           description: data?.descripcionCortaTour,
           images: [
             {
-              url: data?.imagenPrincipalTour?.url,
-            },
+              url: data?.imagenPrincipalTour?.url
+            }
           ],
-          site_name: data?.tituloTour,
+          site_name: data?.tituloTour
         }}
       />
 
@@ -89,19 +89,20 @@ export default function Home({ data }) {
       >
         <section>
           <div className='d-flex justify-content-end  '>
-            {" "}
+            {' '}
             <p
               className='font-weight-bold btn  mr-2'
-              style={{ fontSize: "2rem", color: "#61be00" }}
+              style={{ fontSize: '2rem', color: '#61be00' }}
               onClick={cerrarModalReserva}
             >
               x
-            </p>{" "}
+            </p>{' '}
           </div>
           <Reservar
             producto={data}
             tourId={data.tourId}
             setPrecioReal={setPrecioReal}
+            precioReal={precioReal}
           />
         </section>
       </Modal>
@@ -136,8 +137,8 @@ export default function Home({ data }) {
                 <section
                   className={
                     sidebarFixed
-                      ? "sidebar-reservar sidebar-reservar--fixed"
-                      : "sidebar-reservar"
+                      ? 'sidebar-reservar sidebar-reservar--fixed'
+                      : 'sidebar-reservar'
                   }
                 >
                   <h3 className='sidebar-reservar__titulo font-weight-bold text-uppercase text-secondary my-0'>
@@ -148,6 +149,7 @@ export default function Home({ data }) {
                     producto={data}
                     tourId={data.tourId}
                     setPrecioReal={setPrecioReal}
+                    precioReal={precioReal}
                   />
                 </section>
               </div>
@@ -155,7 +157,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Detalles */}
-          <section id='detalles' style={{ scrollMarginTop: "170px" }}>
+          <section id='detalles' style={{ scrollMarginTop: '170px' }}>
             <div className='container-fluid bg-light mt-4 py-2'>
               <div className='row'>
                 <div className='col-md-8'>
@@ -198,7 +200,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Itinerario */}
-          <section id='itinerario' style={{ scrollMarginTop: "250px" }}>
+          <section id='itinerario' style={{ scrollMarginTop: '250px' }}>
             <div className='container-fluid bg-light mt-4 py-2'>
               <div className='row'>
                 <div className='col-md-8'>
@@ -220,7 +222,7 @@ export default function Home({ data }) {
 
                       <div className='py-2'>
                         <ul className='list-unstyled'>
-                          {data.itinerarioTour.split(",").map((item) => {
+                          {data.itinerarioTour.split(',').map((item) => {
                             return (
                               <li
                                 className='l-miel-itinerario__list-item d-flex mb-2'
@@ -243,7 +245,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Incluye */}
-          <section id='incluye' style={{ scrollMarginTop: "250px" }}>
+          <section id='incluye' style={{ scrollMarginTop: '250px' }}>
             <div className='container-fluid bg-light mt-4 py-2'>
               <div className='row'>
                 <div className='col-md-8'>
@@ -287,7 +289,7 @@ export default function Home({ data }) {
 
                       <div className='py-2'>
                         <ul className='list-unstyled'>
-                          {data.noIncluyeTour.split(",").map((item) => {
+                          {data.noIncluyeTour.split(',').map((item) => {
                             return (
                               <li
                                 key={item}
@@ -336,7 +338,7 @@ export default function Home({ data }) {
           </section>
 
           {/* Notas */}
-          <section id='notas' style={{ scrollMarginTop: "250px" }}>
+          <section id='notas' style={{ scrollMarginTop: '250px' }}>
             <div className='container-fluid bg-light mt-4 py-2'>
               <div className='row'>
                 <div className='col-md-8'>
@@ -358,7 +360,7 @@ export default function Home({ data }) {
 
                       <div className='py-2'>
                         <ul className='list-unstyled'>
-                          {data.notasTour.split(",").map((item) => {
+                          {data.notasTour.split(',').map((item) => {
                             return (
                               <li
                                 key={item}
@@ -384,7 +386,7 @@ export default function Home({ data }) {
 
                       <div className='py-2'>
                         <ul className='list-unstyled'>
-                          {data.politicasTour.split(",").map((item) => {
+                          {data.politicasTour.split(',').map((item) => {
                             return (
                               <li
                                 key={item}
@@ -440,7 +442,7 @@ export default function Home({ data }) {
                 <div
                   className='col-md-8'
                   id='tours-similares'
-                  style={{ scrollMarginTop: "300px" }}
+                  style={{ scrollMarginTop: '300px' }}
                 >
                   <ToursSimilares deparCodi={data?.Departamento?.DeparCodi} />
                 </div>

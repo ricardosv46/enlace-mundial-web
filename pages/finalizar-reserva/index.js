@@ -238,13 +238,23 @@ export default function Home() {
                     {carrito.producto ? (
                       <div>
                         <span className='small text-muted'>
-                          {formatoAPrecio(carrito.producto.precioBaseTour)} c/u
+                          {formatoAPrecio(
+                            carrito.precioReal
+                              ? carrito.precioReal
+                              : carrito.producto.precioBaseTour
+                          )}{' '}
+                          c/u
                         </span>
                         <h3>
-                          {formatoAPrecio(
-                            carrito.producto.precioBaseTour *
-                              (carrito.nroAdultos + carrito.nroMenores)
-                          )}
+                          {carrito.precioReal
+                            ? formatoAPrecio(
+                                carrito.precioReal *
+                                  (carrito.nroAdultos + carrito.nroMenores)
+                              )
+                            : formatoAPrecio(
+                                carrito.producto.precioBaseTour *
+                                  (carrito.nroAdultos + carrito.nroMenores)
+                              )}
                         </h3>
                       </div>
                     ) : (
