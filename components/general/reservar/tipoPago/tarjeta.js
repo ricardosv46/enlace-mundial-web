@@ -153,12 +153,9 @@ const Tarjeta = ({
     setState({ ...state, show: true })
   }, [])
 
-  useEffect(() => {
-    onload()
-  }, [show])
-
   return (
     <div>
+      <Script src='https://sdk.mercadopago.com/js/v2' onLoad={onload} />
       <div className='d-flex justify-content-center pb-5'>
         <Image
           width={396}
