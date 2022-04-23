@@ -8,7 +8,15 @@ import Yape from './yape'
 import Transferencia from './transferencia'
 import { useOrdenServices } from '../../../../gestion-de-endpoints/useOrdenServices'
 
-const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
+const Pagos = ({
+  pagos,
+  tipoPago,
+  setPagos,
+  setTarjeta,
+  carrito,
+  arraypasajero,
+  tarjeta
+}) => {
   const router = useRouter()
   const [comprobante, setComprobante] = useState(false)
   const [pagoCompleto, setPagoCompleto] = useState(false)
@@ -148,6 +156,8 @@ const Pagos = ({ tipoPago, setPagos, setTarjeta, carrito, arraypasajero }) => {
             <>
               {tipoPago === 'tarjeta' && (
                 <Tarjeta
+                  pagos={pagos}
+                  tarjeta={tarjeta}
                   tipoPago={tipoPago}
                   alerta={alerta}
                   pagar={pagar}

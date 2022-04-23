@@ -154,6 +154,8 @@ export default function Home() {
 
                         {tarjeta && (
                           <Pagos
+                            pagos={pagos}
+                            tarjeta={tarjeta}
                             arraypasajero={arraypasajero}
                             carrito={carrito}
                             tipoPago={tipoPago}

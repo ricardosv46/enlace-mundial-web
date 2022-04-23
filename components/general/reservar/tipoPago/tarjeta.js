@@ -7,7 +7,9 @@ const isEmpty = (text = '') => {
 }
 
 const Tarjeta = ({
+  pagos,
   pagar,
+  tarjeta,
   tipoPago,
   carrito,
   arraypasajero,
@@ -22,14 +24,16 @@ const Tarjeta = ({
     securityCode: '',
     cardholderName: '',
     cardholderEmail: '',
-    identificationNumber: ''
+    identificationNumber: '',
+    show: false
   })
   const {
     cardNumber,
     securityCode,
     cardholderName,
     cardholderEmail,
-    identificationNumber
+    identificationNumber,
+    show
   } = state
 
   const onChange = (name) => {
@@ -141,11 +145,16 @@ const Tarjeta = ({
         }
       }
     })
+    console.log('me ejecute mercado pago')
   }
 
   useEffect(() => {
-    onload()
+    setState({ ...state, show: true })
   }, [])
+
+  useEffect(() => {
+    onload()
+  }, [show])
 
   return (
     <div>
