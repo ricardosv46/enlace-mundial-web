@@ -237,48 +237,29 @@ export default function Home() {
                     {carrito.producto ? (
                       <div>
                         <span className='small text-muted'>
-                          {formatoAPrecio(carrito.producto.precioBaseTour)} c/u
+                          {formatoAPrecio(
+                            carrito.precioReal
+                              ? carrito.precioReal
+                              : carrito.producto.precioBaseTour
+                          )}{' '}
+                          c/u
                         </span>
                         <h3>
-                          {formatoAPrecio(
-                            carrito.producto.precioBaseTour *
-                              (carrito.nroAdultos + carrito.nroMenores)
-                          )}
+                          {carrito.precioReal
+                            ? formatoAPrecio(
+                                carrito.precioReal *
+                                  (carrito.nroAdultos + carrito.nroMenores)
+                              )
+                            : formatoAPrecio(
+                                carrito.producto.precioBaseTour *
+                                  (carrito.nroAdultos + carrito.nroMenores)
+                              )}
                         </h3>
                       </div>
                     ) : (
                       ''
                     )}
                   </div>
-                </div>
-                <div className='d-flex justify-content-between align-items-center mt-2 pb-3 pr-md-3 border-bottom'>
-                  <span className='text-muted'>TOTAL</span>
-
-                  {carrito.producto ? (
-                    <div>
-                      <span className='small text-muted'>
-                        {formatoAPrecio(
-                          carrito.precioReal
-                            ? carrito.precioReal
-                            : carrito.producto.precioBaseTour
-                        )}{' '}
-                        c/u
-                      </span>
-                      <h3>
-                        {carrito.precioReal
-                          ? formatoAPrecio(
-                              carrito.precioReal *
-                                (carrito.nroAdultos + carrito.nroMenores)
-                            )
-                          : formatoAPrecio(
-                              carrito.producto.precioBaseTour *
-                                (carrito.nroAdultos + carrito.nroMenores)
-                            )}
-                      </h3>
-                    </div>
-                  ) : (
-                    ''
-                  )}
                 </div>
               </div>
             </div>
