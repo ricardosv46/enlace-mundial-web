@@ -48,7 +48,7 @@ const Tarjeta = ({
     isEmpty(identificationNumber)
 
   const onload = () => {
-    const mp = new MercadoPago('TEST-0ff678c6-d074-4dab-8b05-076734e5e8d2')
+    const mp = new MercadoPago('APP_USR-b2edd7f8-1b69-4481-ab35-1d612bf1634c')
     const cardForm = mp.cardForm({
       amount: monto.toString(),
       autoMount: true,
