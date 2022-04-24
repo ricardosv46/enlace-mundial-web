@@ -12,9 +12,13 @@ export const mercadoPagoFormConfig = {
     id: 'form-checkout__cardNumber',
     placeholder: 'Número de la tarjeta'
   },
-  cardExpirationDate: {
-    id: 'form-checkout__cardExpirationDate',
-    placeholder: 'Data de vencimiento (MM/YY)'
+  cardExpirationMonth: {
+    id: 'form-checkout__cardExpirationMonth',
+    placeholder: 'Mes de vencimiento'
+  },
+  cardExpirationYear: {
+    id: 'form-checkout__cardExpirationYear',
+    placeholder: 'Año de vencimiento'
   },
   securityCode: {
     id: 'form-checkout__securityCode',

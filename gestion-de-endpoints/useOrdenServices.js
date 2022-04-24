@@ -1,25 +1,25 @@
-import { useMutation, useQuery } from "@apollo/client"
-import { CREATE_ORDEN_TOUR } from "../graphql/mutation/CreateOrdenTour"
-import { GET_ALL_ORDEN_TOUR_USER } from "../graphql/queries/getAllOrdenTourUser"
+import { useMutation, useQuery } from '@apollo/client'
+import { CREATE_ORDEN_TOUR } from '../graphql/mutation/CreateOrdenTour'
+import { GET_ALL_ORDEN_TOUR_USER } from '../graphql/queries/getAllOrdenTourUser'
 
 //
 export const useOrdenServices = () => {
   const {
     data,
     loading: loadingGetData,
-    refetch,
+    refetch
   } = useQuery(GET_ALL_ORDEN_TOUR_USER, {
-    fetchPolicy: "network-only",
+    fetchPolicy: 'network-only',
     variables: {
       numberPaginate: 12,
-      page: 1,
+      page: 1
     },
     onError: (err) => {
       console.log(
-        "onError getAllData Orden tour user",
+        'onError getAllData Orden tour user',
         err?.graphQLErrors[0]?.debugMessage
       )
-    },
+    }
   })
   const dataOrden = data && data?.GetAllOrdenTourUser
 
@@ -27,11 +27,8 @@ export const useOrdenServices = () => {
     CREATE_ORDEN_TOUR,
     {
       onError: (err) => {
-        console.log(
-          "onError Create Usuario",
-          err?.graphQLErrors[0]?.debugMessage
-        )
-      },
+        console.log('onError Create Orden', err?.graphQLErrors[0]?.debugMessage)
+      }
     }
   )
 
@@ -42,7 +39,7 @@ export const useOrdenServices = () => {
       estadoOrdenTour,
       descuento,
       horarioTourId,
-      PasajesInput,
+      PasajesInput
     },
 
     input1: {
@@ -50,8 +47,8 @@ export const useOrdenServices = () => {
       source_id,
       payment_method_id,
       installments,
-      tipo_tarjeta,
-    },
+      tipo_tarjeta
+    }
   }) => {
     const res = await CreateOrdenTour({
       variables: {
@@ -61,7 +58,7 @@ export const useOrdenServices = () => {
           estadoOrdenTour: estadoOrdenTour,
           descuento: descuento,
           horarioTourId: horarioTourId,
-          PasajesInput: PasajesInput,
+          PasajesInput: PasajesInput
         },
 
         input1: {
@@ -69,19 +66,19 @@ export const useOrdenServices = () => {
           source_id: source_id,
           payment_method_id: payment_method_id,
           installments: installments,
-          tipo_tarjeta: tipo_tarjeta,
-        },
-      },
+          tipo_tarjeta: tipo_tarjeta
+        }
+      }
     })
     refetch()
-    console.log("CreateOrdenTour", res)
-    if (res.data?.CreateOrdenTour) return "exito"
+    console.log('CreateOrdenTour', res)
+    if (res.data?.CreateOrdenTour) return 'exito'
   }
 
   return {
     dataOrden,
     loadingGetData,
     loadingCreate,
-    createOrdenTour,
+    createOrdenTour
   }
 }
