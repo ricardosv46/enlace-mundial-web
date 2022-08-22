@@ -1,6 +1,6 @@
 import Head from "next/head"
 import GestionLuna from "../../gestion-de-endpoints/GestionLunaMiel"
-import Banner from "components/luna-de-miel/Banner"
+import Banner from "@/components/luna-de-miel/Banner"
 import CardLunaDeMiel from "components/cards/card-luna-de-miel"
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
         <Banner />
 
         <section className='l-miel__items mt-5'>
-          <h2 className='subtitulo-general'>Luna de miel</h2>
+          <h2 className='subtitulo-general subtitulo-general--border-bottom'>Luna de miel</h2>
 
           <div className='container mt-5'>
             <div className='row'>

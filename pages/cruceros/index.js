@@ -28,7 +28,7 @@ export default function Home() {
         <section className='container carousel-app'>
           <div className='row'>
             <div className='col-md-12'>
-              <h2 className='subtitulo-general'>Viaje en crucero</h2>
+              <h2 className='subtitulo-general subtitulo-general--border-bottom'>Viaje en crucero</h2>
             </div>
           </div>
 

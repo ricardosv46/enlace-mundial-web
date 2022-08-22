@@ -1,15 +1,13 @@
-// @import '@/styles/variables.scss';
-
 .banner {
   height: 450px;
-
   background-image: url("/imagenes/home/banner.jpg"); // 1280×853
   background-position: center;
-  background-repeat: repeat-x;
+  background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
 
   @media (min-width: 768px) {
-    height: 60%;
+    height: 60vh;
   }
 
   @media (min-width: 1200px) {
@@ -18,13 +16,10 @@
 
   &::before {
     content: "";
-
-    background-color: rgba($dark, 0.1);
-
+    background-color: rgba($dark, 0.3);
     width: 100%;
     height: 100%;
-
-    position: relative;
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
