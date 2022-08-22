@@ -1,4 +1,3 @@
-import Head from "next/script"
 import Script from "next/script"
 
 import "../styles/globals.css"
@@ -17,6 +16,8 @@ import client from "../apollo"
 import { ContextAuth } from "../context/ContextAuth"
 import { useEffect, useState } from "react"
 import Facebook from "../components/facebook"
+import { ScreenProvider } from '../context/screen/providers'
+import { NextHead } from '../components/head'
 
 function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = useState(false)
@@ -35,23 +36,26 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div>
-      <Head>
+      {/* <Head>
         <link
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
-      </Head>
+      </Head> */}
       <Facebook />
       <ApolloProvider client={client}>
-        <ContextAuth.Provider
-          value={{ auth, setAuth, dataUser, setDataUser, show, setShow }}
-        >
-          <Header />
+        <ScreenProvider>
+          <ContextAuth.Provider
+            value={{ auth, setAuth, dataUser, setDataUser, show, setShow }}
+          >
+            <NextHead />
+            <Header />
 
-          <Component {...pageProps} />
+            <Component {...pageProps} />
 
-          <Footer />
-        </ContextAuth.Provider>
+            <Footer />
+          </ContextAuth.Provider>
+        </ScreenProvider>
       </ApolloProvider>
 
       <Script

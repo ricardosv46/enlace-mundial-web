@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { request } from "graphql-request"
 import Head from "next/head"
 import Script from "next/script"
@@ -11,6 +11,7 @@ import CarouselBlog from "../components/home/carousel-blog/index"
 import Estadisticas from "../components/home/estadisticas/index"
 import CarouselTestimonios from "../components/home/carousel-testimonios/index"
 import { useGetImagenesQuery } from "../generated/graphql"
+import { useScreenContext } from '../context/screen'
 import Image from "next/image"
 import GestionLuna from "../gestion-de-endpoints/GestionLunaMiel"
 
@@ -91,6 +92,12 @@ import GestionLuna from "../gestion-de-endpoints/GestionLunaMiel"
 // }
 
 export default function Home() {
+  const { DispatchScreen } = useScreenContext()
+  
+  useEffect(() => {
+    DispatchScreen({ type: 'ChangeSubTittle', payload: '' })
+  }, [])
+
   // console.log('los posts es ', pepe)
   // const { data } = useGetImagenesQuery();
 
@@ -98,7 +105,7 @@ export default function Home() {
 
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>Enlace mundial</title>
         <meta name='description' content='Enlace mundial' />
 
@@ -107,7 +114,7 @@ export default function Home() {
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
-      </Head>
+      </Head> */}
 
       <main>
         <Banner />
