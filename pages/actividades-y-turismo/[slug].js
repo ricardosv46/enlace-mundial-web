@@ -9,6 +9,8 @@ import Gallery from 'components/gallery/index'
 import Reservar from '@/components/general/reservar'
 import MenuInterior from '@/components/servicios/submenu'
 import HeaderInterior from '@/components/general/publicaciones/header-interior'
+import { ItemDetalle } from '../../components/actividades/slug/DetalleItem'
+import { OtherItem } from '../../components/actividades/slug/OtherItems'
 import request from 'graphql-request'
 import { GET_SLUG_TOUR, URL } from '../../endpoints y url/endpoints'
 import ToursSimilares from '../../components/tours/similares'
@@ -27,7 +29,7 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function Home({ data }) {
-  // console.log("valor de data", data);
+  console.log("valor de data", data);
   const router = useRouter()
 
   const [mostrarModal, setMostrarModal] = useState(false)
@@ -109,7 +111,8 @@ export default function Home({ data }) {
 
       <main className='actividades-turismo'>
         <section className='mt-2'>
-          <div className='container'>
+          {/* subheader Desktop */}
+          <div className='container '>
             <div className='row'>
               <div className='col-md-8'>
                 <HeaderInterior
@@ -157,256 +160,168 @@ export default function Home({ data }) {
           </section>
 
           {/* Detalles */}
-          <section id='detalles' style={{ scrollMarginTop: '170px' }}>
-            <div className='container-fluid bg-light mt-4 py-2'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <h2 className='subtitulo-general text-uppercase my-0'>
-                    Detalles
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div className='container mt-4'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <h5 className='card-title font-weight-bold'>
-                        {data.tituloTour}
-                      </h5>
-
-                      <div className='py-2 px-3'>
-                        <p className='card-text'>{data.descripcionCortaTour}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className='card mt-4'>
-                    <div className='card-body'>
-                      <h5 className='card-title font-weight-bold'>
-                        Punto de partida
-                      </h5>
-
-                      <div className='py-2 px-3'>
-                        <p className='card-text'>{data.puntoPartidaTour}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <ItemDetalle id="detalles" style={{ scrollMarginTop: '170px' }} data={data} />
 
           {/* Itinerario */}
-          <section id='itinerario' style={{ scrollMarginTop: '250px' }}>
-            <div className='container-fluid bg-light mt-4 py-2'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <h2 className='subtitulo-general text-uppercase my-0'>
-                    Itinerario
-                  </h2>
+          <OtherItem id="itinerario" style={{ scrollMarginTop: '250px' }} tittle="Itinerario"  >
+            <div className='card'>
+              <div className='card-body'>
+                <h5 className='card-title text-secondary font-weight-bold'>
+                  Itinerario
+                </h5>
+
+                <div className='py-2'>
+                  <ul className='list-unstyled'>
+                    {data.itinerarioTour.split(',').map((item) => {
+                      return (
+                        <li
+                          className='l-miel-itinerario__list-item d-flex mb-2'
+                          key={item}
+                        >
+                          <span className='text-primary d-inline-block mr-2'>
+                            <i className='fas fa-check'></i>
+                          </span>
+                          {item}
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </div>
               </div>
             </div>
-
-            <div className='container mt-4'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Itinerario
-                      </h5>
-
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data.itinerarioTour.split(',').map((item) => {
-                            return (
-                              <li
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                                key={item}
-                              >
-                                <span className='text-primary d-inline-block mr-2'>
-                                  <i className='fas fa-check'></i>
-                                </span>
-                                {item}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          </OtherItem>
 
           {/* Incluye */}
-          <section id='incluye' style={{ scrollMarginTop: '250px' }}>
-            <div className='container-fluid bg-light mt-4 py-2'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <h2 className='subtitulo-general text-uppercase my-0'>
-                    Incluye
-                  </h2>
+          <OtherItem id="incluye" style={{ scrollMarginTop: '250px' }} tittle="Incluye">
+            <div className='card'>
+              <div className='card-body'>
+                <h5 className='card-title text-secondary font-weight-bold'>
+                  Incluye
+                </h5>
+
+                <div className='py-2'>
+                  <ul className='list-unstyled'>
+                    {data?.IncluyeTour?.map((item) => {
+                      return (
+                        <li
+                          className='l-miel-itinerario__list-item d-flex mb-2'
+                          key={item?.incluyeId}
+                        >
+                          <span className='text-primary d-inline-block mr-2'>
+                            <i className='far fa-check-circle'></i>
+                          </span>
+                          {item?.descripcionIncluye}
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+
+                <h5 className='card-title text-secondary font-weight-bold'>
+                  No incluye
+                </h5>
+
+                <div className='py-2'>
+                  <ul className='list-unstyled'>
+                    {data.noIncluyeTour.split(',').map((item) => {
+                      return (
+                        <li
+                          key={item}
+                          className='l-miel-itinerario__list-item d-flex mb-2'
+                        >
+                          <span className='text-danger d-inline-block mr-2'>
+                            <i className='far fa-check-circle'></i>
+                          </span>
+                          {item}
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </div>
               </div>
             </div>
 
-            <div className='container mt-4'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Incluye
-                      </h5>
+            <div className='card mt-4'>
+              <div className='card-body'>
+                <h5 className='card-title text-secondary font-weight-bold'>
+                  Actividades
+                </h5>
 
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data?.IncluyeTour?.map((item) => {
-                            return (
-                              <li
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                                key={item?.incluyeId}
-                              >
-                                <span className='text-primary d-inline-block mr-2'>
-                                  <i className='far fa-check-circle'></i>
-                                </span>
-                                {item?.descripcionIncluye}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        No incluye
-                      </h5>
-
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data.noIncluyeTour.split(',').map((item) => {
-                            return (
-                              <li
-                                key={item}
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                              >
-                                <span className='text-danger d-inline-block mr-2'>
-                                  <i className='far fa-check-circle'></i>
-                                </span>
-                                {item}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className='card mt-4'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Actividades
-                      </h5>
-
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data?.ActividadesTour?.map((item) => {
-                            return (
-                              <li
-                                key={item.actividadId}
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                              >
-                                <span className='text-primary d-inline-block mr-2'>
-                                  <i className='far fa-check-circle'></i>
-                                </span>
-                                {item?.descripcion_actividad}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                <div className='py-2'>
+                  <ul className='list-unstyled'>
+                    {data?.ActividadesTour?.map((item) => {
+                      return (
+                        <li
+                          key={item.actividadId}
+                          className='l-miel-itinerario__list-item d-flex mb-2'
+                        >
+                          <span className='text-primary d-inline-block mr-2'>
+                            <i className='far fa-check-circle'></i>
+                          </span>
+                          {item?.descripcion_actividad}
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </div>
               </div>
             </div>
-          </section>
+          </OtherItem>
 
           {/* Notas */}
-          <section id='notas' style={{ scrollMarginTop: '250px' }}>
-            <div className='container-fluid bg-light mt-4 py-2'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <h2 className='subtitulo-general text-uppercase my-0'>
-                    Notas
-                  </h2>
+          <OtherItem id="notas" style={{ scrollMarginTop: '250px' }} tittle="Notas">
+            <div className='card'>
+              <div className='card-body'>
+                <h5 className='card-title text-secondary font-weight-bold'>
+                  Notas
+                </h5>
+
+                <div className='py-2'>
+                  <ul className='list-unstyled'>
+                    {data.notasTour.split(',').map((item) => {
+                      return (
+                        <li
+                          key={item}
+                          className='l-miel-itinerario__list-item d-flex mb-2'
+                        >
+                          <span className='text-primary d-inline-block mr-2'>
+                            <i className='fas fa-check'></i>
+                          </span>
+                          {item}
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </div>
               </div>
             </div>
 
-            <div className='container mt-4'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Notas
-                      </h5>
+            <div className='card mt-4'>
+              <div className='card-body'>
+                <h5 className='card-title text-secondary font-weight-bold'>
+                  Políticas de cancelación
+                </h5>
 
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data.notasTour.split(',').map((item) => {
-                            return (
-                              <li
-                                key={item}
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                              >
-                                <span className='text-primary d-inline-block mr-2'>
-                                  <i className='fas fa-check'></i>
-                                </span>
-                                {item}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className='card mt-4'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Políticas de cancelación
-                      </h5>
-
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data.politicasTour.split(',').map((item) => {
-                            return (
-                              <li
-                                key={item}
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                              >
-                                <span className='text-primary d-inline-block mr-2'>
-                                  <i className='fas fa-check'></i>
-                                </span>
-                                {item}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                <div className='py-2'>
+                  <ul className='list-unstyled'>
+                    {data.politicasTour.split(',').map((item) => {
+                      return (
+                        <li
+                          key={item}
+                          className='l-miel-itinerario__list-item d-flex mb-2'
+                        >
+                          <span className='text-primary d-inline-block mr-2'>
+                            <i className='fas fa-check'></i>
+                          </span>
+                          {item}
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </div>
               </div>
             </div>
-          </section>
+          </OtherItem>
 
           {/* Reservar mobile */}
           <section className='container mt-3 d-md-none'>
