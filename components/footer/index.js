@@ -56,13 +56,13 @@ export default function Banner() {
 
                       <ul className="list-unstyled mt-4">
                         <li>
-                          <Link href="">Noticias</Link>
+                          <Link href="#">Noticias</Link>
                         </li>
                         <li>
-                          <Link href="">Blog</Link>
+                          <Link href="#">Blog</Link>
                         </li>
                         <li>
-                          <Link href="">Videos</Link>
+                          <Link href="#">Videos</Link>
                         </li>
                       </ul>
                     </div>
@@ -72,16 +72,16 @@ export default function Banner() {
 
                       <ul className="list-unstyled mt-4">
                         <li>
-                          <Link href="">Noticias</Link>
+                          <Link href="#">Noticias</Link>
                         </li>
                         <li>
-                          <Link href="">Blog</Link>
+                          <Link href="#">Blog</Link>
                         </li>
                         <li>
-                          <Link href="">Videos</Link>
+                          <Link href="#">Videos</Link>
                         </li>
                         <li>
-                          <Link href="">Preguntas frecuentes</Link>
+                          <Link href="#">Preguntas frecuentes</Link>
                         </li>
                       </ul>
                     </div>

@@ -15,6 +15,7 @@ export default function BuscadorPrincipal() {
   const categorias =
     !loadingCategoria &&
     dataCategoria.map((data) => ({
+      // id: data.slugCategoria,
       value: data.slugCategoria,
       label: data.tituloCategoria,
     }))
@@ -60,6 +61,7 @@ export default function BuscadorPrincipal() {
 
       <div>
         <Select
+          instanceId="long-value-select"
           options={lugares}
           placeholder='Lugar'
           onChange={(e) => {
@@ -70,6 +72,7 @@ export default function BuscadorPrincipal() {
 
       <div>
         <Select
+          instanceId="long-value-select"
           options={categorias}
           placeholder='Categorías'
           onChange={(e) => setCategoria(e.value)}

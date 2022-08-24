@@ -118,7 +118,7 @@ export default function Home() {
 
       <main>
         <Banner />
-        {/* <Image src="/imagenes/cruceros/banner.jpg" width="500" height="300"/> */}
+
         <ToursPopulares />
 
         <DestinosDestacados />
