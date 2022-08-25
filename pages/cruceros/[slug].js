@@ -8,7 +8,7 @@ import { GET_SLUG_CRUCERO, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
 import CrucerosRelacionadoss from "../../components/cruceros/cruceros-relacionados"
 import MenuInteriorCrucero from "../../components/servicios/submenu/menuInteriorCrucero"
-import HeaderInterior from "../../components/general/publicaciones/header-interior"
+import { TittleOferta, SubMenuTittle } from '../../components/common'
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_CRUCERO, {
     slugCrucero: params.slug,
@@ -57,19 +57,37 @@ export default function Home({ data }) {
 
       <main className='l-miel'>
         <section className='l-miel__items mt-3'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-md-8'>
-                <HeaderInterior
-                  precioBase={data?.precioBaseCrucero}
-                  head='Viaje en crucero'
-                  titulo={data?.tituloCrucero}
-                />
-              </div>
-            </div>
-          </div>
 
-          <MenuInteriorCrucero />
+          {/* Cabezera, precio por persona */}
+          <TittleOferta
+            precioBase={data?.precioBaseCrucero}
+            head='Viaje en crucero'
+            titulo={data?.tituloCrucero}
+          />
+          {/* sub cabezera items */}
+          <SubMenuTittle data={[
+            {
+              texto: "Detalles",
+              url: "#detalles",
+            },
+            {
+              texto: "Itinerario",
+              url: "#itinerario",
+            },
+            {
+              texto: "Incluye ",
+              url: "#incluye",
+            },
+            {
+              texto: "Notas",
+              url: "#notas",
+            },
+            {
+              texto: "Cruceros similares",
+              url: "#cruceros-similares",
+            },
+          ]} />
+          {/* <MenuInteriorCrucero /> */}
 
           {/* Info */}
           <section className='container mt-5'>

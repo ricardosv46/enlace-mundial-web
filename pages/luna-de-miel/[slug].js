@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import Head from "next/head"
 import Gallery from "components/gallery/index"
 import ModalContacto from "components/general/modal-contacto"
-
+import { TittleOferta, SubMenuTittle } from '../../components/common'
 import { GET_SLUG_LUNA_MIEL, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
 import LunasRelacionadas from "../../components/luna-de-miel/lunas-relacionadas"
@@ -57,19 +57,37 @@ export default function Home({ data }) {
 
       <main className='l-miel'>
         <section className='l-miel__items mt-3'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-md-8'>
-                <HeaderInterior
-                  precioBase={data?.precioBaseLuna}
-                  head='Luna de miel'
-                  titulo={data?.tituloLuna}
-                />
-              </div>
-            </div>
-          </div>
 
-          <MenuInteriorLunaMiel />
+          {/* Cabezera, precio por persona */}
+          <TittleOferta
+            precioBase={data?.precioBaseLuna}
+            head='Luna de miel'
+            titulo={data?.tituloLuna}
+          />
+          {/* sub cabezera items */}
+          <SubMenuTittle data={[
+            {
+              texto: "Detalles",
+              url: "#detalles",
+            },
+            {
+              texto: "Itinerario",
+              url: "#itinerario",
+            },
+            {
+              texto: "Incluye ",
+              url: "#incluye",
+            },
+            {
+              texto: "Notas",
+              url: "#notas",
+            },
+            {
+              texto: "Lunas de Miel similares",
+              url: "#lunas-similares",
+            },
+          ]} />
+          {/* <MenuInteriorLunaMiel /> */}
 
           {/* Info */}
           <section className='container mt-5'>

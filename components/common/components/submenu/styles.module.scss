@@ -1,0 +1,19 @@
+.headerInterior {
+  &_mobile {
+    button {
+      padding: 0.3rem 1.5rem;
+    }
+  }
+
+  &_link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    @media (min-width: 768px) {
+      margin-right: 3rem;
+    }
+  }
+}

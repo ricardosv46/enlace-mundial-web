@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-// import Link from "next/link";
+import { TittleOferta, SubMenuTittle } from '../../components/common'
 import Script from 'next/script'
 import tours from '../../datos-paginas/api/tours'
 import Modal from 'react-bootstrap/Modal'
@@ -29,7 +29,6 @@ export async function getServerSideProps({ params }) {
 }
 
 export default function Home({ data }) {
-  console.log("valor de data", data);
   const router = useRouter()
 
   const [mostrarModal, setMostrarModal] = useState(false)
@@ -110,23 +109,40 @@ export default function Home({ data }) {
       </Modal>
 
       <main className='actividades-turismo'>
-        <section className='mt-2'>
-          {/* subheader Desktop */}
-          <div className='container '>
-            <div className='row'>
-              <div className='col-md-8'>
-                <HeaderInterior
-                  slug={data.tourTitulo}
-                  precioBase={data?.precioBaseTour}
-                  precioReal={precioReal}
-                  head='TOUR'
-                  titulo={data?.tituloTour}
-                />
-              </div>
-            </div>
-          </div>
+        <section className='mt-3'>
 
-          <MenuInterior />
+          {/* subheader Desktop */}
+          {/* Cabezera, precio por persona */}
+          <TittleOferta
+            precioBase={data?.precioBaseTour}
+            head="Tour"
+            titulo={data?.tituloTour}
+          />
+          
+          {/* sub cabezera items */}
+          <SubMenuTittle data={[
+            {
+              texto: "Detalles",
+              url: "#detalles",
+            },
+            {
+              texto: "Itinerario",
+              url: "#itinerario",
+            },
+            {
+              texto: "Incluye ",
+              url: "#incluye",
+            },
+            {
+              texto: "Notas",
+              url: "#notas",
+            },
+            {
+              texto: "Tours similares",
+              url: "#tours-similares",
+            },
+          ]} />
+          {/* <MenuInterior /> */}
 
           {/* Info */}
           <section className='container mt-5'>
