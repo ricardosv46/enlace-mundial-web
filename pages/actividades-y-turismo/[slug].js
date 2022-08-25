@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { TittleOferta, SubMenuTittle } from '../../components/common'
+import { TittleOferta, SubMenuTittle, ItemMap } from '../../components/common'
+// import {} from '../../components/actividades'
 import Script from 'next/script'
 import tours from '../../datos-paginas/api/tours'
 import Modal from 'react-bootstrap/Modal'
 import Gallery from 'components/gallery/index'
 import Reservar from '@/components/general/reservar'
+import { useScreenContext } from '../../context/screen'
 import MenuInterior from '@/components/servicios/submenu'
 import HeaderInterior from '@/components/general/publicaciones/header-interior'
 import { ItemDetalle } from '../../components/actividades/slug/DetalleItem'
@@ -30,7 +32,7 @@ export async function getServerSideProps({ params }) {
 
 export default function Home({ data }) {
   const router = useRouter()
-
+  const { DispatchScreen } = useScreenContext()
   const [mostrarModal, setMostrarModal] = useState(false)
 
   const [precioReal, setPrecioReal] = useState(null)
@@ -54,9 +56,12 @@ export default function Home({ data }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [scrollTop])
 
+  useEffect(() => {
+    DispatchScreen({ type: 'ChangeSubTittle', payload: data?.tituloTour })
+  }, [])
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>{data.tituloTour} - Enlace mundial</title>
         <meta name='description' content={data.descripcionCortaTour} />
         <meta name='keywords' content={data.keywordsTour} />
@@ -65,7 +70,7 @@ export default function Home({ data }) {
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
-      </Head>
+      </Head> */}
       <NextSeo
         openGraph={{
           type: 'website',
@@ -89,7 +94,7 @@ export default function Home({ data }) {
         centered
       >
         <section>
-          <div className='d-flex justify-content-end  '>
+          <div className='d-flex justify-content-end'>
             {' '}
             <p
               className='font-weight-bold btn  mr-2'
@@ -118,7 +123,7 @@ export default function Home({ data }) {
             head="Tour"
             titulo={data?.tituloTour}
           />
-          
+
           {/* sub cabezera items */}
           <SubMenuTittle data={[
             {
@@ -152,7 +157,7 @@ export default function Home({ data }) {
               </div>
 
               <div className='col-md-4 d-none d-md-block'>
-                {/* Solo desktop */}
+                {/* reservar un tour con una fecha asignada Solo desktop */}
                 <section
                   className={
                     sidebarFixed
@@ -176,167 +181,36 @@ export default function Home({ data }) {
           </section>
 
           {/* Detalles */}
-          <ItemDetalle id="detalles" style={{ scrollMarginTop: '170px' }} data={data} />
+          <ItemDetalle
+            id="detalles"
+            style={{ scrollMarginTop: '170px' }}
+            titulo={data.tituloTour}
+            descripciontitulo={data.descripcionCortaTour}
+            partida="Punto de partida"
+            PuntoPartida={data.puntoPartidaTour}
+          />
 
           {/* Itinerario */}
           <OtherItem id="itinerario" style={{ scrollMarginTop: '250px' }} tittle="Itinerario"  >
-            <div className='card'>
-              <div className='card-body'>
-                <h5 className='card-title text-secondary font-weight-bold'>
-                  Itinerario
-                </h5>
-
-                <div className='py-2'>
-                  <ul className='list-unstyled'>
-                    {data.itinerarioTour.split(',').map((item) => {
-                      return (
-                        <li
-                          className='l-miel-itinerario__list-item d-flex mb-2'
-                          key={item}
-                        >
-                          <span className='text-primary d-inline-block mr-2'>
-                            <i className='fas fa-check'></i>
-                          </span>
-                          {item}
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <ItemMap tittle="Itinerario" data={data.itinerarioTour.split(',')} />
           </OtherItem>
 
           {/* Incluye */}
           <OtherItem id="incluye" style={{ scrollMarginTop: '250px' }} tittle="Incluye">
-            <div className='card'>
-              <div className='card-body'>
-                <h5 className='card-title text-secondary font-weight-bold'>
-                  Incluye
-                </h5>
-
-                <div className='py-2'>
-                  <ul className='list-unstyled'>
-                    {data?.IncluyeTour?.map((item) => {
-                      return (
-                        <li
-                          className='l-miel-itinerario__list-item d-flex mb-2'
-                          key={item?.incluyeId}
-                        >
-                          <span className='text-primary d-inline-block mr-2'>
-                            <i className='far fa-check-circle'></i>
-                          </span>
-                          {item?.descripcionIncluye}
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-
-                <h5 className='card-title text-secondary font-weight-bold'>
-                  No incluye
-                </h5>
-
-                <div className='py-2'>
-                  <ul className='list-unstyled'>
-                    {data.noIncluyeTour.split(',').map((item) => {
-                      return (
-                        <li
-                          key={item}
-                          className='l-miel-itinerario__list-item d-flex mb-2'
-                        >
-                          <span className='text-danger d-inline-block mr-2'>
-                            <i className='far fa-check-circle'></i>
-                          </span>
-                          {item}
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className='card mt-4'>
-              <div className='card-body'>
-                <h5 className='card-title text-secondary font-weight-bold'>
-                  Actividades
-                </h5>
-
-                <div className='py-2'>
-                  <ul className='list-unstyled'>
-                    {data?.ActividadesTour?.map((item) => {
-                      return (
-                        <li
-                          key={item.actividadId}
-                          className='l-miel-itinerario__list-item d-flex mb-2'
-                        >
-                          <span className='text-primary d-inline-block mr-2'>
-                            <i className='far fa-check-circle'></i>
-                          </span>
-                          {item?.descripcion_actividad}
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            {/* Sub Item Incluye */}
+            <ItemMap tittle="Incluye" data={data.IncluyeTour.map((obj) => obj.descripcionIncluye)} />
+            {/* Sub Item No Incluye */}
+            <ItemMap tittle="No incluye" data={data.noIncluyeTour.split(',')} icon="cancel" color='rojo' />
+            {/* Sub Item Actividades */}
+            <ItemMap tittle="Actividades" data={data?.ActividadesTour?.map((obj) => obj.descripcion_actividad)} />
           </OtherItem>
 
           {/* Notas */}
           <OtherItem id="notas" style={{ scrollMarginTop: '250px' }} tittle="Notas">
-            <div className='card'>
-              <div className='card-body'>
-                <h5 className='card-title text-secondary font-weight-bold'>
-                  Notas
-                </h5>
-
-                <div className='py-2'>
-                  <ul className='list-unstyled'>
-                    {data.notasTour.split(',').map((item) => {
-                      return (
-                        <li
-                          key={item}
-                          className='l-miel-itinerario__list-item d-flex mb-2'
-                        >
-                          <span className='text-primary d-inline-block mr-2'>
-                            <i className='fas fa-check'></i>
-                          </span>
-                          {item}
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className='card mt-4'>
-              <div className='card-body'>
-                <h5 className='card-title text-secondary font-weight-bold'>
-                  Políticas de cancelación
-                </h5>
-
-                <div className='py-2'>
-                  <ul className='list-unstyled'>
-                    {data.politicasTour.split(',').map((item) => {
-                      return (
-                        <li
-                          key={item}
-                          className='l-miel-itinerario__list-item d-flex mb-2'
-                        >
-                          <span className='text-primary d-inline-block mr-2'>
-                            <i className='fas fa-check'></i>
-                          </span>
-                          {item}
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            {/* Sub Item Notas */}
+            <ItemMap tittle="Notas" data={data.notasTour.split(',')} />
+            {/* Sub Item Políticas de cancelación */}
+            <ItemMap tittle="Políticas de cancelación" data={data.politicasTour.split(',')} />
           </OtherItem>
 
           {/* Reservar mobile */}

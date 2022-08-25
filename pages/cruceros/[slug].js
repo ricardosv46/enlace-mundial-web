@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import { NextSeo } from "next-seo"
@@ -7,8 +7,11 @@ import ModalContacto from "components/general/modal-contacto"
 import { GET_SLUG_CRUCERO, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
 import CrucerosRelacionadoss from "../../components/cruceros/cruceros-relacionados"
+import { ItemDetalle } from '../../components/actividades/slug/DetalleItem'
+import { OtherItem } from '../../components/actividades/slug/OtherItems'
 import MenuInteriorCrucero from "../../components/servicios/submenu/menuInteriorCrucero"
-import { TittleOferta, SubMenuTittle } from '../../components/common'
+import { TittleOferta, SubMenuTittle, ItemMap } from '../../components/common'
+import { useScreenContext } from "../../context/screen"
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_CRUCERO, {
     slugCrucero: params.slug,
@@ -23,13 +26,16 @@ export async function getServerSideProps({ params }) {
 
 export default function Home({ data }) {
   const router = useRouter()
-
+  const { DispatchScreen } = useScreenContext()
   let slug = router.query.slug
-  console.log(data)
+
+  useEffect(() => {
+    DispatchScreen({ type: 'ChangeSubTittle', payload: data?.tituloCrucero })
+  }, [])
 
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>{data?.tituloCrucero} - Enlace mundial</title>
         <meta name='description' content={data?.descripcionCortaCrucero} />
         <meta name='keywords' content={data?.keywordsCrucero} />
@@ -39,7 +45,7 @@ export default function Home({ data }) {
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
-      </Head>
+      </Head> */}
       <NextSeo
         openGraph={{
           type: "website",
@@ -99,49 +105,14 @@ export default function Home({ data }) {
           </section>
 
           {/* Detalles */}
-          <section id='detalles' style={{ scrollMarginTop: "170px" }}>
-            <div className='container-fluid bg-light mt-4 py-2'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <h2 className='subtitulo-general text-uppercase my-0'>
-                    Detalles
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div className='container mt-4'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <h5 className='card-title font-weight-bold'>
-                        {data.tituloCrucero}
-                      </h5>
-
-                      <div className='py-2 px-3'>
-                        <p className='card-text'>
-                          {data.descripcionCortaCrucero}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className='card mt-4'>
-                    <div className='card-body'>
-                      <h5 className='card-title font-weight-bold'>
-                        Punto de partida
-                      </h5>
-
-                      <div className='py-2 px-3'>
-                        <p className='card-text'>{data.puntoPartidaCrucero}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <ItemDetalle
+            id="detalles"
+            style={{ scrollMarginTop: "170px" }}
+            titulo={data.tituloCrucero}
+            descripciontitulo={data.descripcionCortaCrucero}
+            partida="Punto de partida"
+            PuntoPartida={data.puntoPartidaCrucero}
+          />
 
           {/* Itinerario */}
           <section id='itinerario' style={{ scrollMarginTop: "250px" }}>

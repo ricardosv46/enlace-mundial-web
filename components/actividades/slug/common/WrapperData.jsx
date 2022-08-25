@@ -5,7 +5,11 @@ export const WrapperData = ({ children }) => {
         <div className='container mt-4'>
             <div className='row'>
                 <div className='col-md-8'>
-                    {children}
+                    <div className="card">
+                        <div className="card-body">
+                            {children}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,11 +1,14 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import Gallery from "components/gallery/index"
 import ModalContacto from "components/general/modal-contacto"
-import { TittleOferta, SubMenuTittle } from '../../components/common'
+import { TittleOferta, SubMenuTittle, ItemMap } from '../../components/common'
 import { GET_SLUG_LUNA_MIEL, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
+import { useScreenContext } from '../../context/screen'
+import { ItemDetalle } from '../../components/actividades/slug/DetalleItem'
+import { OtherItem } from '../../components/actividades/slug/OtherItems'
 import LunasRelacionadas from "../../components/luna-de-miel/lunas-relacionadas"
 import MenuInteriorLunaMiel from "../../components/servicios/submenu/menuInteriorLunaMiel"
 import HeaderInterior from "../../components/general/publicaciones/header-interior"
@@ -25,12 +28,18 @@ export async function getServerSideProps({ params }) {
 
 export default function Home({ data }) {
   const router = useRouter()
+  const { DispatchScreen } = useScreenContext()
 
   let slug = router.query.slug
 
+  useEffect(() => {
+    DispatchScreen({ type: 'ChangeSubTittle', payload: data?.tituloLuna })
+  }, [])
+
+
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>{data?.tituloLuna} - Enlace mundial</title>
         <meta name='description' content={data?.descripcionCortaLuna} />
         <meta name='keywords' content={data?.keywordsLuna} />
@@ -39,7 +48,7 @@ export default function Home({ data }) {
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
-      </Head>
+      </Head> */}
       <NextSeo
         openGraph={{
           type: "website",
@@ -99,244 +108,39 @@ export default function Home({ data }) {
           </section>
 
           {/* Detalles */}
-          <section id='detalles' style={{ scrollMarginTop: "170px" }}>
-            <div className='container-fluid bg-light mt-4 py-2'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <h2 className='subtitulo-general text-uppercase my-0'>
-                    Detalles
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div className='container mt-4'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <h5 className='card-title font-weight-bold'>
-                        {data.tituloLuna}
-                      </h5>
-
-                      <div className='py-2 px-3'>
-                        <p className='card-text'>{data.descripcionCortaLuna}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className='card mt-4'>
-                    <div className='card-body'>
-                      <h5 className='card-title font-weight-bold'>
-                        Punto de partida
-                      </h5>
-
-                      <div className='py-2 px-3'>
-                        <p className='card-text'>{data.puntoPartidaLuna}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <ItemDetalle
+            id='detalles'
+            style={{ scrollMarginTop: '170px' }}
+            titulo={data.tituloLuna}
+            descripciontitulo={data.descripcionCortaLuna}
+            partida="Punto de partida"
+            PuntoPartida={data.puntoPartidaLuna}
+          />
 
           {/* Itinerario */}
-          <section id='itinerario' style={{ scrollMarginTop: "250px" }}>
-            <div className='container-fluid bg-light mt-4 py-2'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <h2 className='subtitulo-general text-uppercase my-0'>
-                    Itinerario
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div className='container mt-4'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Itinerario
-                      </h5>
-
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data.itinerarioLuna.split(",").map((item) => {
-                            return (
-                              <li
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                                key={item}
-                              >
-                                <span className='text-primary d-inline-block mr-2'>
-                                  <i className='fas fa-check'></i>
-                                </span>
-                                {item}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <OtherItem id='itinerario' tittle="Itinerario" style={{ scrollMarginTop: "250px" }}>
+            <ItemMap tittle="Itinerario" data={data.itinerarioLuna.split(",")} />
+          </OtherItem>
 
           {/* Incluye */}
-          <section id='incluye' style={{ scrollMarginTop: "250px" }}>
-            <div className='container-fluid bg-light mt-4 py-2'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <h2 className='subtitulo-general text-uppercase my-0'>
-                    Incluye
-                  </h2>
-                </div>
-              </div>
-            </div>
+          <OtherItem id="incluye" style={{ scrollMarginTop: '250px' }} tittle="Incluye">
+            {/* Sub Item Incluye */}
+            <ItemMap tittle="Incluye" data={data.incluyeLuna.split(',')} />
+            {/* Sub Item No Incluye */}
+            <ItemMap tittle="No incluye" data={data.noIncluyeLuna.split(',')} icon="cancel" color='rojo' />
+            {/* Sub Item Actividades */}
+            <ItemMap tittle="Actividades" data={data.actividadesLuna.split(',')} />
 
-            <div className='container mt-4'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Incluye
-                      </h5>
-
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data.incluyeLuna.split(",").map((item) => {
-                            return (
-                              <li
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                                key={item}
-                              >
-                                <span className='text-primary d-inline-block mr-2'>
-                                  <i className='far fa-check-circle'></i>
-                                </span>
-                                {item}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        No incluye
-                      </h5>
-
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data.noIncluyeLuna.split(",").map((item) => {
-                            return (
-                              <li
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                                key={item}
-                              >
-                                <span className='text-danger d-inline-block mr-2'>
-                                  <i className='far fa-check-circle'></i>
-                                </span>
-                                {item}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className='card mt-4'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Actividades
-                      </h5>
-
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data.actividadesLuna.split(",").map((item) => {
-                            return (
-                              <li
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                                key={item}
-                              >
-                                <span className='text-primary d-inline-block mr-2'>
-                                  <i className='far fa-check-circle'></i>
-                                </span>
-                                {item} (Incluida)
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          </OtherItem>
 
           {/* Notas */}
-          <section id='notas' style={{ scrollMarginTop: "250px" }}>
-            <div className='container-fluid bg-light mt-4 py-2'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <h2 className='subtitulo-general text-uppercase my-0'>
-                    Notas
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div className='container mt-4'>
-              <div className='row'>
-                <div className='col-md-8'>
-                  <div className='card'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Notas
-                      </h5>
-
-                      <div className='py-2'>
-                        <ul className='list-unstyled'>
-                          {data.notasLuna.split(",").map((item) => {
-                            return (
-                              <li
-                                className='l-miel-itinerario__list-item d-flex mb-2'
-                                key={item}
-                              >
-                                <span className='text-primary d-inline-block mr-2'>
-                                  <i className='fas fa-check'></i>
-                                </span>
-                                {item}
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className='card mt-4'>
-                    <div className='card-body'>
-                      <h5 className='card-title text-secondary font-weight-bold'>
-                        Políticas de cancelación
-                      </h5>
-
-                      <div className='py-2'>
-                        {data?.politicasLuna.split(",").map((item) => (
-                          <p key={item}>{item}</p>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <OtherItem id="notas" style={{ scrollMarginTop: '250px' }} tittle="Notas">
+            {/* Sub Item Notas */}
+            <ItemMap tittle="Notas" data={data.notasLuna.split(',')} />
+            {/* Sub Item Políticas de cancelación */}
+            <ItemMap tittle="Políticas de cancelación" data={data.politicasLuna.split(',')} />
+          </OtherItem>
+  
 
           {/* Similares */}
           <section id='lunas-similares' style={{ scrollMarginTop: "250px" }}>

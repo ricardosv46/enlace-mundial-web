@@ -1,3 +1,8 @@
 import { TittleOferta } from './components/tittleOferta'
 import { SubMenuTittle } from './components/submenu'
-export { TittleOferta, SubMenuTittle }
+import { ItemMap } from './components/ItemMap'
+export {
+    TittleOferta,
+    SubMenuTittle,
+    ItemMap
+}
