@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { Dropdown } from "react-bootstrap";
 
-export default function SubMenuMobile() {
+export default function SubMenuMobile({data}) {
   const items = [
     {
       texto: "Detalles",

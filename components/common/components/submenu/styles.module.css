@@ -1,18 +1,16 @@
 .headerInterior_mobile button {
   padding: 0.3rem 1.5rem;
 }
-
 .headerInterior_link {
   text-decoration: none;
 }
-
 .headerInterior_link:hover {
   text-decoration: none;
 }
-
 @media (min-width: 768px) {
   .headerInterior_link {
     margin-right: 3rem;
   }
 }
+
 /*# sourceMappingURL=styles.module.css.map */

@@ -1,8 +1,12 @@
 import React from 'react'
 import styles from './styles.module.scss'
+import DropdownButton from "react-bootstrap/DropdownButton";
+import { Dropdown } from "react-bootstrap";
+
 export const SubMenuTittle = ({ data }) => {
     return (
         <section>
+            {/* sub menu items dekstop */}
             <header
                 className={`${styles.headerInterior} d-none d-md-flex bg-light mt-3 py-2`}
             >
@@ -24,6 +28,15 @@ export const SubMenuTittle = ({ data }) => {
                         </div>
                     </div>
                 </nav>
+            </header>
+            {/* sub menu item mobile */}
+            <header className='d-md-none mt-3 pl-3 container'>
+                <DropdownButton
+                    id="dropdown-basic-button"
+                    title="INFORMACIÓN"
+                >
+                    {data.map((item, key) => <Dropdown.Item key={key} href={item.url}>{item.texto}</Dropdown.Item>)}
+                </DropdownButton>
             </header>
         </section>
 

@@ -49,9 +49,9 @@ export default function HeaderInterior({
           </p>
         </div>
 
-        <section className='d-md-none mt-3 pl-3'>
-          <SubMenuMobile />
-        </section>
+        {/* <section className='d-md-none mt-3 pl-3'>
+          <SubMenuMobile  />
+        </section> */}
       </section>
     </div>
   )
