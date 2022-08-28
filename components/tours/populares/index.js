@@ -13,6 +13,7 @@ const ToursPopulares = () => {
   useEffect(() => {
     if (!loadingGetTour) {
       setItemsTours(dataTours)
+      console.log(dataTours)
     }
   }, [loadingGetTour])
 
@@ -51,14 +52,14 @@ const ToursPopulares = () => {
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
               {itemsTours.length
                 ? itemsTours.map((item) => {
-                    if (item.destacadoTour.includes("Activado")) {
-                      return (
-                        <div key={item.tourId}>
-                          <CardTour item={item} />
-                        </div>
-                      )
-                    }
-                  })
+                  if (item.destacadoTour.includes("Activado")) {
+                    return (
+                      <div key={item.tourId}>
+                        <CardTour item={item} />
+                      </div>
+                    )
+                  }
+                })
                 : "No existen"}
             </Swiper>
 
@@ -82,17 +83,17 @@ const ToursPopulares = () => {
         <div className='row d-none d-md-flex'>
           {itemsTours.length > 0
             ? itemsTours.map((item) => {
-                if (item.destacadoTour.includes("Activado")) {
-                  return (
-                    <div
-                      className='col-md-4 contenedor-card-tour'
-                      key={item.tourId}
-                    >
-                      <CardTour item={item} />
-                    </div>
-                  )
-                }
-              })
+              if (item.destacadoTour.includes("Activado")) {
+                return (
+                  <div
+                    className='col-md-4 contenedor-card-tour'
+                    key={item.tourId}
+                  >
+                    <CardTour item={item} />
+                  </div>
+                )
+              }
+            })
             : "No existen"}
         </div>
       </div>
