@@ -4,7 +4,7 @@ import Script from "next/script"
 import CardBusqueda from "@/components/cards/card-busqueda"
 import Select from "react-select"
 import { useScreenContext } from '../../context/screen'
-import { BreadCrumb } from '@/components/actividades/home'
+import { BreadCrumb, SecctionRadioIncluye, SecctionRadioActividades, SecctionRadioCategorias } from '@/components/actividades/home'
 import { useActividadesServices } from "../../gestion-de-endpoints/useActividadesServices"
 import { useIncluyeServices } from "../../gestion-de-endpoints/useIncluyeServices"
 import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda"
@@ -205,29 +205,12 @@ export default function ActividadesYTurismo() {
   useEffect(() => {
     DispatchScreen({ type: 'ChangeSubTittle', payload: 'Actividades y turismo' })
   }, [])
+
   return (
     <div className='busqueda-page'>
       <main>
-        {/* breadcrumb */}
+        {/* Breadcrumb */}
         <BreadCrumb NombreDepartamento={query?.nombreDepartamento} breadcrumb={['Crucero', 'Inicio']} />
-        {/* <section className='container mt-5 px-4 px-md-0'>
-          <div className='row'>
-            <div className='col-12'>
-              <div className='d-flex justify-content-between align-items-center'>
-                <h3 className='subtitulo-slug text-secondary text-left'>
-                  {query.nombreDepartamento
-                    ? `Tours a región ${query.nombreDepartamento}`
-                    : "Tours a regiones del Perú"}
-                </h3>
-
-                <div className='d-none d-md-block'>
-                  <span className='d-inline-block mr-3'>Crucero</span>
-                  <span>Inicio</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
         <section className='container mt-4 mt-md-5 px-4 px-md-0'>
           <div className='row'>
             <div className='col-md-3'>
@@ -303,189 +286,15 @@ export default function ActividadesYTurismo() {
                   )}
                 </div>
 
-                <div className='mt-4'>
-                  <h3 className='card-title stext-secondary font-weight-bold mt-3'>
-                    Categorias
-                  </h3>
-                  {loadingCategoria ? (
-                    <p>Cargando ...</p>
-                  ) : (
-                    dataCategoria.map((item) => {
-                      return (
-                        <div className='form-check' key={item?.categoriaId}>
-                          <input
-                            id={item?.categoriaId}
-                            className='form-check-input'
-                            type='radio'
-                            name='categorias'
-                            value={item?.slugCategoria}
-                            checked={state.categoria === item?.slugCategoria}
-                            onChange={(e) => {
-                              handleChange("categoria", e.target.value)
-                              updateRouter("categoria", e.target.value)
-                            }}
-                          />
-                          <label
-                            className='form-check-label'
-                            htmlFor={item?.categoriaId}
-                          >
-                            {item?.tituloCategoria}
-                          </label>
-                        </div>
-                      )
-                    })
-                  )}
-                </div>
-
                 {/* Solo desktop */}
-                <section className='  d-md-block'>
-                  {/* <h4 className='card-subtitle font-weight-bold'>
-                    Tours de último minuto
-                  </h4>
-
+                <section className='d-md-block'>
                   <div className='mt-3'>
-                    <div className='form-check'>
-                      <input
-                        className='form-check-input'
-                        type='radio'
-                        name='disponibles'
-                        id='disponible-1'
-                        value='option1'
-                      />
-                      <label
-                        className='form-check-label text-muted'
-                        htmlFor='disponible-1'
-                      >
-                        Disponibles hoy o mañana
-                      </label>
-                    </div>
-
-                    <div className='form-check'>
-                      <input
-                        className='form-check-input'
-                        type='radio'
-                        name='disponibles'
-                        id='disponible-2'
-                        value='option1'
-                      />
-                      <label
-                        className='form-check-label text-muted'
-                        htmlFor='disponible-2'
-                      >
-                        Disponibles hoy o mañana o pasado
-                      </label>
-                    </div>
-                  </div> */}
-
-                  <div className='mt-3'>
-                    {/* <h3 className='card-title stext-secondary font-weight-bold'>
-                      Destinos en Perú
-                    </h3>
-
-                    <h3 className='card-title stext-secondary font-weight-bold'>
-                      Perú
-                    </h3>
-
-                    <div className='form-check'>
-                      <input
-                        className='form-check-input'
-                        type='checkbox'
-                        value=''
-                        id='destino-padre'
-                      />
-                      <label
-                        className='form-check-label'
-                        htmlFor='destino-padre'
-                      >
-                        Cusco
-                      </label>
-                    </div>
-
-                    <div className='mt-1 px-3'>
-                      <div className='form-check'>
-                        <input
-                          className='form-check-input'
-                          type='checkbox'
-                          value=''
-                          id='destino-hijo'
-                        />
-                        <label
-                          className='form-check-label'
-                          htmlFor='destino-hijo'
-                        >
-                          Tours a Cusco
-                        </label>
-                      </div>
-                    </div> */}
+                    {/* Categorias */}
+                    <SecctionRadioCategorias categoria={state.categoria} handleChange={handleChange} />
                     {/* Incluye */}
-                    <h3 className='card-title stext-secondary font-weight-bold mt-3'>
-                      Incluye
-                    </h3>
-                    {loadingIncluye ? (
-                      <p>Cargando ...</p>
-                    ) : (
-                      dataIncluye.map((item) => {
-                        return (
-                          <div className='form-check' key={item?.incluyeId}>
-                            <input
-                              id={item?.incluyeId}
-                              className='form-check-input'
-                              type='radio'
-                              name='incluye'
-                              value={item?.descripcionIncluye}
-                              checked={
-                                state.incluye === item?.descripcionIncluye
-                              }
-                              onChange={(e) => {
-                                handleChange("incluye", e.target.value)
-                                updateRouter("incluye", e.target.value)
-                              }}
-                            />
-                            <label
-                              className='form-check-label'
-                              htmlFor={item?.incluyeId}
-                            >
-                              {item?.descripcionIncluye}
-                            </label>
-                          </div>
-                        )
-                      })
-                    )}
+                    <SecctionRadioIncluye incluye={state.incluye} handleChange={handleChange} />
                     {/* Actividades */}
-                    <h3 className='card-title stext-secondary font-weight-bold mt-3'>
-                      Actividades
-                    </h3>
-                    {loadingActiviades ? (
-                      <p>Cargando ...</p>
-                    ) : (
-                      dataActividades.map((item) => {
-                        return (
-                          <div className='form-check' key={item?.actividadId}>
-                            <input
-                              id={item?.actividadId}
-                              className='form-check-input'
-                              type='radio'
-                              name='actividades'
-                              value={item?.descripcion_actividad}
-                              checked={
-                                state.actividades ===
-                                item?.descripcion_actividad
-                              }
-                              onChange={(e) => {
-                                handleChange("actividades", e.target.value)
-                                updateRouter("actividades", e.target.value)
-                              }}
-                            />
-                            <label
-                              className='form-check-label'
-                              htmlFor={item?.actividadId}
-                            >
-                              {item?.descripcion_actividad}
-                            </label>
-                          </div>
-                        )
-                      })
-                    )}
+                    <SecctionRadioActividades actividades={state.actividades} handleChange={handleChange} />
                   </div>
                 </section>
               </aside>
