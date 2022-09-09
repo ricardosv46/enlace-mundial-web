@@ -16,6 +16,7 @@
 @import "./components/cards/card-testimonio";
 @import "./components/footer";
 @import "./components/calendar";
+@import "./components/skeletor/skeletorSecctionRadio";
 
 // Luna de miel
 @import "./components/luna-de-miel/banner";
@@ -75,16 +76,17 @@ a.nav-link-tab {
   transition: color 0.3s;
 
   &:hover {
-    color: $dark !important;
+    color: $dark  !important;
     cursor: pointer;
   }
 }
 
 a.nav-link-tab.active {
   background-color: transparent !important;
-  color: $primary !important;
+  color: $primary  !important;
   font-weight: bold;
 }
+
 .w-btn {
   width: 115px;
 }
@@ -101,6 +103,7 @@ label {
 .text-sm {
   font-size: 20px;
   font-weight: bold;
+
   @media (max-width: 768px) {
     font-size: 15px;
   }
