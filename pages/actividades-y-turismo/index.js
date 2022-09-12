@@ -4,7 +4,7 @@ import Script from "next/script"
 import CardBusqueda from "@/components/cards/card-busqueda"
 import Select from "react-select"
 import { useScreenContext } from '../../context/screen'
-import { BreadCrumb, SecctionRadioIncluye, SecctionRadioActividades, SecctionRadioCategorias } from '@/components/actividades/home'
+import { BreadCrumb, SecctionRadioIncluye, SecctionRadioActividades, SecctionRadioCategorias } from '../../components/actividades/home'
 import { useActividadesServices } from "../../gestion-de-endpoints/useActividadesServices"
 import { useIncluyeServices } from "../../gestion-de-endpoints/useIncluyeServices"
 import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda"
@@ -287,7 +287,7 @@ export default function ActividadesYTurismo() {
                 </div>
 
                 {/* Solo desktop */}
-                <section className='d-md-block'>
+                <section className='d-md-block '>
                   <div className='mt-3'>
                     {/* Categorias */}
                     <SecctionRadioCategorias categoria={state.categoria} handleChange={handleChange} />

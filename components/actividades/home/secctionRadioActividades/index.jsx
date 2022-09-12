@@ -1,16 +1,19 @@
 import { useActividadesServices } from '../../../../gestion-de-endpoints/useActividadesServices'
+import { Show } from '../../../show'
+import { SkeletorRadioButton } from '../../../common/index'
 
 export const SecctionRadioActividades = ({ handleChange, actividades }) => {
   const { db, loadingGetData } = useActividadesServices()
   return (
     <div>
-      <h3 className="card-title stext-secondary font-weight-bold mt-3">
-        Actividades
-      </h3>
-      {loadingGetData ? (
-        <p>Cargando ...</p>
-      ) : (
-        db.map((item) => {
+      <Show
+        Condition={!loadingGetData}
+        IsDefault={<SkeletorRadioButton />}
+      >
+        <h3 className="card-title stext-secondary font-weight-bold mt-3">
+          Actividades
+        </h3>
+        {db && db.map((item) => {
           return (
             <div className="form-check" key={item?.actividadId}>
               <input
@@ -30,7 +33,8 @@ export const SecctionRadioActividades = ({ handleChange, actividades }) => {
             </div>
           )
         })
-      )}
+        }
+      </Show>
     </div>
   )
 }

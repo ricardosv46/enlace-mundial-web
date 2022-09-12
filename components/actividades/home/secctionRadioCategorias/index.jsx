@@ -1,16 +1,19 @@
 import useCategoriasServices from '../../../../gestion-de-endpoints/useCategoriasServices'
+import { Show } from '../../../show'
+import { SkeletorRadioButton } from '../../../common/index'
 
 export const SecctionRadioCategorias = ({ handleChange, categoria }) => {
-  const { dataCategoria, loadingCategoria} = useCategoriasServices()
+  const { dataCategoria, loadingCategoria } = useCategoriasServices()
   return (
     <div>
-      <h3 className="card-title stext-secondary font-weight-bold mt-3">
-        Categorias
-      </h3>
-      {loadingCategoria ? (
-        <p>Cargando ...</p>
-      ) : (
-        dataCategoria.map((item) => {
+      <Show
+        Condition={!loadingCategoria}
+        IsDefault={<SkeletorRadioButton />}
+      >
+        <h3 className="card-title stext-secondary font-weight-bold mt-3">
+          Categorias
+        </h3>
+        {dataCategoria && dataCategoria.map((item) => {
           return (
             <div className="form-check" key={item?.categoriaId}>
               <input
@@ -30,7 +33,8 @@ export const SecctionRadioCategorias = ({ handleChange, categoria }) => {
             </div>
           )
         })
-      )}
+        }
+      </Show>
     </div>
   )
 }
