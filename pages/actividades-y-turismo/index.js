@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react"
-import Head from "next/head"
-import Script from "next/script"
-import CardBusqueda from "@/components/cards/card-busqueda"
-import Select from "react-select"
-import { useScreenContext } from '../../context/screen'
-import { BreadCrumb, SecctionRadioIncluye, SecctionRadioActividades, SecctionRadioCategorias } from '../../components/actividades/home'
-import { useActividadesServices } from "../../gestion-de-endpoints/useActividadesServices"
-import { useIncluyeServices } from "../../gestion-de-endpoints/useIncluyeServices"
-import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda"
-import CategoriasServices from "../../gestion-de-endpoints/useCategoriasServices"
-import { useRouter } from "next/router"
-import { useDepartamentosServices } from "../../gestion-de-endpoints/useDepartamentosServices"
+import React, { useEffect, useState } from "react";
+import Head from "next/head";
+import Script from "next/script";
+import CardBusqueda from "@/components/cards/card-busqueda";
+import Select from "react-select";
+import { useScreenContext } from "../../context/screen";
+import {
+  BreadCrumb,
+  SecctionRadioIncluye,
+  SecctionRadioActividades,
+  SecctionRadioCategorias,
+  SelectDestino,
+} from "../../components/actividades/home";
+
+import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda";
+import { useRouter } from "next/router";
 
 const initialState = {
   fecha_ini: "",
@@ -19,52 +22,27 @@ const initialState = {
   actividades: "",
   categoria: "",
   DeparCodi: "",
-}
+};
 
 const isEmpty = (text = "") => {
-  return text.trim().length === 0
-}
+  return text.trim().length === 0;
+};
 
 export default function ActividadesYTurismo() {
-  const { dataDepartamentos, loadingGetData } = useDepartamentosServices()
-  const { DispatchScreen } = useScreenContext()
-  const [firstQuery, setFirstQuery] = useState({ isValid: false, query: {} })
-  const [select, setSelect] = useState({ value: "", label: "" })
-  const [state, setState] = useState(initialState)
+  const { DispatchScreen } = useScreenContext();
+  const [firstQuery, setFirstQuery] = useState({ isValid: false, query: {} });
+  const [state, setState] = useState(initialState);
 
   const handleChange = (name, valor) => {
     setState((preState) => {
-      return { ...preState, [name]: valor }
-    })
-  }
-  const router = useRouter()
-  const query = router.query
-  const { dataCategoria, loadingCategoria } = CategoriasServices()
-
-  const { db: dataActividades, loadingGetData: loadingActiviades } =
-    useActividadesServices()
-
-  const { db: dataIncluye, loadingGetData: loadingIncluye } =
-    useIncluyeServices()
+      return { ...preState, [name]: valor };
+    });
+  };
+  const router = useRouter();
+  const query = router.query;
 
   const { dataBusqueda, getBusquedaAvanzada, loadingBusqueda } =
-    GestionBusqueda()
-
-  const lugares =
-    !loadingGetData &&
-    dataDepartamentos.map((data) => ({
-      value: data.DeparCodi,
-      label: data.DeparNom,
-    }))
-
-  const lugar =
-    !loadingGetData &&
-    dataDepartamentos.filter((data) => data.DeparCodi === state.DeparCodi)
-
-  let lugarSelect = {
-    value: lugar[0]?.DeparCodi,
-    label: lugar[0]?.DeparNom ? lugar[0]?.DeparNom : "Lugar",
-  }
+    GestionBusqueda();
 
   useEffect(() => {
     const payload = {
@@ -74,12 +52,12 @@ export default function ActividadesYTurismo() {
       DeparCodi: query.DeparCodi ? query.DeparCodi : "",
       actividades: query.actividades ? query.actividades : "",
       categoria: query.categoria_slug ? query.categoria_slug : "",
-    }
+    };
 
     if (!isEmpty(query.categoria_slug) || !isEmpty(query.DeparCodi)) {
-      setState(payload)
+      setState(payload);
 
-      setFirstQuery({ isValid: true, query: payload })
+      setFirstQuery({ isValid: true, query: payload });
     } else {
       getBusquedaAvanzada({
         fecha_ini: "",
@@ -93,13 +71,13 @@ export default function ActividadesYTurismo() {
         DeparCodi: "",
         page: 1,
         numberPaginate: 12,
-      })
+      });
     }
   }, [
     Object.keys(query).length !== 0 &&
-    query?.categoria_slug?.trim().length !== 0,
+      query?.categoria_slug?.trim().length !== 0,
     Object.keys(query).length !== 0 && query?.DeparCodi?.trim().length !== 0,
-  ])
+  ]);
 
   useEffect(() => {
     const payload = {
@@ -118,11 +96,11 @@ export default function ActividadesYTurismo() {
       dias: "",
       page: 1,
       numberPaginate: 12,
-    }
+    };
     if (firstQuery.isValid) {
-      getBusquedaAvanzada(payload)
+      getBusquedaAvanzada(payload);
     }
-  }, [firstQuery.isValid])
+  }, [firstQuery.isValid]);
 
   const isDisable =
     isEmpty(state.fecha_ini) &&
@@ -130,7 +108,7 @@ export default function ActividadesYTurismo() {
     isEmpty(state.incluye) &&
     isEmpty(state.actividades) &&
     isEmpty(state.categoria) &&
-    isEmpty(state.DeparCodi)
+    isEmpty(state.DeparCodi);
 
   const buscar = () => {
     getBusquedaAvanzada({
@@ -145,7 +123,7 @@ export default function ActividadesYTurismo() {
       DeparCodi: state.DeparCodi,
       page: 1,
       numberPaginate: 12,
-    })
+    });
 
     router.replace({
       query: {
@@ -156,8 +134,8 @@ export default function ActividadesYTurismo() {
         categoria_slug: state.categoria,
         DeparCodi: state.DeparCodi,
       },
-    })
-  }
+    });
+  };
 
   const updateRouter = (name, valor) => {
     // if (valor.length === 0) {
@@ -175,17 +153,17 @@ export default function ActividadesYTurismo() {
     //     },
     //   })
     // }
-  }
+  };
 
   const quitar = () => {
     setState((prevState) => ({
       ...initialState,
       fecha_ini: prevState.fecha_ini,
       fecha_fina: prevState.fecha_fina,
-    }))
+    }));
     router.replace({
       query: {},
-    })
+    });
     getBusquedaAvanzada({
       fecha_ini: "",
       fecha_fina: "",
@@ -198,79 +176,87 @@ export default function ActividadesYTurismo() {
       DeparCodi: "",
       page: 1,
       numberPaginate: 12,
-    })
-    setSelect({ value: "Lugar", label: "Lugar" })
-  }
+    });
+    setSelect({ value: "Lugar", label: "Lugar" });
+  };
 
   useEffect(() => {
-    DispatchScreen({ type: 'ChangeSubTittle', payload: 'Actividades y turismo' })
-  }, [])
+    DispatchScreen({
+      type: "ChangeSubTittle",
+      payload: "Actividades y turismo",
+    });
+  }, []);
 
   return (
-    <div className='busqueda-page'>
+    <div className="busqueda-page">
       <main>
         {/* Breadcrumb */}
-        <BreadCrumb NombreDepartamento={query?.nombreDepartamento} breadcrumb={['Crucero', 'Inicio']} />
-        <section className='container mt-4 mt-md-5 px-4 px-md-0'>
-          <div className='row'>
-            <div className='col-md-3'>
+        <BreadCrumb
+          NombreDepartamento={query?.nombreDepartamento}
+          breadcrumb={["Crucero", "Inicio"]}
+        />
+        <section className="container mt-4 mt-md-5 px-4 px-md-0">
+          <div className="row">
+            <div className="col-md-3">
               <aside>
                 <button
-                  type='button'
-                  className='btn btn-primary btn-block font-weight-bold'
+                  type="button"
+                  className="btn btn-primary btn-block font-weight-bold"
                   disabled={isDisable}
                   onClick={buscar}
                 >
                   Buscar
                 </button>
                 <button
-                  type='button'
-                  className='btn btn-primary btn-block font-weight-bold'
+                  type="button"
+                  className="btn btn-primary btn-block font-weight-bold"
                   onClick={quitar}
                 >
                   Quitar filtros
                 </button>
 
-                <div className='card bg-light border-0 rounded-0 mt-4'>
-                  <div className='card-body pb-1'>
-                    <h3 className='card-title stext-secondary font-weight-bold'>
+                <div className="card bg-light border-0 rounded-0 mt-4">
+                  <div className="card-body pb-1">
+                    <h3 className="card-title stext-secondary font-weight-bold">
                       Disponibilidad de salidas
                     </h3>
 
-                    <div className='form-group'>
-                      <label htmlFor='fechaInicial' className='text-secondary'>
+                    <div className="form-group">
+                      <label htmlFor="fechaInicial" className="text-secondary">
                         Desde
                       </label>
                       <input
-                        type='date'
-                        className='form-control rounded-0'
+                        type="date"
+                        className="form-control rounded-0"
                         value={state.fecha_ini}
-                        name='fecha_ini'
+                        name="fecha_ini"
                         onChange={(e) => {
-                          handleChange("fecha_ini", e.target.value)
-                          updateRouter("fechaActual", e.target.value)
+                          handleChange("fecha_ini", e.target.value);
+                          updateRouter("fechaActual", e.target.value);
                         }}
                       />
                     </div>
 
-                    <div className='form-group'>
-                      <label htmlFor='fechaInicial' className='text-secondary'>
+                    <div className="form-group">
+                      <label htmlFor="fechaInicial" className="text-secondary">
                         Hasta
                       </label>
                       <input
-                        type='date'
-                        className='form-control rounded-0'
+                        type="date"
+                        className="form-control rounded-0"
                         value={state.fecha_fina}
-                        name='fecha_fina'
+                        name="fecha_fina"
                         onChange={(e) => {
-                          handleChange("fecha_fina", e.target.value)
-                          updateRouter("fechaFinal", e.target.value)
+                          handleChange("fecha_fina", e.target.value);
+                          updateRouter("fechaFinal", e.target.value);
                         }}
                       />
                     </div>
                   </div>
                 </div>
-                <div className='mt-4'>
+
+                <SelectDestino DeparCodi={state.DeparCodi} />
+                {/* <div className='mt-4'>
                   {loadingGetData ? (
                     <p>Cargando ...</p>
                   ) : (
@@ -284,30 +270,39 @@ export default function ActividadesYTurismo() {
                       }}
                     />
                   )}
-                </div>
+                </div>  */}
 
                 {/* Solo desktop */}
-                <section className='d-md-block '>
-                  <div className='mt-3'>
+                <section className="d-md-block ">
+                  <div className="mt-3">
                     {/* Categorias */}
-                    <SecctionRadioCategorias categoria={state.categoria} handleChange={handleChange} />
+                    <SecctionRadioCategorias
+                      categoria={state.categoria}
+                      handleChange={handleChange}
+                    />
                     {/* Incluye */}
-                    <SecctionRadioIncluye incluye={state.incluye} handleChange={handleChange} />
+                    <SecctionRadioIncluye
+                      incluye={state.incluye}
+                      handleChange={handleChange}
+                    />
                     {/* Actividades */}
-                    <SecctionRadioActividades actividades={state.actividades} handleChange={handleChange} />
+                    <SecctionRadioActividades
+                      actividades={state.actividades}
+                      handleChange={handleChange}
+                    />
                   </div>
                 </section>
               </aside>
             </div>
 
-            <div className='col-md-9 mt-4 mt-md-0'>
+            <div className="col-md-9 mt-4 mt-md-0">
               {dataBusqueda.length === 0 ? (
-                <div className='d-flex justify-content-center'>
-                  <p className='text-md'>No hay Resultados</p>
+                <div className="d-flex justify-content-center">
+                  <p className="text-md">No hay Resultados</p>
                 </div>
               ) : (
                 dataBusqueda.map((item) => {
-                  return <CardBusqueda item={item} key={item.tourId} />
+                  return <CardBusqueda item={item} key={item.tourId} />;
                 })
               )}
             </div>
@@ -316,9 +311,9 @@ export default function ActividadesYTurismo() {
       </main>
 
       <Script
-        src='https://kit.fontawesome.com/3bd84f9f96.js'
-        crossorigin='anonymous'
+        src="https://kit.fontawesome.com/3bd84f9f96.js"
+        crossorigin="anonymous"
       />
     </div>
-  )
+  );
 }

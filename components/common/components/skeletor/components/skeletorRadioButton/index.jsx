@@ -1,7 +1,7 @@
 import React from 'react'
 export const SkeletorRadioButton = () => {
   return (
-    <div className=" wrapperSkeletonSecction">
+    <div className="wrapperSkeletonSecction">
       <div className="SkeletorSecction SkeletorSecction_tittle" />
       <div className="d-flex flex-column">
         <div className="SkeletorSecction_content">
