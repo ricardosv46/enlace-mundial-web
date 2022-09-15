@@ -1,6 +1,5 @@
 import React from "react";
-import Image from "next/image";
-
+import { FiMapPin } from "react-icons/fi";
 // Componentes
 import Like from "./components/like";
 
@@ -14,9 +13,11 @@ export default function CardDestino(props) {
         }}
       />
 
-      <div className="wrapperCard-destino wrapperCard-destino_titulo">
+      <div className="wrapperCard-destino wrapperCard-destino_description">
         <h3 className="">{props.item.titulo}</h3>
-        {/* <Like /> */}
+        <h6>
+          <FiMapPin /> lugar
+        </h6>
       </div>
     </article>
   );

@@ -88,18 +88,19 @@ const ToursPopulares = () => {
           {/* cards dekstop */}
           <div className="row d-none d-md-flex ">
             {itemsTours &&
-              itemsTours.map((item) => {
-                if (item.destacadoTour.includes("Activado")) {
-                  return (
-                    <div
-                      className="col-md-6 col-lg-4 contenedor-card-tour"
-                      key={item.tourId}
-                    >
-                      <CardTour item={item} />
-                    </div>
-                  );
-                }
-              })}
+              itemsTours
+                .filter((data) => data.destacadoTour === "Activado")
+                .map(
+                  (item, k) =>
+                    k < 3 && (
+                      <div
+                        className="col-md-6 col-lg-4 contenedor-card-tour"
+                        key={item.tourId}
+                      >
+                        <CardTour item={item} />
+                      </div>
+                    )
+                )}
           </div>
         </Show>
       </div>

@@ -1,5 +1,5 @@
 .wrapperCard-destino {
-  height: 220px;
+  height: 270px;
   width: 100%;
   overflow: hidden;
   cursor: pointer;
@@ -31,27 +31,30 @@
   }
 
 
-  &_titulo {
+  &_description {
     transition: all 0.6s linear;
-    text-shadow: 1px 1px #d3d2d2;
+    // text-shadow: 1px 1px #d3d2d2;
     color: white;
     font-size: 1em;
     font-weight: 700;
-    text-align: center;
-    opacity: 0;
-    // opacity: 1;
-
-    visibility: hidden;
-    // visibility: visible;
-    margin-bottom: 5px;
+    text-align: left;
+    // opacity: 0;
+    opacity: 1;
+    // border: 1px solid red;
+    // visibility: hidden;
+    visibility: visible;
     width: 100%;
     height: auto;
     margin: auto;
     position: absolute;
-    bottom: 5px;
+    bottom: 0;
     left: 0;
     right: 0;
+    padding-left: 14px;
+    padding-bottom: 7px;
     border-radius: 0px;
+    background: linear-gradient(0deg, rgb(0, 0, 0, .7) 0%, rgba(0, 0, 0, 0.0) 100%);
+
 
 
     @media (min-width: 768px) {
@@ -59,10 +62,9 @@
     }
   }
 
-  &:hover &_titulo {
-    background: rgba(0, 0, 0, .6);
-    opacity: 1;
-    visibility: visible;
-  }
+  // &:hover &_description {
+  //   opacity: 1;
+  //   visibility: visible;
+  // }
 
 }
