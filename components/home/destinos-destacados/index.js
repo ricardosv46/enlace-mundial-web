@@ -85,7 +85,7 @@ export default function DestinosDestacados() {
               </section>
 
               {/* Carousel desktop */}
-              {/* {dataDestacados.length > 2 && (
+              {dataDestacados.length > 2 && (
                 <div className="destinos-destacados__fila-3">
                   {dataDestacados.map((destino, contador) => {
                     if (contador > 2) {
@@ -102,7 +102,7 @@ export default function DestinosDestacados() {
                     }
                   })}
                 </div>
-              )} */}
+              )}
             </div>
           </Show>
         
