@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDepartamentosServices } from "../../../../gestion-de-endpoints/useDepartamentosServices";
 import Select from "react-select";
-import { Show } from "../../../show";
-import { SkeletorDropdown } from "../../../common";
+import { SkeletorDropdown,Show } from "../../../common";
 
 export const SelectDestino = ({ DeparCodi }) => {
   const [select, setSelect] = useState({ value: "", label: "" });

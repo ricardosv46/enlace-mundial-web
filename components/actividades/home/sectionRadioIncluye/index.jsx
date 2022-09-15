@@ -1,6 +1,5 @@
 import { useIncluyeServices } from '../../../../gestion-de-endpoints/useIncluyeServices'
-import { Show } from '../../../show'
-import { SkeletorRadioButton } from '../../../common/index'
+import { SkeletorRadioButton ,Show} from '../../../common'
 
 export const SecctionRadioIncluye = ({ handleChange, incluye }) => {
   const { db, loadingGetData } = useIncluyeServices();
