@@ -7,8 +7,7 @@ import Swiper from "react-id-swiper";
 // import CardTour from "@/components/cards/card-tour";
 import CardTour from "../../cards/card-tour";
 import GestionTours from "../../../gestion-de-endpoints/GestionTours";
-import { LayoutCards, TittleCards, SkeletorCard } from "../../common";
-import { Show } from "../../show";
+import { LayoutCards, TittleCards, SkeletorCard, Show } from "../../common";
 
 const ToursPopulares = () => {
   const { dataTours, loading: loadingGetTour } = GestionTours();
@@ -52,10 +51,9 @@ const ToursPopulares = () => {
           IsDefault={
             <div className="d-flex flex-column flex-md-row flex-wrap mb-2">
               <SkeletorCard Class="col-md-6 col-lg-4 " />
-              <SkeletorCard Class=" col-md-6 col-lg-4 " />
-              <SkeletorCard Class=" col-md-6 col-lg-4 " />
-              <SkeletorCard Class=" d-none d-md-block d-lg-none col-md-6 " />
-
+              <SkeletorCard Class="col-md-6 col-lg-4 " />
+              <SkeletorCard Class="col-md-6 col-lg-4 " />
+              <SkeletorCard Class="d-none d-md-block d-lg-none col-md-6 " />
             </div>
           }
         >

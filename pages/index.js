@@ -15,82 +15,6 @@ import { useScreenContext } from '../context/screen'
 import Image from "next/image"
 import GestionLuna from "../gestion-de-endpoints/GestionLunaMiel"
 
-// export async function getStaticProps() {
-
-//   const res = await request('https://apienlacemundial.softaki.com/public/graphql', `
-//   query GetAllLunaMiel($estadoLuna:String,$page:Int,$numberPaginate:Int){
-//     GetAllLunaMiel(estadoLuna:$estadoLuna,page:$page,numberPaginate:$numberPaginate){
-//       nroTotalItems
-//       data{
-//         lunaMielId
-//         tituloLuna
-//         slugLuna
-//         estadoLuna
-//         destacadoLuna
-//         keywordsLuna
-//         regionLuna
-//         ciudadLuna
-//         descripcionCortaLuna
-//         descripcionLargaLuna
-//         itinerarioLuna
-//         puntoPartidaLuna
-//         incluyeLuna
-//         noIncluyeLuna
-//         actividadesLuna
-//         notasLuna
-//         politicasLuna
-//         videoPresentacionLuna
-//         imagenPrincipalLuna {
-//           id
-//           descripcion
-//           url
-//         }
-//         imagenSecundariaLuna {
-//           id
-//           descripcion
-//           url
-//         }
-//         galeriaLuna {
-//           id
-//           descripcion
-//           url
-//         }
-//         slugCategoria
-//         categoriaId
-//         Categoria {
-//           categoriaId
-//           slugCategoria
-//           tituloCategoria
-//           descripcion
-//           estadoCategoria
-//           keywordsCategoria
-//           imagenPrincipalCategoria {
-//             id
-//             descripcion
-//             url
-//           }
-//           imagenSecundariaCategoria {
-//             id
-//             descripcion
-//             url
-//           }
-//         }
-//       }
-//     }
-//   }
-//   `, {
-//     numberPaginate: 10,
-//     page: 1,
-//     estadoLuna: ''
-//   })
-//   const data = res?.GetAllLunaMiel?.data
-//   return {
-//     props: {
-//       pepe: data
-//     }
-//   }
-// }
-
 export default function Home() {
   const { DispatchScreen } = useScreenContext()
   
@@ -105,17 +29,6 @@ export default function Home() {
 
   return (
     <div>
-      {/* <Head>
-        <title>Enlace mundial</title>
-        <meta name='description' content='Enlace mundial' />
-
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
-        />
-      </Head> */}
-
       <main>
         <Banner />
 

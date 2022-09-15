@@ -6,6 +6,7 @@ import {
   SkeletorCard,
 } from "./components/skeletor";
 import { LayoutCards } from "./components/wrapper/layoutCards";
+import { Show } from "./show";
 import { TittleCards } from "./components/tittles/tittleCards";
 import { TittleOferta } from "./components/tittles/tittleOfertas";
 
@@ -18,4 +19,5 @@ export {
   LayoutCards,
   TittleCards,
   SkeletorCard,
+  Show,
 };
