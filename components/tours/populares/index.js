@@ -1,110 +1,118 @@
-import React, { useState, useRef, useEffect } from "react"
-import styles from "./styles.module.scss"
-import Link from "next/link"
+import React, { useState, useRef, useEffect } from "react";
+import styles from "./styles.module.scss";
+import Link from "next/link";
 
 // Componentes
-import Swiper from "react-id-swiper"
-import CardTour from "@/components/cards/card-tour"
-import GestionTours from "../../../gestion-de-endpoints/GestionTours"
+import Swiper from "react-id-swiper";
+// import CardTour from "@/components/cards/card-tour";
+import CardTour from "../../cards/card-tour";
+import GestionTours from "../../../gestion-de-endpoints/GestionTours";
+import { LayoutCards, TittleCards, SkeletorCard } from "../../common";
+import { Show } from "../../show";
 
 const ToursPopulares = () => {
-  const { dataTours, loading: loadingGetTour } = GestionTours()
-  const [itemsTours, setItemsTours] = useState([])
+  const { dataTours, loading: loadingGetTour } = GestionTours();
+  const [itemsTours, setItemsTours] = useState([]);
   useEffect(() => {
     if (!loadingGetTour) {
-      setItemsTours(dataTours)
-      console.log(dataTours)
+      setItemsTours(dataTours);
     }
-  }, [loadingGetTour])
+  }, [loadingGetTour]);
 
-  const swiperRefMobile = useRef(null)
+  const swiperRefMobile = useRef(null);
 
   const carouselParamsMobile = {
     slidesPerView: 1,
     loop: true,
-  }
+  };
 
   const goNext = () => {
     /* if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slideNext();
     } */
 
-    swiperRefMobile.current.swiper.slideNext()
-  }
+    swiperRefMobile.current.swiper.slideNext();
+  };
   const goPrev = () => {
     /* if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slidePrev();
     } */
 
-    swiperRefMobile.current.swiper.slidePrev()
-  }
+    swiperRefMobile.current.swiper.slidePrev();
+  };
 
   return (
-    <section className={`${styles.toursPopulares} mt-5`}>
-      <h2 className='subtitulo-general subtitulo-general--border-bottom text-black'>
-        Tours más populares
-      </h2>
+    <LayoutCards>
+      <TittleCards tittle="Tour más populares" />
 
       <div className={`${styles.toursPopulares_container} container`}>
-        {/* Carousel mobile */}
-        <div className='row d-md-none'>
-          <div className='col-12'>
+        {/* Carousel mobile cards */}
+        <Show
+          Condition={!loadingGetTour}
+          IsDefault={
+            <div className="d-flex flex-column flex-md-row flex-wrap mb-2">
+              <SkeletorCard Class="col-md-6 col-lg-4 " />
+              <SkeletorCard Class=" col-md-6 col-lg-4 " />
+              <SkeletorCard Class=" col-md-6 col-lg-4 " />
+              <SkeletorCard Class=" d-none d-md-block d-lg-none col-md-6 " />
+
+            </div>
+          }
+        >
+          <div className="d-md-none position-relative">
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
-              {itemsTours.length
-                ? itemsTours.map((item) => {
-                  if (item.destacadoTour.includes("Activado")) {
-                    return (
-                      <div key={item.tourId}>
-                        <CardTour item={item} />
-                      </div>
-                    )
-                  }
-                })
-                : "No existen"}
+              {itemsTours &&
+                itemsTours
+                  .filter((data) => data.destacadoTour === "Activado")
+                  .map((item) => (
+                    <div key={item.tourId}>
+                      <CardTour item={item} />
+                    </div>
+                  ))}
             </Swiper>
 
             <button
-              type='button'
-              className='carousel-app-btn carousel-app-btn--prev'
+              type="button"
+              className="carousel-app-btn carousel-app-btn--prev"
               onClick={goPrev}
             >
-              <i className='fas fa-chevron-left'></i>
+              <i className="fas fa-chevron-left"></i>
             </button>
             <button
-              type='button'
-              className='carousel-app-btn carousel-app-btn--next'
+              type="button"
+              className="carousel-app-btn carousel-app-btn--next"
               onClick={goNext}
             >
-              <i className='fas fa-chevron-right'></i>
+              <i className="fas fa-chevron-right"></i>
             </button>
           </div>
-        </div>
 
-        <div className='row d-none d-md-flex'>
-          {itemsTours.length > 0
-            ? itemsTours.map((item) => {
-              if (item.destacadoTour.includes("Activado")) {
-                return (
-                  <div
-                    className='col-md-4 contenedor-card-tour'
-                    key={item.tourId}
-                  >
-                    <CardTour item={item} />
-                  </div>
-                )
-              }
-            })
-            : "No existen"}
-        </div>
+          {/* cards dekstop */}
+          <div className="row d-none d-md-flex ">
+            {itemsTours &&
+              itemsTours.map((item) => {
+                if (item.destacadoTour.includes("Activado")) {
+                  return (
+                    <div
+                      className="col-md-6 col-lg-4 contenedor-card-tour"
+                      key={item.tourId}
+                    >
+                      <CardTour item={item} />
+                    </div>
+                  );
+                }
+              })}
+          </div>
+        </Show>
       </div>
 
-      <div className='text-center'>
-        <Link href='/actividades-y-turismo'>
-          <a className='btn btn-primary'>Ver más Tours</a>
+      <div className="text-center">
+        <Link href="/actividades-y-turismo">
+          <a className="btn btn-primary">Ver más Tours</a>
         </Link>
       </div>
-    </section>
-  )
-}
+    </LayoutCards>
+  );
+};
 
-export default ToursPopulares
+export default ToursPopulares;

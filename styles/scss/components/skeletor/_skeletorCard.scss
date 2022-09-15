@@ -1,0 +1,109 @@
+.wrapperSkeletonCard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.SkeletorCard {
+    background-color: black;
+    animation: skeletor-loading 1s linear infinite alternate;
+
+    &_img {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 0.4rem;
+        border-radius: 1rem;
+    }
+
+    &_tittle {
+        margin-right: auto;
+        margin-left: auto;
+        width: 70%;
+        height: 20px;
+        margin-bottom: 0.2rem;
+        border-radius: 1rem;
+    }
+
+    &_subtittle {
+        width: 50%;
+        height: 15px;
+        margin-bottom: 0.2rem;
+        border-radius: 1rem;
+    }
+
+    &_subtittle2 {
+        width: 60%;
+        height: 15px;
+        margin-bottom: 0.2rem;
+        border-radius: 1rem;
+    }
+    &_subtittle3 {
+        width: 45%;
+        height: 15px;
+        margin-bottom: 0.2rem;
+        border-radius: 1rem;
+    }
+
+    &_circle {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-left: 0.2rem;
+        margin-bottom: 0.2rem;
+
+    }
+
+
+    &_footer1 {
+        width: 40%;
+        height: 15px;
+        border-radius: 1rem;
+        margin-bottom: 0.2rem;
+        margin-right: 0rem;
+        margin-left: auto;
+    }
+
+    &_footer2 {
+        width: 35%;
+        height: 20px;
+        border-radius: 1rem;
+        margin-bottom: 0.2rem;
+        margin-right: 0rem;
+        margin-left: auto;
+    }
+
+
+
+}
+
+
+// .SkeletorSecction_content {
+//     display: flex;
+//     flex-direction: row;
+//     gap: .2rem;
+//     margin-top: .5rem;
+// }
+
+// .SkeletorSecction_circle {
+//     width: 1.4rem;
+//     height: 1.4rem;
+//     margin-bottom: 0.2rem;
+//     border-radius: 50%
+// }
+
+// .SkeletorSecction_body {
+//     width: 100%;
+//     height: 1.6rem;
+//     margin-bottom: 0.2rem;
+//     border-radius: 0.2rem;
+// }
+
+@keyframes skeletor-loading {
+    0% {
+        background-color: hsl(200, 20%, 70%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}
