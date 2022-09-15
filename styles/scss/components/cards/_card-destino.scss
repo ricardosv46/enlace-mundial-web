@@ -1,52 +1,10 @@
-// .card-destino {
-//   height: 220px;
-//   background-size: cover;
-//   background-position: center;
-//   position: relative;
-//   overflow: hidden;
-//   // transform-origin: 0 0 0 0;
-
-//   &::before {
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     min-height: 100%;
-//     background: rgba(0, 0, 0, .3);
-//   }
-
-//   &:hover {
-//     transform: scale(1.1);
-//   }
-
-//   &__titulo {
-//     font-size: 1em;
-//     font-weight: 700;
-
-//     text-align: center;
-
-//     display: inline-block;
-
-//     margin: auto;
-
-//     position: absolute;
-//     left: 0;
-//     right: 0;
-
-//     @media (min-width: 768px) {
-//       font-size: 1.3em;
-//     }
-//   }
-// }
-
 .wrapperCard-destino {
   height: 220px;
   width: 100%;
   overflow: hidden;
   cursor: pointer;
-
-
+  position: relative;
+  border-radius: 6px;
 
 
   &_wrapperImg {
@@ -57,15 +15,15 @@
     background-size: cover;
     background-position: center;
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      min-height: 100%;
-      background: rgba(0, 0, 0, .3);
-    }
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   min-height: 100%;
+    //   background: rgba(0, 0, 0, .3);
+    // }
   }
 
   &:hover &_wrapperImg {
@@ -73,23 +31,38 @@
   }
 
 
-  &__titulo {
+  &_titulo {
+    transition: all 0.6s linear;
+    text-shadow: 1px 1px #d3d2d2;
+    color: white;
     font-size: 1em;
     font-weight: 700;
-
     text-align: center;
+    opacity: 0;
+    // opacity: 1;
 
-    display: inline-block;
-
+    visibility: hidden;
+    // visibility: visible;
+    margin-bottom: 5px;
+    width: 100%;
+    height: auto;
     margin: auto;
-
     position: absolute;
+    bottom: 5px;
     left: 0;
     right: 0;
+    border-radius: 0px;
+
 
     @media (min-width: 768px) {
       font-size: 1.3em;
     }
+  }
+
+  &:hover &_titulo {
+    background: rgba(0, 0, 0, .6);
+    opacity: 1;
+    visibility: visible;
   }
 
 }

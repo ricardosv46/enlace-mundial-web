@@ -6,13 +6,7 @@ import Like from "./components/like";
 
 export default function CardDestino(props) {
   return (
-    <article
-      className="wrapperCard-destino"
-      // style={{
-      //   overflow: "hidden",
-      //   backgroundImage: `url("${props.item.imagen}")`,
-      // }}
-    >
+    <article className="wrapperCard-destino">
       <div
         className="wrapperCard-destino wrapperCard-destino_wrapperImg"
         style={{
@@ -20,12 +14,9 @@ export default function CardDestino(props) {
         }}
       />
 
-      {/* <div className="position-relative">
-          <Image className="" />
-        </div> */}
-      <div className="d-flex justify-content-end align-items-center p-3 position-relative ">
-        <h3 className="wrapperCard-destino__titulo text-white">{props.item.titulo}</h3>
-        <Like />
+      <div className="wrapperCard-destino wrapperCard-destino_titulo">
+        <h3 className="">{props.item.titulo}</h3>
+        {/* <Like /> */}
       </div>
     </article>
   );

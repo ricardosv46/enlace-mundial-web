@@ -32,7 +32,7 @@ export default function Home() {
       <main>
         <Banner />
 
-        {/* <ToursPopulares /> */}
+        <ToursPopulares />
 
         <DestinosDestacados />
 
