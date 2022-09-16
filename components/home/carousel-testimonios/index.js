@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 // Componentes
 import Swiper from "react-id-swiper";
 import CardTestimonio from "../../cards/card-testimonio";
+import { TittleCards } from "../../common";
 
 export default function CarouselBlog(props) {
   const swiperRefMobile = useRef(null);
@@ -55,11 +56,12 @@ export default function CarouselBlog(props) {
   return (
     <section className="container carousel-app carousel-app--testimonios">
       <div className="row justify-content-center">
-        <div>
+        <TittleCards tittle="Nuestra gente hablando de nosotros" />
+        {/* <div>
           <h2 className="subtitulo-general">
             Nuestra gente hablando de nosotros
           </h2>
-        </div>
+        </div> */}
 
         <div className="col-md-11 mt-5 position-relative">
           {/* Carousel mobile */}

@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import gestionCrucero from "../../../gestion-de-endpoints/gestionCrucero";
 import Swiper from "react-id-swiper";
 import CardCrucero from "../../cards/card-crucero";
+import { TittleCards } from "../../common";
 
 const Cruceros = () => {
   const { dataCrucero, loading: loadingGetCrucero } = gestionCrucero();
@@ -39,9 +40,7 @@ const Cruceros = () => {
   return (
     <section className="container carousel-app">
       <div className="row justify-content-center">
-        <div>
-          <h2 className="subtitulo-general">Cruceros</h2>
-        </div>
+        <TittleCards tittle="Cruceros" />
 
         <div className="col-md-11 mt-5 position-relative">
           {/* Carousel mobile */}
@@ -51,7 +50,7 @@ const Cruceros = () => {
                 {dataCrucero.map((item) => {
                   return (
                     <div key={item.cruceroId}>
-                      <CardCrucero item={item}  />
+                      <CardCrucero item={item} />
                     </div>
                   );
                 })}
@@ -66,7 +65,7 @@ const Cruceros = () => {
                 {dataCrucero.map((item) => {
                   return (
                     <div key={item.cruceroId}>
-                      <CardCrucero item={item}  />
+                      <CardCrucero item={item} />
                     </div>
                   );
                 })}

@@ -89,17 +89,14 @@ const ToursPopulares = () => {
             {itemsTours &&
               itemsTours
                 .filter((data) => data.destacadoTour === "Activado")
-                .map(
-                  (item, k) =>
-                    k < 3 && (
-                      <div
-                        className="col-md-6 col-lg-4 contenedor-card-tour"
-                        key={item.tourId}
-                      >
-                        <CardTour item={item} />
-                      </div>
-                    )
-                )}
+                .map((item, k) => (
+                  <div
+                    className="col-md-6 col-lg-4 contenedor-card-tour"
+                    key={item.tourId}
+                  >
+                    <CardTour item={item} />
+                  </div>
+                ))}
           </div>
         </Show>
       </div>

@@ -3,7 +3,7 @@ import { request } from "graphql-request";
 import Head from "next/head";
 import Script from "next/script";
 import Banner from "../components/home/banner";
-import ToursPopulares from "@/components/tours/populares";
+import ToursPopulares from "../components/tours/populares";
 import DestinosDestacados from "../components/home/destinos-destacados/index";
 import LunaDeMiel from "../components/home/luna-de-miel/index";
 import Cruceros from "../components/home/cruceros/index";
