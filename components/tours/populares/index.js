@@ -51,9 +51,8 @@ const ToursPopulares = () => {
           IsDefault={
             <div className="d-flex flex-column flex-md-row flex-wrap mb-2">
               <SkeletorCard Class="col-md-6 col-lg-4 " />
-              <SkeletorCard Class="col-md-6 col-lg-4 " />
-              <SkeletorCard Class="col-md-6 col-lg-4 " />
-              <SkeletorCard Class="d-none d-md-block d-lg-none col-md-6 " />
+              <SkeletorCard Class="d-none d-md-block col-md-6 col-lg-4 " />
+              <SkeletorCard Class="d-none d-md-block col-md-6 col-lg-4 " />
             </div>
           }
         >

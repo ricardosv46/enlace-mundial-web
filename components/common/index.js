@@ -4,6 +4,7 @@ import {
   SkeletorRadioButton,
   SkeletorDropdown,
   SkeletorCard,
+  SkeletorDestinosDestacados,
 } from "./components/skeletor";
 import { LayoutCards } from "./components/wrapper/layoutCards";
 import { Show } from "./show";
@@ -20,4 +21,5 @@ export {
   TittleCards,
   SkeletorCard,
   Show,
+  SkeletorDestinosDestacados,
 };
