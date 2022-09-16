@@ -1,5 +1,5 @@
 import React from "react";
-export const TittleCards = ({ tittle = "", Push }) => {
+export const TittleCards = ({ tittle = "", Push = "" }) => {
   return (
     <h2
       className="subtitulo-general subtitulo-general--border-bottom text-black "
