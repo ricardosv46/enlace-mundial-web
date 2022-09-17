@@ -18,7 +18,6 @@ import { useEffect, useState } from "react"
 import Facebook from "../components/facebook"
 import { ScreenProvider } from '../context/screen/providers'
 import { NextHead } from '../components/head'
-
 function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = useState(false)
   const [dataUser, setDataUser] = useState({})
@@ -33,7 +32,13 @@ function MyApp({ Component, pageProps }) {
       }
     }
   }, [])
-
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const loader = document.getElementById('globalLoader');
+      if (loader)
+        loader.style.display = 'none';
+    }
+  }, []);
   return (
     <div>
       {/* <Head>
