@@ -10,7 +10,7 @@ import { LayoutCards } from "./components/wrapper/layoutCards";
 import { Show } from "./show";
 import { TittleCards } from "./components/tittles/tittleCards";
 import { TittleOferta } from "./components/tittles/tittleOfertas";
-
+import { BottomBanner } from './components/bottomBanner'
 export {
   TittleOferta,
   SubMenuTittle,
@@ -22,4 +22,5 @@ export {
   SkeletorCard,
   Show,
   SkeletorDestinosDestacados,
+  BottomBanner
 };

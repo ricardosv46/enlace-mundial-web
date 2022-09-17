@@ -2,13 +2,14 @@ import { useEffect } from 'react'
 import Head from "next/head"
 import GestionLuna from "../../gestion-de-endpoints/GestionLunaMiel"
 import { useScreenContext } from '../../context/screen'
+import { TittleCards } from '../../components/common'
 import Banner from "@/components/luna-de-miel/Banner"
 import CardLunaDeMiel from "components/cards/card-luna-de-miel"
 
 export default function Home() {
   const { dataLuna, loading } = GestionLuna()
   const { DispatchScreen } = useScreenContext()
-  
+
   useEffect(() => {
     DispatchScreen({ type: 'ChangeSubTittle', payload: 'Luna de Miel' })
   }, [])
@@ -29,7 +30,8 @@ export default function Home() {
         <Banner />
 
         <section className='l-miel__items mt-5'>
-          <h2 className='subtitulo-general subtitulo-general--border-bottom'>Luna de miel</h2>
+          <TittleCards tittle='Luna de Miel' />
+          {/* <h2 className='subtitulo-general subtitulo-general--border-bottom'>Luna de miel</h2> */}
 
           <div className='container mt-5'>
             <div className='row'>

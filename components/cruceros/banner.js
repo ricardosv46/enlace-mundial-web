@@ -1,6 +1,5 @@
 import React from "react"
-import Link from "next/link"
-
+import { BottomBanner } from '../common'
 export default function Banner() {
   return (
     <main className='banner-cruceros'>
@@ -21,11 +20,12 @@ export default function Banner() {
             viajar
           </h2>
 
-          <div className='mt-4'>
+          <BottomBanner TextButtom="Contacto" href="/contacto"/>
+          {/* <div className='mt-4'>
             <Link href='/' passHref>
               <a className='btn btn-primary px-5 rounded-0'>Contacto</a>
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
     </main>

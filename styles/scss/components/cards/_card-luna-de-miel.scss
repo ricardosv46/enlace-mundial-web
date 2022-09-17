@@ -3,6 +3,10 @@
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 
+  &_wrapperimagen {
+    overflow: hidden;
+  }
+
   &__imagen {
     height: 250px;
 
@@ -14,6 +18,11 @@
 
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
+    transition: transform 1s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__titulo {

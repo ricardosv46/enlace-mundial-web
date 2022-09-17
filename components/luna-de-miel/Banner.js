@@ -1,7 +1,5 @@
 import React from "react";
-
-import Link from "next/link";
-
+import { BottomBanner } from '../common'
 export default function Banner() {
   return (
     <section className="l-miel-banner d-flex justify-content-center align-items-center">
@@ -22,12 +20,7 @@ export default function Banner() {
                     posterior al matrimonio. Es el segundo paso, y a veces el
                     más esperado.
                   </p>
-
-                  <div className="mt-4">
-                    <Link href="/contacto" passHref>
-                      <a className="btn btn-primary rounded-0 px-5">CONTACTO</a>
-                    </Link>
-                  </div>
+                  <BottomBanner TextButtom="Contacto" href="/contacto" />
                 </div>
               </div>
             </div>

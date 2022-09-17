@@ -4,14 +4,16 @@ import Link from "next/link"
 export default function CardLunaDeMiel({ tipo, item }) {
   return (
     <article className='card-l-miel'>
-      <Link href={`/luna-de-miel/${item.slugLuna}`} passHref>
-        <div
-          className='card-l-miel__imagen pointer'
-          style={{
-            backgroundImage: `url("${item?.imagenPrincipalLuna?.url}")`,
-          }}
-        ></div>
-      </Link>
+      <div className="card-l-miel_wrapperimagen">
+        <Link href={`/luna-de-miel/${item.slugLuna}`} passHref>
+          <div
+            className='card-l-miel__imagen pointer'
+            style={{
+              backgroundImage: `url("${item?.imagenPrincipalLuna?.url}")`,
+            }}
+          ></div>
+        </Link>
+      </div>
 
       <div className='text-center pt-2 pb-4 px-4'>
         <h3 className='card-l-miel__titulo font-weight-bold mt-1'>

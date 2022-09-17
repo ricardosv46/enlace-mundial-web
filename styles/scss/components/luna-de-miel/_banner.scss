@@ -45,7 +45,7 @@
   &__descripcion {
     font-size: 0.9em;
     color: white;
-
+    text-shadow: rgb(0, 0, 0) 1px 0 5px;
     @media (min-width: 768px) {
       font-size: 1.1em;
     }
