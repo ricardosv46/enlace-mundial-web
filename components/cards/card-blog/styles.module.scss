@@ -8,6 +8,11 @@
 }
 
 .cardBlog {
+
+  &_wrapperimagen {
+    overflow: hidden;
+  }
+
   &_imagen {
     height: 300px;
 
@@ -18,6 +23,11 @@
     background-size: cover;
 
     border-radius: 0.1rem;
+    transition: transform 1s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &_titulo {

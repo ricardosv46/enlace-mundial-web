@@ -1,21 +1,23 @@
-import React from "react"
-import Link from "next/link"
+import React from "react";
+import Link from "next/link";
 
-import styles from "./styles.module.scss"
+import styles from "./styles.module.scss";
 
 export default function CardCrucero({ item }) {
-  const ruta = "/cruceros"
+  const ruta = "/cruceros";
 
   return (
     <article className={styles.cardGeneral}>
-      <Link href={`${ruta}/${item?.slugCrucero}`}>
-        <section
-          style={{
-            backgroundImage: `url(${item?.imagenPrincipalCrucero?.url})`,
-          }}
-          className={`${styles.cardGeneral_imagen} pointer`}
-        ></section>
-      </Link>
+      <div className={styles.cardGeneral_wrapperimagen}>
+        <Link href={`${ruta}/${item?.slugCrucero}`}>
+          <section
+            style={{
+              backgroundImage: `url(${item?.imagenPrincipalCrucero?.url})`,
+            }}
+            className={`${styles.cardGeneral_imagen} pointer`}
+          ></section>
+        </Link>
+      </div>
 
       <section className={styles.cardGeneral_body}>
         <Link href={`${ruta}/${item?.slugCrucero}`} passHref>
@@ -24,13 +26,13 @@ export default function CardCrucero({ item }) {
           </a>
         </Link>
 
-        <p className='text-muted mt-4'>{item?.descripcionCortaCrucero}</p>
+        <p className="text-muted mt-4">{item?.descripcionCortaCrucero}</p>
 
-        <h4 className='card-tour__sub text-secondary text-left mt-3'>
+        <h4 className="card-tour__sub text-secondary text-left mt-3">
           <span
             className={`${styles.cardGeneral_icono} text-muted d-inline-block mr-2`}
           >
-            <i className='fas fa-map-marker-alt'></i>
+            <i className="fas fa-map-marker-alt"></i>
           </span>
 
           <span className={styles.cardGeneral_ubicacion}>
@@ -42,7 +44,7 @@ export default function CardCrucero({ item }) {
           </span>
         </h4>
         <div className={styles.cardGeneral_estrella_precio}>
-          <p className='d-flex flex-column justify-content-end text-right'>
+          <p className="d-flex flex-column justify-content-end text-right">
             <span>Desde</span>
 
             <span
@@ -52,17 +54,17 @@ export default function CardCrucero({ item }) {
             </span>
           </p>
 
-          <div className='card-tour__stars'>
-            <p className='text-warning small mt-2'>
-              <i className='fas fa-star'></i>
-              <i className='fas fa-star'></i>
-              <i className='fas fa-star'></i>
-              <i className='fas fa-star'></i>
-              <i className='fas fa-star'></i>
+          <div className="card-tour__stars">
+            <p className="text-warning small mt-2">
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
             </p>
           </div>
         </div>
       </section>
     </article>
-  )
+  );
 }
