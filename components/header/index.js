@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import { FaRegUser } from 'react-icons/fa'
 
 import Link from "next/link"
 import { Toaster } from "react-hot-toast"
@@ -37,9 +38,8 @@ export default function Header() {
             />
           </Link>
           <button
-            className={`hamburger hamburger--collapse hamburger--header ${
-              navStatus ? "is-active" : ""
-            }`}
+            className={`hamburger hamburger--collapse hamburger--header ${navStatus ? "is-active" : ""
+              }`}
             type='button'
             onClick={cambiarEstadoNav}
           >
@@ -48,9 +48,8 @@ export default function Header() {
             </span>
           </button>
           <nav
-            className={`header__nav d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 pb-5 py-md-0 ${
-              navStatus ? "header__nav--active" : ""
-            }`}
+            className={`header__nav d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 pb-5 py-md-0 ${navStatus ? "header__nav--active" : ""
+              }`}
           >
             {/* Menu items */}
             <ul className='list-unstyled d-flex flex-column flex-md-row align-items-center mt-0 mb-0 py-3 py-lg-0'>
@@ -96,16 +95,21 @@ export default function Header() {
                 </button>
               </div> */}
               {auth && (
-                <div
-                  className='header__button-c d-flex justify-content-center align-items-center mt-3 mt-lg-0'
-                  onClick={() => setNavStatus(false)}
-                >
-                  <Link href='/mi-cuenta' passHref>
-                    <a className='btn btn-outline-primary header__button d-flex justify-content-center align-items-center'>
-                      Mi cuenta
-                    </a>
-                  </Link>
+                <div className="d-flex flex-row ">
+                  <div
+                    className='header__button-c d-flex flex-row justify-content-center align-items-center mt-3 mt-lg-0'
+                    onClick={() => setNavStatus(false)}
+                  >
+                    <Link href='/mi-cuenta' passHref>
+                      <a className='btn btn-outline-primary header__button d-flex justify-content-center align-items-center'>
+                        Mi cuenta
+                      </a>
+                    </Link>
+                  </div>
+                  <FaRegUser className="my-auto iconheaderauth " />
+
                 </div>
+
               )}
             </section>
             <Toaster

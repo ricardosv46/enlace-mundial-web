@@ -65,12 +65,26 @@ p {
 }
 
 .redes-sociales {
-  img {
-    width: 25px;
-    height: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 2rem;
 
-    margin-right: 1rem;
+  @media (min-width:768px) {
+    margin-top: 0rem;
   }
+
+  a {
+    width: auto;
+    height: auto;
+    color: black;
+    // margin-right: 1rem;
+  }
+}
+
+.icon_svg_redes_sociales {
+  width: 25px;
+  height: 25px;
 }
 
 a.nav-link-tab {

@@ -53,8 +53,19 @@
   &__links {
     order: -1;
 
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
     @media (min-width: 992px) {
       order: 2;
     }
+  }
+
+  &__direccion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: white;
   }
 }
