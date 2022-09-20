@@ -50,13 +50,24 @@
     gap: 0.5rem;
     background-color: #F0F2F5;
     border-radius: 10px;
+    font-family: "Segoe UI Historic", "Segoe UI", Helvetica, Arial, sans-serif;
 
     &_user {
       width: 100%;
+      color: #050505;
+      font-size: 12px;
+      line-height: 14px;
+      font-weight: 600;
+
     }
 
     &_content {
       width: 100%;
+      font-size: 14px;
+      line-height: 18.6662px;
+      font-weight: 400;
+
+
 
     }
 
@@ -67,16 +78,33 @@
       width: 100%;
 
       &_gusta {
-        color: black
-
+        color: black;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 12px;
+        margin-top: auto;
+        margin-bottom: auto;
+        cursor: pointer;
       }
 
       &_responder {
-        color: black
+        color: black;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 18px;
+        margin-top: auto;
+        margin-bottom: auto;
+        cursor: pointer;
+
       }
 
       &_time {
-        color: black
+        color: black;
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 12px;
+        line-height: 12px;
+        cursor: pointer;
       }
 
 

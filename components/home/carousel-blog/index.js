@@ -41,7 +41,7 @@ export default function CarouselBlog() {
     swiperRefDesktop.current.swiper.slidePrev();
   };
   return (
-    <section className="carousel-3-columnas mt-5">
+    <section className="carousel-3-columnas mt-5 mb-5">
       <TittleCards tittle="Blogs" Push={() => Router.push("/blog")} />
       {/* <h2 className="subtitulo-general text-black">
         <Link href="/blog" passHref>
