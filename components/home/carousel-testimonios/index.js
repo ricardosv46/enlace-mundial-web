@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 
 // Componentes
 import Swiper from "react-id-swiper";
+import { HiChatAlt2 } from 'react-icons/hi'
 import CardTestimonio from "../../cards/card-testimonio";
 import { TittleCards } from "../../common";
 
@@ -15,7 +16,7 @@ export default function CarouselBlog(props) {
   };
 
   const carouselParamsDesktop = {
-    slidesPerView: 3,
+    slidesPerView: 2,
     spaceBetween: 10,
     loop: true,
   };
@@ -33,30 +34,53 @@ export default function CarouselBlog(props) {
     {
       id: 1,
       imagen: "https://avatars.githubusercontent.com/u/499550?v=4",
-      nombre: "Evan You",
+      nombre: "Noelia Ponce Enciso",
       comentario:
-        "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
+        "Una muy linda experiencia y buen servicio",
+      datetime: '2 sem'
     },
     {
       id: 2,
       imagen: "https://i.blogs.es/e3def9/torvalds3/840_560.jpg",
-      nombre: "Linus Torvals",
+      nombre: "Henry Saez",
       comentario:
-        "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
+        "Un excelente Full Day San Mateo de Otao. 100% Recomendado. Gracias Enla Mundial Perú",
+      datetime: '2 sem'
+
     },
     {
       id: 3,
       imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
-      nombre: "Esmeralda Kathleen",
+      nombre: "Luz Maria Quintos Alarcon",
       comentario:
-        "Conoce el Perú! Te invitamos a que viajes y descubras los destinos, actividades y planes en el Perú que aún no conoces.",
+        "Lindos momentos con grupo la pasamos excelente mis hijas felices se divirtierón al maximo",
+      datetime: '3 sem'
+    },
+    {
+      id: 4,
+      imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
+      nombre: "Garia EP Comando",
+      comentario:
+        "Excelenete viaje 👍💯👈 Gracias enlace mundial y guia Jasmin",
+      datetime: '4 sem'
+    },
+    {
+      id: 5,
+      imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
+      nombre: "Alex Maz Naa Sanchez Hinostroza",
+      comentario:
+        "Súper la experiencia me encanto, quede enamorado de ICA, pero sobre todo de su gente amables y acogedora, súper las atenciones de Aldo especial como guía, gracias a la Agencia Enlace Mundial recomendadisimo si van a pasear a ICA",
+      datetime: '4 sem'
     },
   ];
 
   return (
     <section className="container carousel-app carousel-app--testimonios">
       <div className="row justify-content-center">
-        <TittleCards tittle="Nuestra gente hablando de nosotros" />
+        <div className="d-flex flex-row">
+          <TittleCards tittle="Nuestra gente hablando de nosotros" />
+          <HiChatAlt2 className="my-auto ml-4 icon-text-chat" />
+        </div>
         {/* <div>
           <h2 className="subtitulo-general">
             Nuestra gente hablando de nosotros

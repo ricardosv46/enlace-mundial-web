@@ -20,11 +20,9 @@ export default function ModalContacto() {
 
   return (
     <section
-      className={`d-md-flex flex-column justify-content-center align-items-center ${
-        styles.modalContacto
-      } py-2 ${
-        modalFixed ? `${styles.modalContacto__fixed} shadow-bottom` : ""
-      }`}
+      className={`d-md-flex flex-column justify-content-center align-items-center ${styles.modalContacto
+        } py-2 ${modalFixed ? `${styles.modalContacto__fixed} shadow-bottom` : ""
+        }`}
     >
       <div className='text-center'>
         <h3 className={styles.modalContacto_titulo}>¿Necesitas ayuda?</h3>
@@ -64,7 +62,7 @@ export default function ModalContacto() {
 
           <div className='col-lg-5 d-flex justify-content-center justify-content-lg-between mt-4 mt-lg-0'>
             <img
-              src='https://www.concur.com.mx/sites/default/files/mx/support-customer-service-call_0.jpg'
+              src='https://www.webnexo.es/wp-content/uploads/2016/04/Call-center-salamanca-705x687.jpg'
               className={`${styles.modalContacto_avatar} img-fluid`}
             />
 
@@ -74,7 +72,8 @@ export default function ModalContacto() {
                   User support
                 </h4>
                 <a
-                  href='https://api.whatsapp.com/send?phone=51994945265&app=facebook&entry_point=page_cta&fbclid=IwAR3HYJYUhipLyudKE4dXrpDzXEk0jaevCEoE-S36cn4SMOLFM2T3UKZSF1c'
+                  href='https://wa.link/9acpco'
+                  target={'_blank'}
                   className='btn btn-primary d-flex w-btn justify-content-between py-1'
                 >
                   <img
