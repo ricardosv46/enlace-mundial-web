@@ -1,10 +1,10 @@
 @import "../../../styles/scss/variables";
 
 .cardGeneral {
-  max-width: 100%;
-
+  width: 100%;
   border: 1px solid rgba($secondary, 0.4);
   border-radius: 0.7rem;
+
   &:hover {
     box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
@@ -13,20 +13,31 @@
 
   &_wrapperimagen {
     overflow: hidden;
-  }
-
-  &_imagen {
     height: 300px;
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    
+
     border-top-left-radius: 0.7rem;
     border-top-right-radius: 0.7rem;
-    transition: transform 1s ease;
 
-    &:hover {
-      transform: scale(1.1);
 
+
+    &_imagen {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 1s ease;
+      border-top-left-radius: 0.7rem;
+      border-top-right-radius: 0.7rem;
+
+      &:hover {
+        transform: scale(1.1);
+
+      }
     }
+
+
   }
 
   &_body {

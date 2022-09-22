@@ -14,9 +14,10 @@ export default function CardLunaMiel({ item, tipo }) {
             style={{
               backgroundImage: `url(${item?.imagenPrincipalLuna?.url})`,
             }}
-            className={`${styles.cardGeneral_imagen} pointer`}
+            className={`${styles.cardGeneral_wrapperimagen_imagen} pointer`}
           ></section>
         </Link>
+
       </div>
 
       <section className={styles.cardGeneral_body}>
