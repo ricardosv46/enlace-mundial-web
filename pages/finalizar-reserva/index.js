@@ -15,15 +15,8 @@ import Pagos from '../../components/general/reservar/tipoPago/pagos'
 import TipoPago from '../../components/general/reservar/tipoPago'
 import { ContextAuth } from '../../context/ContextAuth'
 import { useRouter } from 'next/router'
+import { useTypePassenger } from '../../hooks/useTypePassenger'
 
-const datosFormulario = {
-  validado: false,
-  nombres: '',
-  apellidos: '',
-  tipoDocumento: 'DNI',
-  nroDocumento: undefined,
-  comentarios: ''
-}
 
 export default function Home() {
   const router = useRouter()
@@ -50,38 +43,12 @@ export default function Home() {
   const [tipoPago, setTipoPago] = useState('tarjeta')
   const [pagos, setPagos] = useState(false)
   const [carrito, setCarrito] = useState({})
-  const [formularios, setFormularios] = useState([])
+  // const [formularios, setFormularios] = useState([])
+  const { DatePassenger, setDatePassenger } = useTypePassenger()
 
-  // Asignar formularios
   useEffect(() => {
-    setTimeout(() => {
-      const carritoLocal = JSON.parse(localStorage.getItem('carrito'))
-
-      setCarrito(carritoLocal)
-
-      // Calcular cuantos formularios se renderizarán
-      let forms = []
-
-      for (let i = 0; i < carritoLocal.nroAdultos; i++) {
-        let form = {
-          ...datosFormulario,
-          tipoPersona: 'ADULTO'
-        }
-
-        forms.push(form)
-      }
-
-      for (let i = 0; i < carritoLocal.nroMenores; i++) {
-        let form = {
-          ...datosFormulario,
-          tipoPersona: 'MENOR'
-        }
-
-        forms.push(form)
-      }
-
-      setFormularios(forms)
-    }, 500)
+    const carritoLocal = JSON.parse(localStorage.getItem('carrito'))
+    setCarrito(carritoLocal)
   }, [])
 
   if (loading) {
@@ -119,7 +86,7 @@ export default function Home() {
                       eventKey='home'
                       title={
                         !pagos
-                          ? formularios.length > 1
+                          ? DatePassenger.length > 1
                             ? 'Datos de los pasajeros'
                             : 'Datos del pasajero'
                           : 'Datos de la Tarjeta'
@@ -127,14 +94,14 @@ export default function Home() {
                     >
                       <section className='p-1 p-lg-3'>
                         {!pagos ? (
-                          formularios.length ? (
+                          DatePassenger.length ? (
                             <Formularios
                               setTarjeta={setTarjeta}
-                              items={formularios}
-                              setFormularios={setFormularios}
+                              items={DatePassenger}
+                              setFormularios={setDatePassenger}
                               setPagos={setPagos}
-                              setArrayPasajero={setArrayPasajero}
-                              arraypasajero={arraypasajero}
+                            // setArrayPasajero={setArrayPasajero}
+                            // arraypasajero={arraypasajero}
                             />
                           ) : (
                             'Debe agregar un tour a su carrito'
@@ -155,7 +122,8 @@ export default function Home() {
                           <Pagos
                             pagos={pagos}
                             tarjeta={tarjeta}
-                            arraypasajero={arraypasajero}
+                            // arraypasajero={arraypasajero}
+                            arraypasajero={DatePassenger}
                             carrito={carrito}
                             tipoPago={tipoPago}
                             setPagos={setPagos}
@@ -247,13 +215,13 @@ export default function Home() {
                         <h3>
                           {carrito.precioReal
                             ? formatoAPrecio(
-                                carrito.precioReal *
-                                  (carrito.nroAdultos + carrito.nroMenores)
-                              )
+                              carrito.precioReal *
+                              (carrito.nroAdultos + carrito.nroMenores)
+                            )
                             : formatoAPrecio(
-                                carrito.producto.precioBaseTour *
-                                  (carrito.nroAdultos + carrito.nroMenores)
-                              )}
+                              carrito.producto.precioBaseTour *
+                              (carrito.nroAdultos + carrito.nroMenores)
+                            )}
                         </h3>
                       </div>
                     ) : (

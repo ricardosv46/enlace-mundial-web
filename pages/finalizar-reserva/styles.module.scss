@@ -9,10 +9,12 @@
 
   &_imagenTour {
     height: 220px;
-
-    background-repeat: round;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 }
+
 .todo {
   top: 0;
   left: 0;
