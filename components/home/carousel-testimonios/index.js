@@ -37,7 +37,6 @@ export default function CarouselBlog(props) {
       nombre: "Noelia Ponce Enciso",
       comentario:
         "Una muy linda experiencia y buen servicio",
-      datetime: '2 sem'
     },
     {
       id: 2,
@@ -45,7 +44,6 @@ export default function CarouselBlog(props) {
       nombre: "Henry Saez",
       comentario:
         "Un excelente Full Day San Mateo de Otao. 100% Recomendado. Gracias Enla Mundial Perú",
-      datetime: '2 sem'
 
     },
     {
@@ -54,7 +52,6 @@ export default function CarouselBlog(props) {
       nombre: "Luz Maria Quintos Alarcon",
       comentario:
         "Lindos momentos con grupo la pasamos excelente mis hijas felices se divirtierón al maximo",
-      datetime: '3 sem'
     },
     {
       id: 4,
@@ -62,7 +59,6 @@ export default function CarouselBlog(props) {
       nombre: "Garia EP Comando",
       comentario:
         "Excelenete viaje 👍💯👈 Gracias enlace mundial y guia Jasmin",
-      datetime: '4 sem'
     },
     {
       id: 5,
@@ -70,7 +66,6 @@ export default function CarouselBlog(props) {
       nombre: "Alex Maz Naa Sanchez Hinostroza",
       comentario:
         "Súper la experiencia me encanto, quede enamorado de ICA, pero sobre todo de su gente amables y acogedora, súper las atenciones de Aldo especial como guía, gracias a la Agencia Enlace Mundial recomendadisimo si van a pasear a ICA",
-      datetime: '4 sem'
     },
   ];
 

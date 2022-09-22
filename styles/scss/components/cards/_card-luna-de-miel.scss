@@ -1,7 +1,9 @@
 .card-l-miel {
   border: 1px solid rgba($secondary, 0.5);
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  // border-top-left-radius: 1rem;
+  // border-top-right-radius: 1rem;
+  border-radius: 1rem;
+  height: 100%;
 
   &_wrapperimagen {
     overflow: hidden;
@@ -9,42 +11,64 @@
 
   &__imagen {
     height: 250px;
+    background-size: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    transition: transform 1s ease;
 
     @media (min-width: 768px) {
       height: 280px;
     }
-
-    background-size: cover;
-
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    transition: transform 1s ease;
 
     &:hover {
       transform: scale(1.1);
     }
   }
 
-  &__titulo {
-    font-size: 0.9em;
-    font-weight: 700;
+  &_wrappercontent {
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
-    @media (min-width: 768px) {
-      font-size: 1em;
+    &__titulo {
+      font-size: 0.9em;
+      font-weight: 700;
+      margin-top: 0.5rem;
+
+
+      @media (min-width: 768px) {
+        font-size: 1em;
+      }
     }
+
+    &__categoria {
+      color: $secondary;
+
+      font-weight: 700;
+
+      text-decoration: underline;
+    }
+
+    &__descripcion {
+      color: $secondary;
+      margin-top: 0.7rem;
+      text-align: left;
+      display: block;
+    }
+
+
+    &__btn {
+      display: block;
+    }
+
   }
 
-  &__categoria {
-    color: $secondary;
-
-    font-weight: 700;
-
-    text-decoration: underline;
-  }
-
-  &__descripcion {
-    color: $secondary;
-  }
 
   .btn {
     font-weight: 700;

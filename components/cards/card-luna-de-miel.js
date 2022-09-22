@@ -15,21 +15,21 @@ export default function CardLunaDeMiel({ tipo, item }) {
         </Link>
       </div>
 
-      <div className='text-center pt-2 pb-4 px-4'>
-        <h3 className='card-l-miel__titulo font-weight-bold mt-1'>
+      <div className='card-l-miel_wrappercontent'>
+        <h3 className='card-l-miel_wrappercontent__titulo'>
           {item?.tituloLuna}
         </h3>
 
         <Link href={`/luna-de-miel/${item.slugLuna}`} passHref>
-          <a className='card-l-miel__categoria'>{item.regionLuna}</a>
+          <a className='card-l-miel_wrappercontent__categoria'>{item.regionLuna}</a>
         </Link>
 
-        <p className='card-l-miel__descripcion mt-3 text-left'>
+        <p className='card-l-miel_wrappercontent__descripcion '>
           {item.descripcionLargaLuna}
         </p>
 
         <Link href={`/luna-de-miel/${item.slugLuna}`} passHref>
-          <a className='btn btn-outline-primary py-2 px-4'>Informes</a>
+          <a className='btn btn-outline-primary card-l-miel_wrappercontent__btn'>Informes</a>
         </Link>
       </div>
     </article>

@@ -30,11 +30,7 @@ export default function CardBlog(props) {
       <div className="card-testimonio_wrappertext">
         <div className="card-testimonio_wrappertext_user">{props.item.nombre || 'username_default'}</div>
         <div className="card-testimonio_wrappertext_content">{props.item.comentario || ''}</div>
-        <div className="card-testimonio_wrappertext_wrappertime">
-          <div className="card-testimonio_wrappertext_wrappertime_gusta">Me gusta</div>
-          <div className="card-testimonio_wrappertext_wrappertime_responder">Responder</div>
-          <div className="card-testimonio_wrappertext_wrappertime_time">{props.item.datetime || ' 1 year'}</div>
-        </div>
+        
       </div>
     </div >
   );
