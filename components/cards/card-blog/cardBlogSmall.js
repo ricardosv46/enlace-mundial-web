@@ -22,8 +22,8 @@ export const CardBlogSmall = ({ item }) => {
                     </p>
                 </div>
 
-                <div className='d-flex justify-content-between align-items-end'>
-                    <div className='text-muted my-0'>
+                <div className='d-flex justify-content-center '>
+                    <div className='text-muted'>
                         <Link href={`/blog/${item.slugBlog}`}>
                             <a className='btn btn-primary'>Ver más </a>
                         </Link>
