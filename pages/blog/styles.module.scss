@@ -9,8 +9,12 @@
   }
 
   &_titulo {
-    font-size: 2em;
+    font-size: 1.4em;
     font-weight: bold;
+
+    @media (min-width:768px) {
+      font-size: 2em;
+    }
   }
 
   &_counter {
@@ -45,5 +49,17 @@
 
       text-decoration: none;
     }
+  }
+}
+
+.wrapperIcons {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  margin-bottom: auto;
+  gap: 0.5rem;
+
+  &_icon {
+    cursor: pointer;
   }
 }

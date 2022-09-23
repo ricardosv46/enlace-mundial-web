@@ -65,19 +65,36 @@
 
     grid-template-columns: 40% 1fr;
     grid-template-rows: 1fr;
-
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
   }
 
   &_imagen {
     height: 100%;
-
     background-size: cover;
 
     @media (min-width: 768px) {
       border-top-left-radius: 1rem;
       border-bottom-left-radius: 1rem;
     }
+  }
+}
+
+.cardBlogSmall {
+  height: 300px;
+  width: 100%;
+  border: 1px solid rgba($secondary, 0.2);
+  border-radius: 0.7rem;
+
+  &:hover {
+    box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
+  }
+
+  &_img {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
   }
 }
