@@ -98,7 +98,8 @@ export default function Home() {
   {/* sino existe la key lo agregamos por defecto 'List' */ }
   useEffect(() => {
     if (!getValueStorage(KeyLocalStorage)) {
-      setValueStorage(KeyLocalStorage, TypeViewCard.LIST) && setValueLocal(TypeViewCard.LIST)
+      setValueStorage(KeyLocalStorage, TypeViewCard.LIST)
+      setValueLocal(TypeViewCard.LIST)
     } else {
       setValueLocal(getValueStorage(KeyLocalStorage))
     }
