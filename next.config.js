@@ -3,4 +3,5 @@ module.exports = {
   images: {
     domains: ["apienlacemundial.softaki.com"],
   },
+
 };

@@ -14,11 +14,9 @@ export default function MiCuentaDetalle() {
   const router = useRouter()
 
   const id = router.query.id
-  console.log(id)
   const [items, setItems] = useState()
 
   const { dataIdOrden, loadingGetData } = useIdOrdenTour({ ordenTourId: id })
-  console.log(dataIdOrden)
 
   useEffect(() => {
     !loadingGetData && setItems(dataIdOrden)

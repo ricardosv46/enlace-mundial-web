@@ -11,10 +11,8 @@ import { useOrdenServices } from "../../../gestion-de-endpoints/useOrdenServices
 
 export default function MiCuenta() {
   const [items, setItems] = useState([])
-  console.log(items)
 
   const { dataOrden, loadingGetData } = useOrdenServices()
-  console.log(dataOrden)
 
   useEffect(() => {
     !loadingGetData && setItems(dataOrden?.data)

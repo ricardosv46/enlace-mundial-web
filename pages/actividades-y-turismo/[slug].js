@@ -214,7 +214,7 @@ export default function Home({ data }) {
           </OtherItem>
 
           {/* Reservar mobile */}
-          <section className='container mt-3 d-md-none'>
+          <div className='container mt-3 d-md-none'>
             <div className='row'>
               <div className='col-md-12'>
                 <button
@@ -226,10 +226,10 @@ export default function Home({ data }) {
                 </button>
               </div>
             </div>
-          </section>
+          </div>
 
           {/* Te puede interesar */}
-          <section className='mt-5 mt-md-0'>
+          <div className='mt-5 mt-md-0'>
             <div className='bg-light mt-4 py-2'>
               <div className='container'>
                 <div className='row'>
@@ -253,7 +253,7 @@ export default function Home({ data }) {
                 </div>
               </div>
             </div>
-          </section>
+          </div>
         </section>
       </main>
 

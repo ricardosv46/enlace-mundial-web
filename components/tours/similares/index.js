@@ -32,7 +32,6 @@ const ToursSimilares = ({ deparCodi }) => {
     } */
 
     swiperRefMobile.current.swiper.slideNext()
-    swiperRefDesktop.current.swiper.slideNext()
   }
   const goPrev = () => {
     /* if (swiperRef.current && swiperRef.current.swiper) {
@@ -40,7 +39,6 @@ const ToursSimilares = ({ deparCodi }) => {
     } */
 
     swiperRefMobile.current.swiper.slidePrev()
-    swiperRefDesktop.current.swiper.slidePrev()
   }
 
   return (
@@ -52,8 +50,23 @@ const ToursSimilares = ({ deparCodi }) => {
       <div className={`${styles.toursPopulares_container} container`}>
         {/* Carousel mobile */}
         <div className='row d-md-none'>
-          <div className='col-12'>
+          <div className='col-12 position-relative'>
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
+              {itemsTours.length
+                ? itemsTours.map((item) => {
+                  return (
+                    <div key={item.tourId}>
+                      <CardTour item={item} />
+                    </div>
+                  )
+                })
+                : "No existen"}
+              {/* {
+                itemsTours && itemsTours.map((obj, key) => <div key={key}><CardTour item={obj} /></div>)
+              } */}
+            </Swiper>
+
+            {/* <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
               {itemsTours.length
                 ? itemsTours.map((item) => {
                     return (
@@ -63,7 +76,12 @@ const ToursSimilares = ({ deparCodi }) => {
                     )
                   })
                 : "No existen"}
-            </Swiper>
+            </Swiper> */}
+
+
+            {/* {
+              itemsTours && itemsTours.map((obj, key) => <CardTour item={obj} key={key} />)
+            } */}
 
             <button
               type='button'
@@ -85,15 +103,15 @@ const ToursSimilares = ({ deparCodi }) => {
         <div className='row d-none d-md-flex'>
           {itemsTours.length > 0
             ? itemsTours.map((item) => {
-                return (
-                  <div
-                    className='col-md-6 contenedor-card-tour'
-                    key={item.tourId}
-                  >
-                    <CardTour item={item} />
-                  </div>
-                )
-              })
+              return (
+                <div
+                  className='col-md-6 contenedor-card-tour'
+                  key={item.tourId}
+                >
+                  <CardTour item={item} />
+                </div>
+              )
+            })
             : "No existen"}
         </div>
       </div>

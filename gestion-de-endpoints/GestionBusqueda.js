@@ -47,7 +47,6 @@ const GestionBusqueda = () => {
       console.log("error", error)
     })
     setLoading(false)
-    console.log(res)
 
     if (res) {
       setItemTours(res?.GetBusquedaAvanzadaTour?.data)
@@ -55,7 +54,6 @@ const GestionBusqueda = () => {
       setItemTours([])
     }
   }
-  console.log("databusqueda")
   // const dataBusqueda = data ? data?.GetBusquedaAvanzadaTour?.data : []
   return {
     dataBusqueda: itemTours,

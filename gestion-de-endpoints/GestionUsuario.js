@@ -62,7 +62,6 @@ export const GestionUsuario = () => {
         },
       },
     })
-    console.log("LoginUsuario", res)
 
     if (res.data?.login) {
       localStorage.setItem("token", res.data?.login?.apiToken)
@@ -104,7 +103,6 @@ export const GestionUsuario = () => {
         },
       },
     })
-    console.log("UpdateUsuario", resp)
 
     if (resp.data?.UpdateUsuario) {
       localStorage.setItem("usuario", JSON.stringify(resp.data?.UpdateUsuario))

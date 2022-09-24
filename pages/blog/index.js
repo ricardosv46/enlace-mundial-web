@@ -41,7 +41,6 @@ export default function Home() {
 
   const UpdateValueStorage = (value) => {
     setValueStorage(KeyLocalStorage, value)
-    console.log(value)
     setValueLocal(value)
   }
 

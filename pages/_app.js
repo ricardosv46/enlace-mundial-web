@@ -48,6 +48,7 @@ function MyApp({ Component, pageProps }) {
         />
       </Head> */}
       <Facebook />
+
       <ApolloProvider client={client}>
         <ScreenProvider>
           <ContextAuth.Provider
