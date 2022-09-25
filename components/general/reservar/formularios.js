@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { Tabs, Form } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
+import { ValidationPassenger } from '../../../utilidades/validate-passenger'
 import { FormInput } from './components/formInput'
 import { FormSelect } from './components/formSelect'
 import { FormTextArea } from './components/formTextArea'
@@ -61,9 +62,23 @@ export default function Formularios({
       })
     }
   }
-  const nextPassenger = (index) => {
+  const nextPassenger = async (index) => {
     if (!(items.length === index + 1)) {
-      setPasajeroActual(index + 1)
+      try {
+        // await ValidationPassenger.validate((items[index])).then((res) => {
+        //   console.log(res)
+        // }).catch((err) => {
+        //   console.log(JSON.stringify(err))
+        //   // console.log(err.path)
+        //   // console.log(err.name); // => 'ValidationError'
+        //   // console.log(err.errors); // => ['Deve ser maior que 18']
+        // })
+        setPasajeroActual(index + 1)
+
+
+      } catch (error) {
+        console.log(error)
+      }
     } else {
       setPagos(true)
       setTarjeta(true)
@@ -341,7 +356,6 @@ export default function Formularios({
                 <button
                   type='button'
                   className='btn btn-info text-white px-4'
-                  // disabled={!(item?.nombres && item?.apellidos && item?.tipoDocumento && item?.nroDocumento && item?.edad)}
                   disabled={disableButton(item, index)}
 
 

@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react'
 
 const datosFormulario = {
     validado: false,
-    nombres: '',
-    apellidos: '',
+    nombres: undefined,
+    apellidos: undefined,
     tipoDocumento: 'DNI',
+    edad: undefined,
     nroDocumento: undefined,
-    comentarios: ''
+    comentarios: undefined
 }
 
 export const useTypePassenger = () => {
@@ -16,9 +17,9 @@ export const useTypePassenger = () => {
     // Asignar formularios
     useEffect(() => {
         const carritoLocal = JSON.parse(localStorage.getItem('carrito'))
-        
-        {/* creando array con la cantidad de nro de adultos y nro de menores*/}
-        {/* los numeros de personas estan en el local storage*/}
+
+        {/* creando array con la cantidad de nro de adultos y nro de menores*/ }
+        {/* los numeros de personas estan en el local storage*/ }
         let formMayores = new Array(carritoLocal.nroAdultos).fill({ ...datosFormulario, tipoPersona: 'ADULTO' })
         let formMenores = new Array(carritoLocal.nroMenores).fill({ ...datosFormulario, tipoPersona: 'MENOR' })
         setDatePassenger([...formMayores, ...formMenores])
