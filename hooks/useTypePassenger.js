@@ -14,7 +14,11 @@ export const useTypePassenger = () => {
 
     // Asignar formularios
     const handlePassenger = (e, index) => {
-        setDatePassenger(DatePassenger.map((obj, i) => i === index ? { ...obj, [e.target.name]: e.target.value || undefined } : obj))
+        let LenghtCurrent = e.target.value.length
+        let maxLength = e.target.maxLength === -1 ? 255 : e.target.maxLength
+        if (LenghtCurrent <= maxLength || e.target.name === 'tipoDocumento') {
+            setDatePassenger(DatePassenger.map((obj, i) => i === index ? { ...obj, [e.target.name]: e.target.value || undefined } : obj))
+        }
     }
 
     useEffect(() => {

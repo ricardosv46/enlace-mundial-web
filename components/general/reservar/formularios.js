@@ -8,15 +8,11 @@ import { FormInput } from './components/formInput'
 import { FormSelect } from './components/formSelect'
 import { FormTextArea } from './components/formTextArea'
 
-const datosBase = {
-  nombres: '',
-  apellidos: '',
-  tipoDocumento: 'DNI',
-  nroDocumento: undefined,
-  edad: '',
-  comentarios: ''
+const TypeDocumento = {
+  "DNI": 8,
+  "CE": 12,
+  "PASAPORTE": 12
 }
-
 export default function Formularios({
   items,
   onchange,
@@ -117,6 +113,7 @@ export default function Formularios({
                     name='nroDocumento'
                     onchange={(e) => onchange(e, index)}
                     error={errors['nroDocumento']}
+                    maxLength={TypeDocumento[item?.tipoDocumento]}
 
                   />
                 </div>
@@ -129,6 +126,7 @@ export default function Formularios({
                     required
                     type='number'
                     value={item?.edad || ''}
+                    maxLength={2}
                     name='edad'
                     onchange={(e) => onchange(e, index)}
                     error={errors['edad']}
