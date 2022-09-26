@@ -44,7 +44,7 @@ export default function Home() {
   const [pagos, setPagos] = useState(false)
   const [carrito, setCarrito] = useState({})
   // const [formularios, setFormularios] = useState([])
-  const { DatePassenger, setDatePassenger } = useTypePassenger()
+  const { DatePassenger, handlePassenger } = useTypePassenger()
 
   useEffect(() => {
     const carritoLocal = JSON.parse(localStorage.getItem('carrito'))
@@ -98,7 +98,8 @@ export default function Home() {
                             <Formularios
                               setTarjeta={setTarjeta}
                               items={DatePassenger}
-                              setFormularios={setDatePassenger}
+                              // setFormularios={setDatePassenger}
+                              onchange={handlePassenger}
                               setPagos={setPagos}
                             // setArrayPasajero={setArrayPasajero}
                             // arraypasajero={arraypasajero}

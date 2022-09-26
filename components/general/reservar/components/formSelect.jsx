@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const FormSelect = ({ Tittle, required = false, name, value, onchange, options = [] }) => {
+export const FormSelect = ({ Tittle, required = false, name, value, onchange, options = [], error = undefined }) => {
     return (
         <div className='form-group'>
             <label>
@@ -17,6 +17,7 @@ export const FormSelect = ({ Tittle, required = false, name, value, onchange, op
                 <option value='CE'>Carnet de extranjería</option>
                 <option value='PASAPORTE'>Pasaporte</option> */}
             </select>
+            <label className='text-danger'>{error || ''}</label>
         </div>
     )
 }

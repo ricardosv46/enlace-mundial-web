@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
-
-
 const datosFormulario = {
-    validado: false,
+    validado: true,
     nombres: undefined,
     apellidos: undefined,
     tipoDocumento: 'DNI',
@@ -15,6 +13,10 @@ export const useTypePassenger = () => {
     const [DatePassenger, setDatePassenger] = useState([])
 
     // Asignar formularios
+    const handlePassenger = (e, index) => {
+        setDatePassenger(DatePassenger.map((obj, i) => i === index ? { ...obj, [e.target.name]: e.target.value || undefined } : obj))
+    }
+
     useEffect(() => {
         const carritoLocal = JSON.parse(localStorage.getItem('carrito'))
 
@@ -25,7 +27,10 @@ export const useTypePassenger = () => {
         setDatePassenger([...formMayores, ...formMenores])
     }, [])
 
+
+
     return {
-        DatePassenger, setDatePassenger
+        DatePassenger,
+        handlePassenger
     }
 }

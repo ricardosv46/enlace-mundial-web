@@ -19,123 +19,34 @@ const datosBase = {
 
 export default function Formularios({
   items,
-  setFormularios,
-  // arraypasajero,
-  // setArrayPasajero,
+  onchange,
   setPagos,
   setTarjeta
 }) {
   const [pasajeroActual, setPasajeroActual] = useState(0)
-  const [error, setError] = useState(null)
-  const [datosPasajero, setDatosPasajero] = useState({
-    ...datosBase
-  })
-
+  const [errors, setErrors] = useState({})
   const [terminos, setTerminos] = useState(false)
 
-  const actualizarInput = (e) => {
-    setDatosPasajero({
-      ...datosPasajero,
-      [e.target.name]: e.target.value
-    })
-  }
-  {/* editar datos de pasajeros segun la posicion del array */ }
-  const handlePassenger = (e, index) => {
-    setFormularios(items.map((obj, i) => i === index ? { ...obj, [e.target.name]: e.target.value } : obj))
-  }
-
-  const atras = (index) => {
-    if (pasajeroActual > 1) {
-      setError(null)
-
-      setPasajeroActual(pasajeroActual - 1)
-
-      let { nombres, apellidos, tipoDocumento, nroDocumento, comentarios } =
-        items[index - 1]
-
-      setDatosPasajero({
-        nombres,
-        apellidos,
-        tipoDocumento,
-        nroDocumento,
-        comentarios
-      })
-    }
-  }
   const nextPassenger = async (index) => {
-    if (!(items.length === index + 1)) {
-      try {
-        // await ValidationPassenger.validate((items[index])).then((res) => {
-        //   console.log(res)
-        // }).catch((err) => {
-        //   console.log(JSON.stringify(err))
-        //   // console.log(err.path)
-        //   // console.log(err.name); // => 'ValidationError'
-        //   // console.log(err.errors); // => ['Deve ser maior que 18']
-        // })
-        setPasajeroActual(index + 1)
-
-
-      } catch (error) {
-        console.log(error)
-      }
-    } else {
-      setPagos(true)
-      setTarjeta(true)
-    }
-  }
-
-  const disableButton = (item, index) => {
-    if (items.length === index + 1) {
-      return !(item?.nombres && item?.apellidos && item?.tipoDocumento && item?.nroDocumento && item?.edad && terminos)
-
-    } else {
-      return !(item?.nombres && item?.apellidos && item?.tipoDocumento && item?.nroDocumento && item?.edad)
-    }
-  }
-
-  const siguiente = (index) => {
-    let { nombres, apellidos, tipoDocumento, nroDocumento, comentarios } =
-      datosPasajero
-
-    if (nombres && apellidos && tipoDocumento && nroDocumento) {
-      let datos = {
-        validado: true,
-        nombres,
-        apellidos,
-        tipoDocumento,
-        nroDocumento,
-        comentarios
-      }
-
-      items[index] = datos
-
-      if (pasajeroActual >= items.length) {
-        if (terminos) {
-          setError(null)
+    setErrors({})
+    try {
+      await ValidationPassenger.validate((items[index]), { abortEarly: false }).then((res) => {
+        {/* Preguntamos si estamos en el utimo pasajero */ }
+        if ((index + 1) < items.length) setPasajeroActual(index + 1)
+        {/* Preguntamos si estamos en el utimo passjero y el termino es true para mostrar la sgt pantalla */ }
+        if (items.length === (index + 1) && terminos) {
           setPagos(true)
           setTarjeta(true)
-        } else {
-          setError('Debe aceptar los téminos y condiciones')
         }
-      } else {
-        setPasajeroActual(pasajeroActual + 1)
-
-        /* Completar los campos con datos anteriores */
-        if (items[pasajeroActual].validado) {
-          setDatosPasajero({
-            ...items[pasajeroActual]
-          })
-        } else {
-          setDatosPasajero({
-            ...datosBase
-          })
-        }
-
-        setError(null)
-      }
-    } else {
-      setError('Por favor complete todos los campos requeridos.')
+      }).catch((err) => {
+        {/* provocamos el erro con el schema validate y mapeamos el error para mandarlo a los inputs */ }
+        let data = JSON.parse(JSON.stringify(err))
+        data.inner.map((error) => setErrors((err) => ({ ...err, [error.path]: error.message })))
+        setPagos(false)
+        setTarjeta(false)
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -162,40 +73,19 @@ export default function Formularios({
                     required
                     value={item?.nombres || ''}
                     name='nombres'
-                    onchange={(e) => handlePassenger(e, index)}
+                    onchange={(e) => onchange(e, index)}
+                    error={errors['nombres']}
                   />
-                  {/* <div className='form-group'>
-                    <label>
-                      Nombres <span className='text-danger'>*</span>
-                    </label>
-                    <input
-                      type='text'
-                      name='nombres'
-                      className='form-control'
-                      value={datosPasajero.nombres}
-                      onChange={(e) => actualizarInput(e)}
-                    />
-                  </div> */}
                 </div>
                 <div className='col-md-6'>
-                  {/* <div className='form-group'>
-                    <label>
-                      Apellidos <span className='text-danger'>*</span>
-                    </label>
-                    <input
-                      type='text'
-                      name='apellidos'
-                      className='form-control'
-                      value={item?.apellidos || ''}
-                      onChange={(e) => handlePassenger(e, index)}
-                    />
-                  </div> */}
                   <FormInput
                     Tittle='Apellidos'
                     required
                     value={item?.apellidos || ''}
                     name='apellidos'
-                    onchange={(e) => handlePassenger(e, index)}
+                    onchange={(e) => onchange(e, index)}
+                    error={errors['apellidos']}
+
                   />
                 </div>
               </div>
@@ -206,79 +96,42 @@ export default function Formularios({
                     Tittle='Tipo de documento'
                     required
                     name='tipoDocumento'
-                    onchange={(e) => handlePassenger(e, index)}
+                    onchange={(e) => onchange(e, index)}
                     value={item?.tipoDocumento || ''}
                     options={[
                       { name: 'DNI', value: 'DNI' },
                       { name: 'CE', value: 'Carnet de extranjería' },
                       { name: 'PASAPORTE', value: 'Pasaporte' }
                     ]}
+                    error={errors['tipoDocumento']}
+
                   />
-                  {/* <div className='form-group'>
-                    <label>
-                      Tipo de documento <span className='text-danger'>*</span>
-                    </label>
-                    <select
-                      name='tipoDocumento'
-                      className='form-control'
-                      value={item?.tipoDocumento || ''}
-                      onChange={(e) => actualizarInput(e)}
-                    >
-                      <option value='DNI'>DNI</option>
-                      <option value='CE'>Carnet de extranjería</option>
-                      <option value='PASAPORTE'>Pasaporte</option>
-                    </select>
-                  </div> */}
                 </div>
 
                 <div className='col-md-6'>
-                  {/* <div className='form-group'>
-                    <label>
-                      Número de documento{' '}
-                      <span className='text-danger'>*</span>
-                    </label>
-                    <input
-                      type='number'
-                      name='nroDocumento'
-                      min='0'
-                      step='1'
-                      className='form-control'
-                      value={item?.nroDocumento || ''}
-                      onChange={(e) => actualizarInput(e)}
-                    />
-                  </div> */}
                   <FormInput
                     Tittle='Número de documento'
                     required
                     type='number'
                     value={item?.nroDocumento || ''}
                     name='nroDocumento'
-                    onchange={(e) => handlePassenger(e, index)}
+                    onchange={(e) => onchange(e, index)}
+                    error={errors['nroDocumento']}
+
                   />
                 </div>
               </div>
 
               <div className='form-row mt-3'>
                 <div className='col-md-12'>
-                  {/* <div className='form-group'>
-                    <label>
-                      Edad <span className='text-danger'>*</span>
-                    </label>
-                    <input
-                      type='number'
-                      name='edad'
-                      className='form-control'
-                      value={item?.edad || ''}
-                      onChange={(e) => actualizarInput(e)}
-                    />
-                  </div> */}
                   <FormInput
                     Tittle='Edad'
                     required
                     type='number'
                     value={item?.edad || ''}
                     name='edad'
-                    onchange={(e) => handlePassenger(e, index)}
+                    onchange={(e) => onchange(e, index)}
+                    error={errors['edad']}
                   />
                 </div>
               </div>
@@ -289,17 +142,9 @@ export default function Formularios({
                     Tittle='Comentarios adicionales'
                     value={item?.comentarios || ''}
                     name='comentarios'
-                    onchange={(e) => handlePassenger(e, index)}
+                    onchange={(e) => onchange(e, index)}
+                    error={errors['comentarios']}
                   />
-                  {/* <div className='form-group'>
-                    <label>Comentarios adicionales</label>
-                    <textarea
-                      name='comentarios'
-                      className='form-control'
-                      value={item?.comentarios || ''}
-                      onChange={(e) => actualizarInput(e)}
-                    ></textarea>
-                  </div> */}
                 </div>
               </div>
 
@@ -315,15 +160,6 @@ export default function Formularios({
                     Términos y Condiciones Generales
                   </Link>{' '}
                   de Enlace Mundial Perú
-                </div>
-              ) : (
-                ''
-              )}
-
-              {/* Alerta de error */}
-              {error ? (
-                <div className='alert alert-danger'>
-                  <p>{error}</p>
                 </div>
               ) : (
                 ''
@@ -356,15 +192,7 @@ export default function Formularios({
                 <button
                   type='button'
                   className='btn btn-info text-white px-4'
-                  disabled={disableButton(item, index)}
-
-
                   onClick={() => nextPassenger(index)}
-                // onClick={() => {
-                // setArrayPasajero([...arraypasajero, datosPasajero])
-                // siguiente(index)
-                //   nextPassenger(index++)
-                // }}
                 >
                   {pasajeroActual + 1 === items.length
                     ? 'Ir a pagar'

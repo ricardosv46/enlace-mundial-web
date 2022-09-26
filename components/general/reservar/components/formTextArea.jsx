@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const FormTextArea = ({ Tittle, required = false, name, value, onchange }) => {
+export const FormTextArea = ({ Tittle, required = false, name, value, onchange, error = undefined }) => {
     return (
         <div className='form-group'>
             <label>
@@ -12,6 +12,8 @@ export const FormTextArea = ({ Tittle, required = false, name, value, onchange }
                 value={value}
                 onChange={onchange}
             />
+            <label className='text-danger'>{error || ''}</label>
+
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const FormInput = ({ Tittle, required = false, name, type = 'text', value, onchange }) => {
+export const FormInput = ({ Tittle, required = false, name, type = 'text', value, onchange, error = undefined }) => {
     return (
         <div className='form-group'>
             <label>
@@ -13,6 +13,7 @@ export const FormInput = ({ Tittle, required = false, name, type = 'text', value
                 value={value}
                 onChange={onchange}
             />
+            <label className='text-danger'>{error || ''}</label>
         </div>
     )
 }

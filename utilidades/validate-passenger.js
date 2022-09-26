@@ -4,28 +4,27 @@ import { string, object, number, ref, lazy } from 'yup'
 const TypeDocumento = {
     "DNI": 8,
     "CE": 12,
-    "PASAPORTE": 15
+    "PASAPORTE": 12
 }
-let lenghtMin = 8
+let LengthDocument = 8
 export const ValidationPassenger = object().shape({
     nombres: string().min(2, 'Nombre muy corto').max(255, 'Nombre muy largo').required('Debe ingresar el nombre'),
     apellidos: string().min(2, 'Apellido muy corto').max(255, 'Apellido muy largo').required('Debe ingresar el apellido'),
-    // tipoDocumento: string().required('Debe de ingresar el tipo de documento').oneOf(Object.keys(TypeDocumento)),
+    /*
+    Generamos una funcion con lazy para saber el tipo de documento que se recibe
+     y saber el tamaño de length necesario
+    */
     tipoDocumento: lazy((value, k) => {
-        lenghtMin = TypeDocumento[value]
+        LengthDocument = TypeDocumento[value]
         return string().required('Debe de ingresar el tipo de documento').oneOf(Object.keys(TypeDocumento))
     }),
-
-    // nroDocumento: string().min(8, 'Tipo de documento incompleto').required('Debe ingresar el Nro de documento'),
-    nroDocumento: lazy((value, k) => {
-        // console.log(lazy((value = ref('tipoDocumento')) => value), '<=== ')
-        return string().length(lenghtMin, 'Compruenbe su numero').required('Debe ingresar el Nro de documento')
+    /*
+    Generamos una funcion con lazy para poder poner el LengthDocument a nuestra conveniencia
+    */
+    nroDocumento: lazy((value) => {
+        return string().length(LengthDocument, 'Revise su numero').required('Debe ingresar el Nro de documento')
     }),
-    edad: string().required('Debe ingresar su edad'),
+    edad: number().positive('Revise su edad').required('Debe ingresar su edad'),
     comentarios: string().optional().max('255')
-    // nombres: string().min(2).max(255).required(),
-    // apellidos: string().min(2).max(255).required(),
-    // tipoDocumento: string().required(),
-    // nroDocumento: string().min(8).required(),
-    // comentarios: string().optional().max(255)
+
 })
