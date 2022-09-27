@@ -21,22 +21,14 @@ const LunaDeMiel = () => {
   };
 
   const goNext = () => {
-    /* if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slideNext();
-    } */
-
     swiperRefMobile.current.swiper.slideNext();
     swiperRefDesktop.current.swiper.slideNext();
   };
   const goPrev = () => {
-    /* if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slidePrev();
-    } */
-
     swiperRefMobile.current.swiper.slidePrev();
     swiperRefDesktop.current.swiper.slidePrev();
   };
-  // const lunaDeMiel=dataLuna?dataLuna
+
   return (
     <section className="container carousel-app">
       <div className="row justify-content-center">

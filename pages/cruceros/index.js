@@ -7,11 +7,12 @@ import Banner from "@/components/cruceros/banner"
 import gestionCrucero from "../../gestion-de-endpoints/gestionCrucero.js"
 import request from "graphql-request"
 import CardGeneralCrucero from "../../components/cards/card-general-crucero"
+import { Show, TittleCards, SkeletorCard } from '../../components/common'
 
 export default function Home() {
   const { dataCrucero, loading: loadingGetCrucero } = gestionCrucero()
   const { DispatchScreen } = useScreenContext()
-  
+
   useEffect(() => {
     DispatchScreen({ type: 'ChangeSubTittle', payload: 'Cruceros' })
   }, [])
@@ -30,25 +31,40 @@ export default function Home() {
       <main>
         <Banner />
         <section className='container carousel-app'>
-          <div className='row'>
+          <TittleCards tittle="Viaje en crucero" />
+          {/* <div className='row'>
             <div className='col-md-12'>
               <h2 className='subtitulo-general subtitulo-general--border-bottom'>Viaje en crucero</h2>
             </div>
-          </div>
+          </div> */}
 
-          <div className='row mt-4'>
-            {loadingGetCrucero ? (
-              <p>Cargando ...</p>
-            ) : (
-              dataCrucero.map((item) => {
+          <Show
+            Condition={!loadingGetCrucero}
+            IsDefault={<div className="d-flex flex-column flex-md-row flex-wrap mb-2 mt-5">
+              <SkeletorCard Class="col-md-6 col-lg-4 " />
+              <SkeletorCard Class="col-md-6 col-lg-4 " />
+              <SkeletorCard Class="col-md-6 col-lg-4 " />
+              <SkeletorCard Class="d-lg-none col-md-6 col-lg-4 " />
+            </div>}
+
+          >
+            <div className="row mt-5">
+              {dataCrucero.map((item) => {
                 return (
-                  <div className='col-md-4 mb-5' key={item.cruceroId}>
+                  <div className='col-md-6 col-lg-4 mb-5' key={item.cruceroId}>
                     <CardGeneralCrucero item={item} />
                   </div>
                 )
-              })
+              })}
+            </div>
+          </Show>
+          {/* <div className='row mt-4'>
+            {loadingGetCrucero ? (
+              <p>Cargando ...</p>
+            ) : (
+             
             )}
-          </div>
+          </div> */}
         </section>
       </main>
 
