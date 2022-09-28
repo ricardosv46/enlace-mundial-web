@@ -1,8 +1,7 @@
-.actividades-turismo {
-}
+.actividades-turismo {}
 
 .sidebar-reservar {
-  width: 400px;
+  width: 100%;
 
   background-color: white;
 
@@ -13,17 +12,17 @@
   border-radius: 1rem;
 
   &--fixed {
-    position: fixed;
-    top: 12vh;
-    right: 2rem;
+    position: sticky;
+    top: 64px;
+    // right: 2rem;
     z-index: 100;
   }
 
   &__titulo {
-    font-size: 1em;
+    font-size: 0.6em;
 
     @media (min-width: 768px) {
-      font-size: 1.2em;
+      font-size: 1em;
     }
   }
 

@@ -8,7 +8,6 @@ export const ItemDetalle = ({ id, style, titulo, descripciontitulo, partida, Pun
         <section id={id || ''} style={style || ''}>
             <TittleSection tittle="Detalles" />
             <WrapperData>
-
                 <h5 className='card-title font-weight-bold'>
                     {titulo}
                 </h5>
