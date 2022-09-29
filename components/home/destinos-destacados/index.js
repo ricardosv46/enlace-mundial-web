@@ -28,7 +28,7 @@ export default function DestinosDestacados() {
 
       <div className="container mt-5">
         <Show
-          Condition={!loadingGetData}
+          Condition={loadingGetData}
           IsDefault={
             <div className="d-flex flex-md-row flex-wrap">
               <SkeletorDestinosDestacados Class="col-12 col-md-6" />

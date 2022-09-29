@@ -46,13 +46,17 @@ const ToursPopulares = () => {
 
       <div className={`${styles.toursPopulares_container} container`}>
         {/* Carousel mobile cards */}
+        {/* mientras el loadingGetTour esta cargando mostramos un pequeño loader */}
         <Show
-          Condition={!loadingGetTour}
+          Condition={loadingGetTour}
           IsDefault={
             <div className="d-flex flex-column flex-md-row flex-wrap mb-2">
               <SkeletorCard Class="col-md-6 col-lg-4 " />
               <SkeletorCard Class="d-none d-md-block col-md-6 col-lg-4 " />
               <SkeletorCard Class="d-none d-md-block col-md-6 col-lg-4 " />
+              <SkeletorCard Class="d-none d-md-block col-md-6 col-lg-4 " />
+              <SkeletorCard Class="d-none d-lg-block col-lg-4 " />
+              <SkeletorCard Class="d-none d-lg-block col-lg-4 " />
             </div>
           }
         >
@@ -99,14 +103,14 @@ const ToursPopulares = () => {
                 ))}
           </div>
         </Show>
-      </div>
+      </div >
 
       <div className="text-center">
         <Link href="/actividades-y-turismo">
           <a className="btn btn-primary">Ver más Tours</a>
         </Link>
       </div>
-    </LayoutCards>
+    </LayoutCards >
   );
 };
 
