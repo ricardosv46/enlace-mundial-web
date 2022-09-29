@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Swiper from "react-id-swiper";
 import { useDepartamentosServices } from "../../../Services/useDepartamentosServices";
 import CardDestino from "../../cards/card-destino";
-import { TittleCards, Show, SkeletorDestinosDestacados } from "../../common";
+import { TittleCards, Show, SkeletorDestinosDestacados, SkeletorTittle } from "../../common";
 export default function DestinosDestacados() {
   const { loadingGetData, db: dataDestacados } = useDepartamentosServices();
 
@@ -24,20 +24,22 @@ export default function DestinosDestacados() {
 
   return (
     <section className="destinos-destacados mt-5">
-      <TittleCards tittle="Destinos destacados" />
-
-      <div className="container mt-5">
-        <Show
-          Condition={loadingGetData}
-          IsDefault={
-            <div className="d-flex flex-md-row flex-wrap">
+      <Show
+        Condition={!loadingGetData}
+        IsDefault={
+          <div className="d-flex flex-column container">
+            <SkeletorTittle />
+            <div className="d-flex flex-md-row flex-wrap mt-4">
               <SkeletorDestinosDestacados Class="col-12 col-md-6" />
               <SkeletorDestinosDestacados Class="d-none d-md-block col-md-6" />
               <SkeletorDestinosDestacados Class="d-none d-md-block col-md-6 mt-2" />
               <SkeletorDestinosDestacados Class="d-none d-md-block col-md-6 mt-2" />
             </div>
-          }
-        >
+          </div>
+        }
+      >
+        <TittleCards tittle="Destinos destacados" />
+        <div className="container mt-5">
           <div className="destinos-destacados__fila-1">
             {dataDestacados.map((destino, contador) => {
               if (contador < 4) {
@@ -111,8 +113,8 @@ export default function DestinosDestacados() {
               })}
             </div>
           )}
-        </Show>
-      </div>
-    </section>
+        </div>
+      </Show>
+    </section >
   );
 }

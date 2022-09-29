@@ -5,6 +5,7 @@ import {
   SkeletorDropdown,
   SkeletorCard,
   SkeletorDestinosDestacados,
+  SkeletorTittle
 } from "./components/skeletor";
 import { LayoutCards } from "./components/wrapper/layoutCards";
 import { Show } from "./show";
@@ -22,5 +23,6 @@ export {
   SkeletorCard,
   Show,
   SkeletorDestinosDestacados,
-  BottomBanner
+  BottomBanner,
+  SkeletorTittle
 };

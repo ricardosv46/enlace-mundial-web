@@ -7,7 +7,7 @@ import Swiper from "react-id-swiper";
 // import CardTour from "@/components/cards/card-tour";
 import CardTour from "../../cards/card-tour";
 import GestionTours from "../../../gestion-de-endpoints/GestionTours";
-import { LayoutCards, TittleCards, SkeletorCard, Show } from "../../common";
+import { LayoutCards, TittleCards, SkeletorCard, Show, SkeletorTittle } from "../../common";
 
 const ToursPopulares = () => {
   const { dataTours, loading: loadingGetTour } = GestionTours();
@@ -42,15 +42,15 @@ const ToursPopulares = () => {
 
   return (
     <LayoutCards>
-      <TittleCards tittle="Tour más populares" />
 
-      <div className={`${styles.toursPopulares_container} container`}>
-        {/* Carousel mobile cards */}
-        {/* mientras el loadingGetTour esta cargando mostramos un pequeño loader */}
-        <Show
-          Condition={loadingGetTour}
-          IsDefault={
-            <div className="d-flex flex-column flex-md-row flex-wrap mb-2">
+      {/* Carousel mobile cards */}
+      {/* mientras el loadingGetTour esta cargando mostramos un pequeño loader */}
+      <Show
+        Condition={!loadingGetTour}
+        IsDefault={
+          <div className="d-flex flex-column container">
+            <SkeletorTittle />
+            <div className="d-flex flex-column flex-md-row flex-wrap mb-2 mt-4">
               <SkeletorCard Class="col-md-6 col-lg-4 " />
               <SkeletorCard Class="d-none d-md-block col-md-6 col-lg-4 " />
               <SkeletorCard Class="d-none d-md-block col-md-6 col-lg-4 " />
@@ -58,8 +58,11 @@ const ToursPopulares = () => {
               <SkeletorCard Class="d-none d-lg-block col-lg-4 " />
               <SkeletorCard Class="d-none d-lg-block col-lg-4 " />
             </div>
-          }
-        >
+          </div>
+        }
+      >
+        <TittleCards tittle="Tour más populares" />
+        <div className={`${styles.toursPopulares_container} container`}>
           <div className="d-md-none position-relative">
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
               {itemsTours &&
@@ -102,8 +105,8 @@ const ToursPopulares = () => {
                   </div>
                 ))}
           </div>
-        </Show>
-      </div >
+        </div >
+      </Show>
 
       <div className="text-center">
         <Link href="/actividades-y-turismo">
