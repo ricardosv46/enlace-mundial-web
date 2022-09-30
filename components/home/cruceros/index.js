@@ -42,7 +42,7 @@ const Cruceros = () => {
       <div className="row justify-content-center">
         <TittleCards tittle="Cruceros" />
 
-        <div className="col-md-11 mt-5 position-relative">
+        <div className="col-md-12 mt-5 position-relative">
           {/* Carousel mobile */}
           <section className="d-md-none">
             {!loadingGetCrucero && (

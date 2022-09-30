@@ -43,15 +43,10 @@ export default function CarouselBlog() {
   return (
     <section className="carousel-3-columnas mt-5 mb-5">
       <TittleCards tittle="Blogs" Push={() => Router.push("/blog")} />
-      {/* <h2 className="subtitulo-general text-black">
-        <Link href="/blog" passHref>
-          <a className="text-dark text-decoration-none">Blogs</a>
-        </Link>
-      </h2> */}
-
+      
       <div className="container mt-5">
         <div className="row justify-content-center">
-          <div className="col-md-11 position-relative">
+          <div className="col-md-12 position-relative">
             {/* Carousel mobile */}
             <section className="d-md-none">
               {!loadingGetBlog && (
