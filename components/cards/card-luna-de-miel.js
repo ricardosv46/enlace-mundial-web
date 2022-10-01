@@ -16,21 +16,26 @@ export default function CardLunaDeMiel({ tipo, item }) {
       </div>
 
       <div className='card-l-miel_wrappercontent'>
-        <h3 className='card-l-miel_wrappercontent__titulo'>
-          {item?.tituloLuna}
-        </h3>
+        <div className="card-l-miel_wrappercontent_head">
+          <h3 className='card-l-miel_wrappercontent_head_titulo'>
+            {item?.tituloLuna}
+          </h3>
 
-        <Link href={`/luna-de-miel/${item.slugLuna}`} passHref>
-          <a className='card-l-miel_wrappercontent__categoria'>{item.regionLuna}</a>
-        </Link>
+          <Link href={`/luna-de-miel/${item.slugLuna}`} passHref>
+            <a className='card-l-miel_wrappercontent__categoria'>{item.regionLuna}</a>
+          </Link>
 
-        <p className='card-l-miel_wrappercontent__descripcion '>
-          {item.descripcionLargaLuna}
-        </p>
+        </div>
 
-        <Link href={`/luna-de-miel/${item.slugLuna}`} passHref>
-          <a className='btn btn-outline-primary card-l-miel_wrappercontent__btn'>Informes</a>
-        </Link>
+        <div className="card-l-miel_wrappercontent_body">
+          <p className='card-l-miel_wrappercontent_body_descripcion '>
+            {item.descripcionLargaLuna}
+          </p>
+
+          <Link href={`/luna-de-miel/${item.slugLuna}`} passHref>
+            <a className='btn btn-outline-primary card-l-miel_wrappercontent__btn'>Informes</a>
+          </Link>
+        </div>
       </div>
     </article>
   )

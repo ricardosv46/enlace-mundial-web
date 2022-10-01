@@ -4,6 +4,8 @@
   // border-top-right-radius: 1rem;
   border-radius: 1rem;
   height: 100%;
+  transition: box-shadow 0.3s linear;
+
 
   &:hover {
     box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
@@ -43,16 +45,27 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 250px;
 
-    &__titulo {
-      font-size: 0.9em;
-      font-weight: 700;
-      margin-top: 0.5rem;
+    @media (min-width:768px) {
+      height: 280px;
+    }
+
+    &_head {
+      height: 80px;
+
+      &_titulo {
+        font-size: 0.9em;
+        font-weight: 700;
+        margin-top: 0.5rem;
 
 
-      @media (min-width: 768px) {
-        font-size: 1em;
+        @media (min-width: 768px) {
+          font-size: 1em;
+        }
       }
+
+
     }
 
     &__categoria {
@@ -63,11 +76,18 @@
       text-decoration: underline;
     }
 
-    &__descripcion {
-      color: $secondary;
-      margin-top: 0.7rem;
-      text-align: left;
-      display: block;
+    &_body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &_descripcion {
+        color: $secondary;
+        margin-top: 0.7rem;
+        text-align: left;
+        display: block;
+      }
     }
 
 
