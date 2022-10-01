@@ -1,4 +1,4 @@
-@import "../../../styles/scss/variables";
+@import "../../../styles/scss/_variables.scss";
 
 .blog {
   &_categoria {
@@ -9,8 +9,25 @@
 
 .cardBlog {
 
+  margin-bottom: 3rem;
+  border-radius: 0.7rem;
+  border: 1px solid $light;
+  transition: box-shadow 1s linear;
+
+
+
+  &:hover {
+    box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 8px 8px 9px -9px rgba(0, 0, 0, 0.75);
+  }
+
   &_wrapperimagen {
     overflow: hidden;
+    border-top-left-radius: 0.7rem;
+    border-top-right-radius: 0.7rem;
+
+  
   }
 
   &_imagen {
@@ -27,6 +44,25 @@
 
     &:hover {
       transform: scale(1.1);
+    }
+  }
+
+
+
+  &_wrapperContent {
+    text-align: center;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    height: 300px;
+
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: sp;
+
+    @media (min-width:768px) {
+      height: 220px;
     }
   }
 

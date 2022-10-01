@@ -16,14 +16,15 @@ export default function CardBlog({ item }) {
           ></section>
         </Link>
       </div>
-      <section className="text-center py-2 px-3">
-        <Link href={`/blog/${item.slugBlog}`}>
-          <a className={`${styles.cardBlog_titulo} font-weight-bold`}>
-            {item?.tituloBlog}
-          </a>
-        </Link>
-
-        <p className="cardBlog__descripcion mt-3">
+      <section className={styles.cardBlog_wrapperContent}>
+        <div>
+          <Link href={`/blog/${item.slugBlog}`}>
+            <a className={`${styles.cardBlog_titulo} font-weight-bold`}>
+              {item?.tituloBlog}
+            </a>
+          </Link>
+        </div>
+        <p className="cardBlog__descripcion mt-3 block">
           {item?.descripcionCortaBlog}
         </p>
       </section>
