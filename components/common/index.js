@@ -5,13 +5,15 @@ import {
   SkeletorDropdown,
   SkeletorCard,
   SkeletorDestinosDestacados,
-  SkeletorTittle
+  SkeletorTittle,
+  SkeletorButton
 } from "./components/skeletor";
 import { LayoutCards } from "./components/wrapper/layoutCards";
 import { Show } from "./show";
 import { TittleCards } from "./components/tittles/tittleCards";
 import { TittleOferta } from "./components/tittles/tittleOfertas";
 import { BottomBanner } from './components/bottomBanner'
+
 export {
   TittleOferta,
   SubMenuTittle,
@@ -24,5 +26,6 @@ export {
   Show,
   SkeletorDestinosDestacados,
   BottomBanner,
-  SkeletorTittle
+  SkeletorTittle,
+  SkeletorButton
 };

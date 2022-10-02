@@ -7,7 +7,7 @@ import Swiper from "react-id-swiper";
 // import CardTour from "@/components/cards/card-tour";
 import CardTour from "../../cards/card-tour";
 import GestionTours from "../../../gestion-de-endpoints/GestionTours";
-import { LayoutCards, TittleCards, SkeletorCard, Show, SkeletorTittle } from "../../common";
+import { LayoutCards, TittleCards, SkeletorCard, Show, SkeletorTittle, SkeletorButton } from "../../common";
 
 const ToursPopulares = () => {
   const { dataTours, loading: loadingGetTour } = GestionTours();
@@ -58,6 +58,9 @@ const ToursPopulares = () => {
               <SkeletorCard Class="d-none d-lg-block col-lg-4 " />
               <SkeletorCard Class="d-none d-lg-block col-lg-4 " />
             </div>
+            <div className="d-flex justify-content-center mt-3">
+              <SkeletorButton />
+            </div>
           </div>
         }
       >
@@ -106,13 +109,14 @@ const ToursPopulares = () => {
                 ))}
           </div>
         </div >
+        <div className="text-center">
+          <Link href="/actividades-y-turismo">
+            <a className="btn btn-primary">Ver más Tours</a>
+          </Link>
+        </div>
       </Show>
 
-      <div className="text-center">
-        <Link href="/actividades-y-turismo">
-          <a className="btn btn-primary">Ver más Tours</a>
-        </Link>
-      </div>
+
     </LayoutCards >
   );
 };

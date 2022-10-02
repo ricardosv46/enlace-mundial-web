@@ -1,6 +1,6 @@
 import React from "react";
 
-export const SkeletorCard = ({ Class }) => {
+export const SkeletorCard = ({ Class = '' }) => {
   return (
     <div className={`wrapperSkeletonCard ${Class}`}>
 
@@ -23,7 +23,7 @@ export const SkeletorCard = ({ Class }) => {
         <div className="SkeletorCard SkeletorCard_footer1" />
         <div className="SkeletorCard SkeletorCard_footer2" />
       </div>
-      
+
     </div>
   );
 };
