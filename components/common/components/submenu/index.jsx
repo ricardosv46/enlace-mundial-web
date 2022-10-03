@@ -8,7 +8,7 @@ export const SubMenuTittle = ({ data }) => {
         <section>
             {/* sub menu items dekstop */}
             <header
-                className={`${styles.headerInterior} d-none d-md-flex bg-light mt-3 py-2`}
+                className={`${styles.headerInterior} d-none d-md-flex bg-light py-2`}
             >
                 {/* Desktop */}
                 <nav className='container'>

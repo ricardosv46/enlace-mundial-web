@@ -2,14 +2,10 @@ import React from 'react'
 import HeaderInterior from '../../../general/publicaciones/header-interior'
 export const TittleOferta = (props) => {
     return (
-        <div className='container' >
-            <div className='row'>
-                <div className='col-md-12 '>
-                    <HeaderInterior
-                        {...props}
-                    />
-                </div>
-            </div>
+        <div className='headerStickyTurismo'>
+            <HeaderInterior
+                {...props}
+            />
         </div>
     )
 }

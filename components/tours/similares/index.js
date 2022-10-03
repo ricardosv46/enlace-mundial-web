@@ -49,8 +49,8 @@ const ToursSimilares = ({ deparCodi }) => {
 
       <div className={`${styles.toursPopulares_container} container`}>
         {/* Carousel mobile */}
-        <div className='row d-md-none'>
-          <div className='col-12 position-relative'>
+        <div className='d-md-none'>
+          <div className='position-relative'>
             <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
               {itemsTours.length
                 ? itemsTours.map((item) => {

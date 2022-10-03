@@ -1,17 +1,20 @@
 .headerInterior {
+  // position: sticky;
+
+  background-color: white;
+
   &__fixed {
     width: 93vw;
 
-    position: fixed;
+    position: sticky;
     top: 60px;
-    left: 7%;
     z-index: 10;
 
-    @media (min-width: 768px) {
-      width: 58%;
+    // @media (min-width: 768px) {
+    //   width: 58%;
 
-      left: 7.5%;
-    }
+    //   left: 7.5%;
+    // }
   }
 
   h3 {

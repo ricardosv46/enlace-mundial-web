@@ -1,4 +1,16 @@
-.actividades-turismo {}
+.actividades-turismo {
+  height: auto;
+}
+
+.headerStickyTurismo {
+  position: sticky;
+  top: 60px;
+  height: auto;
+  height: 70px;
+  background-color: white;
+  z-index: 100;
+  border-bottom: 2px solid #f2f2f2;
+}
 
 .sidebar-reservar {
   width: 100%;
@@ -13,9 +25,10 @@
 
   &--fixed {
     position: sticky;
-    top: 64px;
+    top: 134px;
+    //top:64px  
     // right: 2rem;
-    z-index: 100;
+    z-index: 90;
   }
 
   &__titulo {
