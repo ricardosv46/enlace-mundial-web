@@ -203,15 +203,11 @@ export default function Home({ data }) {
 
               {/* Te puede interesar */}
               <div className='mt-5 mt-md-0'>
-                <div className='bg-light mt-4 py-2'>
+                <div className='bg-light mt-4 py-2 rounded'>
                   <div className='container'>
-                    <div className='row'>
-                      <div className='col-md-12'>
-                        <h2 className='subtitulo-general text-uppercase text-center my-0'>
-                          Te puede interesar
-                        </h2>
-                      </div>
-                    </div>
+                    <h2 className='subtitulo-general text-uppercase text-center my-0 '>
+                      Te puede interesar
+                    </h2>
                   </div>
                 </div>
 

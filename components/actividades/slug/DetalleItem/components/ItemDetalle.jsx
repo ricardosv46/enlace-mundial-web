@@ -3,9 +3,9 @@ import { TittleSection } from '../../common'
 import { WrapperData } from '../../common/WrapperData'
 // data ={ scrollMarginTop: '170px' }
 
-export const ItemDetalle = ({ id, style, titulo, descripciontitulo, partida, PuntoPartida }) => {
+export const ItemDetalle = ({ id, style = {}, titulo, descripciontitulo, partida, PuntoPartida }) => {
     return (
-        <section id={id || ''} style={style || ''}>
+        <section id={id || ''} style={style}>
             <TittleSection tittle="Detalles" />
             <WrapperData>
                 <h5 className='card-title font-weight-bold'>
