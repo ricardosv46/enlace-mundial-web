@@ -4,7 +4,7 @@ import GestionLuna from "../../gestion-de-endpoints/GestionLunaMiel"
 import { useScreenContext } from '../../context/screen'
 import Banner from "@/components/luna-de-miel/Banner"
 import CardLunaDeMiel from "components/cards/card-luna-de-miel"
-import { Show, LayoutCards, TittleCards, SkeletorCard } from '../../components/common'
+import { Show, LayoutCards, TittleCards, SkeletorCard, SkeletorTittle } from '../../components/common'
 
 export default function Home() {
   const { dataLuna, loading } = GestionLuna()
@@ -30,34 +30,40 @@ export default function Home() {
         <Banner />
 
         <section className='l-miel__items mt-5'>
-          <TittleCards tittle='Luna de Miel' />
-          <div className='container mt-5'>
-            <Show
-              Condition={!loading}
-              IsDefault={<div className="d-flex flex-column flex-md-row flex-wrap mb-2">
-                <SkeletorCard Class="col-md-6 col-lg-4 " />
-                <SkeletorCard Class="col-md-6 col-lg-4 " />
-                <SkeletorCard Class="col-md-6 col-lg-4 " />
-                <SkeletorCard Class="d-lg-none col-md-6 col-lg-4 " />
+
+          <Show
+            Condition={!loading}
+            IsDefault={
+              <div className='d-flex flex-column container'>
+                <div className='mb-4'><SkeletorTittle /></div>
+                <div className="d-flex flex-column flex-md-row flex-wrap mb-2">
+                  <SkeletorCard Class="col-md-6 col-lg-4 " />
+                  <SkeletorCard Class="col-md-6 col-lg-4 " />
+                  <SkeletorCard Class="col-md-6 col-lg-4 " />
+                  <SkeletorCard Class="d-lg-none col-md-6 col-lg-4 " />
+                </div>
               </div>
-              }
-            >
-              <div className='row'>
-                {dataLuna.map((item) => {
-                  return (
-                    <div className='col-md-6 col-lg-4 mb-5' key={item.lunaMielId}>
-                      <CardLunaDeMiel tipo='luna-de-miel' item={item} />
-                    </div>
-                  )
-                })}
+            }
+          ><>
+              <TittleCards tittle='Luna de Miel' />
+              <div className='container mt-5'>
+                <div className='row'>
+                  {dataLuna.map((item) => {
+                    return (
+                      <div className='col-md-6 col-lg-4 mb-5' key={item.lunaMielId}>
+                        <CardLunaDeMiel tipo='luna-de-miel' item={item} />
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
-            </Show>
-            {/* {loading ? (
+            </>
+          </Show>
+          {/* {loading ? (
                 <p>Cargando ...</p>
               ) : (
                 
               )} */}
-          </div>
         </section>
       </main>
     </div >

@@ -24,7 +24,7 @@ export default function CardTour({ item }) {
             className={`${styles.cardTour_imagenInfo} h-100 d-flex flex-column justify-content-between`}
           >
             {/* Compartir y like */}
-            <div className="d-flex justify-content-between align-items-center py-2 px-3">
+            <div className="d-flex justify-content-between align-items-center py-2 px-3 ">
               <Compartir />
 
               <Like />
