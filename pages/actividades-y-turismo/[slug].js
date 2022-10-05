@@ -149,7 +149,7 @@ export default function Home({ data }) {
         {/* <MenuInterior /> */}
 
         {/* Info */}
-        <section className='container mt-5 border-danger'>
+        <section className='container mt-5 '>
           <div className='row'>
             <div className='col-lg-8'>
               <Gallery imagenes={data.galeriaTour} />
@@ -225,7 +225,7 @@ export default function Home({ data }) {
               </div>
             </div>
 
-            <div className='col-lg-4 d-none d-lg-block border-danger'>
+            <div className='col-lg-4 d-none d-lg-block '>
               {/* reservar un tour con una fecha asignada Solo desktop */}
               <section
                 // className={

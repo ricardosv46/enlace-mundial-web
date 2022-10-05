@@ -1,28 +1,21 @@
 @import "../../../styles/scss/variables";
 
 .modalContacto {
-  min-width: 250px;
-  width: 30vw;
+  // min-width: 250px;
+  width: auto;
   height: 300px;
 
   background-color: $light;
 
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  border-radius: 1rem;
 
-  position: absolute;
-  top: 35%;
-  right: 0;
-  z-index: 100;
+  position: sticky;
+  top: 133px;
+  z-index: 99;
 
   display: none;
 
-  &__fixed {
-    position: fixed;
-  }
-
   @media (min-width: 768px) {
-    width: 35vw;
 
     display: block;
   }

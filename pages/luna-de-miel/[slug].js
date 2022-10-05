@@ -64,109 +64,104 @@ export default function Home({ data }) {
         }}
       />
 
-      <main className='l-miel'>
-        <section className='l-miel__items mt-3'>
+      <main>
+        {/* Cabezera, precio por persona */}
+        <TittleOferta
+          precioBase={data?.precioBaseLuna}
+          head='Luna de miel'
+          titulo={data?.tituloLuna}
+        />
+        {/* sub cabezera items */}
+        <SubMenuTittle data={[
+          {
+            texto: "Detalles",
+            url: "#detalles",
+          },
+          {
+            texto: "Itinerario",
+            url: "#itinerario",
+          },
+          {
+            texto: "Incluye ",
+            url: "#incluye",
+          },
+          {
+            texto: "Notas",
+            url: "#notas",
+          },
+          {
+            texto: "Lunas de Miel similares",
+            url: "#lunas-similares",
+          },
+        ]} />
+        {/* <MenuInteriorLunaMiel /> */}
+        <div className="container mt-5 ">
+          <div className="row">
+            <div className="col-lg-8">
+              {/* Info */}
+              <Gallery imagenes={data.galeriaLuna} />
+              {/* Detalles */}
+              <ItemDetalle
+                id='detalles'
+                style={{ scrollMarginTop: '170px' }}
+                titulo={data.tituloLuna}
+                descripciontitulo={data.descripcionCortaLuna}
+                partida="Punto de partida"
+                PuntoPartida={data.puntoPartidaLuna}
+              />
 
-          {/* Cabezera, precio por persona */}
-          <TittleOferta
-            precioBase={data?.precioBaseLuna}
-            head='Luna de miel'
-            titulo={data?.tituloLuna}
-          />
-          {/* sub cabezera items */}
-          <SubMenuTittle data={[
-            {
-              texto: "Detalles",
-              url: "#detalles",
-            },
-            {
-              texto: "Itinerario",
-              url: "#itinerario",
-            },
-            {
-              texto: "Incluye ",
-              url: "#incluye",
-            },
-            {
-              texto: "Notas",
-              url: "#notas",
-            },
-            {
-              texto: "Lunas de Miel similares",
-              url: "#lunas-similares",
-            },
-          ]} />
-          {/* <MenuInteriorLunaMiel /> */}
+              {/* Itinerario */}
+              <OtherItem id='itinerario' tittle="Itinerario" style={{ scrollMarginTop: "250px" }}>
+                <ItemMap tittle="Itinerario" data={data.itinerarioLuna.split(",")} />
+              </OtherItem>
 
-          {/* Info */}
-          <section className='container mt-5'>
-            <div className='row'>
-              <div className='col-md-8 mt-3 mt-md-0'>
-                <Gallery imagenes={data.galeriaLuna} />
-              </div>
-            </div>
-          </section>
+              {/* Incluye */}
+              <OtherItem id="incluye" style={{ scrollMarginTop: '250px' }} tittle="Incluye">
+                {/* Sub Item Incluye */}
+                <ItemMap tittle="Incluye" data={data.incluyeLuna.split(',')} />
+                {/* Sub Item No Incluye */}
+                <ItemMap tittle="No incluye" data={data.noIncluyeLuna.split(',')} icon="cancel" color='rojo' />
+                {/* Sub Item Actividades */}
+                <ItemMap tittle="Actividades" data={data.actividadesLuna.split(',')} />
 
-          {/* Detalles */}
-          <ItemDetalle
-            id='detalles'
-            style={{ scrollMarginTop: '170px' }}
-            titulo={data.tituloLuna}
-            descripciontitulo={data.descripcionCortaLuna}
-            partida="Punto de partida"
-            PuntoPartida={data.puntoPartidaLuna}
-          />
+              </OtherItem>
 
-          {/* Itinerario */}
-          <OtherItem id='itinerario' tittle="Itinerario" style={{ scrollMarginTop: "250px" }}>
-            <ItemMap tittle="Itinerario" data={data.itinerarioLuna.split(",")} />
-          </OtherItem>
+              {/* Notas */}
+              <OtherItem id="notas" style={{ scrollMarginTop: '250px' }} tittle="Notas">
+                {/* Sub Item Notas */}
+                <ItemMap tittle="Notas" data={data.notasLuna.split(',')} />
+                {/* Sub Item Políticas de cancelación */}
+                <ItemMap tittle="Políticas de cancelación" data={data.politicasLuna.split(',')} />
+              </OtherItem>
 
-          {/* Incluye */}
-          <OtherItem id="incluye" style={{ scrollMarginTop: '250px' }} tittle="Incluye">
-            {/* Sub Item Incluye */}
-            <ItemMap tittle="Incluye" data={data.incluyeLuna.split(',')} />
-            {/* Sub Item No Incluye */}
-            <ItemMap tittle="No incluye" data={data.noIncluyeLuna.split(',')} icon="cancel" color='rojo' />
-            {/* Sub Item Actividades */}
-            <ItemMap tittle="Actividades" data={data.actividadesLuna.split(',')} />
 
-          </OtherItem>
-
-          {/* Notas */}
-          <OtherItem id="notas" style={{ scrollMarginTop: '250px' }} tittle="Notas">
-            {/* Sub Item Notas */}
-            <ItemMap tittle="Notas" data={data.notasLuna.split(',')} />
-            {/* Sub Item Políticas de cancelación */}
-            <ItemMap tittle="Políticas de cancelación" data={data.politicasLuna.split(',')} />
-          </OtherItem>
-  
-
-          {/* Similares */}
-          <section id='lunas-similares' style={{ scrollMarginTop: "250px" }}>
-            <div className='bg-light mt-4 py-2'>
-              <div className='container'>
-                <div className='row'>
-                  <div className='col-md-8'>
-                    <h2 className='subtitulo-general text-uppercase text-left my-0'>
-                      Lunas de miel similares
-                    </h2>
+              {/* Similares */}
+              <section id='lunas-similares' style={{ scrollMarginTop: "250px" }}>
+                <div className='bg-light mt-4 py-2'>
+                  <div className='container'>
+                    <div className='row'>
+                      <div className='col-md-8'>
+                        <h2 className='subtitulo-general text-uppercase text-left my-0'>
+                          Lunas de miel similares
+                        </h2>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <div className='container'>
-              <div className='row'>
-                <div className='col-md-8'>
+                <div className='container'>
                   <LunasRelacionadas />
                 </div>
-              </div>
+              </section>
             </div>
-          </section>
+            <div className='col-lg-4 d-none d-lg-block border-danger'>
+              <ModalContacto />
+            </div>
+          </div>
+        </div>
 
-          <ModalContacto />
-        </section>
+
+
       </main>
     </div>
   )
