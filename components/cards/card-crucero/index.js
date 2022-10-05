@@ -7,7 +7,7 @@ export default function CardCrucero({ item }) {
   const ruta = "/cruceros";
 
   return (
-    <article className={styles.cardGeneral}>
+       <article className={styles.cardGeneral}>
       <div className={styles.cardGeneral_wrapperimagen}>
         <Link href={`${ruta}/${item?.slugCrucero}`}>
           <section

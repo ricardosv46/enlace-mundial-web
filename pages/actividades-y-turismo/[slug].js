@@ -211,17 +211,7 @@ export default function Home({ data }) {
                   </div>
                 </div>
 
-                <div className='container'>
-                  <div className='row'>
-                    <div
-                      className='col-md-'
-                      id='tours-similares'
-                      style={{ scrollMarginTop: '300px' }}
-                    >
-                      <ToursSimilares deparCodi={data?.Departamento?.DeparCodi} />
-                    </div>
-                  </div>
-                </div>
+                <ToursSimilares deparCodi={data?.Departamento?.DeparCodi} />
               </div>
             </div>
 

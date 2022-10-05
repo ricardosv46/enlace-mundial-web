@@ -25,8 +25,8 @@ export default function CrucerosRelacionados() {
   }
 
   return (
-    <section className='tours-populares mt-5'>
-      <div className='container mt-5'>
+    <section className='tours-populares mt-5 '>
+      <div className=' mt-5'>
         {/* Carousel mobile */}
         <div className='row d-md-none'>
           <div className='col-12'>
@@ -58,7 +58,7 @@ export default function CrucerosRelacionados() {
           </div>
         </div>
 
-        <div className='row d-none d-md-flex'>
+        <div className='row d-none d-md-flex '>
           {items.map((item) => {
             return (
               <div className='col-md-6 mt-4' key={item.cruceroId}>

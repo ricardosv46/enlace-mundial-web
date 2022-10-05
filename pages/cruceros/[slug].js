@@ -138,7 +138,7 @@ export default function Home({ data }) {
 
                 {/* Notas */}
                 <section id='cruceros-similares' style={{ scrollMarginTop: "250px" }}>
-                  <div className='bg-light mt-4 py-2'>
+                  <div className='bg-light mt-4 py-2 rounded'>
                     <div className='container'>
                       <h2 className='subtitulo-general text-uppercase text-center my-0'>
                         Cruceros similares
@@ -146,9 +146,7 @@ export default function Home({ data }) {
                     </div>
                   </div>
 
-                  <div className='container'>
                     <CrucerosRelacionadoss />
-                  </div>
                 </section>
               </div>
               <div className='col-lg-4 d-none d-lg-block border-danger'>

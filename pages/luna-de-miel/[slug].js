@@ -139,13 +139,9 @@ export default function Home({ data }) {
               <section id='lunas-similares' style={{ scrollMarginTop: "250px" }}>
                 <div className='bg-light mt-4 py-2'>
                   <div className='container'>
-                    <div className='row'>
-                      <div className='col-md-8'>
-                        <h2 className='subtitulo-general text-uppercase text-left my-0'>
-                          Lunas de miel similares
-                        </h2>
-                      </div>
-                    </div>
+                    <h2 className='subtitulo-general text-uppercase '>
+                      Lunas de miel similares
+                    </h2>
                   </div>
                 </div>
 
