@@ -1,0 +1,10 @@
+.minimodalcontacto {
+    position: fixed;
+    display: block;
+    right: 25px;
+    bottom: 60px;
+
+    @media (min-width:992px) {
+        display: none;
+    }
+}

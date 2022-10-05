@@ -44,9 +44,9 @@ export default function HeaderInterior({
           <h3 className='text-danger ml-2'>
             {precioReal ? precioReal : precioBase || 0}
           </h3>
-          <p className='d-flex flex-column text-muted text-uppercase ml-2'>
+          <p className='d-flex flex-column text-muted text-uppercase ml-2 text-xs '>
             <span>Por</span>
-            <span>persona</span>
+            <span className="">persona</span>
           </p>
         </div>
 

@@ -3,6 +3,8 @@ import { useRouter } from "next/router"
 import Head from "next/head"
 import Gallery from "components/gallery/index"
 import ModalContacto from "components/general/modal-contacto"
+import { MiniModalContacto } from "components/general/modal-contacto/mini-modal-contacto"
+
 import { TittleOferta, SubMenuTittle, ItemMap } from '../../components/common'
 import { GET_SLUG_LUNA_MIEL, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
@@ -153,6 +155,8 @@ export default function Home({ data }) {
             <div className='col-lg-4 d-none d-lg-block border-danger'>
               <ModalContacto />
             </div>
+            {/* <MiniModalContacto /> */}
+
           </div>
         </div>
 
