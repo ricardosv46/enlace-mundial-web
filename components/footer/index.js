@@ -51,7 +51,11 @@ export default function Banner() {
 
                     <div className="col-md-4 text-md-left">
                       <h3 className="footer__sub font-weight-bold">
-                        Luna de miel
+                        <Link
+                          href={'/luna-de-miel'}
+                        >
+                          Luna de miel
+                        </Link>
                       </h3>
 
                       <ul className="list-unstyled mt-4">
@@ -68,7 +72,13 @@ export default function Banner() {
                     </div>
 
                     <div className="col-md-4 text-md-left ">
-                      <h3 className="footer__sub font-weight-bold">Cruceros</h3>
+                      <h3 className="footer__sub font-weight-bold">
+                        <Link
+                          href={'/cruceros'}
+                        >
+                          Cruceros
+                        </Link>
+                      </h3>
 
                       <ul className="list-unstyled mt-4">
                         <li>
