@@ -60,14 +60,14 @@ export default function Banner() {
 
                       <ul className="list-unstyled mt-4">
                         <li>
-                          <Link href="#">Noticias</Link>
+                          <Link href="#">Top Lugares</Link>
                         </li>
                         <li>
-                          <Link href="#">Blog</Link>
+                          <Link href="#">Oferta</Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link href="#">Videos</Link>
-                        </li>
+                        </li> */}
                       </ul>
                     </div>
 
@@ -82,9 +82,15 @@ export default function Banner() {
 
                       <ul className="list-unstyled mt-4">
                         <li>
-                          <Link href="#">Noticias</Link>
+                          <Link href="#">Promociones</Link>
                         </li>
                         <li>
+                          <Link href="#">America</Link>
+                        </li>
+                        <li>
+                          <Link href="#">Europa</Link>
+                        </li>
+                        {/* <li>
                           <Link href="#">Blog</Link>
                         </li>
                         <li>
@@ -92,7 +98,7 @@ export default function Banner() {
                         </li>
                         <li>
                           <Link href="#">Preguntas frecuentes</Link>
-                        </li>
+                        </li> */}
                       </ul>
                     </div>
                   </div>
