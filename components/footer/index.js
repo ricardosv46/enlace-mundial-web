@@ -60,14 +60,14 @@ export default function Banner() {
 
                       <ul className="list-unstyled mt-4">
                         <li>
-                          <Link href="#">Top Lugares</Link>
+                          <Link href="#">San Valentín</Link>
                         </li>
                         <li>
-                          <Link href="#">Oferta</Link>
+                          <Link href="#">Viajes Familiares</Link>
                         </li>
-                        {/* <li>
-                          <Link href="#">Videos</Link>
-                        </li> */}
+                        <li>
+                          <Link href="#">Recreación</Link>
+                        </li>
                       </ul>
                     </div>
 
@@ -82,23 +82,17 @@ export default function Banner() {
 
                       <ul className="list-unstyled mt-4">
                         <li>
-                          <Link href="#">Promociones</Link>
+                          <Link href="#">Recreación</Link>
                         </li>
                         <li>
-                          <Link href="#">America</Link>
+                          <Link href="#">Viajes Familiares</Link>
                         </li>
                         <li>
-                          <Link href="#">Europa</Link>
-                        </li>
-                        {/* <li>
-                          <Link href="#">Blog</Link>
+                          <Link href="#">Fin de Semana en Familia</Link>
                         </li>
                         <li>
-                          <Link href="#">Videos</Link>
+                          <Link href="#">San Valentín</Link>
                         </li>
-                        <li>
-                          <Link href="#">Preguntas frecuentes</Link>
-                        </li> */}
                       </ul>
                     </div>
                   </div>
