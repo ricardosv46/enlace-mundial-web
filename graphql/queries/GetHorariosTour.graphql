@@ -8,3 +8,4 @@ query GetHorariosTour($anio:String,$mes:String,$tourId:Int){
     estado
     tourId
   }
+}

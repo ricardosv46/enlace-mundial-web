@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 
 import RedesSociales from "@/components/general/redes-sociales";
+import { dataFooter } from '../../data/dataFooter'
 
 export default function Banner() {
   return (
@@ -49,7 +50,7 @@ export default function Banner() {
                       </ul>
                     </div>
 
-                    <div className="col-md-4 text-md-left">
+                    {/* <div className="col-md-4 text-md-left">
                       <h3 className="footer__sub font-weight-bold">
                         <Link
                           href={'/luna-de-miel'}
@@ -69,32 +70,26 @@ export default function Banner() {
                           <Link href="#">Recreación</Link>
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
+                    {dataFooter.map((obj1, k1) =>
+                      <div className="col-md-4 text-md-left" key={k1}>
+                        <h3 className="footer__sub font-weight-bold">
+                          <Link
+                            href={obj1.pathname || ''}
+                          >
+                            {obj1.tittle || ''}
+                          </Link>
+                        </h3>
+                        {obj1.items.map((obj2, k2) =>
+                          <ul className="list-unstyled mt-4" key={k2}>
+                            <li>
+                              <Link href={obj2.pathname || ''}>{obj2.subtittle || ''}</Link>
+                            </li>
+                          </ul>
+                        )}
 
-                    <div className="col-md-4 text-md-left ">
-                      <h3 className="footer__sub font-weight-bold">
-                        <Link
-                          href={'/cruceros'}
-                        >
-                          Cruceros
-                        </Link>
-                      </h3>
+                      </div>)}
 
-                      <ul className="list-unstyled mt-4">
-                        <li>
-                          <Link href="#">Recreación</Link>
-                        </li>
-                        <li>
-                          <Link href="#">Viajes Familiares</Link>
-                        </li>
-                        <li>
-                          <Link href="#">Fin de Semana en Familia</Link>
-                        </li>
-                        <li>
-                          <Link href="#">San Valentín</Link>
-                        </li>
-                      </ul>
-                    </div>
                   </div>
                 </div>
               </div>

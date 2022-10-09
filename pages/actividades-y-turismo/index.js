@@ -75,7 +75,7 @@ export default function ActividadesYTurismo() {
     }
   }, [
     Object.keys(query).length !== 0 &&
-      query?.categoria_slug?.trim().length !== 0,
+    query?.categoria_slug?.trim().length !== 0,
     Object.keys(query).length !== 0 && query?.DeparCodi?.trim().length !== 0,
   ]);
 

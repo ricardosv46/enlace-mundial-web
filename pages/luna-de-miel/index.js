@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Head from "next/head"
 import GestionLuna from "../../gestion-de-endpoints/GestionLunaMiel"
 import { useScreenContext } from '../../context/screen'
@@ -10,9 +10,14 @@ export default function Home() {
   const { dataLuna, loading } = GestionLuna()
   const { DispatchScreen } = useScreenContext()
 
+
+
   useEffect(() => {
     DispatchScreen({ type: 'ChangeSubTittle', payload: 'Luna de Miel' })
   }, [])
+
+
+
 
   return (
     <div>

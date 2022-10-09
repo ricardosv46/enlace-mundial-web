@@ -23,6 +23,19 @@ export type Scalars = {
   Upload: any;
 };
 
+export type ActividadesTour = {
+  __typename?: 'ActividadesTour';
+  actividadId?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  descripcion_actividad?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type ActividadesTourInput = {
+  actividadId?: InputMaybe<Scalars['String']>;
+  descripcion_actividad?: InputMaybe<Scalars['String']>;
+};
+
 export type Blog = {
   __typename?: 'Blog';
   CategoriaBlog?: Maybe<CategoriaBlog>;
@@ -37,6 +50,7 @@ export type Blog = {
   imagenPrincipalBlog?: Maybe<Imagenes>;
   imagenSecundariaBlog?: Maybe<Imagenes>;
   keywordsBlog?: Maybe<Scalars['String']>;
+  slugBlog?: Maybe<Scalars['String']>;
   slugCategoriaBlog?: Maybe<Scalars['String']>;
   tituloBlog?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['DateTime']>;
@@ -52,6 +66,7 @@ export type BlogInput = {
   imagenPrincipalBlog?: InputMaybe<Scalars['Int']>;
   imagenSecundariaBlog?: InputMaybe<Scalars['Int']>;
   keywordsBlog?: InputMaybe<Scalars['String']>;
+  slugBlog?: InputMaybe<Scalars['String']>;
   slugCategoriaBlog?: InputMaybe<Scalars['String']>;
   tituloBlog?: InputMaybe<Scalars['String']>;
 };
@@ -133,6 +148,7 @@ export type Crucero = {
   noIncluyeCrucero?: Maybe<Scalars['String']>;
   notasCrucero?: Maybe<Scalars['String']>;
   politicasCrucero?: Maybe<Scalars['String']>;
+  precioBaseCrucero?: Maybe<Scalars['Int']>;
   puntoPartidaCrucero?: Maybe<Scalars['String']>;
   regionCrucero?: Maybe<Scalars['String']>;
   slugCategoria?: Maybe<Scalars['String']>;
@@ -159,12 +175,40 @@ export type CruceroInput = {
   noIncluyeCrucero?: InputMaybe<Scalars['String']>;
   notasCrucero?: InputMaybe<Scalars['String']>;
   politicasCrucero?: InputMaybe<Scalars['String']>;
+  precioBaseCrucero?: InputMaybe<Scalars['Int']>;
   puntoPartidaCrucero?: InputMaybe<Scalars['String']>;
   regionCrucero?: InputMaybe<Scalars['String']>;
   slugCategoria?: InputMaybe<Scalars['String']>;
   slugCrucero?: InputMaybe<Scalars['String']>;
   tituloCrucero?: InputMaybe<Scalars['String']>;
   videoPresentacionCrucero?: InputMaybe<Scalars['String']>;
+};
+
+export type Departamento = {
+  __typename?: 'Departamento';
+  DeparCodi?: Maybe<Scalars['String']>;
+  DeparNom?: Maybe<Scalars['String']>;
+  DestacadoDepartamento?: Maybe<Scalars['Int']>;
+  UbiDepCodi?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['DateTime']>;
+  imagenPrincipal?: Maybe<Imagenes>;
+  imagenSecundaria?: Maybe<Imagenes>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type DepartamentoInput = {
+  DeparCodi?: InputMaybe<Scalars['String']>;
+  DestacadoDepartamento?: InputMaybe<Scalars['Int']>;
+  imagenPrincipal?: InputMaybe<Scalars['Int']>;
+  imagenSecundaria?: InputMaybe<Scalars['Int']>;
+};
+
+export type Distrito = {
+  __typename?: 'Distrito';
+  DistCodi?: Maybe<Scalars['ID']>;
+  DistNom?: Maybe<Scalars['String']>;
+  ProvCodi?: Maybe<Scalars['Int']>;
+  ProvNom?: Maybe<Scalars['String']>;
 };
 
 export type GetAllBlog = {
@@ -182,6 +226,12 @@ export type GetAllCrucero = {
 export type GetAllLunaMiel = {
   __typename?: 'GetAllLunaMiel';
   data?: Maybe<Array<LunaMiel>>;
+  nroTotalItems?: Maybe<Scalars['Int']>;
+};
+
+export type GetAllOrdenTour = {
+  __typename?: 'GetAllOrdenTour';
+  data?: Maybe<Array<OrdenTour>>;
   nroTotalItems?: Maybe<Scalars['Int']>;
 };
 
@@ -241,6 +291,19 @@ export type ImagenesInput = {
   url?: InputMaybe<Scalars['String']>;
 };
 
+export type IncluyeTour = {
+  __typename?: 'IncluyeTour';
+  created_at?: Maybe<Scalars['DateTime']>;
+  descripcionIncluye?: Maybe<Scalars['String']>;
+  incluyeId?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type IncluyeTourInput = {
+  descripcionIncluye?: InputMaybe<Scalars['String']>;
+  incluyeId?: InputMaybe<Scalars['String']>;
+};
+
 export type LunaMiel = {
   __typename?: 'LunaMiel';
   Categoria?: Maybe<Categoria>;
@@ -262,6 +325,7 @@ export type LunaMiel = {
   noIncluyeLuna?: Maybe<Scalars['String']>;
   notasLuna?: Maybe<Scalars['String']>;
   politicasLuna?: Maybe<Scalars['String']>;
+  precioBaseLuna?: Maybe<Scalars['Int']>;
   puntoPartidaLuna?: Maybe<Scalars['String']>;
   regionLuna?: Maybe<Scalars['String']>;
   slugCategoria?: Maybe<Scalars['String']>;
@@ -288,6 +352,7 @@ export type LunaMielInput = {
   noIncluyeLuna?: InputMaybe<Scalars['String']>;
   notasLuna?: InputMaybe<Scalars['String']>;
   politicasLuna?: InputMaybe<Scalars['String']>;
+  precioBaseLuna?: InputMaybe<Scalars['Int']>;
   puntoPartidaLuna?: InputMaybe<Scalars['String']>;
   regionLuna?: InputMaybe<Scalars['String']>;
   slugCategoria?: InputMaybe<Scalars['String']>;
@@ -296,37 +361,55 @@ export type LunaMielInput = {
   videoPresentacionLuna?: InputMaybe<Scalars['String']>;
 };
 
+export type MercadoPagoInput = {
+  installments?: InputMaybe<Scalars['Int']>;
+  payment_method_id?: InputMaybe<Scalars['String']>;
+  source_id?: InputMaybe<Scalars['String']>;
+  tipo_tarjeta?: InputMaybe<Scalars['Int']>;
+  type_save?: InputMaybe<Scalars['Int']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   CambiarContrasenaUsuario?: Maybe<User>;
   CrearSuscripcion?: Maybe<Suscripcion>;
   CrearUsuario?: Maybe<User>;
+  CreateActividadesTour?: Maybe<ActividadesTour>;
   CreateBlog?: Maybe<Blog>;
   CreateCategoria?: Maybe<Categoria>;
   CreateCategoriaBlog?: Maybe<CategoriaBlog>;
   CreateCrucero?: Maybe<Crucero>;
   CreateHorarioTour?: Maybe<HorarioTour>;
   CreateImage?: Maybe<Imagenes>;
+  CreateIncluyeTour?: Maybe<IncluyeTour>;
   CreateLunaMiel?: Maybe<LunaMiel>;
+  CreateOrdenTour?: Maybe<OrdenTour>;
   CreateTour?: Maybe<Tour>;
+  DeleteActividadesTour?: Maybe<Scalars['String']>;
   DeleteBlog?: Maybe<Scalars['String']>;
   DeleteCategoria?: Maybe<Scalars['String']>;
   DeleteCategoriaBlog?: Maybe<Scalars['String']>;
   DeleteCrucero?: Maybe<Scalars['String']>;
   DeleteHorarioTour?: Maybe<Scalars['String']>;
   DeleteImage?: Maybe<Scalars['String']>;
+  DeleteIncluyeTour?: Maybe<Scalars['String']>;
   DeleteLunaMiel?: Maybe<Scalars['String']>;
   DeleteSuscripcion?: Maybe<Scalars['String']>;
   DeleteTour?: Maybe<Scalars['String']>;
   DeleteUsuario?: Maybe<Scalars['String']>;
   RecuperarContraUsuario?: Maybe<Scalars['String']>;
+  UpdateActividadesTour?: Maybe<ActividadesTour>;
   UpdateBlog?: Maybe<Blog>;
   UpdateCategoria?: Maybe<Categoria>;
   UpdateCategoriaBlog?: Maybe<CategoriaBlog>;
   UpdateCrucero?: Maybe<Crucero>;
+  UpdateDepartamento?: Maybe<Departamento>;
+  UpdateEstadoPasaje?: Maybe<Pasajes>;
   UpdateHorarioTour?: Maybe<HorarioTour>;
   UpdateImage?: Maybe<Imagenes>;
+  UpdateIncluyeTour?: Maybe<IncluyeTour>;
   UpdateLunaMiel?: Maybe<LunaMiel>;
+  UpdateOrdenTour?: Maybe<OrdenTour>;
   UpdateTour?: Maybe<Tour>;
   UpdateUsuario?: Maybe<User>;
   login?: Maybe<User>;
@@ -345,6 +428,11 @@ export type MutationCrearSuscripcionArgs = {
 
 export type MutationCrearUsuarioArgs = {
   input: UserInput;
+};
+
+
+export type MutationCreateActividadesTourArgs = {
+  input?: InputMaybe<ActividadesTourInput>;
 };
 
 
@@ -379,13 +467,29 @@ export type MutationCreateImageArgs = {
 };
 
 
+export type MutationCreateIncluyeTourArgs = {
+  input?: InputMaybe<IncluyeTourInput>;
+};
+
+
 export type MutationCreateLunaMielArgs = {
   input?: InputMaybe<LunaMielInput>;
 };
 
 
+export type MutationCreateOrdenTourArgs = {
+  input?: InputMaybe<OrdenTourInput>;
+  input1?: InputMaybe<MercadoPagoInput>;
+};
+
+
 export type MutationCreateTourArgs = {
   input?: InputMaybe<TourInput>;
+};
+
+
+export type MutationDeleteActividadesTourArgs = {
+  input?: InputMaybe<ActividadesTourInput>;
 };
 
 
@@ -419,6 +523,11 @@ export type MutationDeleteImageArgs = {
 };
 
 
+export type MutationDeleteIncluyeTourArgs = {
+  input?: InputMaybe<IncluyeTourInput>;
+};
+
+
 export type MutationDeleteLunaMielArgs = {
   input?: InputMaybe<LunaMielInput>;
 };
@@ -444,6 +553,11 @@ export type MutationRecuperarContraUsuarioArgs = {
 };
 
 
+export type MutationUpdateActividadesTourArgs = {
+  input?: InputMaybe<ActividadesTourInput>;
+};
+
+
 export type MutationUpdateBlogArgs = {
   input?: InputMaybe<BlogInput>;
 };
@@ -464,6 +578,16 @@ export type MutationUpdateCruceroArgs = {
 };
 
 
+export type MutationUpdateDepartamentoArgs = {
+  input?: InputMaybe<DepartamentoInput>;
+};
+
+
+export type MutationUpdateEstadoPasajeArgs = {
+  input?: InputMaybe<PasajesInput>;
+};
+
+
 export type MutationUpdateHorarioTourArgs = {
   input?: InputMaybe<HorarioTourInput>;
 };
@@ -474,8 +598,18 @@ export type MutationUpdateImageArgs = {
 };
 
 
+export type MutationUpdateIncluyeTourArgs = {
+  input?: InputMaybe<IncluyeTourInput>;
+};
+
+
 export type MutationUpdateLunaMielArgs = {
   input?: InputMaybe<LunaMielInput>;
+};
+
+
+export type MutationUpdateOrdenTourArgs = {
+  input?: InputMaybe<OrdenTourInput>;
 };
 
 
@@ -491,6 +625,31 @@ export type MutationUpdateUsuarioArgs = {
 
 export type MutationLoginArgs = {
   input: LoginInput;
+};
+
+export type OrdenTour = {
+  __typename?: 'OrdenTour';
+  Pasajes?: Maybe<Array<Maybe<Pasajes>>>;
+  User?: Maybe<User>;
+  descuento?: Maybe<Scalars['String']>;
+  estadoOrdenTour?: Maybe<Scalars['String']>;
+  fechaCompra?: Maybe<Scalars['String']>;
+  fechaReserva?: Maybe<Scalars['String']>;
+  nroOperacion?: Maybe<Scalars['String']>;
+  ordenTourId?: Maybe<Scalars['Int']>;
+  tipoPago?: Maybe<Scalars['Int']>;
+  total?: Maybe<Scalars['Float']>;
+};
+
+export type OrdenTourInput = {
+  PasajesInput?: InputMaybe<Array<InputMaybe<PasajesInput>>>;
+  descuento?: InputMaybe<Scalars['String']>;
+  estadoOrdenTour?: InputMaybe<Scalars['String']>;
+  horarioTourId?: InputMaybe<Scalars['Int']>;
+  nroOperacion?: InputMaybe<Scalars['String']>;
+  ordenTourId?: InputMaybe<Scalars['Int']>;
+  tipoPago?: InputMaybe<Scalars['Int']>;
+  userId?: InputMaybe<Scalars['String']>;
 };
 
 /** Allows ordering a list of records. */
@@ -543,27 +702,76 @@ export type PaginatorInfo = {
   total: Scalars['Int'];
 };
 
+export type Pasajes = {
+  __typename?: 'Pasajes';
+  Tour?: Maybe<Tour>;
+  apellidosVisitante?: Maybe<Scalars['String']>;
+  edadVisitante?: Maybe<Scalars['String']>;
+  estadoPasaje?: Maybe<Scalars['String']>;
+  fechaReserva?: Maybe<Scalars['String']>;
+  nombresVisitante?: Maybe<Scalars['String']>;
+  pasajeId?: Maybe<Scalars['Int']>;
+  precioTour?: Maybe<Scalars['Float']>;
+  tituloTour?: Maybe<Scalars['String']>;
+};
+
+export type PasajesInput = {
+  apellidosVisitante?: InputMaybe<Scalars['String']>;
+  edadVisitante?: InputMaybe<Scalars['String']>;
+  estadoPasaje?: InputMaybe<Scalars['String']>;
+  fechaReserva?: InputMaybe<Scalars['String']>;
+  nombresVisitante?: InputMaybe<Scalars['String']>;
+  pasajeId?: InputMaybe<Scalars['Int']>;
+  precioTour?: InputMaybe<Scalars['Float']>;
+  tituloTour?: InputMaybe<Scalars['String']>;
+  tourId?: InputMaybe<Scalars['Int']>;
+};
+
+export type Provincia = {
+  __typename?: 'Provincia';
+  DeparCodi?: Maybe<Scalars['Int']>;
+  DeparNom?: Maybe<Scalars['String']>;
+  ProvCodi?: Maybe<Scalars['ID']>;
+  ProvNom?: Maybe<Scalars['String']>;
+};
+
 export type Query = {
   __typename?: 'Query';
+  GetActividadesTour?: Maybe<Array<ActividadesTour>>;
   GetAllBlog?: Maybe<GetAllBlog>;
   GetAllBlogCategoria?: Maybe<GetAllBlog>;
   GetAllCategoriaBlog?: Maybe<Array<Maybe<CategoriaBlog>>>;
   GetAllCrucero?: Maybe<GetAllCrucero>;
   GetAllLunaMiel?: Maybe<GetAllLunaMiel>;
+  GetAllOrdenTour?: Maybe<GetAllOrdenTour>;
+  GetAllOrdenTourUser?: Maybe<GetAllOrdenTour>;
+  GetAllPasajes?: Maybe<Array<Maybe<Pasajes>>>;
   GetAllSuscripciones?: Maybe<GetAllSuscripciones>;
+  GetAllTarjetaUsuario?: Maybe<Array<TarjetasUsuarios>>;
   GetAllTour?: Maybe<GetAllTour>;
   GetAllUsers?: Maybe<GetAllUsers>;
+  GetBusquedaAvanzadaTour?: Maybe<GetAllTour>;
   GetCategoria?: Maybe<Array<Maybe<Categoria>>>;
   GetCategoriaCrucero?: Maybe<GetAllCrucero>;
   GetCategoriaLunaMiel?: Maybe<GetAllLunaMiel>;
   GetCategoriaTour?: Maybe<GetAllTour>;
+  GetDepartamentos?: Maybe<Array<Departamento>>;
+  GetDias?: Maybe<Array<Maybe<Scalars['String']>>>;
+  GetExcel?: Maybe<Scalars['String']>;
   GetHorariosTour?: Maybe<Array<Maybe<HorarioTour>>>;
+  GetHoras?: Maybe<Array<Maybe<Scalars['String']>>>;
+  GetIdOrdenTour?: Maybe<OrdenTour>;
   GetImagenes?: Maybe<Array<Imagenes>>;
+  GetIncluyeTour?: Maybe<Array<IncluyeTour>>;
+  GetPrecios?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  GetProvincias?: Maybe<Array<Provincia>>;
+  GetSlugBlog?: Maybe<Blog>;
   GetSlugCategoria?: Maybe<Categoria>;
   GetSlugCategoriaBlog?: Maybe<CategoriaBlog>;
   GetSlugCrucero?: Maybe<Crucero>;
   GetSlugLunaMiel?: Maybe<LunaMiel>;
   GetSlugTour?: Maybe<Tour>;
+  GetToursRelacionadosLugar?: Maybe<Array<Maybe<Tour>>>;
 };
 
 
@@ -601,9 +809,32 @@ export type QueryGetAllLunaMielArgs = {
 };
 
 
+export type QueryGetAllOrdenTourArgs = {
+  estadoOrdenTour?: InputMaybe<Scalars['String']>;
+  numberPaginate?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryGetAllOrdenTourUserArgs = {
+  numberPaginate?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryGetAllPasajesArgs = {
+  ordenTourId?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type QueryGetAllSuscripcionesArgs = {
   numberPaginate?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryGetAllTarjetaUsuarioArgs = {
+  customer_id?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -619,6 +850,21 @@ export type QueryGetAllUsersArgs = {
   numberPaginate?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
   tipoUsuario?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryGetBusquedaAvanzadaTourArgs = {
+  DeparCodi?: InputMaybe<Scalars['String']>;
+  actividades?: InputMaybe<Scalars['String']>;
+  categoria_slug?: InputMaybe<Scalars['String']>;
+  dias?: InputMaybe<Scalars['String']>;
+  fecha_fina?: InputMaybe<Scalars['String']>;
+  fecha_ini?: InputMaybe<Scalars['String']>;
+  horas?: InputMaybe<Scalars['String']>;
+  incluye?: InputMaybe<Scalars['String']>;
+  numberPaginate?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+  precio_base?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -651,10 +897,30 @@ export type QueryGetCategoriaTourArgs = {
 };
 
 
+export type QueryGetDepartamentosArgs = {
+  destacado?: InputMaybe<Scalars['String']>;
+};
+
+
 export type QueryGetHorariosTourArgs = {
   anio?: InputMaybe<Scalars['String']>;
   mes?: InputMaybe<Scalars['String']>;
   tourId?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryGetIdOrdenTourArgs = {
+  ordenTourId?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryGetProvinciasArgs = {
+  DepCode?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryGetSlugBlogArgs = {
+  slugBlog?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -682,6 +948,12 @@ export type QueryGetSlugTourArgs = {
   slugTour?: InputMaybe<Scalars['String']>;
 };
 
+
+export type QueryGetToursRelacionadosLugarArgs = {
+  DeparCodi?: InputMaybe<Scalars['String']>;
+  ProvCodi?: InputMaybe<Scalars['String']>;
+};
+
 /** The available directions for ordering a list of records. */
 export enum SortOrder {
   /** Sort records in ascending order. */
@@ -690,10 +962,23 @@ export enum SortOrder {
   Desc = 'DESC'
 }
 
+export type TarjetasUsuarios = {
+  __typename?: 'TarjetasUsuarios';
+  customer_id?: Maybe<Scalars['String']>;
+  expiration_month?: Maybe<Scalars['Int']>;
+  expiration_year?: Maybe<Scalars['Int']>;
+  first_six_digits?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  last_four_digits?: Maybe<Scalars['String']>;
+};
+
 export type Tour = {
   __typename?: 'Tour';
+  ActividadesTour?: Maybe<Array<Maybe<ActividadesTour>>>;
   Categoria?: Maybe<Categoria>;
-  actividadesTour?: Maybe<Scalars['String']>;
+  Departamento?: Maybe<Departamento>;
+  IncluyeTour?: Maybe<Array<Maybe<IncluyeTour>>>;
+  Provincia?: Maybe<Provincia>;
   categoriaId?: Maybe<Scalars['String']>;
   ciudadTour?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['DateTime']>;
@@ -704,12 +989,14 @@ export type Tour = {
   galeriaTour?: Maybe<Array<Maybe<Imagenes>>>;
   imagenPrincipalTour?: Maybe<Imagenes>;
   imagenSecundariaTour?: Maybe<Imagenes>;
-  incluyeTour?: Maybe<Scalars['String']>;
   itinerarioTour?: Maybe<Scalars['String']>;
   keywordsTour?: Maybe<Scalars['String']>;
   noIncluyeTour?: Maybe<Scalars['String']>;
   notasTour?: Maybe<Scalars['String']>;
+  nroDias?: Maybe<Scalars['String']>;
+  nroHoras?: Maybe<Scalars['String']>;
   politicasTour?: Maybe<Scalars['String']>;
+  precioBaseTour?: Maybe<Scalars['Float']>;
   puntoPartidaTour?: Maybe<Scalars['String']>;
   regionTour?: Maybe<Scalars['String']>;
   slugCategoria?: Maybe<Scalars['String']>;
@@ -721,7 +1008,10 @@ export type Tour = {
 };
 
 export type TourInput = {
-  actividadesTour?: InputMaybe<Scalars['String']>;
+  ActividadesTour?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  DeparCodi?: InputMaybe<Scalars['String']>;
+  IncluyeTour?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ProvCodi?: InputMaybe<Scalars['String']>;
   ciudadTour?: InputMaybe<Scalars['String']>;
   descripcionCortaTour?: InputMaybe<Scalars['String']>;
   descripcionLargaTour?: InputMaybe<Scalars['String']>;
@@ -730,12 +1020,14 @@ export type TourInput = {
   galeriaTour?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
   imagenPrincipalTour?: InputMaybe<Scalars['Int']>;
   imagenSecundariaTour?: InputMaybe<Scalars['Int']>;
-  incluyeTour?: InputMaybe<Scalars['String']>;
   itinerarioTour?: InputMaybe<Scalars['String']>;
   keywordsTour?: InputMaybe<Scalars['String']>;
   noIncluyeTour?: InputMaybe<Scalars['String']>;
   notasTour?: InputMaybe<Scalars['String']>;
+  nroDias?: InputMaybe<Scalars['String']>;
+  nroHoras?: InputMaybe<Scalars['String']>;
   politicasTour?: InputMaybe<Scalars['String']>;
+  precioBaseTour?: InputMaybe<Scalars['Float']>;
   puntoPartidaTour?: InputMaybe<Scalars['String']>;
   regionTour?: InputMaybe<Scalars['String']>;
   slugCategoria?: InputMaybe<Scalars['String']>;
@@ -759,10 +1051,13 @@ export type User = {
   __typename?: 'User';
   apellidos?: Maybe<Scalars['String']>;
   apiToken?: Maybe<Scalars['String']>;
+  celular?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
   estado?: Maybe<Scalars['String']>;
   nombre?: Maybe<Scalars['String']>;
+  numDocumento?: Maybe<Scalars['String']>;
+  tipoDocumento?: Maybe<Scalars['String']>;
   tipoUsuario?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['DateTime']>;
   userId?: Maybe<Scalars['ID']>;
@@ -771,10 +1066,13 @@ export type User = {
 export type UserInput = {
   apellidos?: InputMaybe<Scalars['String']>;
   apiToken?: InputMaybe<Scalars['String']>;
+  celular?: InputMaybe<Scalars['String']>;
   email?: InputMaybe<Scalars['String']>;
   estado?: InputMaybe<Scalars['String']>;
   nombre?: InputMaybe<Scalars['String']>;
+  numDocumento?: InputMaybe<Scalars['String']>;
   password?: InputMaybe<Scalars['String']>;
+  tipoDocumento?: InputMaybe<Scalars['String']>;
   tipoUsuario?: InputMaybe<Scalars['Int']>;
   userId?: InputMaybe<Scalars['ID']>;
 };
@@ -801,6 +1099,15 @@ export type GetImagenesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetImagenesQuery = { __typename?: 'Query', GetImagenes?: Array<{ __typename?: 'Imagenes', id?: string | null | undefined, url?: string | null | undefined, descripcion?: string | null | undefined }> | null | undefined };
+
+export type GetHorariosTourQueryVariables = Exact<{
+  anio?: InputMaybe<Scalars['String']>;
+  mes?: InputMaybe<Scalars['String']>;
+  tourId?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type GetHorariosTourQuery = { __typename?: 'Query', GetHorariosTour?: Array<{ __typename?: 'HorarioTour', horarioTourId?: number | null | undefined, hora?: string | null | undefined, fecha?: string | null | undefined, cupos?: number | null | undefined, precio?: number | null | undefined, estado?: string | null | undefined, tourId?: number | null | undefined } | null | undefined> | null | undefined };
 
 
 export const GetImagenesDocument = gql`
@@ -839,3 +1146,46 @@ export function useGetImagenesLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type GetImagenesQueryHookResult = ReturnType<typeof useGetImagenesQuery>;
 export type GetImagenesLazyQueryHookResult = ReturnType<typeof useGetImagenesLazyQuery>;
 export type GetImagenesQueryResult = Apollo.QueryResult<GetImagenesQuery, GetImagenesQueryVariables>;
+export const GetHorariosTourDocument = gql`
+    query GetHorariosTour($anio: String, $mes: String, $tourId: Int) {
+  GetHorariosTour(anio: $anio, mes: $mes, tourId: $tourId) {
+    horarioTourId
+    hora
+    fecha
+    cupos
+    precio
+    estado
+    tourId
+  }
+}
+    `;
+
+/**
+ * __useGetHorariosTourQuery__
+ *
+ * To run a query within a React component, call `useGetHorariosTourQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetHorariosTourQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetHorariosTourQuery({
+ *   variables: {
+ *      anio: // value for 'anio'
+ *      mes: // value for 'mes'
+ *      tourId: // value for 'tourId'
+ *   },
+ * });
+ */
+export function useGetHorariosTourQuery(baseOptions?: Apollo.QueryHookOptions<GetHorariosTourQuery, GetHorariosTourQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetHorariosTourQuery, GetHorariosTourQueryVariables>(GetHorariosTourDocument, options);
+      }
+export function useGetHorariosTourLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHorariosTourQuery, GetHorariosTourQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetHorariosTourQuery, GetHorariosTourQueryVariables>(GetHorariosTourDocument, options);
+        }
+export type GetHorariosTourQueryHookResult = ReturnType<typeof useGetHorariosTourQuery>;
+export type GetHorariosTourLazyQueryHookResult = ReturnType<typeof useGetHorariosTourLazyQuery>;
+export type GetHorariosTourQueryResult = Apollo.QueryResult<GetHorariosTourQuery, GetHorariosTourQueryVariables>;
