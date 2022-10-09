@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react'
 import Head from "next/head"
+import { useRouter } from 'next/router'
 import GestionLuna from "../../gestion-de-endpoints/GestionLunaMiel"
 import { useScreenContext } from '../../context/screen'
 import Banner from "@/components/luna-de-miel/Banner"
 import CardLunaDeMiel from "components/cards/card-luna-de-miel"
 import { Show, LayoutCards, TittleCards, SkeletorCard, SkeletorTittle } from '../../components/common'
+import { GestionCategoriaLunaMiel } from '../../gestion-de-endpoints/GestionCategoriaLunaMiel'
+import { useGestionGetAllLunaMiel } from '../../gestion-de-endpoints/useGestionLunaMiel'
 
 export default function Home() {
-  const { dataLuna, loading } = GestionLuna()
+  // const { dataLuna, loading } = GestionLuna()
   const { DispatchScreen } = useScreenContext()
-
+  const { FuncionGetCategoriaLunaMiel } = GestionCategoriaLunaMiel()
+  const { loading, FuncionGetAllLunaMiel } = useGestionGetAllLunaMiel()
+  const [dataLunaMiel, setDataLunaMiel] = useState([])
+  const router = useRouter()
 
 
   useEffect(() => {
@@ -17,7 +23,26 @@ export default function Home() {
   }, [])
 
 
+  {/* lo separe para poner el async await */ }
+  const CustomFN = async (slug) => {
+    await FuncionGetCategoriaLunaMiel(slug, setDataLunaMiel)
+  }
+  const CustomFN2 = async () => {
+    await FuncionGetAllLunaMiel(setDataLunaMiel)
+  }
 
+  useEffect(() => {
+    DispatchScreen({ type: 'ChangeSubTittle', payload: 'Cruceros' })
+  }, [])
+
+  {/*aqui llamo a la api grapql*/ } 
+  useEffect(() => {
+    if (Object.values(router.query).length > 0 && router.query.slug) {
+      CustomFN(router.query.slug)
+    } else {
+      CustomFN2()
+    }
+  }, [router.query])
 
   return (
     <div>
@@ -53,7 +78,7 @@ export default function Home() {
               <TittleCards tittle='Luna de Miel' />
               <div className='container mt-5'>
                 <div className='row'>
-                  {dataLuna.map((item) => {
+                  {dataLunaMiel.map((item) => {
                     return (
                       <div className='col-md-6 col-lg-4 mb-5' key={item.lunaMielId}>
                         <CardLunaDeMiel tipo='luna-de-miel' item={item} />

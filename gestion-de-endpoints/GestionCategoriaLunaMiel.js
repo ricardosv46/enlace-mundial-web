@@ -1,28 +1,29 @@
 import request from 'graphql-request'
 import { useState } from 'react'
 import { URL } from '../endpoints y url/endpoints'
-import { GET_CATEGORIA_CRUCERO } from '../graphql/queries/GetCategoriaCrucero'
+import { GET_CATEGORIA_LUNAMIEL } from '../graphql/queries/GetCategoriaLunaMiel'
 
 
-export const GestionCategoriaCrucero = () => {
+
+export const GestionCategoriaLunaMiel = () => {
     const [loading, setLoading] = useState(false)
 
-    const FuncionGetCategoriaCrucero = async (SlugFilter, setDataCrucero) => {
+    const FuncionGetCategoriaLunaMiel = async (SlugFilter, setDataLunaMiel) => {
         setLoading(true)
-        await request(URL, GET_CATEGORIA_CRUCERO, {
+        await request(URL, GET_CATEGORIA_LUNAMIEL, {
             numberPaginate: 10,
             page: 1,
-            estadoCrucero: "Activado",
+            estadoLuna: "Activado",
             slugCategoria: SlugFilter,
         }
         ).then(async (res) => {
-            let data = await res?.GetCategoriaCrucero?.data
-            setDataCrucero(data)
+            let data = await res?.GetCategoriaLunaMiel?.data
+            setDataLunaMiel(data)
             setLoading(false)
 
         }).catch(async (err) => {
             console.log(err)
-            setDataCrucero([])
+            setDataLunaMiel([])
             setLoading(false)
 
         }
@@ -31,6 +32,6 @@ export const GestionCategoriaCrucero = () => {
 
     }
 
-    return { FuncionGetCategoriaCrucero, loading }
+    return { FuncionGetCategoriaLunaMiel, loading }
 
 }
