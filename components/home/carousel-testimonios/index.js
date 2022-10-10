@@ -55,7 +55,7 @@ export default function CarouselBlog(props) {
     },
     {
       id: 4,
-      imagen: "https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-1/226881649_1259373881162016_7048264828738097890_n.jpg?stp=cp0_dst-jpg_p40x40&_nc_cat=102&ccb=1-7&_nc_sid=7206a8&_nc_ohc=SkM1AOK3PAcAX9ZBSEE&_nc_ht=scontent-lim1-1.xx&oh=00_AT8Td8HWaoPUwf5uP3tXeBPm6jDE97O4Yq2gdtLSE8JuHg&oe=632F328F",
+      imagen: "https://scontent.flim9-1.fna.fbcdn.net/v/t39.30808-1/243337656_3111136439165672_3606271229996944058_n.jpg?stp=cp0_dst-jpg_p60x60&_nc_cat=106&ccb=1-7&_nc_sid=7206a8&_nc_ohc=OSbSFJ0jPsoAX8IA9mb&_nc_ht=scontent.flim9-1.fna&oh=00_AT_LUBxl520K59gvIyfCgq_s6-6SPMbVgaALFIr_545uEg&oe=634884E0",
       nombre: "Garia EP Comando",
       comentario:
         "Excelenete viaje 👍💯👈 Gracias enlace mundial y guia Jasmin",

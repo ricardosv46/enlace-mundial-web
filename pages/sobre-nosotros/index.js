@@ -69,16 +69,14 @@ export default function About() {
           <div className="row">
             <div className="col-12">
               <div className="nosotros__banner-content text-white text-center position-relative">
-                <div className="row justify-content-center mt-3">
-                  <div className="col-10 col-md-6">
-                    <img
-                      src="/logo.png"
-                      alt="Picture of the author"
-                      className="nosotros__logo"
-                    />
+                <div className="justify-content-center mt-3">
+                  <img
+                    src="/logo.png"
+                    alt="Picture of the author"
+                    className="nosotros__logo"
+                  />
 
-                    <h1 className="font-weight-bold mt-4">Sobre nosotros</h1>
-                  </div>
+                  <h1 className="font-weight-bold mt-4">Sobre nosotros</h1>
                 </div>
               </div>
             </div>
