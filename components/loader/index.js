@@ -9,7 +9,7 @@ display: block;
     left: 0;
     background-color: #F0F2F5;
     display: flex;
-    left: 0,
+    left: 0;
     right: 0;
     width: 100%;
     height: 100%;

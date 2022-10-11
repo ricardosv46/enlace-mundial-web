@@ -1,0 +1,22 @@
+.wrapperTravelBag1 {
+    position: absolute;
+    display: none;
+    top: 270px;
+    right: 70px;
+    rotate: 12deg;
+
+    @media (min-width:1200px) {
+        display: block;
+    }
+}
+.wrapperTravelBag2 {
+    position: absolute;
+    display: none;
+    top: 470px;
+    left: 70px;
+    rotate: -12deg;
+
+    @media (min-width:1200px) {
+        display: block;
+    }
+}

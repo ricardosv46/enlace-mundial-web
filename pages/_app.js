@@ -23,6 +23,7 @@ import Router from "next/router";
 import NProgress from "nprogress"
 
 
+
 function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = useState(false)
   const [dataUser, setDataUser] = useState({})
