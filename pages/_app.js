@@ -21,7 +21,7 @@ import { ScreenProvider } from '../context/screen/providers'
 import { NextHead } from '../components/head'
 import Router from "next/router";
 import NProgress from "nprogress"
-
+import { PaperPlane } from '../lotties/components/PaperPlane'
 
 
 function MyApp({ Component, pageProps }) {
@@ -81,6 +81,7 @@ function MyApp({ Component, pageProps }) {
 
             <Component {...pageProps} />
 
+            <PaperPlane />
             <Footer />
           </ContextAuth.Provider>
         </ScreenProvider>

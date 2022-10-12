@@ -6,14 +6,7 @@ import Loader from '../components/loader'
 import { PaperPlane } from '../lotties/components/PaperPlane'
 import { AirPlane } from "../components/loader/componentes/air-plane"
 class MyDocument extends Document {
-  // static hola = {
-  //   loop: true,
-  //   autoplay: true,
-  //   animationData: TravelBagAnimation,
-  //   rendererSettings: {
-  //     preserveAspectRatio: "xMidYMid slice"
-  //   }
-  // }
+
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
     return { ...initialProps }

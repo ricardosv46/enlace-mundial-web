@@ -13,9 +13,9 @@ export const PaperPlane = () => {
 
     return (
         <Lottie
-        options={defaultOptions}
-        height={100}
-        width={100}
+            options={defaultOptions}
+            height={100}
+            width={300}
         />
     )
 }
