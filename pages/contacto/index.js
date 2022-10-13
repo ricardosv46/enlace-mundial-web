@@ -7,6 +7,7 @@ import { validations } from "../../validaciones/form-contact"
 
 import RedesSociales from "@/components/general/redes-sociales"
 import ErrorMessage from "@/components/general/ErrorMessage"
+import { ContactAnimate } from "../../lotties/components/ContactAnimate"
 
 export default function Contacto() {
   const initialValues = {
@@ -129,37 +130,43 @@ export default function Contacto() {
                 </form>
               )}
             </Formik>
+            <div>
+              {/* <div className='text-right'>
+                <img
+                  src='/logo.png'
+                  alt='Picture of the author'
+                  className='nosotros__logo'
+                />
+              </div> */}
+              <section className='mt-3'>
+                {/* <span className='text-muted'>O si prefires</span> */}
+                <div className='mt-2'>
+                  <span className='text-primary'>
+                    <i className='fas fa-mobile-alt'></i>
+                  </span>
+                  <span className='d-inline-block ml-2'>999 123 456</span>
+                </div>
+                <div className='mt-3'>
+                  <span className='text-primary'>
+                    <i className='far fa-envelope-open'></i>
+                  </span>
+                  <span className='d-inline-block ml-2'>
+                    contacto@enlacemundial.com
+                  </span>
+                </div>
+
+                {/* <section className='mt-3'>
+                  <RedesSociales />
+                </section> */}
+              </section>
+            </div>
           </div>
 
           <div className='col-md-6'>
-            <div className='text-right'>
-              <img
-                src='/logo.png'
-                alt='Picture of the author'
-                className='nosotros__logo'
-              />
-            </div>
-            <section className='mt-3'>
-              <span className='text-muted'>O si prefires</span>
-              <div className='mt-2'>
-                <span className='text-primary'>
-                  <i className='fas fa-mobile-alt'></i>
-                </span>
-                <span className='d-inline-block ml-2'>999 123 456</span>
-              </div>
-              <div className='mt-3'>
-                <span className='text-primary'>
-                  <i className='far fa-envelope-open'></i>
-                </span>
-                <span className='d-inline-block ml-2'>
-                  contacto@enlacemundial.com
-                </span>
-              </div>
+            <div className="flex flex-column">
+              <div className=""><ContactAnimate /></div>
 
-              <section className='mt-3'>
-                <RedesSociales />
-              </section>
-            </section>
+            </div>
           </div>
         </div>
       </section>

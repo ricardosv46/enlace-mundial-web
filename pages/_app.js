@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }) {
 
             <Component {...pageProps} />
 
-            <PaperPlane />
+            {/* <PaperPlane /> */}
             <Footer />
           </ContextAuth.Provider>
         </ScreenProvider>
