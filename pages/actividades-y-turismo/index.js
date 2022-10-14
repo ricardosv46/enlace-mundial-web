@@ -14,6 +14,7 @@ import {
 
 import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda";
 import { useRouter } from "next/router";
+import { EmptyAnimate } from "../../lotties/components/EmptyAnimate";
 
 const initialState = {
   fecha_ini: "",
@@ -297,8 +298,11 @@ export default function ActividadesYTurismo() {
 
             <div className="col-md-9 mt-4 mt-md-0">
               {dataBusqueda.length === 0 ? (
-                <div className="d-flex justify-content-center">
+                <div className="d-flex flex-column justify-content-center align-items-center">
                   <p className="text-md">No hay Resultados</p>
+                  <div >
+                    <EmptyAnimate />
+                  </div>
                 </div>
               ) : (
                 dataBusqueda.map((item) => {
