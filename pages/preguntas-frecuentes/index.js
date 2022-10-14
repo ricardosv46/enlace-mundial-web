@@ -7,6 +7,7 @@ import { preguntasFrecuentes } from "../../datos-paginas/preguntas-frecuentes";
 
 import { Nav } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
+import { QuestionAnimate } from "../../lotties/components/QuestionAnimate";
 
 export default function PreguntasFrecuentes() {
   const [info, setInfo] = useState(preguntasFrecuentes);
@@ -36,9 +37,12 @@ export default function PreguntasFrecuentes() {
 
       <div className="bg-primary text-white py-5">
         <div className="container">
-          <div className="row">
-            <div className="col">
+          <div className="d-flex flex-row justify-content-between align-items-center">
+            <div className="">
               <h1 className="font-weight-bold">{info.titulo}</h1>
+            </div>
+            <div className="">
+              <QuestionAnimate />
             </div>
           </div>
         </div>
@@ -54,17 +58,17 @@ export default function PreguntasFrecuentes() {
                     <Nav variant="pills" className="flex-column">
                       {info.preguntas
                         ? info.preguntas.map((item, index) => {
-                            return (
-                              <Nav.Item key={index}>
-                                <Nav.Link
-                                  eventKey={index + 1}
-                                  className="nav-link-tab"
-                                >
-                                  {item.titulo}
-                                </Nav.Link>
-                              </Nav.Item>
-                            );
-                          })
+                          return (
+                            <Nav.Item key={index}>
+                              <Nav.Link
+                                eventKey={index + 1}
+                                className="nav-link-tab"
+                              >
+                                {item.titulo}
+                              </Nav.Link>
+                            </Nav.Item>
+                          );
+                        })
                         : ""}
                     </Nav>
                   </div>
@@ -73,12 +77,12 @@ export default function PreguntasFrecuentes() {
                     <Tab.Content>
                       {info.preguntas
                         ? info.preguntas.map((item, index) => {
-                            return (
-                              <Tab.Pane key={index} eventKey={index + 1}>
-                                {item.descripcion}
-                              </Tab.Pane>
-                            );
-                          })
+                          return (
+                            <Tab.Pane key={index} eventKey={index + 1}>
+                              {item.descripcion}
+                            </Tab.Pane>
+                          );
+                        })
                         : ""}
                     </Tab.Content>
                   </div>
