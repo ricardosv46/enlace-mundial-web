@@ -75,15 +75,15 @@ export default function PreguntasFrecuentes() {
 
                   <div className="col-md-9">
                     <Tab.Content>
-                      {info.preguntas
-                        ? info.preguntas.map((item, index) => {
-                          return (
-                            <Tab.Pane key={index} eventKey={index + 1}>
-                              {item.descripcion}
-                            </Tab.Pane>
-                          );
-                        })
-                        : ""}
+                      {info.preguntas && info.preguntas.map((item, index) => (
+                        <Tab.Pane key={index} eventKey={index + 1}>
+                          {Array.isArray(item.descripcion) ?
+                            item.descripcion.map((obj, k) => <p key={k} className="mb-2">{obj}</p>)
+                            :
+                            item.descripcion
+                          }
+                        </Tab.Pane>
+                      ))}
                     </Tab.Content>
                   </div>
                 </div>

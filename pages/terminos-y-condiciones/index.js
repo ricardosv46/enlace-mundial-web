@@ -1,5 +1,4 @@
 import react, { useState } from "react"
-
 import { terminosYCondiciones } from "../../datos-paginas/terminos-y-condiciones"
 import Head from "next/head"
 import styles from "./styles.module.scss"
@@ -27,9 +26,9 @@ export default function TerminosYCondiciones() {
           {info.items.map((item, index) => {
             return (
               <article className='col-md-12 item mb-5 px-0' key={index}>
-                <h2 className='font-weight-bold'>{item.titulo}</h2>
+                <h2 className='font-weight-bold mb-2'>{item.titulo}</h2>
 
-                <p>{item.descripcion}</p>
+                {Array.isArray(item.descripcion) ? item.descripcion.map((obj, k) => <p key={k} className='mb-4'>{obj}</p>) : <p>{item.descripcion}</p>}
               </article>
             )
           })}
