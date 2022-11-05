@@ -114,10 +114,10 @@ export default function Banner() {
 
               <div className="mb-2 mb-md-0 copyright__links">
                 <Link
-                  href="/terminos-y-condiciones"
+                  href="/itinerario"
                   className="copyright__link"
                 >
-                  Política de privacidad
+                  Políticas de Itinerario
                 </Link>
 
                 <Link
