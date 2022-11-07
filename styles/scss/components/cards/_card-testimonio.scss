@@ -30,15 +30,25 @@
   padding: 0.2rem;
 
   &_img {
+    position: relative;
     width: 40px;
     height: 40px;
-    max-width: 40px;
-    max-height: 40px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
     border-radius: 50%;
 
+
+  }
+  &_nextimage {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    border-radius: 50%;
+    
   }
 
   &_wrappertext {

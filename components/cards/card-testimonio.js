@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image'
 
 export default function CardBlog(props) {
   return (
@@ -22,15 +23,24 @@ export default function CardBlog(props) {
     //   </div>
     // </article>
     <div className="card-testimonio">
-      <img
+      <div className="card-testimonio_img">
+        <Image
+          src={props.item.imagen}
+          layout="fill"
+          loading="lazy"
+          alt='Picture of the author'
+          className="card-testimonio_nextimage"
+        />
+      </div>
+      {/* <img
         className="card-testimonio_img"
         src={props.item.imagen}
         alt="Picture of the author"
-      />
+      /> */}
       <div className="card-testimonio_wrappertext">
         <div className="card-testimonio_wrappertext_user">{props.item.nombre || 'username_default'}</div>
         <div className="card-testimonio_wrappertext_content">{props.item.comentario || ''}</div>
-        
+
       </div>
     </div >
   );

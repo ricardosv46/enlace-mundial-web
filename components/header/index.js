@@ -32,7 +32,7 @@ export default function Header() {
         <div className='header__container h-100'>
           <Link href='/' className='pointer' passHref>
             <img
-              src='/logo.png'
+              src='/logo.webp'
               alt='Picture of the author'
               className='header__logo pointer'
             />

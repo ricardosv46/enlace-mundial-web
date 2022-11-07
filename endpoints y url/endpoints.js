@@ -1,4 +1,4 @@
-export const URL = "https://apienlacemundial.softaki.com/public/graphql"
+export const URL = "https://api.enlacemundialperu.com/public/graphql"
 
 export const GET_SLUG_TOUR = `
 query GetSlugTour($slugTour: String) {

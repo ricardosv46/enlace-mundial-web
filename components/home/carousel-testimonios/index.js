@@ -6,6 +6,8 @@ import { HiChatAlt2 } from 'react-icons/hi'
 import CardTestimonio from "../../cards/card-testimonio";
 import { TittleCards } from "../../common";
 
+const defaultimguser = "/imagenes/sobre-nosotros/icon_default_user.jpg"
+
 export default function CarouselBlog(props) {
   const swiperRefMobile = useRef(null);
   const swiperRefDesktop = useRef(null);
@@ -33,14 +35,14 @@ export default function CarouselBlog(props) {
   const items = [
     {
       id: 1,
-      imagen: "https://avatars.githubusercontent.com/u/499550?v=4",
+      imagen: defaultimguser,
       nombre: "Noelia Ponce Enciso",
       comentario:
         "Una muy linda experiencia y buen servicio",
     },
     {
       id: 2,
-      imagen: "https://i.blogs.es/e3def9/torvalds3/840_560.jpg",
+      imagen: defaultimguser,
       nombre: "Henry Saez",
       comentario:
         "Un excelente Full Day San Mateo de Otao. 100% Recomendado. Gracias Enla Mundial Perú",
@@ -48,21 +50,21 @@ export default function CarouselBlog(props) {
     },
     {
       id: 3,
-      imagen: "http://cde.3.elcomercio.pe/ima/0/1/6/9/1/1691349.jpg",
+      imagen: defaultimguser,
       nombre: "Luz Maria Quintos Alarcon",
       comentario:
         "Lindos momentos con grupo la pasamos excelente mis hijas felices se divirtierón al maximo",
     },
     {
       id: 4,
-      imagen: "https://scontent.flim9-1.fna.fbcdn.net/v/t39.30808-1/243337656_3111136439165672_3606271229996944058_n.jpg?stp=cp0_dst-jpg_p60x60&_nc_cat=106&ccb=1-7&_nc_sid=7206a8&_nc_ohc=OSbSFJ0jPsoAX8IA9mb&_nc_ht=scontent.flim9-1.fna&oh=00_AT_LUBxl520K59gvIyfCgq_s6-6SPMbVgaALFIr_545uEg&oe=634884E0",
+      imagen: defaultimguser,
       nombre: "Garia EP Comando",
       comentario:
         "Excelenete viaje 👍💯👈 Gracias enlace mundial y guia Jasmin",
     },
     {
       id: 5,
-      imagen: "https://scontent-lim1-1.xx.fbcdn.net/v/t1.6435-1/136960823_2860703924164180_3048406233583808379_n.jpg?stp=c0.2.60.60a_cp0_dst-jpg_p60x60&_nc_cat=101&ccb=1-7&_nc_sid=7206a8&_nc_ohc=C8HkfPo8GUsAX-aD14o&_nc_ht=scontent-lim1-1.xx&oh=00_AT8OKDs9n2rp9kM--8Q3vfQ0CDUYaaLttK4kweFReZEEMA&oe=634F37D5",
+      imagen: defaultimguser,
       nombre: "Alex Maz Naa Sanchez Hinostroza",
       comentario:
         "Súper la experiencia me encanto, quede enamorado de ICA, pero sobre todo de su gente amables y acogedora, súper las atenciones de Aldo especial como guía, gracias a la Agencia Enlace Mundial recomendadisimo si van a pasear a ICA",
