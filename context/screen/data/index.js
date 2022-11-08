@@ -1,5 +1,5 @@
 export const Screen_Data = {
-    tittle: 'Enlace Mundial',
+    tittle: 'Enlace Mundial - Perú',
     SubTittle: '',
     IsDark: false
 }

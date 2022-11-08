@@ -13,7 +13,9 @@ export const NextHead = () => {
 
             <meta name='description' content='Enlace mundial' />
 
-            <link rel='icon' href='/favicon.ico' />
+            {/* <link rel='icon' href='/icon2.png' /> */}
+            <link rel='icon' href='/ico.ico' />
+
             <link
                 rel='stylesheet'
                 href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'

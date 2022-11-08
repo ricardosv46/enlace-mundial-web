@@ -116,8 +116,8 @@ export default function DestinosDestacados() {
           )}
         </div>
         {/*Iconos lotties */}
-        <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados1'} />
-        <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados2'} />
+        {/* <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados1'} />
+        <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados2'} /> */}
       </Show>
     </section >
   );

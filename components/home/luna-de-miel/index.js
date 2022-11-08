@@ -96,8 +96,9 @@ const LunaDeMiel = () => {
                 <i className="fas fa-chevron-right"></i>
               </button>
             </div>
-            <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados1'}/>
-            <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados2'}/>
+            {/*icon aniamte lottie*/}
+            <TravelBagTsx ClassName={'wrapperTravelBagLunaMiel1'} />
+            <TravelBagTsx ClassName={'wrapperTravelBagLunaMiel2'} />
 
           </div>
         </Show>

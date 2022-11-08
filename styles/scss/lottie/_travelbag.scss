@@ -105,3 +105,54 @@
     display: block;
   }
 }
+
+.wrapperTravelBagLunaMiel1 {
+  position: absolute;
+  display: none;
+  top: 20px;
+  //   bottom: 50%;
+  right: 70px;
+  rotate: 12deg;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.wrapperTravelBagLunaMiel2 {
+  position: absolute;
+  display: none;
+  //   top: 50%;
+  bottom: 20px;
+  left: 70px;
+  rotate: 12deg;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.wrapperTravelBagCruceros1 {
+  position: absolute;
+  display: none;
+  bottom: 20px;
+  right: 70px;
+  rotate: 12deg;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.wrapperTravelBagCruceros2 {
+  position: absolute;
+  display: none;
+  top: 20px;
+  left: 70px;
+  rotate: 12deg;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
