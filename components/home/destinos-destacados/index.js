@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Swiper from "react-id-swiper";
 import { useDepartamentosServices } from "../../../Services/useDepartamentosServices";
 import CardDestino from "../../cards/card-destino";
+import { TravelBagTsx } from '../../common'
 import { TittleCards, Show, SkeletorDestinosDestacados, SkeletorTittle } from "../../common";
 export default function DestinosDestacados() {
   const { loadingGetData, db: dataDestacados } = useDepartamentosServices();
@@ -23,7 +24,7 @@ export default function DestinosDestacados() {
   };
 
   return (
-    <section className="destinos-destacados mt-5">
+    <section className="destinos-destacados mt-5 position-relative">
       <Show
         Condition={!loadingGetData}
         IsDefault={
@@ -114,6 +115,9 @@ export default function DestinosDestacados() {
             </div>
           )}
         </div>
+        {/*Iconos lotties */}
+        <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados1'} />
+        <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados2'} />
       </Show>
     </section >
   );

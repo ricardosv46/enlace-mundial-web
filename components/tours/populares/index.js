@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import Lottie from 'react-lottie'
-import TravelBagAnimation from '../../../lotties/travel-bag.json'
+import { TravelBagTsx } from '../../common'
 // Componentes
 import Swiper from "react-id-swiper";
 // import CardTour from "@/components/cards/card-tour";
@@ -24,15 +23,6 @@ const ToursPopulares = () => {
   const carouselParamsMobile = {
     slidesPerView: 1,
     loop: true,
-  };
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: TravelBagAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
   };
 
   const goNext = () => {
@@ -119,21 +109,12 @@ const ToursPopulares = () => {
                   ))}
             </div>
           </div >
-          <div className="wrapperTravelBag1">
-            <Lottie
-              options={defaultOptions}
-              height={100}
-              width={100}
-            />
-          </div>
-          <div className="wrapperTravelBag2">
-            <Lottie
-              options={defaultOptions}
-              height={100}
-              width={100}
-            />
-          </div>
-      
+
+          {/*Iconos lotties */}
+          <TravelBagTsx ClassName={'wrapperTravelBag1'} />
+          <TravelBagTsx ClassName={'wrapperTravelBag2'} />
+          <TravelBagTsx ClassName={'wrapperTravelBag3'} />
+          <TravelBagTsx ClassName={'wrapperTravelBag4'} />
 
           <div className="text-center">
             <Link href="/actividades-y-turismo">

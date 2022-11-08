@@ -38,7 +38,7 @@ const Cruceros = () => {
   };
 
   return (
-    <section className="container carousel-app">
+    <section className="container carousel-app ">
       <Show
         Condition={!loadingGetCrucero}
         IsDefault={

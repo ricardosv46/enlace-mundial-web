@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import { TravelBagTsx } from '../../common'
 // Componentes
 import Swiper from "react-id-swiper";
 import GestionBlog from "../../../gestion-de-endpoints/GestionBlog";
@@ -41,7 +41,7 @@ export default function CarouselBlog() {
     swiperRefDesktop.current.swiper.slidePrev();
   };
   return (
-    <section className="carousel-3-columnas mt-5 mb-5">
+    <section className="carousel-3-columnas mt-5 mb-5 position-relative">
       <Show
         Condition={!loadingGetBlog}
         IsDefault={<div className="d-flex flex-column container">
@@ -107,6 +107,9 @@ export default function CarouselBlog() {
               </div>
             </div>
           </div>
+          <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados1'} />
+          <TravelBagTsx ClassName={'wrapperTravelBagDestinosDesctacados2'} />
+
           <div className="text-center">
             <Link href="/blog">
               <a className="btn btn-primary">Ver más Blogs</a>
