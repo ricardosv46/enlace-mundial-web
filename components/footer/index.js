@@ -14,7 +14,7 @@ export default function Banner() {
             <div className="col-md-11">
               <div className="row">
                 <div className="col-md-6 d-flex flex-column justify-content-center justify-content-md-between align-items-center align-items-lg-start">
-                  <img src="/logo.png" className="footer__logo" />
+                  <img src="/logo.webp" className="footer__logo" />
 
                   <RedesSociales />
                 </div>
@@ -49,28 +49,6 @@ export default function Banner() {
                         </li>
                       </ul>
                     </div>
-
-                    {/* <div className="col-md-4 text-md-left">
-                      <h3 className="footer__sub font-weight-bold">
-                        <Link
-                          href={'/luna-de-miel'}
-                        >
-                          Luna de miel
-                        </Link>
-                      </h3>
-
-                      <ul className="list-unstyled mt-4">
-                        <li>
-                          <Link href="#">San Valentín</Link>
-                        </li>
-                        <li>
-                          <Link href="#">Viajes Familiares</Link>
-                        </li>
-                        <li>
-                          <Link href="#">Recreación</Link>
-                        </li>
-                      </ul>
-                    </div> */}
                     {dataFooter.map((obj1, k1) =>
                       <div className="col-md-4 text-md-left" key={k1}>
                         <h3 className="footer__sub font-weight-bold">

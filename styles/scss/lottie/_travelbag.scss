@@ -1,47 +1,107 @@
 .wrapperTravelBag1 {
-    position: absolute;
-    display: none;
-    top: 270px;
-    right: 70px;
-    rotate: 12deg;
-
-    @media (min-width:1200px) {
-        display: block;
-    }
+  position: absolute;
+  display: none;
+  top: 270px;
+  right: 70px;
+  rotate: 12deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
 }
 .wrapperTravelBag2 {
-    position: absolute;
-    display: none;
-    top: 470px;
-    left: 70px;
-    rotate: -12deg;
-
-    @media (min-width:1200px) {
-        display: block;
-    }
+  position: absolute;
+  display: none;
+  top: 270px;
+  left: 70px;
+  rotate: -12deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
 }
 
 .wrapperTravelBag3 {
-    position: absolute;
-    display: none;
-    bottom: 470px;
-    left: 70px;
-    rotate: -11deg;
-
-    @media (min-width:1200px) {
-        display: block;
-    }
+  position: absolute;
+  display: none;
+  top: 830px;
+  right: 70px;
+  rotate: 12deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+.wrapperTravelBag4 {
+  position: absolute;
+  display: none;
+  top: 830px;
+  left: 70px;
+  rotate: -12deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
 }
 
+.wrapperTravelBag5 {
+  position: absolute;
+  display: none;
+  top: 1400px;
+  left: 70px;
+  rotate: -11deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
 
-.wrapperTravelBag4 {
-    position: absolute;
-    display: none;
-    bottom: 340px;
-    right: 70px;
-    rotate: -9deg;
+.wrapperTravelBag6 {
+  position: absolute;
+  display: none;
+  top: 1400px;
+  right: 70px;
+  rotate: -9deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
 
-    @media (min-width:1200px) {
-        display: block;
-    }
+.wrapperTravelBag7 {
+  position: absolute;
+  display: none;
+  top: 1970px;
+  right: 70px;
+  rotate: -9deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.wrapperTravelBag8 {
+  position: absolute;
+  display: none;
+  top: 1970px;
+  left: 70px;
+  rotate: -9deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.wrapperTravelBag9 {
+  position: absolute;
+  display: none;
+  top: 2540px;
+  right: 70px;
+  rotate: -9deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.wrapperTravelBag10 {
+  position: absolute;
+  display: none;
+  top: 2540px;
+  left: 70px;
+  rotate: -9deg;
+  @media (min-width: 1200px) {
+    display: block;
+  }
 }

@@ -65,7 +65,7 @@ const ToursPopulares = () => {
       >
         <div className="position-relative">
           <TittleCards tittle="Tour más populares" />
-          <div className={`${styles.toursPopulares_container} container`}>
+          <div className={`${styles.toursPopulares_container} container `}>
             <div className="d-md-none position-relative">
               <Swiper ref={swiperRefMobile} {...carouselParamsMobile}>
                 {itemsTours &&
@@ -95,7 +95,7 @@ const ToursPopulares = () => {
             </div>
 
             {/* cards dekstop */}
-            <div className="row d-none d-md-flex ">
+            <div className="row d-none d-md-flex  ">
               {itemsTours &&
                 itemsTours
                   .filter((data) => data.destacadoTour === "Activado")
@@ -115,6 +115,15 @@ const ToursPopulares = () => {
           <TravelBagTsx ClassName={'wrapperTravelBag2'} />
           <TravelBagTsx ClassName={'wrapperTravelBag3'} />
           <TravelBagTsx ClassName={'wrapperTravelBag4'} />
+          <TravelBagTsx ClassName={'wrapperTravelBag5'} />
+          <TravelBagTsx ClassName={'wrapperTravelBag6'} />
+          <TravelBagTsx ClassName={'wrapperTravelBag7'} />
+          <TravelBagTsx ClassName={'wrapperTravelBag8'} />
+          <TravelBagTsx ClassName={'wrapperTravelBag9'} />
+          <TravelBagTsx ClassName={'wrapperTravelBag10'} />
+
+
+
 
           <div className="text-center">
             <Link href="/actividades-y-turismo">
