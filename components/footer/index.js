@@ -8,7 +8,7 @@ import { dataFooter } from '../../data/dataFooter'
 export default function Banner() {
   return (
     <section>
-      <footer className="footer">
+      <footer className="footer ">
         <section className="container">
           <div className="row justify-content-center">
             <div className="col-md-11">
@@ -76,20 +76,24 @@ export default function Banner() {
         </section>
       </footer>
 
-      <div className="copyright bg-primary py-2">
+      <div className="copyright bg-primary py-2 border border-dark">
         <div className="container py-0 my-0">
           <div className="row justify-content-center">
             <div className="col-md-11 d-flex flex-column flex-lg-row justify-content-between align-items-center py-3">
-              <div className="copyright__direccion">
+              <div className="copyright__direccion ">
                 <p>DIRECCION: Los aymaras 132. Salamanca</p>
                 <p>TELEFONO: (01) 6828153</p>
               </div>
 
+              <div className="d-flex flex-column">
+                <p className="text-white my-0 text-center">
+                  © 2021 Enlace Mundial Perú. Derechos Reservados.
+                </p>
+                <div className="text-center text-white">
+                  Desarrollado por <Link href={'https://www.softaki.com/'} passHref><a target="_blank" className="badge badge-success" rel="noopener noreferrer">Softaki</a></Link>
+                </div>
 
-              <p className="text-white my-0">
-                © 2021 Enlace Mundial Perú. Derechos Reservados.
-              </p>
-
+              </div>
               <div className="mb-2 mb-md-0 copyright__links">
                 <Link
                   href="/itinerario"
