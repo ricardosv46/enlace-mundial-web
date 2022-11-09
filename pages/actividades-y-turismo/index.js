@@ -15,6 +15,7 @@ import {
 import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda";
 import { useRouter } from "next/router";
 import { EmptyAnimate } from "../../lotties/components/EmptyAnimate";
+import { NextSeo } from "next-seo";
 
 const initialState = {
   fecha_ini: "",
@@ -190,6 +191,24 @@ export default function ActividadesYTurismo() {
 
   return (
     <div className="busqueda-page">
+
+      <NextSeo
+        openGraph={{
+          type: "website",
+          url: `${process.env.SITE_URL}/actividades-y-turismo`,
+          title: 'Actividades y turismo - Enlace Mundial',
+          description: 'Tours a regiones del Perú.',
+          images: [
+            {
+              url: `${process.env.SITE_URL}/logo.webp`,
+              width: 1200,
+              height: 660,
+            },
+
+          ],
+          site_name: 'Actividades y turismo - Enlace Mundial',
+        }}
+      />
       <main>
         {/* Breadcrumb */}
         <BreadCrumb

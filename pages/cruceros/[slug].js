@@ -49,7 +49,7 @@ export default function Home({ data }) {
       <NextSeo
         openGraph={{
           type: "website",
-          url: `https://enlace-mundial-peru.vercel.app/cruceros/${slug}`,
+          url: `${process.env.SITE_URL}/cruceros/${slug}`,
           title: data?.tituloCrucero,
           description: data?.descripcionCortaCrucero,
           images: [
@@ -146,7 +146,7 @@ export default function Home({ data }) {
                     </div>
                   </div>
 
-                    <CrucerosRelacionadoss />
+                  <CrucerosRelacionadoss />
                 </section>
               </div>
               <div className='col-lg-4 d-none d-lg-block border-danger'>

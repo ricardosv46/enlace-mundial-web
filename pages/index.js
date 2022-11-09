@@ -14,6 +14,7 @@ import { useGetImagenesQuery } from "../generated/graphql";
 import { useScreenContext } from "../context/screen";
 import Image from "next/image";
 import GestionLuna from "../gestion-de-endpoints/GestionLunaMiel";
+import { NextSeo } from "next-seo";
 
 export default function Home() {
   const { DispatchScreen } = useScreenContext();
@@ -28,7 +29,25 @@ export default function Home() {
   // console.log('valor de pepe es', pepe)
 
   return (
+
     <div>
+      <NextSeo
+        openGraph={{
+          type: "website",
+          url: `${process.env.SITE_URL}`,
+          title: 'Enlace Mundial',
+          description: 'Enlace Mundial es una agencia de viajes con 12 años en el servicio turístico y contamos con excelente staff de profesionales del área. Convertimos tu viaje en una experiencia mundial.',
+          images: [
+            {
+              url: `${process.env.SITE_URL}/logo.webp`,
+              width: 1200,
+              height: 660,
+            },
+
+          ],
+          site_name: 'Enlace Mundial',
+        }}
+      />
       <main>
         <Banner />
 

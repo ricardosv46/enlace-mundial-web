@@ -74,12 +74,14 @@ export default function Home({ data }) {
       <NextSeo
         openGraph={{
           type: 'website',
-          url: `https://enlace-mundial-peru.vercel.app/actividades-y-turismo/${slug}`,
+          url: `${process.env.SITE_URL}/actividades-y-turismo/${slug}`,
           title: data?.tituloTour,
           description: data?.descripcionCortaTour,
           images: [
             {
-              url: data?.imagenPrincipalTour?.url
+              url: data?.imagenPrincipalTour?.url,
+              width: 1200,
+              height: 660,
             }
           ],
           site_name: data?.tituloTour

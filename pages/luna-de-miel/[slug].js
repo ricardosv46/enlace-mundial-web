@@ -54,12 +54,14 @@ export default function Home({ data }) {
       <NextSeo
         openGraph={{
           type: "website",
-          url: `https://enlace-mundial-peru.vercel.app/luna-de-miel/${slug}`,
+          url: `${process.env.SITE_URL}/luna-de-miel/${slug}`,
           title: data?.tituloLuna,
           description: data?.descripcionCortaLuna,
           images: [
             {
               url: data?.imagenPrincipalLuna?.url,
+              width: 1200,
+              height: 660,
             },
           ],
           site_name: data?.tituloLuna,

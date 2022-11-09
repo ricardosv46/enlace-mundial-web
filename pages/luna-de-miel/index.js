@@ -8,6 +8,7 @@ import CardLunaDeMiel from "components/cards/card-luna-de-miel"
 import { Show, LayoutCards, TittleCards, SkeletorCard, SkeletorTittle } from '../../components/common'
 import { GestionCategoriaLunaMiel } from '../../gestion-de-endpoints/GestionCategoriaLunaMiel'
 import { useGestionGetAllLunaMiel } from '../../gestion-de-endpoints/useGestionLunaMiel'
+import { NextSeo } from 'next-seo'
 
 export default function Home() {
   // const { dataLuna, loading } = GestionLuna()
@@ -35,7 +36,7 @@ export default function Home() {
     DispatchScreen({ type: 'ChangeSubTittle', payload: 'Cruceros' })
   }, [])
 
-  {/*aqui llamo a la api grapql*/ } 
+  {/*aqui llamo a la api grapql*/ }
   useEffect(() => {
     if (Object.values(router.query).length > 0 && router.query.slug) {
       CustomFN(router.query.slug)
@@ -55,6 +56,24 @@ export default function Home() {
           href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
         />
       </Head> */}
+
+      <NextSeo
+        openGraph={{
+          type: "website",
+          url: `${process.env.SITE_URL}/luna-de-miel`,
+          title: 'Luna de miel - Enlace mundial',
+          description: 'La «luna de miel» es una frase que describe la fase posterior al matrimonio. Es el segundo paso, y a veces el más esperado.',
+          images: [
+            {
+              url: `${process.env.SITE_URL}/imagenes/luna-de-miel/banner.jpg`,
+              width: 1200,
+              height: 660,
+            },
+
+          ],
+          site_name: 'Luna de miel - Enlace mundial',
+        }}
+      />
 
       <main className='l-miel'>
         <Banner />

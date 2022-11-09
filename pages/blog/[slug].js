@@ -79,12 +79,14 @@ export default function Home({ data }) {
       <NextSeo
         openGraph={{
           type: "website",
-          url: `https://enlace-mundial-peru.vercel.app/blog/${slug}`,
+          url: `${process.env.SITE_URL}/blog/${slug}`,
           title: data?.tituloBlog,
           description: data?.descripcionCortaBlog,
           images: [
             {
               url: data?.imagenPrincipalBlog?.url,
+              width: 1200,
+              height: 660,
             },
           ],
           site_name: data?.tituloBlog,
