@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -11,10 +11,12 @@ SwiperCore.use([Autoplay]);
 
 // Componentes internos
 import ToursPopulares from "@/components/tours/populares";
+import { useScreenContext } from "../../context/screen";
+import { Screen_Data } from "../../context/screen/data";
 
 export default function About() {
   const swiperRef = useRef(null);
-
+  const { DispatchScreen } = useScreenContext()
   const params = {
     slidesPerView: 1,
     autoplay: {
@@ -55,12 +57,22 @@ export default function About() {
     swiperRef.current.swiper.slidePrev();
   };
 
+
+  useEffect(() => {
+    DispatchScreen({
+      type: 'ChangeMeta',
+      payload: {
+        SubTittle: 'Sobre Nosotros',
+        keyword: '',
+        description: Screen_Data.description,
+        url: `${process.env.SITE_URL}/sobre-nosotros`,
+        img: `${process.env.SITE_URL}/imagenes/sobre-nosotros/banner-2.png`
+      }
+    })
+  }, [])
+
   return (
     <div className={styles.nosotros}>
-      <Head>
-        <title>About page</title>
-        <meta name="description" content="About description" />
-      </Head>
 
       <section
         className={`${styles.nosotros_banner} d-flex justify-content-center align-items-center position-relative`}

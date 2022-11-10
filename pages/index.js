@@ -20,8 +20,16 @@ export default function Home() {
   const { DispatchScreen } = useScreenContext();
 
   useEffect(() => {
-    DispatchScreen({ type: "ChangeSubTittle", payload: "" });
-  }, []);
+    DispatchScreen({
+      type: 'ChangeMeta', payload: {
+        SubTittle: '',
+        keyword: '',
+        description: Screen_Data.description,
+        url: `${process.env.SITE_URL}`,
+        img: `${process.env.SITE_URL}/logo.webp`
+      }
+    })
+  }, [])
 
   // console.log('los posts es ', pepe)
   // const { data } = useGetImagenesQuery();
@@ -31,23 +39,7 @@ export default function Home() {
   return (
 
     <div>
-      <NextSeo
-        openGraph={{
-          type: "website",
-          url: `${process.env.SITE_URL}`,
-          title: 'Enlace Mundial',
-          description: 'Enlace Mundial es una agencia de viajes con 12 años en el servicio turístico y contamos con excelente staff de profesionales del área. Convertimos tu viaje en una experiencia mundial.',
-          images: [
-            {
-              url: `${process.env.SITE_URL}/logo.webp`,
-              width: 1200,
-              height: 660,
-            },
 
-          ],
-          site_name: 'Enlace Mundial',
-        }}
-      />
       <main>
         <Banner />
 

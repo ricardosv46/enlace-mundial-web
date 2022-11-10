@@ -184,31 +184,19 @@ export default function ActividadesYTurismo() {
 
   useEffect(() => {
     DispatchScreen({
-      type: "ChangeSubTittle",
-      payload: "Actividades y turismo",
-    });
-  }, []);
+      type: 'ChangeMeta', payload: {
+        SubTittle: 'Actividades y turismo',
+        description: 'Tours a regiones del Perú.',
+        keyword: '',
+        url: `${process.env.SITE_URL}/actividades-y-turismo`,
+        img: `${process.env.SITE_URL}/logo.webp`
+      }
+    })
+  }, [])
 
   return (
     <div className="busqueda-page">
 
-      <NextSeo
-        openGraph={{
-          type: "website",
-          url: `${process.env.SITE_URL}/actividades-y-turismo`,
-          title: 'Actividades y turismo - Enlace Mundial',
-          description: 'Tours a regiones del Perú.',
-          images: [
-            {
-              url: `${process.env.SITE_URL}/logo.webp`,
-              width: 1200,
-              height: 660,
-            },
-
-          ],
-          site_name: 'Actividades y turismo - Enlace Mundial',
-        }}
-      />
       <main>
         {/* Breadcrumb */}
         <BreadCrumb

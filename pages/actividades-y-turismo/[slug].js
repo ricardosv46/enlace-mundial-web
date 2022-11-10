@@ -57,36 +57,18 @@ export default function Home({ data }) {
   // }, [scrollTop])
 
   useEffect(() => {
-    DispatchScreen({ type: 'ChangeSubTittle', payload: data?.tituloTour })
+    DispatchScreen({
+      type: 'ChangeMeta', payload: {
+        SubTittle: data?.tituloTour,
+        keywords: data?.keywordsTour,
+        description: data?.descripcionCortaTour,
+        url: `${process.env.SITE_URL}/actividades-y-turismo/${slug}`,
+        img: data?.imagenPrincipalTour?.url
+      }
+    })
   }, [])
   return (
     <div>
-      {/* <Head>
-        <title>{data.tituloTour} - Enlace mundial</title>
-        <meta name='description' content={data.descripcionCortaTour} />
-        <meta name='keywords' content={data.keywordsTour} />
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
-        />
-      </Head> */}
-      <NextSeo
-        openGraph={{
-          type: 'website',
-          url: `${process.env.SITE_URL}/actividades-y-turismo/${slug}`,
-          title: data?.tituloTour,
-          description: data?.descripcionCortaTour,
-          images: [
-            {
-              url: data?.imagenPrincipalTour?.url,
-              width: 1200,
-              height: 660,
-            }
-          ],
-          site_name: data?.tituloTour
-        }}
-      />
 
       {/* reservar un tour con una fecha asignada version mobile*/}
       <Modal

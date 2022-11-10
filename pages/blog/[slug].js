@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import Link from "next/link"
@@ -14,6 +14,7 @@ import { GET_SLUG_BLOG, URL } from "../../endpoints y url/endpoints"
 import request from "graphql-request"
 import GestionCategoriaBlog from "../../gestion-de-endpoints/GestionCategoriaBlog"
 import { NextSeo } from "next-seo"
+import { useScreenContext } from "../../context/screen"
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_BLOG, {
@@ -32,7 +33,7 @@ export default function Home({ data }) {
   const { dataCategoriaBlog: categorias } = GestionCategoriaBlog()
   const router = useRouter()
   let slug = router.query.slug
-
+  const { DispatchScreen } = useScreenContext()
   // console.log(router)
 
   const [destacados, setDestacados] = useState(posts)
@@ -64,34 +65,20 @@ export default function Home({ data }) {
     loop: true,
   }
 
+  useEffect(() => {
+    DispatchScreen({
+      type: 'ChangeMeta', payload: {
+        SubTittle: data?.tituloBlog,
+        keywords: data?.keywordsBlog,
+        description: data?.descripcionCortaBlog,
+        url: `${process.env.SITE_URL}/blog/${slug}`,
+        img: data?.imagenPrincipalBlog?.url
+      }
+    })
+  }, [])
+
   return (
     <div>
-      <Head>
-        <title>{data.tituloBlog} - Enlace mundial</title>
-        <meta name='description' content={data.descripcionCortaBlog} />
-        <meta name='keywords' content={data.keywordsBlog} />
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
-        />
-      </Head>
-      <NextSeo
-        openGraph={{
-          type: "website",
-          url: `${process.env.SITE_URL}/blog/${slug}`,
-          title: data?.tituloBlog,
-          description: data?.descripcionCortaBlog,
-          images: [
-            {
-              url: data?.imagenPrincipalBlog?.url,
-              width: 1200,
-              height: 660,
-            },
-          ],
-          site_name: data?.tituloBlog,
-        }}
-      />
 
       <main className={styles.slug}>
         <section className='l-miel__items mt-4'>

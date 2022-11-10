@@ -38,35 +38,20 @@ export default function Home({ data }) {
     DispatchScreen({ type: 'ChangeSubTittle', payload: data?.tituloLuna })
   }, [])
 
+  useEffect(() => {
+    DispatchScreen({
+      type: 'ChangeMeta', payload: {
+        SubTittle: data?.tituloLuna,
+        keywords: data?.keywordsLuna,
+        description: data?.descripcionCortaLuna,
+        url: `${process.env.SITE_URL}/luna-de-miel/${slug}`,
+        img: data?.imagenPrincipalLuna?.url
+      }
+    })
+  }, [])
 
   return (
     <div>
-      {/* <Head>
-        <title>{data?.tituloLuna} - Enlace mundial</title>
-        <meta name='description' content={data?.descripcionCortaLuna} />
-        <meta name='keywords' content={data?.keywordsLuna} />
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
-        />
-      </Head> */}
-      <NextSeo
-        openGraph={{
-          type: "website",
-          url: `${process.env.SITE_URL}/luna-de-miel/${slug}`,
-          title: data?.tituloLuna,
-          description: data?.descripcionCortaLuna,
-          images: [
-            {
-              url: data?.imagenPrincipalLuna?.url,
-              width: 1200,
-              height: 660,
-            },
-          ],
-          site_name: data?.tituloLuna,
-        }}
-      />
 
       <main>
         {/* Cabezera, precio por persona */}

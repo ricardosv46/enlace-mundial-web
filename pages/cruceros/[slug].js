@@ -33,33 +33,20 @@ export default function Home({ data }) {
     DispatchScreen({ type: 'ChangeSubTittle', payload: data?.tituloCrucero })
   }, [])
 
+  useEffect(() => {
+    DispatchScreen({
+      type: 'ChangeMeta', payload: {
+        SubTittle: data?.tituloCrucero,
+        keywords: data?.keywordsCrucero,
+        description: data?.descripcionCortaCrucero,
+        url: `${process.env.SITE_URL}/cruceros/${slug}`,
+        img: data?.imagenPrincipalCrucero?.url
+      }
+    })
+  }, [])
+
   return (
     <div>
-      {/* <Head>
-        <title>{data?.tituloCrucero} - Enlace mundial</title>
-        <meta name='description' content={data?.descripcionCortaCrucero} />
-        <meta name='keywords' content={data?.keywordsCrucero} />
-
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css'
-        />
-      </Head> */}
-      <NextSeo
-        openGraph={{
-          type: "website",
-          url: `${process.env.SITE_URL}/cruceros/${slug}`,
-          title: data?.tituloCrucero,
-          description: data?.descripcionCortaCrucero,
-          images: [
-            {
-              url: data?.imagenPrincipalCrucero?.url,
-            },
-          ],
-          site_name: data?.tituloCrucero,
-        }}
-      />
 
       <main className='l-miel'>
         <section className='l-miel__items '>

@@ -16,6 +16,8 @@ import TipoPago from '../../components/general/reservar/tipoPago'
 import { ContextAuth } from '../../context/ContextAuth'
 import { useRouter } from 'next/router'
 import { useTypePassenger } from '../../hooks/useTypePassenger'
+import { useScreenContext } from '../../context/screen'
+import { Screen_Data } from '../../context/screen/data'
 
 
 export default function Home() {
@@ -45,15 +47,30 @@ export default function Home() {
   const [carrito, setCarrito] = useState({})
   // const [formularios, setFormularios] = useState([])
   const { DatePassenger, handlePassenger } = useTypePassenger()
-
+  const { DispatchScreen } = useScreenContext();
   useEffect(() => {
     const carritoLocal = JSON.parse(localStorage.getItem('carrito'))
     setCarrito(carritoLocal)
   }, [])
 
-  if (loading) {
-    return <div className={styles.todo}></div>
-  }
+  useEffect(() => {
+    DispatchScreen({
+      type: 'ChangeMeta', payload: {
+        SubTittle: 'Finalizar Reserva',
+        keyword: '',
+        description: Screen_Data.description,
+        url: `${process.env.SITE_URL}/finalizar-reserva`,
+        img: `${process.env.SITE_URL}/logo.webp`
+      }
+    })
+  }, [])
+
+
+  // if (loading) {
+  //   return <div className={styles.todo}></div>
+  // }
+
+
 
   return (
     <div>
