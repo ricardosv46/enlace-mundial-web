@@ -15,6 +15,7 @@ import { useScreenContext } from "../context/screen";
 import Image from "next/image";
 import GestionLuna from "../gestion-de-endpoints/GestionLunaMiel";
 import { NextSeo } from "next-seo";
+import { Screen_Data } from "../context/screen/data";
 
 export default function Home() {
   const { DispatchScreen } = useScreenContext();
