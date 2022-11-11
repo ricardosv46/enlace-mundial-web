@@ -17,6 +17,8 @@ import request from 'graphql-request'
 import { GET_SLUG_TOUR, URL } from '../../endpoints y url/endpoints'
 import ToursSimilares from '../../components/tours/similares'
 import { NextSeo } from 'next-seo'
+import OpenGraph from '../../components/openGraph'
+import { dataOG } from '../../data/dataOG'
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_TOUR, {
@@ -58,17 +60,21 @@ export default function Home({ data }) {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: data?.tituloTour,
-        keywords: data?.keywordsTour,
-        description: data?.descripcionCortaTour,
-        url: `${process.env.SITE_URL}/actividades-y-turismo/${slug}`,
-        img: data?.imagenPrincipalTour?.url
-      }
+      type: 'ChangeSubTittle', payload: data?.tituloTour
     })
   }, [])
   return (
     <div>
+
+      <OpenGraph
+        {...{
+          title: `${data?.tituloTour} - ${dataOG.tittle}`,
+          keyword: data?.keywordsTour,
+          description: data?.descripcionCortaTour,
+          url: `${dataOG.url}/actividades-y-turismo/${slug}`,
+          img: data?.imagenPrincipalTour?.url
+        }}
+      />
 
       {/* reservar un tour con una fecha asignada version mobile*/}
       <Modal

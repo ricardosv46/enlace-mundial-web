@@ -11,6 +11,8 @@ import CardGeneralCrucero from "../../components/cards/card-general-crucero"
 import { Show, TittleCards, SkeletorCard } from '../../components/common'
 import { useGestionGetAllCrucero } from '../../gestion-de-endpoints/useGestionCrucero'
 import { NextSeo } from "next-seo"
+import { dataOG } from "../../data/dataOG"
+import OpenGraph from "../../components/openGraph"
 
 const description = 'Si el tiempo o el dinero no fueran un problema donde te gustaria viajar.'
 
@@ -33,13 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: 'Cruceros',
-        description,
-        keyword: '',
-        url: `${process.env.SITE_URL}/cruceros`,
-        img: `${process.env.SITE_URL}/imagenes/cruceros/banner.jpg`
-      }
+      type: 'ChangeSubTittle', payload: 'Cruceros'
     })
   }, [])
 
@@ -53,6 +49,16 @@ export default function Home() {
   }, [router.query])
   return (
     <div>
+
+      <OpenGraph
+        {...{
+          title: `Cruceros - ${dataOG.tittle}`,
+          keyword: '',
+          description,
+          url: `${dataOG.url}/cruceros`,
+          img: `${dataOG.url}}/imagenes/cruceros/banner.jpg`,
+        }}
+      />
 
       <main>
         <Banner />

@@ -12,6 +12,8 @@ import { OtherItem } from '../../components/actividades/slug/OtherItems'
 import MenuInteriorCrucero from "../../components/servicios/submenu/menuInteriorCrucero"
 import { TittleOferta, SubMenuTittle, ItemMap } from '../../components/common'
 import { useScreenContext } from "../../context/screen"
+import { dataOG } from "../../data/dataOG"
+import OpenGraph from "../../components/openGraph"
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_CRUCERO, {
     slugCrucero: params.slug,
@@ -35,18 +37,20 @@ export default function Home({ data }) {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: data?.tituloCrucero,
-        keywords: data?.keywordsCrucero,
-        description: data?.descripcionCortaCrucero,
-        url: `${process.env.SITE_URL}/cruceros/${slug}`,
-        img: data?.imagenPrincipalCrucero?.url
-      }
+      type: 'ChangeSubTittle', payload: data?.tituloCrucero
     })
   }, [])
 
   return (
     <div>
+
+      <OpenGraph {...{
+        title: `${data?.tituloCrucero} - ${dataOG.tittle}`,
+        keyword: data?.keywordsCrucero,
+        description: data?.descripcionCortaCrucero,
+        url: `${dataOG.url}/cruceros/${slug}`,
+        img: data?.imagenPrincipalCrucero?.url
+      }} />
 
       <main className='l-miel'>
         <section className='l-miel__items '>

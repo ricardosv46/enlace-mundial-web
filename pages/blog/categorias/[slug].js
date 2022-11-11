@@ -9,6 +9,8 @@ import { GET_ALL_BLOG_CATEGORIA, URL } from "../../../endpoints y url/endpoints"
 import request from "graphql-request"
 import { useScreenContext } from "../../../context/screen"
 import { Screen_Data } from "../../../context/screen/data"
+import { dataOG } from "../../../data/dataOG"
+import OpenGraph from "../../../components/openGraph"
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_ALL_BLOG_CATEGORIA, {
@@ -49,22 +51,24 @@ export default function Home({ data }) {
     loop: true,
   }
 
-  console.log({ data })
-
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: `Categoria - ${titulo}`,
-        keyword: '',
-        description: Screen_Data.description,
-        url: `${process.env.SITE_URL}/blog/categorias/${slug}`,
-        img: `${process.env.SITE_URL}/logo.webp`
-      }
+      type: 'ChangeSubTittle', payload: `Categoria - ${titulo}`
     })
   }, [])
 
   return (
     <div>
+
+      <OpenGraph
+        {...{
+          title: `Categoria - ${titulo} - ${dataOG.tittle}`,
+          keyword: '',
+          description: dataOG.description,
+          url: `${dataOG.url}/blog/categorias/${slug}`,
+          img: dataOG.logo
+        }}
+      />
 
       <main className={styles.slug}>
         <section className='l-miel__items mt-4'>

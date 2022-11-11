@@ -10,6 +10,8 @@ import ErrorMessage from "@/components/general/ErrorMessage"
 import { ContactAnimate } from "../../lotties/components/ContactAnimate"
 import { useEffect } from "react"
 import { useScreenContext } from "../../context/screen"
+import OpenGraph from "../../components/openGraph"
+import { dataOG } from "../../data/dataOG"
 
 export default function Contacto() {
   const initialValues = {
@@ -23,18 +25,22 @@ export default function Contacto() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: 'Contáctanos',
-        keyword: '',
-        description: 'No dudes en contactarnos para consultar sobre nuestros servicios.',
-        url: `${process.env.SITE_URL}/contacto`,
-        img: `${process.env.SITE_URL}/logo.webp`
-      }
+      type: 'ChangeSubTittle', payload: 'Contáctanos'
     })
   }, [])
 
   return (
     <div className='contacto'>
+
+      <OpenGraph
+        {...{
+          title: `Contáctanos - ${dataOG.tittle}`,
+          keyword: '',
+          description: 'No dudes en contactarnos para consultar sobre nuestros servicios.',
+          url: `${dataOG.url}/contacto`,
+          img: dataOG.logo
+        }}
+      />
 
       <section className='container mt-5'>
         <div className='row justify-content-center'>

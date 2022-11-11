@@ -15,6 +15,8 @@ import LunasRelacionadas from "../../components/luna-de-miel/lunas-relacionadas"
 import MenuInteriorLunaMiel from "../../components/servicios/submenu/menuInteriorLunaMiel"
 import HeaderInterior from "../../components/general/publicaciones/header-interior"
 import { NextSeo } from "next-seo"
+import { dataOG } from "../../data/dataOG"
+import OpenGraph from "../../components/openGraph"
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_LUNA_MIEL, {
@@ -40,18 +42,20 @@ export default function Home({ data }) {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: data?.tituloLuna,
-        keywords: data?.keywordsLuna,
-        description: data?.descripcionCortaLuna,
-        url: `${process.env.SITE_URL}/luna-de-miel/${slug}`,
-        img: data?.imagenPrincipalLuna?.url
-      }
+      type: 'ChangeSubTittle', payload: data?.tituloLuna
     })
   }, [])
 
   return (
     <div>
+
+      <OpenGraph {...{
+        title: `${data?.tituloLuna} - ${dataOG.tittle}`,
+        keyword: data?.keywordsLuna,
+        description: data?.descripcionCortaLuna,
+        url: `${dataOG.url}/luna-de-miel/${slug}`,
+        img: data?.imagenPrincipalLuna?.url,
+      }} />
 
       <main>
         {/* Cabezera, precio por persona */}

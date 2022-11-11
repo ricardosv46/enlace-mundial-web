@@ -14,6 +14,8 @@ import useCounter from "../../hooks/useCounter"
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { Show } from '../../components/common'
 import { NextSeo } from "next-seo"
+import OpenGraph from "../../components/openGraph"
+import { dataOG } from "../../data/dataOG"
 const TypeViewCard = {
   GRID: 'Grid',
   LIST: 'List'
@@ -92,13 +94,7 @@ export default function Home() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: 'Blogs',
-        description: 'Publicaciones recientes',
-        keyword: '',
-        url: `${process.env.SITE_URL}/blog`,
-        img: `${process.env.SITE_URL}/logo.webp`
-      }
+      type: 'ChangeSubTittle', payload: 'Blogs'
     })
   }, [])
 
@@ -115,6 +111,16 @@ export default function Home() {
 
   return (
     <div>
+
+      <OpenGraph
+        {...{
+          title: `Blogs - ${dataOG.tittle}`,
+          keyword: '',
+          description: 'Publicaciones recientes',
+          url: `${dataOG.url}/blog`,
+          img: dataOG.logo,
+        }}
+      />
 
       <main className={styles.blog}>
         <section className='mt-4'>

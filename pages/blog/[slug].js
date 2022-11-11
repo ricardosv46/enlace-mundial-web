@@ -15,6 +15,8 @@ import request from "graphql-request"
 import GestionCategoriaBlog from "../../gestion-de-endpoints/GestionCategoriaBlog"
 import { NextSeo } from "next-seo"
 import { useScreenContext } from "../../context/screen"
+import { dataOG } from "../../data/dataOG"
+import OpenGraph from "../../components/openGraph"
 
 export async function getServerSideProps({ params }) {
   const res = await request(URL, GET_SLUG_BLOG, {
@@ -67,18 +69,22 @@ export default function Home({ data }) {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: data?.tituloBlog,
-        keywords: data?.keywordsBlog,
-        description: data?.descripcionCortaBlog,
-        url: `${process.env.SITE_URL}/blog/${slug}`,
-        img: data?.imagenPrincipalBlog?.url
-      }
+      type: 'ChangeSubTittle', payload: data?.tituloBlog
     })
   }, [])
 
   return (
     <div>
+
+      <OpenGraph
+        {...{
+          title: `${data?.tituloBlog} - ${dataOG.tittle}`,
+          keyword: data?.keywordsBlog,
+          description: data?.descripcionCortaBlog,
+          url: `${dataOG.url}/blog/${slug}`,
+          img: data?.imagenPrincipalBlog?.url
+        }}
+      />
 
       <main className={styles.slug}>
         <section className='l-miel__items mt-4'>

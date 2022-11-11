@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
+import OpenGraph from '../../components/openGraph'
 import { useScreenContext } from '../../context/screen'
 import { Screen_Data } from '../../context/screen/data'
+import { dataOG } from '../../data/dataOG'
 import { DataItineraio } from '../../datos-paginas/itineario'
 import styles from './styles.module.scss'
 
@@ -10,18 +12,22 @@ export const Index = () => {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta',
-      payload: {
-        SubTittle: 'Políticas de Itinerario',
-        keyword: '',
-        description: Screen_Data.description,
-        url: `${process.env.SITE_URL}/itinerario`,
-        img: `${process.env.SITE_URL}/logo.webp`
-      }
+      type: 'ChangeSubTittle',
+      payload: 'Políticas de Itinerario'
     })
   }, [])
   return (
     <>
+      <OpenGraph
+        {...{
+          title: `Políticas de Itinerario - ${dataOG.tittle}`,
+          keyword: '',
+          description: dataOG.description,
+          url: `${dataOG.url}/itinerario`,
+          img: dataOG.logo
+        }}
+      />
+
       <section className={`${styles.terminos} container mt-5`}>
         <div className='row'>
           <div className='col-md-12 text-center mb-4'>

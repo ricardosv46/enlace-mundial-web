@@ -16,6 +16,8 @@ import GestionBusqueda from "../../gestion-de-endpoints/GestionBusqueda";
 import { useRouter } from "next/router";
 import { EmptyAnimate } from "../../lotties/components/EmptyAnimate";
 import { NextSeo } from "next-seo";
+import OpenGraph from "../../components/openGraph";
+import { dataOG } from "../../data/dataOG";
 
 const initialState = {
   fecha_ini: "",
@@ -184,18 +186,22 @@ export default function ActividadesYTurismo() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: 'Actividades y turismo',
-        description: 'Tours a regiones del Perú.',
-        keyword: '',
-        url: `${process.env.SITE_URL}/actividades-y-turismo`,
-        img: `${process.env.SITE_URL}/logo.webp`
-      }
+      type: 'ChangeSubTittle', payload: 'Actividades y turismo'
     })
   }, [])
 
   return (
     <div className="busqueda-page">
+
+      <OpenGraph
+        {...{
+          title: `Actividades y turismo - ${dataOG.tittle}`,
+          keyword: '',
+          description: 'Tours a regiones del Perú.',
+          url: `${dataOG.url}/actividades-y-turismo`,
+          img: dataOG.logo,
+        }}
+      />
 
       <main>
         {/* Breadcrumb */}
