@@ -14,7 +14,9 @@ const useMercadoPago = ({ monto = 0, pagar }) => {
     if (MercadoPago && monto != 0) {
       console.log('INIT_MERCADO_PAGO')
 
-      const mp = new MercadoPago('APP_USR-b2edd7f8-1b69-4481-ab35-1d612bf1634c')
+      // const mp = new MercadoPago('APP_USR-b2edd7f8-1b69-4481-ab35-1d612bf1634c')
+      const mp = new MercadoPago('TEST-0ff678c6-d074-4dab-8b05-076734e5e8d2')
+
       const cardForm = mp.cardForm({
         amount: monto.toString(),
         autoMount: true,
@@ -38,32 +40,37 @@ const useMercadoPago = ({ monto = 0, pagar }) => {
               identificationType
             } = cardForm.getCardFormData()
 
-            fetch('/process_payment', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                token,
-                issuer_id,
-                payment_method_id,
-                transaction_amount: Number(amount),
-                installments: Number(installments),
-                description: 'Compra de Pasajes',
-                payer: {
-                  email,
-                  identification: {
-                    type: identificationType,
-                    number: identificationNumber
-                  }
-                }
-              })
-            })
+            // fetch('/process_payment', {
+            //   method: 'POST',
+            //   headers: {
+            //     'Content-Type': 'application/json'
+            //   },
+            //   body: JSON.stringify({
+            //     token,
+            //     issuer_id,
+            //     payment_method_id,
+            //     transaction_amount: Number(amount),
+            //     installments: Number(installments),
+            //     description: 'Compra de Pasajes',
+            //     payer: {
+            //       email,
+            //       identification: {
+            //         type: identificationType,
+            //         number: identificationNumber
+            //       }
+            //     }
+            //   })
+            // })
             pagar({
               token,
               payment_method_id,
               installments: Number(installments)
             })
+            // console.log({
+            //   token,
+            //   payment_method_id,
+            //   installments: Number(installments), monto
+            // })
           },
           onFetching: (resource) => {
             console.log('Fetching resource: ', resource)

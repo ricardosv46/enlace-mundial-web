@@ -32,8 +32,6 @@ const Tarjeta = ({
 }) => {
   const [state, setState] = useState(INITIAL_STATE)
 
-  console.log({ state })
-
   const handleInputChange = (e) => {
     setState({
       ...state,
