@@ -24,7 +24,7 @@ export default function Home() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeSubtitle', payload: ''
+      type: 'ChangeSubTittle', payload: ''
     })
   }, [])
 

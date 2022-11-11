@@ -13,6 +13,8 @@ SwiperCore.use([Autoplay]);
 import ToursPopulares from "@/components/tours/populares";
 import { useScreenContext } from "../../context/screen";
 import { Screen_Data } from "../../context/screen/data";
+import { dataOG } from "../../data/dataOG";
+import OpenGraph from "../../components/openGraph";
 
 export default function About() {
   const swiperRef = useRef(null);
@@ -60,19 +62,21 @@ export default function About() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta',
-      payload: {
-        SubTittle: 'Sobre Nosotros',
-        keyword: '',
-        description: Screen_Data.description,
-        url: `${process.env.SITE_URL}/sobre-nosotros`,
-        img: `${process.env.SITE_URL}/imagenes/sobre-nosotros/banner-2.png`
-      }
+      type: 'ChangeSubTittle',
+      payload: 'Sobre Nosotros',
     })
   }, [])
 
   return (
     <div className={styles.nosotros}>
+
+      <OpenGraph {...{
+        title: `Sobre Nosotros - ${dataOG.tittle}`,
+        keyword: '',
+        description: dataOG.description,
+        url: `${dataOG.url}/sobre-nosotros`,
+        img: `${dataOG.url}/imagenes/sobre-nosotros/banner-2.png`,
+      }} />
 
       <section
         className={`${styles.nosotros_banner} d-flex justify-content-center align-items-center position-relative`}

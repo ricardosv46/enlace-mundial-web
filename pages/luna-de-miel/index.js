@@ -9,6 +9,8 @@ import { Show, LayoutCards, TittleCards, SkeletorCard, SkeletorTittle } from '..
 import { GestionCategoriaLunaMiel } from '../../gestion-de-endpoints/GestionCategoriaLunaMiel'
 import { useGestionGetAllLunaMiel } from '../../gestion-de-endpoints/useGestionLunaMiel'
 import { NextSeo } from 'next-seo'
+import OpenGraph from '../../components/openGraph'
+import { dataOG } from '../../data/dataOG'
 
 const description = 'La «luna de miel» es una frase que describe la fase posterior al matrimonio. Es el segundo paso, y a veces el más esperado.'
 
@@ -23,13 +25,7 @@ export default function Home() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: 'Luna de Miel',
-        description,
-        keyword: '',
-        url: `${process.env.SITE_URL}/luna-de-miel`,
-        img: `${process.env.SITE_URL}/imagenes/luna-de-miel/banner.jpg`
-      }
+      type: 'ChangeSubTittle', payload: 'Luna de Miel'
     })
   }, [])
 
@@ -53,6 +49,14 @@ export default function Home() {
 
   return (
     <div>
+
+      <OpenGraph {...{
+        title: `Luna de Miel - ${dataOG.tittle}`,
+        keyword: '',
+        description,
+        url: `${dataOG.url}/luna-de-miel`,
+        img: `${dataOG.url}/imagenes/luna-de-miel/banner.jpg`,
+      }} />
 
       <main className='l-miel'>
         <Banner />

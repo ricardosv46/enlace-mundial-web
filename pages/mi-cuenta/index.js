@@ -7,6 +7,8 @@ import SidebarCuenta from "@/components/mi-cuenta/sidebar"
 import { ContextAuth } from "../../context/ContextAuth"
 import { useRouter } from "next/router"
 import { Screen_Data } from "../../context/screen/data"
+import { dataOG } from "../../data/dataOG"
+import OpenGraph from "../../components/openGraph"
 
 const MiCuenta = () => {
   const router = useRouter()
@@ -29,14 +31,8 @@ const MiCuenta = () => {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta',
-      payload: {
-        SubTittle: 'Mi Cuenta',
-        keyword: '',
-        description: Screen_Data.description,
-        url: `${process.env.SITE_URL}/mi-cuenta`,
-        img: `${process.env.SITE_URL}/logo.webp`
-      }
+      type: 'ChangeSubTittle',
+      payload: 'Mi Cuenta',
     })
   }, [])
 
@@ -46,6 +42,14 @@ const MiCuenta = () => {
 
   return (
     <>
+
+      <OpenGraph {...{
+        title: `Mi Cuenta - ${dataOG.tittle}`,
+        keyword: '',
+        description: dataOG.description,
+        url: `${dataOG.url}/mi-cuenta`,
+        img: dataOG.logo,
+      }} />
 
       <section className={`${styles.miCuenta} container mt-4 mt-md-5`}>
         <div className='row justify-content-around'>

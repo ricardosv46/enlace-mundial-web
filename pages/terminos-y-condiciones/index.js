@@ -5,6 +5,7 @@ import styles from "./styles.module.scss"
 import { useScreenContext } from "../../context/screen"
 import { Screen_Data } from "../../context/screen/data"
 import OpenGraph from "../../components/openGraph"
+import { dataOG } from "../../data/dataOG"
 
 export default function TerminosYCondiciones() {
   const [info, setInfo] = useState(terminosYCondiciones)
@@ -12,7 +13,7 @@ export default function TerminosYCondiciones() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeSubtitle',
+      type: 'ChangeSubTittle',
       payload: 'Terminos y Condiciones',
     })
   }, [])

@@ -10,6 +10,8 @@ import Tab from "react-bootstrap/Tab";
 import { QuestionAnimate } from "../../lotties/components/QuestionAnimate";
 import { useScreenContext } from "../../context/screen";
 import { Screen_Data } from "../../context/screen/data";
+import { dataOG } from "../../data/dataOG";
+import OpenGraph from "../../components/openGraph";
 
 export default function PreguntasFrecuentes() {
   const [info, setInfo] = useState(preguntasFrecuentes);
@@ -31,7 +33,7 @@ export default function PreguntasFrecuentes() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', SubTittle: 'Preguntas frecuentes'
+      type: 'ChangeSubTittle', payload: 'Preguntas frecuentes'
     })
   }, [])
 
