@@ -4,6 +4,7 @@ import Head from "next/head"
 import styles from "./styles.module.scss"
 import { useScreenContext } from "../../context/screen"
 import { Screen_Data } from "../../context/screen/data"
+import OpenGraph from "../../components/openGraph"
 
 export default function TerminosYCondiciones() {
   const [info, setInfo] = useState(terminosYCondiciones)
@@ -11,19 +12,22 @@ export default function TerminosYCondiciones() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta',
-      payload: {
-        SubTittle: 'Terminos y Condiciones',
-        keyword: '',
-        description: Screen_Data.description,
-        url: `${process.env.SITE_URL}/mi-cuenta`,
-        img: `${process.env.SITE_URL}/logo.webp`
-      }
+      type: 'ChangeSubtitle',
+      payload: 'Terminos y Condiciones',
     })
   }, [])
 
   return (
     <>
+
+      <OpenGraph {...{
+        title: `Terminos y Condiciones - ${dataOG.tittle}`,
+        keyword: '',
+        description: dataOG.description,
+        url: `${dataOG.url}/mi-cuenta`,
+        img: dataOG.logo,
+      }} />
+
       <section className={`${styles.terminos} container mt-5`}>
         <div className='row'>
           <div className='col-md-12 text-center mb-4'>

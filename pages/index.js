@@ -16,19 +16,15 @@ import Image from "next/image";
 import GestionLuna from "../gestion-de-endpoints/GestionLunaMiel";
 import { NextSeo } from "next-seo";
 import { Screen_Data } from "../context/screen/data";
+import OpenGraph from "../components/openGraph";
+import { dataOG } from "../data/dataOG";
 
 export default function Home() {
   const { DispatchScreen } = useScreenContext();
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta', payload: {
-        SubTittle: '',
-        keyword: '',
-        description: Screen_Data.description,
-        url: `${process.env.SITE_URL}`,
-        img: `${process.env.SITE_URL}/logo.webp`
-      }
+      type: 'ChangeSubtitle', payload: ''
     })
   }, [])
 
@@ -40,6 +36,13 @@ export default function Home() {
   return (
 
     <div>
+      <OpenGraph {...{
+        title: dataOG.tittle,
+        keyword: '',
+        description: dataOG.description,
+        url: dataOG.url,
+        img: dataOG.logo,
+      }} />
 
       <main>
         <Banner />

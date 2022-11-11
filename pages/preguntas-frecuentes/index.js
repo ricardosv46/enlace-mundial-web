@@ -31,19 +31,20 @@ export default function PreguntasFrecuentes() {
 
   useEffect(() => {
     DispatchScreen({
-      type: 'ChangeMeta',
-      payload: {
-        SubTittle: 'Preguntas frecuentes',
-        keyword: '',
-        description: Screen_Data.description,
-        url: `${process.env.SITE_URL}/preguntas-frecuentes`,
-        img: `${process.env.SITE_URL}/logo.webp`
-      }
+      type: 'ChangeMeta', SubTittle: 'Preguntas frecuentes'
     })
   }, [])
 
   return (
     <>
+
+      <OpenGraph {...{
+        title: `Preguntas frecuentes - ${dataOG.tittle}`,
+        keyword: '',
+        description: dataOG.description,
+        url: `${dataOG.url}/preguntas-frecuentes`,
+        img: dataOG.logo,
+      }} />
 
       <div className="bg-primary text-white py-5">
         <div className="container">

@@ -5,8 +5,8 @@
 export const ScreenReducer = (state, action) => {
     const { type, payload } = action
     switch (type) {
-        case "ChangeMeta":
-            return { ...state, ...payload }
+        case "ChangeTitle":
+            return { ...state, title: payload }
             break;
         case "ChangeSubTittle":
             return { ...state, SubTittle: payload }
