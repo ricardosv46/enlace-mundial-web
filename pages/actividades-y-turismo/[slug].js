@@ -148,7 +148,7 @@ export default function Home({ data }) {
                 id="detalles"
                 style={{ scrollMarginTop: '170px' }}
                 titulo={data.tituloTour}
-                descripciontitulo={data.descripcionCortaTour}
+                descripciontitulo={data?.descripcionLargaTour}
                 partida="Punto de partida"
                 PuntoPartida={data.puntoPartidaTour}
               />

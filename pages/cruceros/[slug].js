@@ -97,7 +97,7 @@ export default function Home({ data }) {
                   id="detalles"
                   style={{ scrollMarginTop: "170px" }}
                   titulo={data.tituloCrucero}
-                  descripciontitulo={data.descripcionCortaCrucero}
+                  descripciontitulo={data?.descripcionLargaCrucero}
                   partida="Punto de partida"
                   PuntoPartida={data.puntoPartidaCrucero}
                 />

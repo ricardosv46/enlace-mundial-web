@@ -98,7 +98,7 @@ export default function Home({ data }) {
                 id='detalles'
                 style={{ scrollMarginTop: '170px' }}
                 titulo={data.tituloLuna}
-                descripciontitulo={data.descripcionCortaLuna}
+                descripciontitulo={data?.descripcionLargaLuna}
                 partida="Punto de partida"
                 PuntoPartida={data.puntoPartidaLuna}
               />

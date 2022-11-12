@@ -111,7 +111,7 @@ export default function Home({ data }) {
                 ></section>
 
                 <section className='mt-3'>
-                  <p>{data.descripcionLargaBlog}</p>
+                  <div dangerouslySetInnerHTML={{ __html: data?.descripcionLargaBlog }}></div>
                 </section>
 
                 <div className='mt-3'>
