@@ -83,6 +83,7 @@ export default function Banner() {
               <div className="copyright__direccion ">
                 <p>DIRECCION: Los aymaras 132. Salamanca</p>
                 <p>TELEFONO: (01) 6828153</p>
+                <p>EMAIL: reservas@enlacemundialperu.com</p>
               </div>
 
               <div className="d-flex flex-column">

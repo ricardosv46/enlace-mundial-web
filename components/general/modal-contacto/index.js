@@ -74,7 +74,7 @@ export default function ModalContacto() {
                   User support
                 </h4>
                 <a
-                  href='https://api.whatsapp.com/send?phone=51994945265&app=facebook&entry_point=page_cta&fbclid=IwAR3HYJYUhipLyudKE4dXrpDzXEk0jaevCEoE-S36cn4SMOLFM2T3UKZSF1c'
+                  href='http://wa.link/9acpco'
                   className='btn btn-primary d-flex w-btn justify-content-between py-1'
                 >
                   <img
@@ -88,7 +88,7 @@ export default function ModalContacto() {
               </div>
             </div>
           </div>
-        
+
         </div>
       </div>
     </section>
