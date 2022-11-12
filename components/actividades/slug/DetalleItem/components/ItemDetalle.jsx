@@ -11,7 +11,9 @@ export const ItemDetalle = ({ id, style = {}, titulo, descripciontitulo, partida
         <h5 className='card-title font-weight-bold'>{titulo}</h5>
 
         <div className='py-2 px-3'>
-          <div className='card-text' dangerouslySetInnerHTML={{ __html: descripciontitulo }}></div>
+          <div className='card-text' dangerouslySetInnerHTML={{ __html: descripciontitulo }}>
+            {/*Descripción*/}
+          </div>
         </div>
 
         <h5 className='card-title font-weight-bold'>{partida}</h5>

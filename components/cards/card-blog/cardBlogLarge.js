@@ -22,9 +22,9 @@ export default function CardBlogLarge({ item }) {
           </div>
         </div>
 
-        <p className='text-secondary my-0'>
-          {item?.descripcionLargaBlog.substring(0, 315)}...
-        </p>
+        <div className='text-secondary my-2' dangerouslySetInnerHTML={{ __html: item?.descripcionLargaBlog.substring(0, 315) }}>
+          {/*Descripcion Larga*/}
+        </div>
 
         <div className='d-flex justify-content-between align-items-end'>
           <div className='text-muted my-0'>
