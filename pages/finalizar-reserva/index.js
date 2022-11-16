@@ -20,26 +20,25 @@ import { useScreenContext } from '../../context/screen'
 import { Screen_Data } from '../../context/screen/data'
 import { dataOG } from '../../data/dataOG'
 import OpenGraph from '../../components/openGraph'
+import { AirPlane } from '../../components/loader/componentes/air-plane'
 
 
 export default function Home() {
   const router = useRouter()
   const contextAuth = useContext(ContextAuth)
-  const { auth, setShow } = contextAuth
-
-  const [loading, setLoading] = useState(true)
+  const { auth, setShow, dataUser, loading } = contextAuth
+  const [mostrar, setMostrar] = useState(false)
 
   useEffect(() => {
-    if (!auth) {
-      router.back()
-      setShow(true)
-    } else {
-      setLoading(false)
+    if (!loading) {
+      if (!auth && !dataUser?.apiToken) {
+        router.back()
+        setShow(true)
+      } else if (auth && dataUser?.apiToken) {
+        setMostrar(true)
+      }
     }
-    return () => {
-      setLoading(true)
-    }
-  }, [auth])
+  }, [loading])
 
   const [arraypasajero, setArrayPasajero] = useState([])
 
@@ -61,12 +60,23 @@ export default function Home() {
     })
   }, [])
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const data = JSON.parse(localStorage.getItem('Datepassenger'))
+      if (data) {
+        setPagos(true)
+        setTarjeta(true)
+      }
+    }
 
-  // if (loading) {
-  //   return <div className={styles.todo}></div>
-  // }
+    return () => {
+      localStorage.removeItem('Datepassenger')
+    }
+  }, [])
 
-
+  if (!mostrar) {
+    return <AirPlane />
+  }
 
   return (
     <div>
@@ -110,7 +120,7 @@ export default function Home() {
                       eventKey='home'
                       title={
                         !pagos
-                          ? DatePassenger.length > 1
+                          ? DatePassenger?.length > 1
                             ? 'Datos de los pasajeros'
                             : 'Datos del pasajero'
                           : 'Datos de la Tarjeta'
@@ -118,7 +128,7 @@ export default function Home() {
                     >
                       <section className='p-1 p-lg-3'>
                         {!pagos ? (
-                          DatePassenger.length ? (
+                          DatePassenger?.length ? (
                             <Formularios
                               setTarjeta={setTarjeta}
                               items={DatePassenger}

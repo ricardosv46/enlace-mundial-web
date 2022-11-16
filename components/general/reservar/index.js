@@ -4,6 +4,9 @@ import { useRouter } from 'next/router'
 
 import Calendar from './calendar'
 import GestionHorariosTour from '../../../gestion-de-endpoints/GestionHorariosTour'
+import { useScreenContext } from '../../../context/screen'
+import { ContextAuth } from '../../../context/ContextAuth'
+import { useContext } from 'react'
 
 export default function Reservar({
   producto,
@@ -19,7 +22,7 @@ export default function Reservar({
   const ani = today.getFullYear()
   const fechita = String(ani + '-' + month + '-' + day)
   const fecha_actual = new Date(fechita)
-
+  const { auth, show, setShow } = useContext(ContextAuth)
   const [mes, setMes] = useState('')
   const [anio, setAnio] = useState(today.getFullYear())
   const [fechaSeleccionada, setFechaSeleccionada] = useState('')
@@ -85,12 +88,13 @@ export default function Reservar({
       nroMenores,
       duracion
     }
+    if (auth) {
+      localStorage.setItem('carrito', JSON.stringify(item))
+      router.push('/finalizar-reserva')
+    } else {
+      setShow(true)
+    }
 
-    localStorage.setItem('carrito', JSON.stringify(item))
-
-    // console.log(JSON.parse(localStorage.getItem("carrito")));
-
-    router.push('/finalizar-reserva')
   }
   const isDisable = () => {
     if (nroAdultos + nroMenores === 0) {
@@ -192,8 +196,7 @@ export default function Reservar({
                 <div className='sidebar-reservar__duracion-info py-1 px-3 '>
                   <span>
                     {duracion?.hora &&
-                      `De  ${duracion?.hora?.split(',')[0]} a ${
-                        duracion?.hora?.split(',')[1]
+                      `De  ${duracion?.hora?.split(',')[0]} a ${duracion?.hora?.split(',')[1]
                       }`}
                   </span>
                 </div>

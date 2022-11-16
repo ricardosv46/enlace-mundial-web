@@ -175,6 +175,7 @@ const Tarjeta = ({
             onClick={() => {
               setTarjeta(false)
               setPagos(false)
+              localStorage.removeItem('Datepassenger')
               if (comprobante) {
                 setTarjeta(true)
                 setComprobante(false)

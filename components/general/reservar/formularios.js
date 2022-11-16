@@ -33,6 +33,7 @@ export default function Formularios({
         if (items.length === (index + 1) && terminos) {
           setPagos(true)
           setTarjeta(true)
+          localStorage.setItem('Datepassenger', JSON.stringify(items))
         }
       }).catch((err) => {
         {/* provocamos el erro con el schema validate y mapeamos el error para mandarlo a los inputs */ }
@@ -175,7 +176,9 @@ export default function Formularios({
                     type='button'
                     className='btn btn-link text-danger'
                     // onClick={() => atras(index - 1)}
-                    onClick={() => setPasajeroActual(index - 1)}
+                    onClick={() => {
+                      setPasajeroActual(index - 1)
+                    }}
 
                   >
                     <span className='d-inline-block mr-2 text-danger'>

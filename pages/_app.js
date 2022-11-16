@@ -28,8 +28,10 @@ function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = useState(false)
   const [dataUser, setDataUser] = useState({})
   const [show, setShow] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     if (localStorage) {
       const data = JSON.parse(localStorage.getItem("usuario"))
       setDataUser(data)
@@ -37,6 +39,7 @@ function MyApp({ Component, pageProps }) {
         setAuth(true)
       }
     }
+    setLoading(false)
   }, [])
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -74,7 +77,7 @@ function MyApp({ Component, pageProps }) {
       <ApolloProvider client={client}>
         <ScreenProvider>
           <ContextAuth.Provider
-            value={{ auth, setAuth, dataUser, setDataUser, show, setShow }}
+            value={{ auth, setAuth, dataUser, setDataUser, show, setShow, loading }}
           >
             <NextHead />
             <Header />
